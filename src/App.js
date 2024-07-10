@@ -12,6 +12,8 @@ function App() {
         <p>
           Test I'm in???
         </p>
+        <img src="https://pbs.twimg.com/media/GO5URDWaEAA9CdC?format=jpg&name=large" alt="" />
+        <h1>Rosmontis is kawaii!!!!</h1>
         <a
           className="App-link"
           href="https://reactjs.org"
