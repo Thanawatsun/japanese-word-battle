@@ -14,45 +14,158 @@ const firebaseConfig = {
   };
   const app = initializeApp(firebaseConfig); // Initialize Firebase app
 
-async function uploadDataToFirestore(data) {
-  const db = getFirestore(app); // Get Firestore instance INSIDE the function
-
-  try {
-    const term = data.spelling;
-    const termRef = doc(db, 'term_bank', term);
-
-    await setDoc(termRef, {
-      ID: data.ID,
-      forms: data.forms,
-      spelling: data.spelling
-    });
-
-    for (const tagData of data.tags) {
-      const tagRef = doc(termRef, 'tag', tagData.name);
-      await setDoc(tagRef, { meaning: tagData.meaning });
-    }
-
-    console.log("Document updated with ID: ", termRef.id);
-  } catch (e) {
-    console.error("Error updating document: ", e);
-  }
-}
   
 function TermUploadForm() {
+  
     const initialFormData = {
-      ID: 1001140,
-      forms: ["ええ", "えー"],
-      spelling: "ええ",
-      tags: [
-        { name: "1 int", meaning: ["yes", "that is correct", "right"] },
-        { name: "2 int", meaning: ["that's right", "that is so"] },
-        { name: "5 adj-f ksb", meaning: ["good", "fine", "all right"] }
+      "ID": 1000000,
+      "forms": [
+          [
+              "ヽ"
+          ]
+      ],
+      "spelling": "ヽ",
+      "tags": [
+          {
+              "name": "unc",
+              "meaning": "repetition mark in katakana"
+          }
       ]
-    };
+  };
   
     const [formData, setFormData] = useState(initialFormData);
     const [errorMessage, setErrorMessage] = useState(null);
+    const handleFileChange = (event) => {
+      const file = event.target.files[0];
+      const reader = new FileReader();
   
+      reader.onload = (e) => {
+        try {
+          const jsonData = JSON.parse(e.target.result);
+          // จัดกลุ่มข้อมูลตาม Spelling
+          const groupedData = {};
+          var termBank = [];
+          jsonData.forEach(row => {
+              const spelling = row[1];
+              if (!groupedData[spelling]) {
+                  groupedData[spelling] = [];
+              }
+              groupedData[spelling].push(row);
+          });       
+          for (const spelling in groupedData) {
+              var formsSet = new Set();
+              const rows = groupedData[spelling];
+              const firstRow = rows[0]; // ใช้ข้อมูลจากแถวแรกของกลุ่ม
+              if (firstRow[6] >= 1000000){
+                rows.map(row => addForms(row[0]))
+              termBank.push({
+                ID: firstRow[6],
+                forms: Array.from(formsSet),
+                spelling: spelling,
+                  tags: rows.map(row => ({ 
+                      name: row[2], // ใช้ข้อมูลจาก row[2] เป็น name
+                      meaning: meaningdata(row)
+                    })), // Dynamically add type property with extracted data
+              });
+              function meaningdata(row){
+                  const type = row[2];
+              const casNumber = row[4];
+              const meaning = row[5][0];
+              const typeData = row[5][0].type
+              var extractedData = row[5]
+              var note = ""
+              var id = row[6]
+              var Spelling = row[1]
+              var word = row[0]
+              var type_word = row[2]
+              var termBank = [];
+              if (row[6] >= 100030){
+                  //unc
+                  if (row[2].includes("unc")) {
+                      //var extractedData = row[5][0].content[0].content.content;
+                      var extractedData = row[5]
+                      var test = typeof(row[5][0])
+                      if (test == 'object'){
+                          var obj = row[5][0].content[0]
+                          if (row[5][0].content[0] != undefined){
+                              var extractedData = row[5][0].content[0].content.content
+                              if (row[5][0].content[0].content[0] != undefined){
+                                  var extractedData = []
+                                  for (var key in row[5][0].content[0].content) {
+                                      //extractedData += row[5][0].content[0].content[key].content
+                                      extractedData.splice(key, 0, row[5][0].content[0].content[key].content)
+                                    }
+                              }
+                          }
+                          else if (row[5][0].content.content.content != undefined){
+                              var extractedData = row[5][0].content.content.content
+                          }
+                      }
+
+                  }
+                  else if (row[2].includes("n")) {
+                      
+                      var extractedData = row[5]
+                      if (row[5][0].content != undefined){
+                          //var extractedData = row[5][0].content[0].content.content
+                          if (row[5][0].content[0].content[0] != undefined){
+                              var extractedData = []
+                              for (key in row[5][0].content[0].content) {
+                                  //extractedData += row[5][0].content[0].content[key].content
+                                  extractedData.splice(key, 0, row[5][0].content[0].content[key].content)
+                                }
+                          }
+                          else if (row[5][0].content[0].content != undefined){
+                              var extractedData = row[5][0].content[0].content.content
+                          }
+                      }
+                  }
+                  else if (row[2].includes("forms")) {
+
+                      if (row[5][0].content != undefined){
+                          if (row[5][0].content.content[1] != undefined){
+                              var extractedData = []
+                              for (key in row[5][0].content.content[1].content) {
+                                      extractedData.splice(key, 0, row[5][0].content.content[1].content[key].content)
+                                  }
+                          } 
+                      }
+                  }
+                  else if (row[5][0].content != undefined){
+                      var extractedData = row[5]
+                      if (row[5][0].content[0].content != undefined){
+                        if (row[5][0].content[0].content.content != undefined){
+                            var extractedData = row[5][0].content[0].content.content
+                        }else{
+                            var extractedData = []
+                            for (key in row[5][0].content[0].content) {
+                                    extractedData.splice(key, 0, row[5][0].content[0].content[key].content)
+                                } 
+                        }
+
+                    }
+                  }
+                  return extractedData
+              }
+              return extractedData
+          }}
+              //console.log(termBank)
+              //console.log(cells)
+          }
+          function addForms(word){
+            formsSet.add(word)
+          }
+          console.log(termBank)
+          setFormData(termBank)
+          setErrorMessage(null); // Clear any previous errors
+        } catch (error) {
+          setErrorMessage("Error parsing JSON file. Please check the format.");
+          setFormData(null); // Reset form data if invalid JSON
+        }
+      };
+  
+      reader.readAsText(file);
+    };
     const handleInputChange = (event) => {
       const { name, value } = event.target;
       setFormData({ ...formData, [name]: value });
@@ -75,90 +188,77 @@ function TermUploadForm() {
   
     const handleSubmit = async (event) => {
       event.preventDefault();
-      setErrorMessage(null);
+  
+      if (!formData) {
+        setErrorMessage("Please upload a valid JSON file.");
+        return;
+      }
   
       try {
+        console.log(formData)
         await uploadDataToFirestore(formData);
-        setFormData(initialFormData); // รีเซ็ตฟอร์ม
+        setErrorMessage(null); // Clear any previous errors
+        setFormData(null); // Reset form data after successful upload
       } catch (error) {
         console.error("Error uploading data:", error);
         setErrorMessage("Error uploading data. Please try again.");
       }
     };
   
-    async function uploadDataToFirestore(data) {
+    async function uploadDataToFirestore(allData) {
       const db = getFirestore(app);
-  
+    
       try {
-        console.log("update")
-        const term = data.spelling;
-        const termRef = doc(db, 'term_bank', term);
+        
+    console.log("update");
+        // Iterate directly over the array of objects (assuming allData is the array)
+        for (const data of allData) { 
+          const term = data.spelling; // Assuming each object has a 'spelling' property
+          const termRef = doc(db, 'term_bank', term);
+          
+          // Store basic term data
+          await setDoc(termRef, {
+            ID: data.ID, 
+            forms: data.forms,
+            spelling: data.spelling
+          });
     
-        await setDoc(termRef, {
-          ID: data.ID,
-          forms: data.forms,
-          spelling: data.spelling
-        });
-    
-        for (const tagData of data.tags) {
-          const tagRef = doc(termRef, 'tag', tagData.name);
-          await setDoc(tagRef, { meaning: tagData.meaning });
+          // Handle tags - adjust to match the actual data structure
+          if (data.tags && Array.isArray(data.tags)) { 
+            for (const tagData of data.tags) {
+              const tagRef = doc(termRef, 'tags', tagData.name); 
+              await setDoc(tagRef, {
+                meaning: tagData.meaning,  
+              });
+            }
+          } else if (data.tags) { 
+            // Handle the case where tags is not an array (e.g., a single object)
+            const tagRef = doc(termRef, 'tags', data.tags.name);
+            await setDoc(tagRef, {
+              meaning: data.tags.meaning
+            })
+          }
+        
         }
+        console.log("Documents updated");
     
-        console.log("Document updated with ID: ", termRef.id);
       } catch (e) {
         console.error("Error updating document: ", e);
         throw e;
       }
     }
+    
+    
   
     return (
+
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="ID">ID:</label>
-          <input type="text" id="ID" name="ID" value={formData.ID} onChange={handleInputChange} />
-        </div>
-  
-        <div>
-          <label htmlFor="forms">Forms (comma-separated):</label>
-          <input 
-            type="text" 
-            id="forms" 
-            name="forms" 
-            value={formData.forms.join(', ')} 
-            onChange={(e) => setFormData({ ...formData, forms: e.target.value.split(', ') })} 
-          />
-        </div>
-  
-        <div>
-          <label htmlFor="spelling">Spelling:</label>
-          <input type="text" id="spelling" name="spelling" value={formData.spelling} onChange={handleInputChange} />
-        </div>
-  
-        <h3>Tags</h3>
-        {formData.tags.map((tag, index) => (
-          <div key={index}>
-            <input 
-              type="text" 
-              placeholder="Tag Name" 
-              value={tag.name} 
-              onChange={(e) => handleTagChange(index, 'name', e.target.value)} 
-            />
-            <input 
-              type="text" 
-              placeholder="Meaning (comma-separated)" 
-              value={tag.meaning.join(', ')}
-              onChange={(e) => handleTagChange(index, 'meaning', e.target.value.split(', '))} 
-            />
-            <button type="button" onClick={() => removeTag(index)}>Remove</button>
-          </div>
-        ))}
-        <button type="button" onClick={addTag}>Add Tag</button>
-  
-        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-  
-        <button type="submit">Upload</button>
-      </form>
+      <input type="file" id="jsonFileInput" onChange={handleFileChange} />
+      {/* ... (optional input fields for manual data entry) */}
+
+      {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+      <button type="submit">Upload</button>
+    </form>
     );
   }
 
