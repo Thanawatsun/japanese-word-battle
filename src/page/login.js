@@ -52,8 +52,8 @@ function LoginUser({ setIsLogin }) {
         // Store basic term data
         await setDoc(termRef, {
           UID: user.uid, 
-          forms: user.email,
-          spelling: user.displayName
+          email: user.email,
+          username: user.displayName
         });
     }
     return(

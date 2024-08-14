@@ -1,9 +1,10 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getFirestore, doc, setDoc } from 'firebase/firestore';
+import { getFirestore, doc, setDoc, Firestore } from 'firebase/firestore';
 import {getAuth, GoogleAuthProvider, signInWithPopup} from 'firebase/auth'
-
+import firebase from "firebase/compat/app";
+import "firebase/firestore"
 const firebaseConfig = {
   apiKey: "AIzaSyBKZ9qbKo4YRtjMwvK4LcCF54-m_ZMavSc",
   authDomain: "japanese-word-battle.firebaseapp.com",
