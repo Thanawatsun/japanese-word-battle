@@ -1,3 +1,4 @@
+/*
 import React, { useState } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
@@ -263,3 +264,4 @@ function TermUploadForm() {
   }
 
 export default TermUploadForm;
+*/

@@ -1,6 +1,4 @@
-import {signInWithPopup, GoogleAuthProvider, onAuthStateChanged} from 'firebase/auth';
-import React, { useEffect, useState } from 'react';
-import {auth, provider} from '../firebase';
+import {auth} from '../firebase';
 function LogoutUser({ setIsLogin })  {
 
     const handleLogoutSuccess = () => {

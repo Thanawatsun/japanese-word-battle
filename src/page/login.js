@@ -1,7 +1,7 @@
-import {signInWithPopup, GoogleAuthProvider, onAuthStateChanged} from 'firebase/auth';
+import {signInWithPopup, GoogleAuthProvider} from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import {auth, provider, app} from '../firebase';
-import { initializeApp } from 'firebase/app';
+//import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
 
 
