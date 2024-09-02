@@ -4,7 +4,7 @@ import React, {useState, } from 'react';
 import LoginUser from './page/login';
 import LogoutUser from './page/logout';
 function App() {
-  //const [isLoading, setIsLoading] = useState(false);
+  const isLoading = false;
   const [isLogin, setIsLogin] = useState(false);
   return (
     

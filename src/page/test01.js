@@ -255,7 +255,7 @@ function TermUploadForm() {
 
       <form onSubmit={handleSubmit}>
       <input type="file" id="jsonFileInput" onChange={handleFileChange} />
-      {/* ... (optional input fields for manual data entry) */}
+      //{ ... (optional input fields for manual data entry) }
 
       {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
       <button type="submit">Upload</button>
