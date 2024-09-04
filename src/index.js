@@ -2,15 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-
+import TermUploadForm from './page/uploadData';
 import reportWebVitals from './reportWebVitals';
 import WordBank from "./page/wordbank";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <>
     <App />
+    <TermUploadForm/>
 <WordBank/>
-  </React.StrictMode>
+  </>
 );
 
 // If you want to start measuring performance in your app, pass a function
