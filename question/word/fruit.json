@@ -2,151 +2,182 @@
     {
         "WordEN":"Fruit",
         "WordJP":"果物",
-        "Spelling":"くだもの"
+        "Spelling":"くだもの",
+        "Romaji":"kudamono"
     },
     {
         "WordEN":"Apricot",
         "WordJP":"杏",
-        "Spelling":"あんず"
+        "Spelling":"あんず",
+        "Romaji":"Anzu"
+        
     },
     {
         "WordEN":"Citrus sudachi",
         "WordJP":"すだち",
-        "Spelling":"すだち"
+        "Spelling":"すだち",
+        "Romaji":"Sudachi"
     },
     {
         "WordEN":"Banana",
         "WordJP":"バナナ",
-        "Spelling":"ばなな"
+        "Spelling":"バナナ",
+        "Romaji":"Banana"
     },
     {
         "WordEN":"Plum",
         "WordJP":"プラム",
-        "Spelling":"ぷらむ"
+        "Spelling":"プラム",
+        "Romaji":"Puramu"
     },
     {
         "WordEN":"Grapefruit",
         "WordJP":"グレープフルーツ",
-        "Spelling":"ぐれーぷふるーつ"
+        "Spelling":"グレープフルーツ",
+        "Romaji":"Gurēpu furūtsu"
     },
     {
         "WordEN":"Passionfruit",
         "WordJP":"パッションフルーツ",
-        "Spelling":"ぱっしょんふるーつ"
+        "Spelling":"パッションフルーツ",
+        "Romaji":"Passhon furūtsu"
     },
     {
         "WordEN":"Loquat",
         "WordJP":"びわ",
-        "Spelling":"びわ"
+        "Spelling":"びわ",
+        "Romaji":"Biwa"
     },
     {
         "WordEN":"Pomegranate",
         "WordJP":"ザクロ",
-        "Spelling":"ざくろ"
+        "Spelling":"ザクロ",
+        "Romaji":"Zakuro"
     },
     {
         "WordEN":"Lychee",
         "WordJP":"ライチ",
-        "Spelling":"らいち"
+        "Spelling":"ライチ",
+        "Romaji":"Raichi"
     },
     {
         "WordEN":"fig",
         "WordJP":"イチジク",
-        "Spelling":"いちじく"
+        "Spelling":"イチジク",
+        "Romaji":"Ichijiku"
     },
     {
         "WordEN":"Pineapple",
         "WordJP":"パイナップル",
-        "Spelling":"ぱいなっぷる"
+        "Spelling":"パイナップル",
+        "Romaji":"Painappuru"
     },
     {
         "WordEN":"Kiwi",
         "WordJP":"キウイフルーツ",
-        "Spelling":"きういふるーつ"
+        "Spelling":"キウイフルーツ",
+        "Romaji":"Kiui furūtsu"
     },
     {
         "WordEN":"Orange",
         "WordJP":"オレンジ",
-        "Spelling":"おれんじ"
+        "Spelling":"オレンジ",
+        "Romaji":"Orenji"
     },
     {
         "WordEN":"Lemon",
         "WordJP":"レモン",
-        "Spelling":"れもん"
+        "Spelling":"レモン",
+        "Romaji":"Remon"
     },
     {
         "WordEN":"ume",
         "WordJP":"梅",
-        "Spelling":"うめ"
+        "Spelling":"うめ",
+        "Romaji":"Ume"
     },
     {
         "WordEN":"Chestnut",
         "WordJP":"栗",
-        "Spelling":"くり"
+        "Spelling":"くり",
+        "Romaji":"Kuri"
     },
     {
         "WordEN":"Blueberry",
         "WordJP":"ブルーベリー",
-        "Spelling":"ぶるーべりー"
+        "Spelling":"ブルーベリー",
+        "Romaji":"Burūberī"
     },
     {
         "WordEN":"Pear",
         "WordJP":"洋梨",
-        "Spelling":"ようなし"
+        "Spelling":"ようなし",
+        "Romaji":"Yōnashi"
     },
     {
         "WordEN":"Watermelon",
         "WordJP":"スイカ",
-        "Spelling":"すいか"
+        "Spelling":"スイカ",
+        "Romaji":"Suika"
     },
     {
         "WordEN":"kaki",
         "WordJP":"柿",
-        "Spelling":"かき"
+        "Spelling":"かき",
+        "Romaji":"Kaki"
     },
     {
         "WordEN":"Nashi pear",
         "WordJP":"和梨",
-        "Spelling":"かずなし"
+        "Spelling":"かずなし",
+        "Romaji":"Kazu nashi"
     },
     {
         "WordEN":"Mango",
         "WordJP":"マンゴー",
-        "Spelling":"まんごー"
+        "Spelling":"マンゴー",
+        "Romaji":"Mangō"
     },
     {
         "WordEN":"Cherry",
         "WordJP":"さくらんぼ",
-        "Spelling":"さくらんぼ"
+        "Spelling":"さくらんぼ",
+        "Romaji":"Sakuranbo"
     },
     {
         "WordEN":"Melon",
         "WordJP":"メロン",
-        "Spelling":"めろん"
+        "Spelling":"メロン",
+        "Romaji":"Meron"
     },
     {
         "WordEN":"Apple",
         "WordJP":"りんご",
-        "Spelling":"りんご"
+        "Spelling":"りんご",
+        "Romaji":"Ringo"
     },
     {
         "WordEN":"Peach",
         "WordJP":"桃",
-        "Spelling":"もも"
+        "Spelling":"もも",
+        "Romaji":"Momo"
     },
     {
         "WordEN":"Strawberry",
         "WordJP":"いちご",
-        "Spelling":"いちご"
+        "Spelling":"いちご",
+        "Romaji":"ichigo"
     },
     {
         "WordEN":"Mandarin",
         "WordJP":"みかん",
-        "Spelling":"みかん"
+        "Spelling":"みかん",
+        "Romaji":"mikan"
     },
     {
         "WordEN":"Grape",
         "WordJP":"ブドウ",
-        "Spelling":"ぶどう"
-    },
+        "Spelling":"ブドウ",
+        "Romaji":"Budō"
+    }
 ]
