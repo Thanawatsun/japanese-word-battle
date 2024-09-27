@@ -1,16 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import TermUploadForm from './page/uploadData';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import TermUploadForm from "./page/uploadData";
+import reportWebVitals from "./reportWebVitals";
 import WordBank from "./page/wordbank";
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import TTT from "./TTT";
+import Multi from "./multitest"
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <>
     <App />
-    <TermUploadForm/>
-<WordBank/>
+    <TermUploadForm />
+    <WordBank />
+    <TTT />
+    <Multi />
   </>
 );
 
