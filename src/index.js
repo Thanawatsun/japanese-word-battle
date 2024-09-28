@@ -6,14 +6,14 @@ import TermUploadForm from "./page/uploadData";
 import reportWebVitals from "./reportWebVitals";
 import WordBank from "./page/wordbank";
 import TTT from "./TTT";
-import Multi from "./multitest"
+import Multi from "./multitest";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <>
     <App />
-    <TermUploadForm />
-    <WordBank />
-    <TTT />
+    {/* <TermUploadForm />
+    <WordBank /> */}
+    {/* <TTT /> */}
     <Multi />
   </>
 );
