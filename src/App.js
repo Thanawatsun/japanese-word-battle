@@ -3,6 +3,8 @@ import "./App.css";
 import React, { useState } from "react";
 import LoginUser from "./page/login";
 import LogoutUser from "./page/logout";
+import Multi from "./multitest";
+import MultiChoice from "./component/MultiChoice";
 
 function App() {
   const isLoading = false;
@@ -20,6 +22,8 @@ function App() {
       ) : (
         <LoginUser setIsLogin={setIsLogin} />
       )}
+      <MultiChoice />
+      <Multi />
     </div>
   );
 }

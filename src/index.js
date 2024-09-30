@@ -14,7 +14,7 @@ root.render(
     {/* <TermUploadForm />
     <WordBank /> */}
     {/* <TTT /> */}
-    <Multi />
+    {/* <Multi /> */}
   </>
 );
 
