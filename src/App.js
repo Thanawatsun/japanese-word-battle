@@ -23,7 +23,7 @@ function App() {
         <LoginUser setIsLogin={setIsLogin} />
       )}
       <MultiChoice />
-      <Multi />
+      {/* <Multi /> */}
     </div>
   );
 }
