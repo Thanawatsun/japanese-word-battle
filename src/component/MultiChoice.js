@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function MultiChoice() {
   const [showFinalResults, setFinalResults] = useState(false);
@@ -6,8 +6,15 @@ function MultiChoice() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [combo, setCombo] = useState(1);
   const [correctAns, setCorrectAns] = useState(0);
+  const [showScore,setShowScore] = useState(0);
+
+  useEffect(() => {
+    console.log(score);
+    setShowScore(score);
+  }, [score]);
 
   const optionClicked = (isCorrect) => {
+
     if (isCorrect) {
       setScore(score + 10 * combo);
       setCombo(combo + 1);
@@ -92,7 +99,7 @@ function MultiChoice() {
   return (
     <div className="MultiChoice">
       <h1>Choose the correct answer.</h1>
-      <h2>Score : {score}</h2>
+      <h2>Score : {showScore}</h2>
       <h2>Life : </h2>
 
       {showFinalResults ? (
