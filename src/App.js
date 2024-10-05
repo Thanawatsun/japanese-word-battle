@@ -5,6 +5,8 @@ import LoginUser from "./page/login";
 import LogoutUser from "./page/logout";
 import Multi from "./multitest";
 import MultiChoice from "./component/MultiChoice";
+import Matching from "./component/Matching";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const isLoading = false;
@@ -24,6 +26,7 @@ function App() {
       )}
       <MultiChoice />
       {/* <Multi /> */}
+      <Matching />
     </div>
   );
 }

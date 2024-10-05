@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import ListGroup from "react-bootstrap/ListGroup";
 
 function MultiChoice() {
   const [showFinalResults, setFinalResults] = useState(false);
@@ -6,7 +7,7 @@ function MultiChoice() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [combo, setCombo] = useState(1);
   const [correctAns, setCorrectAns] = useState(0);
-  const [showScore,setShowScore] = useState(0);
+  const [showScore, setShowScore] = useState(0);
 
   useEffect(() => {
     console.log(score);
@@ -14,7 +15,6 @@ function MultiChoice() {
   }, [score]);
 
   const optionClicked = (isCorrect) => {
-
     if (isCorrect) {
       setScore(score + 10 * combo);
       setCombo(combo + 1);
@@ -97,7 +97,10 @@ function MultiChoice() {
   ];
 
   return (
-    <div className="MultiChoice">
+    <div
+      className="MultiChoice card position-absolute top-50 start-50 translate-middle"
+      style={{ width: "25rem" }}
+    >
       <h1>Choose the correct answer.</h1>
       <h2>Score : {showScore}</h2>
       <h2>Life : </h2>
@@ -109,7 +112,9 @@ function MultiChoice() {
             {correctAns}/{questions.length} (
             {(correctAns / questions.length) * 100}%)
           </h2>
-          <button onClick={() => restartGame()}>Restart</button>
+          <button className="btn btn-primary" onClick={() => restartGame()}>
+            Restart
+          </button>
         </div>
       ) : (
         <div className="question-card">
@@ -117,18 +122,21 @@ function MultiChoice() {
             Question {currentQuestion + 1}/{questions.length}
           </h2>
           <h3 className="question-text">{questions[currentQuestion].text}</h3>
-          <ul>
+          <ListGroup as="ul">
             {questions[currentQuestion].options.map((option) => {
               return (
-                <li
+                <ListGroup.Item
+                  as="li"
+                  className="btn"
+                  variant="primary"
                   onClick={() => optionClicked(option.isCorrect)}
                   key={option.id}
                 >
                   {option.text}
-                </li>
+                </ListGroup.Item>
               );
             })}
-          </ul>
+          </ListGroup>
         </div>
       )}
     </div>
