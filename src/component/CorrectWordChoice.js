@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import getQuiz from "./getQuiz";
 
-function MultiChoice() {
+function CorrectWordChoice() {
   const [showFinalResults, setFinalResults] = useState(false);
   const [score, setScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -12,17 +12,18 @@ function MultiChoice() {
   const [questions, setQuestions] = useState(
     [
       {
-        text: "あ",
-        options: [
-          { id: 0, text: "a", isCorrect: true },
-          { id: 1, text: "i", isCorrect: false },
-          { id: 2, text: "u", isCorrect: false },
-          { id: 3, text: "e", isCorrect: false },
-          { id: 4, text: "o", isCorrect: false },
-        ],
+        text: "えき",
+        story:"where is the train station?",
+        meaning:"train station",
+        options:[
+          { id: 0, text: "eki", isCorrect: true },
+          { id: 1, text: "aki", isCorrect: false },
+          { id: 2, text: "ei", isCorrect: false },
+          { id: 3, text: "ou", isCorrect: false },]
       },
     ]
   )
+
   useEffect(() => {
     console.log(score);
     setShowScore(score);
@@ -60,7 +61,7 @@ function MultiChoice() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        await getQuiz(setQuestions,"character");
+        await getQuiz(setQuestions,"correct_Word");
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -68,68 +69,10 @@ function MultiChoice() {
     fetchData();
   }, []);
 
-/*
-  useEffect(() => {
-    setQuestions(listQuestions.Quizcharacter)
-  }, [listQuestions]);
-
-
-  const questions = [
-    {
-      text: "あ",
-      options: shuffleArray([
-        { id: 0, text: "a", isCorrect: true },
-        { id: 1, text: "i", isCorrect: false },
-        { id: 2, text: "u", isCorrect: false },
-        { id: 3, text: "e", isCorrect: false },
-        { id: 4, text: "o", isCorrect: false },
-      ]),
-    },
-    {
-      text: "い",
-      options: shuffleArray([
-        { id: 0, text: "a", isCorrect: false },
-        { id: 1, text: "i", isCorrect: true },
-        { id: 2, text: "u", isCorrect: false },
-        { id: 3, text: "e", isCorrect: false },
-        { id: 4, text: "o", isCorrect: false },
-      ]),
-    },
-    {
-      text: "う",
-      options: shuffleArray([
-        { id: 0, text: "a", isCorrect: false },
-        { id: 1, text: "i", isCorrect: false },
-        { id: 2, text: "u", isCorrect: true },
-        { id: 3, text: "e", isCorrect: false },
-        { id: 4, text: "o", isCorrect: false },
-      ]),
-    },
-    {
-      text: "え",
-      options: shuffleArray([
-        { id: 0, text: "a", isCorrect: false },
-        { id: 1, text: "i", isCorrect: false },
-        { id: 2, text: "u", isCorrect: false },
-        { id: 3, text: "e", isCorrect: true },
-        { id: 4, text: "o", isCorrect: false },
-      ]),
-    },
-    {
-      text: "お",
-      options: shuffleArray([
-        { id: 0, text: "a", isCorrect: false },
-        { id: 1, text: "i", isCorrect: false },
-        { id: 2, text: "u", isCorrect: false },
-        { id: 3, text: "e", isCorrect: false },
-        { id: 4, text: "o", isCorrect: true },
-      ]),
-    },
-  ];*/
 
   return (
     <div
-      className="MultiChoice card position-absolute top-50 start-50 translate-middle"
+      className=""
       style={{ width: "25rem" }}
     >
       <h1>Choose the correct answer.</h1>
@@ -152,7 +95,9 @@ function MultiChoice() {
           <h2>
             Question {currentQuestion + 1}/{questions.length}
           </h2>
+          <h3 className="question-text">{questions[currentQuestion].story}</h3>
           <h3 className="question-text">{questions[currentQuestion].text}</h3>
+          <h3 className="question-text">{questions[currentQuestion].meaning}</h3>
           <ListGroup as="ul">
             {questions[currentQuestion].options.map((option) => {
               return (
@@ -174,4 +119,4 @@ function MultiChoice() {
   );
 }
 
-export default MultiChoice;
+export default CorrectWordChoice;

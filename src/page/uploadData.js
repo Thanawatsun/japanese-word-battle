@@ -357,8 +357,8 @@ function TermUploadForm() {
               },
               {
                 text: "スカ⬜ツリー (sukaitsuri)",
-                story:"",
-                meaning:"What is Skytree in Japanese?",
+                story:"What is Skytree in Japanese?",
+                meaning:"Skytree",
                 options: shuffleArray([
                   { id: 0, text: "い", isCorrect: true },
                   { id: 1, text: "え", isCorrect: false },
@@ -425,8 +425,8 @@ function TermUploadForm() {
               },
               {
                 text: "スカイツリー ",
-                story:"",
-                meaning:"What is Skytree in Japanese?",
+                story:"What is Skytree in Japanese?",
+                meaning:"Skytree",
                 options: shuffleArray([
                   { id: 0, text: "sukaitsuri", isCorrect: true },
                   { id: 1, text: "kusaisori", isCorrect: false },
@@ -437,7 +437,7 @@ function TermUploadForm() {
             ],
           },
         ],
-        matching: [
+        matching:
           {
             matchQuz: [
               {
@@ -448,29 +448,77 @@ function TermUploadForm() {
               },
               {
                 id: 2,
-                text: "バス",
+                text: "いりぐち",
+                type: "word",
+                matched: false,
+              },
+              {
+                id: 3,
+                text: "おしあげ",
+                type: "word",
+                matched: false,
+              },
+              {
+                id: 4,
+                text: "いくら",
+                type: "word",
+                matched: false,
+              },
+              {
+                id: 5,
+                text: "ちゅうおうぐち",
+                type: "word",
+                matched: false,
+              },
+              {
+                id: 6,
+                text: "スカイツリー",
                 type: "word",
                 matched: false,
               },
             ],
-          },
-          {
             matchAns: [
               {
                 id: 1,
-                text: "Train",
+                text: "Train station",
                 type: "meaning",
                 matched: false,
               },
               {
                 id: 2,
-                text: "Bus",
+                text: "Entry gate",
+                type: "meaning",
+                matched: false,
+              },
+              {
+                id: 3,
+                text: "Oshiage",
+                type: "meaning",
+                matched: false,
+              },
+              {
+                id: 4,
+                text: "How much",
+                type: "meaning",
+                matched: false,
+              },
+              {
+                id: 5,
+                text: "Central exit",
+                type: "meaning",
+                matched: false,
+              },
+              {
+                id: 6,
+                text: "Skytree",
                 type: "meaning",
                 matched: false,
               },
             ],
           },
-        ],
+          
+            
+        
       },
     ];
     try {

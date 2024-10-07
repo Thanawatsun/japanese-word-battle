@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import "./MatchingSty.css";
+import getQuiz from "./getQuiz";
 
 function Matching() {
   const [score, setScore] = useState(0);
@@ -10,40 +11,52 @@ function Matching() {
   const [allMatch, setAllMatch] = useState(0);
   const [selectLeft, setSelectLeft] = useState(null);
   const [selectRight, setSelectRight] = useState(null);
-
-  const matchQuz = [
-    {
-      id: 1,
-      text: "えき",
-      type: "word",
-      matched: false,
-    },
-    {
-      id: 2,
-      text: "バス",
-      type: "word",
-      matched: false,
-    },
-  ];
-  const matchAns = [
-    {
-      id: 1,
-      text: "Train",
-      type: "meaning",
-      matched: false,
-    },
-    {
-      id: 2,
-      text: "Bus",
-      type: "meaning",
-      matched: false,
-    },
-  ];
+  const [questions, setQuestions] = useState({
+    matchQuz: [
+      {
+        id: 1,
+        text: "えき",
+        type: "word",
+        matched: false,
+      },
+      {
+        id: 2,
+        text: "バス",
+        type: "word",
+        matched: false,
+      },
+    ],
+    matchAns: [
+      {
+        id: 1,
+        text: "Train",
+        type: "meaning",
+        matched: false,
+      },
+      {
+        id: 2,
+        text: "Bus",
+        type: "meaning",
+        matched: false,
+      },
+    ],
+  });
+console.log(questions)
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        await getQuiz(setQuestions,"matching");
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    fetchData();
+  }, []);
 
   function NewGame() {
     setScore(0);
-    setMatchQuzArray(matchQuz);
-    setMatchAnsArray(matchAns);
+    setMatchQuzArray(questions.matchQuz);
+    setMatchAnsArray(questions.matchAns);
     setFinish(false);
     setAllMatch(0);
     setSelectLeft(null);
@@ -96,7 +109,7 @@ function Matching() {
       <div className="board container text-center">
         <div className="row">
           <ListGroup as="ul" className="matching-items col">
-            {matchQuz.map((item) => (
+            {questions.matchQuz.map((item) => (
               <ListGroup.Item
                 as="li"
                 key={item.id}
@@ -107,7 +120,7 @@ function Matching() {
             ))}
           </ListGroup>
           <ListGroup as="ul" className="matching-items col">
-            {matchAns.map((item) => (
+            {questions.matchAns.map((item) => (
               <ListGroup.Item
                 as="li"
                 key={item.id}
