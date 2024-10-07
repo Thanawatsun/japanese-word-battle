@@ -13,6 +13,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   const isLoading = false;
   const [isLogin, setIsLogin] = useState(false);
+  const [allScore, setAllScore] = useState(0);
 
   return (
     <div>
@@ -26,11 +27,11 @@ function App() {
       ) : (
         <LoginUser setIsLogin={setIsLogin} />
       )}
-      <MultiChoice />
+      {/* <MultiChoice /> */}
       {/* <Multi /> */}
       <Matching />
-      <MissingWordChoice/>
-      <CorrectWordChoice/>
+      {/* <MissingWordChoice/> */}
+      {/* <CorrectWordChoice /> */}
     </div>
   );
 }

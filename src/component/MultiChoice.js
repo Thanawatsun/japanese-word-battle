@@ -3,26 +3,24 @@ import ListGroup from "react-bootstrap/ListGroup";
 import getQuiz from "./getQuiz";
 
 function MultiChoice() {
-  const [showFinalResults, setFinalResults] = useState(false);
+  const [showFinalResults, setShowFinalResults] = useState(false);
   const [score, setScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [combo, setCombo] = useState(1);
   const [correctAns, setCorrectAns] = useState(0);
   const [showScore, setShowScore] = useState(0);
-  const [questions, setQuestions] = useState(
-    [
-      {
-        text: "あ",
-        options: [
-          { id: 0, text: "a", isCorrect: true },
-          { id: 1, text: "i", isCorrect: false },
-          { id: 2, text: "u", isCorrect: false },
-          { id: 3, text: "e", isCorrect: false },
-          { id: 4, text: "o", isCorrect: false },
-        ],
-      },
-    ]
-  )
+  const [questions, setQuestions] = useState([
+    {
+      text: "あ",
+      options: [
+        { id: 0, text: "a", isCorrect: true },
+        { id: 1, text: "i", isCorrect: false },
+        { id: 2, text: "u", isCorrect: false },
+        { id: 3, text: "e", isCorrect: false },
+        { id: 4, text: "o", isCorrect: false },
+      ],
+    },
+  ]);
   useEffect(() => {
     console.log(score);
     setShowScore(score);
@@ -40,11 +38,11 @@ function MultiChoice() {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      setFinalResults(true);
+      setShowFinalResults(true);
     }
   };
   const restartGame = () => {
-    setFinalResults(false);
+    setShowFinalResults(false);
     setScore(0);
     setCurrentQuestion(0);
     setCombo(0);
@@ -60,15 +58,15 @@ function MultiChoice() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        await getQuiz(setQuestions,"character");
+        await getQuiz(setQuestions, "character");
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       }
     };
     fetchData();
   }, []);
 
-/*
+  /*
   useEffect(() => {
     setQuestions(listQuestions.Quizcharacter)
   }, [listQuestions]);

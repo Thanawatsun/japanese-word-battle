@@ -41,17 +41,6 @@ function Matching() {
       },
     ],
   });
-console.log(questions)
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        await getQuiz(setQuestions,"matching");
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-    fetchData();
-  }, []);
 
   function NewGame() {
     setScore(0);
@@ -78,60 +67,105 @@ console.log(questions)
     setSelectRight(null);
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (selectLeft && selectRight) {
       if (selectLeft.id === selectRight.id) {
+        setMatchQuzArray((prevArray) => {
+          return prevArray.map((unit) => {
+            if (unit.id === selectLeft.id) {
+              return { ...unit, matched: true };
+            } else {
+              return unit;
+            }
+          });
+        });
+        setMatchAnsArray((prevArray) => {
+          return prevArray.map((unit) => {
+            if (unit.id === selectRight.id) {
+              return { ...unit, matched: true };
+            } else {
+              return unit;
+            }
+          });
+        });
         setScore(score + 1);
         RemoveSelection();
+        if (score === matchQuzArray.length - 1) {
+          setFinish(true);
+        }
       } else {
         RemoveSelection();
       }
     }
-  }, [score, selectLeft, selectRight]);
+  }, [matchQuzArray.length, score, selectLeft, selectRight]);
 
   React.useEffect(() => {
+    const fetchData = async () => {
+      try {
+        await getQuiz(setQuestions, "matching");
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
     NewGame();
   }, []);
 
   return (
-    <div className="container">
+    <div>
       {finish ? (
-        <div>
-          <h2>yes</h2>
+        <div className="container">
+          <h2>You Win!</h2>
+          <button className="btn btn-success" onClick={() => NewGame()}>
+            Restart
+          </button>
         </div>
       ) : (
-        <div></div>
-      )}
-      <div className="header">
-        <h1>Matching the correct answer.</h1>
-        <h2>{score}</h2>
-      </div>
-      <div className="board container text-center">
-        <div className="row">
-          <ListGroup as="ul" className="matching-items col">
-            {questions.matchQuz.map((item) => (
-              <ListGroup.Item
-                as="li"
-                key={item.id}
-                onClick={() => HandleSelected(item)}
-              >
-                {item.text}
-              </ListGroup.Item>
-            ))}
-          </ListGroup>
-          <ListGroup as="ul" className="matching-items col">
-            {questions.matchAns.map((item) => (
-              <ListGroup.Item
-                as="li"
-                key={item.id}
-                onClick={() => HandleSelected(item)}
-              >
-                {item.text}
-              </ListGroup.Item>
-            ))}
-          </ListGroup>
+        <div className="container">
+          <div className="header">
+            <h1>Matching the correct answer.</h1>
+            <h2>{score}</h2>
+          </div>
+          <div className="board container text-center">
+            <div className="row">
+              <ListGroup as="ul" className="matching-items col">
+                {matchQuzArray.map((item) => (
+                  <ListGroup.Item
+                    as="li"
+                    key={item.id}
+                    onClick={() => HandleSelected(item)}
+                    style={{
+                      ...(selectLeft && selectLeft.id === item.id
+                        ? { backgroundColor: "red" }
+                        : {}),
+                      ...(item.matched ? { opacity: 0.5 } : { opacity: 1 }),
+                    }}
+                  >
+                    {item.text}
+                  </ListGroup.Item>
+                ))}
+              </ListGroup>
+              <ListGroup as="ul" className="matching-items col">
+                {matchAnsArray.map((item) => (
+                  <ListGroup.Item
+                    as="li"
+                    key={item.id}
+                    onClick={() => HandleSelected(item)}
+                    style={{
+                      ...(selectRight && selectRight.id === item.id
+                        ? { backgroundColor: "red" }
+                        : {}),
+                      ...(item.matched ? { opacity: 0.5 } : { opacity: 1 }),
+                    }}
+                  >
+                    {item.text}
+                  </ListGroup.Item>
+                ))}
+              </ListGroup>
+            </div>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
