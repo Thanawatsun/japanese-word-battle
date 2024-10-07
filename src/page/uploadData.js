@@ -17,7 +17,7 @@ function TermUploadForm() {
 
   const [formData, setFormData] = useState(initialFormData);
   const [errorMessage, setErrorMessage] = useState(null);
-  
+
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     const reader = new FileReader();
@@ -188,6 +188,24 @@ function TermUploadForm() {
       setErrorMessage("Error uploading data. Please try again.");
     }
   };
+  const handleSubmitTest = async (event) => {
+    event.preventDefault();
+
+    if (!formData) {
+      setErrorMessage("Please upload a valid JSON file.");
+      return;
+    }
+
+    try {
+      console.log(formData);
+      await uploadDataLevel(formData);
+      setErrorMessage(null); // Clear any previous errors
+      setFormData(null); // Reset form data after successful upload
+    } catch (error) {
+      console.error("Error uploading data:", error);
+      setErrorMessage("Error uploading data. Please try again.");
+    }
+  };
 
   async function uploadDataToRealtimeDatabase(allData) {
     const db = getDatabase(app); // Use getDatabase for Realtime Database
@@ -215,13 +233,280 @@ function TermUploadForm() {
     }
   }
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <input type="file" id="jsonFileInput" onChange={handleFileChange} />
+  async function uploadDataLevel() {
+    const shuffleArray = (array) => {
+      return array
+        .map((item) => ({ ...item, sort: Math.random() })) // Add random sort key
+        .sort((a, b) => a.sort - b.sort) // Sort based on the random key
+        .map(({ sort, ...item }) => item); // Remove the sort key
+    };
+    const db = getDatabase(app); // Use getDatabase for Realtime Database
+    var allData = [
+      {
+        level: "level01",
+        character: [
+          {
+            text: "あ, ア",
+            options: shuffleArray([
+              { id: 0, text: "a", isCorrect: true },
+              { id: 1, text: "i", isCorrect: false },
+              { id: 2, text: "u", isCorrect: false },
+              { id: 3, text: "e", isCorrect: false },
+              { id: 4, text: "o", isCorrect: false },
+            ]),
+          },
+          {
+            text: "い, イ",
+            options: shuffleArray([
+              { id: 0, text: "a", isCorrect: false },
+              { id: 1, text: "i", isCorrect: true },
+              { id: 2, text: "u", isCorrect: false },
+              { id: 3, text: "e", isCorrect: false },
+              { id: 4, text: "o", isCorrect: false },
+            ]),
+          },
+          {
+            text: "う, ウ",
+            options: shuffleArray([
+              { id: 0, text: "a", isCorrect: false },
+              { id: 1, text: "i", isCorrect: false },
+              { id: 2, text: "u", isCorrect: true },
+              { id: 3, text: "e", isCorrect: false },
+              { id: 4, text: "o", isCorrect: false },
+            ]),
+          },
+          {
+            text: "え, エ",
+            options: shuffleArray([
+              { id: 0, text: "a", isCorrect: false },
+              { id: 1, text: "i", isCorrect: false },
+              { id: 2, text: "u", isCorrect: false },
+              { id: 3, text: "e", isCorrect: true },
+              { id: 4, text: "o", isCorrect: false },
+            ]),
+          },
+          {
+            text: "お, オ",
+            options: shuffleArray([
+              { id: 0, text: "a", isCorrect: false },
+              { id: 1, text: "i", isCorrect: false },
+              { id: 2, text: "u", isCorrect: false },
+              { id: 3, text: "e", isCorrect: false },
+              { id: 4, text: "o", isCorrect: true },
+            ]),
+          },
+        ],
+        roadmap: [
+          {
+            roadMapType: "train",
+            Missing_Word: [
+              {
+                text: "⬜き (eki)",
+                story:"where is the train station?",
+                meaning:"train station",
+                options: shuffleArray([
+                  { id: 0, text: "え", isCorrect: true },
+                  { id: 1, text: "あ", isCorrect: false },
+                  { id: 2, text: "い", isCorrect: false },
+                  { id: 3, text: "お", isCorrect: false },
+                ]),
+              },
+              {
+                text: "⬜りぐち (iriguchi)",
+                story:"Which signs should I follow?",
+                meaning:"entry gate",
+                options: shuffleArray([
+                  { id: 0, text: "い", isCorrect: true },
+                  { id: 1, text: "え", isCorrect: false },
+                  { id: 2, text: "あ", isCorrect: false },
+                  { id: 3, text: "う", isCorrect: false },
+                ]),
+              },
+              {
+                text: "⬜しあげまで(Oshiage)",
+                story:"what name station i go?",
+                meaning:"To Oshiage",
+                options: shuffleArray([
+                  { id: 0, text: "お", isCorrect: true },
+                  { id: 1, text: "え", isCorrect: false },
+                  { id: 2, text: "あ", isCorrect: false },
+                  { id: 3, text: "う", isCorrect: false },
+                ]),
+              },
+              {
+                text: "⬜くら (ikura)",
+                story:"what word meaning 'how much'?",
+                meaning:"how much",
+                options: shuffleArray([
+                  { id: 0, text: "い", isCorrect: true },
+                  { id: 1, text: "え", isCorrect: false },
+                  { id: 2, text: "あ", isCorrect: false },
+                  { id: 3, text: "う", isCorrect: false },
+                ]),
+              },
+              {
+                text: "ちゅう⬜⬜ぐち (Cyuuouguchi)",
+                story:"Which signs should I follow to exit?",
+                meaning:"central exit",
+                options: shuffleArray([
+                  { id: 0, text: "おう", isCorrect: true },
+                  { id: 1, text: "おい", isCorrect: false },
+                  { id: 2, text: "あえ", isCorrect: false },
+                  { id: 3, text: "あう", isCorrect: false },
+                ]),
+              },
+              {
+                text: "スカ⬜ツリー (sukaitsuri)",
+                story:"",
+                meaning:"What is Skytree in Japanese?",
+                options: shuffleArray([
+                  { id: 0, text: "い", isCorrect: true },
+                  { id: 1, text: "え", isCorrect: false },
+                  { id: 2, text: "あ", isCorrect: false },
+                  { id: 3, text: "う", isCorrect: false },
+                ]),
+              },
+            ],
+            Correct_Word: [
+              {
+                text: "えき",
+                story:"where is the train station?",
+                meaning:"train station",
+                options: shuffleArray([
+                  { id: 0, text: "eki", isCorrect: true },
+                  { id: 1, text: "aki", isCorrect: false },
+                  { id: 2, text: "ei", isCorrect: false },
+                  { id: 3, text: "ou", isCorrect: false },
+                ]),
+              },
+              {
+                text: "いりぐち",
+                story:"Which signs should I follow?",
+                meaning:"entry gate",
+                options: shuffleArray([
+                  { id: 0, text: "iriguchi", isCorrect: true },
+                  { id: 1, text: "ariguchi", isCorrect: false },
+                  { id: 2, text: "origuchi", isCorrect: false },
+                  { id: 3, text: "uriguchi", isCorrect: false },
+                ]),
+              },
+              {
+                text: "おしあげ",
+                story:"what name station i go?",
+                meaning:"Oshiage",
+                options: shuffleArray([
+                  { id: 0, text: "Oshiage", isCorrect: true },
+                  { id: 1, text: "Ningyōchō", isCorrect: false },
+                  { id: 2, text: "ashiade", isCorrect: false },
+                  { id: 3, text: "ishiite", isCorrect: false },
+                ]),
+              },
+              {
+                text: "いくら",
+                story:"what word meaning 'how much'?",
+                meaning:"how much",
+                options: shuffleArray([
+                  { id: 0, text: "ikura", isCorrect: true },
+                  { id: 1, text: "arugu", isCorrect: false },
+                  { id: 2, text: "akura", isCorrect: false },
+                  { id: 3, text: "iruga", isCorrect: false },
+                ]),
+              },
+              {
+                text: "ちゅうおうぐち",
+                story:"Which signs should I follow to exit?",
+                meaning:"central exit",
+                options: shuffleArray([
+                  { id: 0, text: "Cyuuouguchi", isCorrect: true },
+                  { id: 1, text: "Chiguguchi", isCorrect: false },
+                  { id: 2, text: "kitaguchi", isCorrect: false },
+                  { id: 3, text: "minamiguchi", isCorrect: false },
+                ]),
+              },
+              {
+                text: "スカイツリー ",
+                story:"",
+                meaning:"What is Skytree in Japanese?",
+                options: shuffleArray([
+                  { id: 0, text: "sukaitsuri", isCorrect: true },
+                  { id: 1, text: "kusaisori", isCorrect: false },
+                  { id: 2, text: "asobini", isCorrect: false },
+                  { id: 3, text: "sokuisoru", isCorrect: false },
+                ]),
+              },
+            ],
+          },
+        ],
+        matching: [
+          {
+            matchQuz: [
+              {
+                id: 1,
+                text: "えき",
+                type: "word",
+                matched: false,
+              },
+              {
+                id: 2,
+                text: "バス",
+                type: "word",
+                matched: false,
+              },
+            ],
+          },
+          {
+            matchAns: [
+              {
+                id: 1,
+                text: "Train",
+                type: "meaning",
+                matched: false,
+              },
+              {
+                id: 2,
+                text: "Bus",
+                type: "meaning",
+                matched: false,
+              },
+            ],
+          },
+        ],
+      },
+    ];
+    try {
+      for (const data of allData) {
+        const term = data.level;
+        const termRef = ref(db, "Game_Level/" + term); // Construct reference path
 
-      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-      <button type="submit">Upload</button>
-    </form>
+        // Create or update data with update() for flexibility
+        await update(termRef, {
+          Quizcharacter: data.character,
+          Quizroadmap: data.roadmap,
+          Quizmatching: data.matching,
+        });
+
+        console.log("Data updated for");
+      }
+
+      console.log("All data uploaded to Realtime Database");
+    } catch (e) {
+      console.error("Error updating data:", e);
+      throw e; // Re-throw for further handling
+    }
+  }
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input type="file" id="jsonFileInput" onChange={handleFileChange} />
+
+        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+        <button type="submit">Upload</button>
+      </form>
+      <form onSubmit={handleSubmitTest}>
+        <button type="submit">Upload</button>
+      </form>
+    </div>
   );
 }
 
