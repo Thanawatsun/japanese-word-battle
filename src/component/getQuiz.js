@@ -8,7 +8,7 @@ async function getQuiz(setQuiz,quiztype)  {
           .map(({ sort, ...item }) => item); // Remove the sort key
       };
         try {
-          const databaseRef = ref(getDatabase(app), `Game_Level/` + "level01");
+          const databaseRef = ref(getDatabase(app),"Game_Level/" + "level01");
           onValue(databaseRef, (snapshot) => {
             const data = snapshot.val();
             if(quiztype === "character"){

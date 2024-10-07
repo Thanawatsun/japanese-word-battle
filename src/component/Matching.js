@@ -43,6 +43,8 @@ function Matching() {
   });
 
   function NewGame() {
+    questions.matchQuz = shuffleArray(questions.matchQuz);
+    questions.matchAns = shuffleArray(questions.matchAns);
     setScore(0);
     setMatchQuzArray(questions.matchQuz);
     setMatchAnsArray(questions.matchAns);
@@ -50,6 +52,7 @@ function Matching() {
     setAllMatch(0);
     setSelectLeft(null);
     setSelectRight(null);
+
   }
 
   function HandleSelected(item) {
@@ -99,7 +102,12 @@ function Matching() {
     }
   }, [matchQuzArray.length, score, selectLeft, selectRight]);
 
-  React.useEffect(() => {
+  useEffect(() => {
+    NewGame();
+    console.log(questions)
+  },[questions]);
+  useEffect(()=>{
+
     const fetchData = async () => {
       try {
         await getQuiz(setQuestions, "matching");
@@ -108,8 +116,13 @@ function Matching() {
       }
     };
     fetchData();
-    NewGame();
-  }, []);
+  },[])
+  const shuffleArray = (array) => {
+    return array
+      .map((item) => ({ ...item, sort: Math.random() })) // Add random sort key
+      .sort((a, b) => a.sort - b.sort) // Sort based on the random key
+      .map(({ sort, ...item }) => item); // Remove the sort key
+  };
 
   return (
     <div>
