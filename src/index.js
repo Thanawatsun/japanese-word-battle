@@ -11,11 +11,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <>
     <App />
-    
-    {/*<TermUploadForm />
-     <WordBank /> */}
-    {/* <TTT /> */}
-    {/* <Multi /> */}
+
   </>
 );
 

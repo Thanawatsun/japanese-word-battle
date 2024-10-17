@@ -3,6 +3,7 @@ import "./App.css";
 import React, { useState } from "react";
 import LoginUser from "./page/login";
 import LogoutUser from "./page/logout";
+import Home from "./page/Home";
 import Multi from "./multitest";
 import MultiChoice from "./component/MultiChoice";
 import CorrectWordChoice from "./component/CorrectWordChoice";
@@ -22,16 +23,11 @@ function App() {
       ) : isLogin ? (
         <div className="App">
           <LogoutUser setIsLogin={setIsLogin} />
-          <header className="App-header"></header>
+          <Home/>
         </div>
       ) : (
         <LoginUser setIsLogin={setIsLogin} />
       )}
-      {/* <MultiChoice /> */}
-      {/* <Multi /> */}
-      <Matching />
-      {/* <MissingWordChoice/> */}
-      {/* <CorrectWordChoice /> */}
     </div>
   );
 }
