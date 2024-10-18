@@ -1,0 +1,41 @@
+.profile_image { grid-area: profile_image; }
+.username { grid-area: username; }
+.useremail { grid-area: useremail; }
+.profile{
+    display: grid;
+    row-gap: 2vh;
+    height: 70vh;
+}
+.proflie_block_image {
+    margin-top: 1vh;
+    display: grid;
+    grid-template-areas:
+      'profile_image username'
+      'profile_image useremail';
+    padding: 10px;
+    justify-items: start;
+  }
+  .profile_image{
+    margin: auto;
+  }
+  img {
+    border-radius: 50%;
+  }
+  .proflie_block{
+    display: grid;
+    margin-left: 2vw;
+    justify-content: start;
+    justify-items: start;
+  }
+  .proflie_block_button{
+    display: flex;
+    justify-content: end;
+  }
+  .username{
+    display: grid;
+    justify-items: start;
+  }
+  .useremail{
+    display: grid;
+    justify-items: start;
+  }

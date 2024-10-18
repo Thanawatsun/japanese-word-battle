@@ -15,18 +15,18 @@ function App() {
   const isLoading = false;
   const [isLogin, setIsLogin] = useState(false);
   const [allScore, setAllScore] = useState(0);
-
+  const [userdefine, setuserdefine] = useState({});
   return (
     <div>
       {isLoading ? (
         <div>Loading...</div>
       ) : isLogin ? (
         <div className="App">
-          <LogoutUser setIsLogin={setIsLogin} />
-          <Home/>
+          <LogoutUser setIsLogin={setIsLogin} setuserdefine={setuserdefine} />
+          <Home userdefine={userdefine}/>
         </div>
       ) : (
-        <LoginUser setIsLogin={setIsLogin} />
+        <LoginUser setIsLogin={setIsLogin} setuserdefine={setuserdefine} />
       )}
     </div>
   );

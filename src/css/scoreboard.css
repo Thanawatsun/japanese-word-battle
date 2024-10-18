@@ -1,0 +1,31 @@
+.scoreBoard{
+    margin: 0;
+    height: 78vh;
+}
+.scoreBoard_table{
+    margin: auto;
+    width: 100%;
+}
+ td, th,tr {
+    border: 1px solid #ddd;
+    padding: 2wh;
+  }
+  th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+  }
+  td {
+    max-height: 8vh;
+    vertical-align: center;
+  }
+  .line{
+    border-top: 0.5vh solid black;
+    opacity: 1;
+    border-radius: 5px;
+    width: 625%;
+    margin: auto;
+    margin-bottom: 1vh;
+  }

@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import { auth, provider, app } from "../firebase";
 //import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, setDoc } from "firebase/firestore";
-
-function LoginUser({ setIsLogin }) {
+import { getDatabase, ref, update } from "firebase/database";
+function LoginUser({ setIsLogin, setuserdefine }) {
   const [credential, setCredential] = useState();
   useEffect(() => {
     if (credential != null) {
@@ -16,6 +16,10 @@ function LoginUser({ setIsLogin }) {
     console.log(user);
     if (user != null) {
       handleLoginSuccess();
+      setuserdefine({
+        uid:user.uid,
+        username:user.displayName
+      })
     }
     if (user == null) {
       handleLogoutSuccess();
@@ -26,6 +30,7 @@ function LoginUser({ setIsLogin }) {
       .then((result) => {
         setCredential(GoogleAuthProvider.credentialFromResult(result));
         console.log(result.user);
+        uploadtorealtime(result.user);
         uploadDataToFirestore(result.user);
       })
       .catch((error) => {
@@ -53,6 +58,34 @@ function LoginUser({ setIsLogin }) {
       email: user.email,
       username: user.displayName,
     });
+  }
+  async function uploadtorealtime(user) {
+    const db = getDatabase(app); 
+    try {
+        const term = user.uid;
+        setuserdefine({
+          uid:user.uid,
+          username:user.displayName
+        })
+        const termRef = ref(db, "User_Data/" + term); // Construct reference path
+        const userphotoURL = user.photoURL.slice(0,user.photoURL.length)
+        // Create or update data with update() for flexibility
+        await update(termRef, {
+          username: user.displayName,
+          uid: user.uid,
+          useremail: user.email,
+          user_profile:userphotoURL,
+          user_score:0,
+          learning_level:0,
+          user_stage:0,
+          userBankword:["あ"],
+        });
+
+        console.log("user updated");
+    } catch (e) {
+      console.error("Error updating data:", e);
+      throw e; // Re-throw for further handling
+    }
   }
   return (
     <div>

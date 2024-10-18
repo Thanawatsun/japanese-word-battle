@@ -1,0 +1,45 @@
+.vocabulary-list {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow: auto;
+    /* สไตล์อื่นๆ สำหรับการเลื่อน */
+  }
+  
+  .cards {
+    border-radius: 10px;
+    background-color: #EDE682;
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    margin-top: 1vh;
+    margin-bottom: 2vh;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  }
+  
+  .expanded .details {
+    width: 100%;
+    margin: 0;
+    padding-top: 20px;
+    text-align: start;
+  }
+  .triangle {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid black;
+    position: absolute;
+    right: 10px; /* ปรับตำแหน่งตามต้องการ */
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .rotated {
+    transform: translateY(-400%) rotate(180deg);
+  }
+  .word{
+    text-align: start;
+  }
+

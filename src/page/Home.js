@@ -3,14 +3,28 @@ import Profile from "./profile";
 import Bankword from "./bankword";
 import ScoreBoard from "./scoreboard";
 import Stage from "./stage";
+import { app } from "../firebase"; // Import your Firebase configuration
+import { ref, onValue, getDatabase } from "firebase/database";
 import React, { useEffect, useState } from "react";
-function Home() {
+function Home({ userdefine }) {
   const [IsHome, setIsHome] = useState(true);
   const [Isbankword, setIsbankword] = useState(false);
   const [IsBoard, setIsBoard] = useState(false);
   const [IsProflie, setIsProflie] = useState(false);
-
+  const [userData, setUserData] = useState({})
+  useEffect(()=>{
+    try {
+      const databaseRef = ref(getDatabase(app), `User_Data/` + userdefine.uid);
+      onValue(databaseRef, (snapshot) => {
+        const data = snapshot.val();
+        setUserData(data)
+      });
+    } catch (error) {
+      console.error("Error uploading data:", error);
+    }
+  },[])
   function changePage(page){
+    console.log(userdefine)
     if(page === "Home"){
       setIsHome(true)
       setIsbankword(false)
@@ -49,11 +63,11 @@ function Home() {
           </div>
         ) : IsBoard ? (
           <div>
-            <ScoreBoard/>
+            <ScoreBoard userData={userData}/>
           </div>
         ) : IsProflie ? (
           <div>
-            <Profile/>
+            <Profile userData={userData}/>
           </div>
         ) : (
           <div></div>

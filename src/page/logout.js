@@ -1,8 +1,9 @@
 import {auth} from '../firebase';
-function LogoutUser({ setIsLogin })  {
+function LogoutUser({ setIsLogin, setuserdefine })  {
 
     const handleLogoutSuccess = () => {
         auth.signOut()
+        setuserdefine({})
         setIsLogin(false);
       };
       return(
