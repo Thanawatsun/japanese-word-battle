@@ -2,7 +2,7 @@ import "../css/bankword.css";
 import { app } from "../firebase"; // Import your Firebase configuration
 import { ref, onValue, getDatabase } from "firebase/database";
 import React, { useEffect, useState } from "react"
-function Bankword() {
+function Bankword({wordlist}) {
     const [vocabulary, setVocabulary] = useState([
         { word: 'คำศัพท์', reading: 'คำอ่าน', meaning: 'ความหมาย' },
         { word: 'คำศัพท์', reading: 'คำอ่าน', meaning: 'ความหมาย' },
@@ -26,27 +26,22 @@ function Bankword() {
         { word: 'คำศัพท์', reading: 'คำอ่าน', meaning: 'ความหมาย' },
         // เพิ่มข้อมูลคำศัพท์อื่นๆ
       ]);
-      const [searchTerm, setSearchTerm] = useState("");
-      const [searchResults, setSearchResults] = useState(null);
       useEffect(()=>{
         try {
-            const databaseRef = ref(getDatabase(app), `term_bank/` + 'わたし');
+          const wordsArray = [];
+          for (const word of wordlist) {
+            const databaseRef = ref(getDatabase(app), `term_bank/` + word);
             onValue(databaseRef, (snapshot) => {
               const word = snapshot.val();
-              console.log(word.forms[0]);
-              console.log(word.spelling);
-              console.log(word.tag[0].meaning[0]);
-              setSearchResults(word);
+              wordsArray.push({
+                word:word.forms[0],
+                reading:word.spelling,
+                meaning:word.tag[0].meaning[0],
+              });
               
-              setVocabulary(
-                [{
-                    word:word.forms[0],
-                    reading:word.spelling,
-                    meaning:word.tag[0].meaning[0],
-                }]
-              )
             });
-          } catch (error) {
+            setVocabulary(wordsArray)
+          }} catch (error) {
             console.error("Error uploading data:", error);
           }
       },[])

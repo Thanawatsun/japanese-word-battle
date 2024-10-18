@@ -6,7 +6,7 @@ import Stage from "./stage";
 import { app } from "../firebase"; // Import your Firebase configuration
 import { ref, onValue, getDatabase } from "firebase/database";
 import React, { useEffect, useState } from "react";
-function Home({ userdefine }) {
+function Home({ userdefine,setIsPlayer }) {
   const [IsHome, setIsHome] = useState(true);
   const [Isbankword, setIsbankword] = useState(false);
   const [IsBoard, setIsBoard] = useState(false);
@@ -55,11 +55,11 @@ function Home({ userdefine }) {
       <div className="mainbox">
         {IsHome ? (
           <div>
-          <Stage/>
+          <Stage setIsPlayer={setIsPlayer} userData={userData}/>
           </div>
         ) : Isbankword ? (
           <div>
-            <Bankword/>
+            <Bankword wordlist={userData.userBankword}/>
           </div>
         ) : IsBoard ? (
           <div>

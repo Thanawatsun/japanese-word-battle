@@ -1,0 +1,16 @@
+.login_button{
+    display: flex;
+    height: 50vh;
+    margin: auto;
+    justify-content: space-around;
+    align-items: center;
+}
+.mainboxs{
+    position: relative;
+    width: 80%;
+    height: 80vh;
+    max-width: 325px;
+    margin: auto;
+    margin-top: 4vh;
+    background-color: #ADE498;
+    }

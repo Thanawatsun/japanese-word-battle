@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import { auth, provider, app } from "../firebase";
 //import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, setDoc } from "firebase/firestore";
-import { getDatabase, ref, update } from "firebase/database";
+import { getDatabase, ref, update,onValue } from "firebase/database";
+import "../css/login.css";
 function LoginUser({ setIsLogin, setuserdefine }) {
   const [credential, setCredential] = useState();
   useEffect(() => {
@@ -70,27 +71,37 @@ function LoginUser({ setIsLogin, setuserdefine }) {
         const termRef = ref(db, "User_Data/" + term); // Construct reference path
         const userphotoURL = user.photoURL.slice(0,user.photoURL.length)
         // Create or update data with update() for flexibility
-        await update(termRef, {
-          username: user.displayName,
-          uid: user.uid,
-          useremail: user.email,
-          user_profile:userphotoURL,
-          user_score:0,
-          learning_level:0,
-          user_stage:0,
-          userBankword:["あ"],
+        console.log(termRef)
+        const databaseRef = ref(getDatabase(app), `User_Data/` + term);
+        onValue(databaseRef, async (snapshot) => {
+          const data = snapshot.val();
+          if(data == null){
+            await update(termRef, {
+            username: user.displayName,
+            uid: user.uid,
+            useremail: user.email,
+            user_profile:userphotoURL,
+            user_score:0,
+            learning_level:0,
+            user_stage:0,
+            userBankword:[""],
+          });
+          }
         });
 
-        console.log("user updated");
+        
+
+
     } catch (e) {
       console.error("Error updating data:", e);
       throw e; // Re-throw for further handling
     }
   }
   return (
-    <div>
-      <button onClick={checkcredential}> checkcredential</button>
+    <div className="mainboxs">
+    <div className="login_button">
       <button onClick={signInWithGoogle}> Sign In With Google</button>
+    </div>
     </div>
   );
 }
