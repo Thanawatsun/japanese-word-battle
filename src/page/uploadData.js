@@ -296,229 +296,222 @@ function TermUploadForm() {
             ]),
           },
         ],
-        roadmap: [
+
+        Missing_Word: [
           {
-            roadMapType: "train",
-            Missing_Word: [
-              {
-                text: "⬜き (eki)",
-                story:"where is the train station?",
-                meaning:"train station",
-                options: shuffleArray([
-                  { id: 0, text: "え", isCorrect: true },
-                  { id: 1, text: "あ", isCorrect: false },
-                  { id: 2, text: "い", isCorrect: false },
-                  { id: 3, text: "お", isCorrect: false },
-                ]),
-              },
-              {
-                text: "⬜りぐち (iriguchi)",
-                story:"Which signs should I follow?",
-                meaning:"entry gate",
-                options: shuffleArray([
-                  { id: 0, text: "い", isCorrect: true },
-                  { id: 1, text: "え", isCorrect: false },
-                  { id: 2, text: "あ", isCorrect: false },
-                  { id: 3, text: "う", isCorrect: false },
-                ]),
-              },
-              {
-                text: "⬜しあげまで(Oshiage)",
-                story:"what name station i go?",
-                meaning:"To Oshiage",
-                options: shuffleArray([
-                  { id: 0, text: "お", isCorrect: true },
-                  { id: 1, text: "え", isCorrect: false },
-                  { id: 2, text: "あ", isCorrect: false },
-                  { id: 3, text: "う", isCorrect: false },
-                ]),
-              },
-              {
-                text: "⬜くら (ikura)",
-                story:"what word meaning 'how much'?",
-                meaning:"how much",
-                options: shuffleArray([
-                  { id: 0, text: "い", isCorrect: true },
-                  { id: 1, text: "え", isCorrect: false },
-                  { id: 2, text: "あ", isCorrect: false },
-                  { id: 3, text: "う", isCorrect: false },
-                ]),
-              },
-              {
-                text: "ちゅう⬜⬜ぐち (Cyuuouguchi)",
-                story:"Which signs should I follow to exit?",
-                meaning:"central exit",
-                options: shuffleArray([
-                  { id: 0, text: "おう", isCorrect: true },
-                  { id: 1, text: "おい", isCorrect: false },
-                  { id: 2, text: "あえ", isCorrect: false },
-                  { id: 3, text: "あう", isCorrect: false },
-                ]),
-              },
-              {
-                text: "スカ⬜ツリー (sukaitsuri)",
-                story:"What is Skytree in Japanese?",
-                meaning:"Skytree",
-                options: shuffleArray([
-                  { id: 0, text: "い", isCorrect: true },
-                  { id: 1, text: "え", isCorrect: false },
-                  { id: 2, text: "あ", isCorrect: false },
-                  { id: 3, text: "う", isCorrect: false },
-                ]),
-              },
-            ],
-            Correct_Word: [
-              {
-                text: "えき",
-                story:"where is the train station?",
-                meaning:"train station",
-                options: shuffleArray([
-                  { id: 0, text: "eki", isCorrect: true },
-                  { id: 1, text: "aki", isCorrect: false },
-                  { id: 2, text: "ei", isCorrect: false },
-                  { id: 3, text: "ou", isCorrect: false },
-                ]),
-              },
-              {
-                text: "いりぐち",
-                story:"Which signs should I follow?",
-                meaning:"entry gate",
-                options: shuffleArray([
-                  { id: 0, text: "iriguchi", isCorrect: true },
-                  { id: 1, text: "ariguchi", isCorrect: false },
-                  { id: 2, text: "origuchi", isCorrect: false },
-                  { id: 3, text: "uriguchi", isCorrect: false },
-                ]),
-              },
-              {
-                text: "おしあげ",
-                story:"what name station i go?",
-                meaning:"Oshiage",
-                options: shuffleArray([
-                  { id: 0, text: "Oshiage", isCorrect: true },
-                  { id: 1, text: "Ningyōchō", isCorrect: false },
-                  { id: 2, text: "ashiade", isCorrect: false },
-                  { id: 3, text: "ishiite", isCorrect: false },
-                ]),
-              },
-              {
-                text: "いくら",
-                story:"what word meaning 'how much'?",
-                meaning:"how much",
-                options: shuffleArray([
-                  { id: 0, text: "ikura", isCorrect: true },
-                  { id: 1, text: "arugu", isCorrect: false },
-                  { id: 2, text: "akura", isCorrect: false },
-                  { id: 3, text: "iruga", isCorrect: false },
-                ]),
-              },
-              {
-                text: "ちゅうおうぐち",
-                story:"Which signs should I follow to exit?",
-                meaning:"central exit",
-                options: shuffleArray([
-                  { id: 0, text: "Cyuuouguchi", isCorrect: true },
-                  { id: 1, text: "Chiguguchi", isCorrect: false },
-                  { id: 2, text: "kitaguchi", isCorrect: false },
-                  { id: 3, text: "minamiguchi", isCorrect: false },
-                ]),
-              },
-              {
-                text: "スカイツリー ",
-                story:"What is Skytree in Japanese?",
-                meaning:"Skytree",
-                options: shuffleArray([
-                  { id: 0, text: "sukaitsuri", isCorrect: true },
-                  { id: 1, text: "kusaisori", isCorrect: false },
-                  { id: 2, text: "asobini", isCorrect: false },
-                  { id: 3, text: "sokuisoru", isCorrect: false },
-                ]),
-              },
-            ],
+            text: "⬜き (eki)",
+            story: "where is the train station?",
+            meaning: "train station",
+            options: shuffleArray([
+              { id: 0, text: "え", isCorrect: true },
+              { id: 1, text: "あ", isCorrect: false },
+              { id: 2, text: "い", isCorrect: false },
+              { id: 3, text: "お", isCorrect: false },
+            ]),
+          },
+          {
+            text: "⬜りぐち (iriguchi)",
+            story: "Which signs should I follow?",
+            meaning: "entry gate",
+            options: shuffleArray([
+              { id: 0, text: "い", isCorrect: true },
+              { id: 1, text: "え", isCorrect: false },
+              { id: 2, text: "あ", isCorrect: false },
+              { id: 3, text: "う", isCorrect: false },
+            ]),
+          },
+          {
+            text: "⬜しあげまで(Oshiage)",
+            story: "what name station i go?",
+            meaning: "To Oshiage",
+            options: shuffleArray([
+              { id: 0, text: "お", isCorrect: true },
+              { id: 1, text: "え", isCorrect: false },
+              { id: 2, text: "あ", isCorrect: false },
+              { id: 3, text: "う", isCorrect: false },
+            ]),
+          },
+          {
+            text: "⬜くら (ikura)",
+            story: "what word meaning 'how much'?",
+            meaning: "how much",
+            options: shuffleArray([
+              { id: 0, text: "い", isCorrect: true },
+              { id: 1, text: "え", isCorrect: false },
+              { id: 2, text: "あ", isCorrect: false },
+              { id: 3, text: "う", isCorrect: false },
+            ]),
+          },
+          {
+            text: "ちゅう⬜⬜ぐち (Cyuuouguchi)",
+            story: "Which signs should I follow to exit?",
+            meaning: "central exit",
+            options: shuffleArray([
+              { id: 0, text: "おう", isCorrect: true },
+              { id: 1, text: "おい", isCorrect: false },
+              { id: 2, text: "あえ", isCorrect: false },
+              { id: 3, text: "あう", isCorrect: false },
+            ]),
+          },
+          {
+            text: "スカ⬜ツリー (sukaitsuri)",
+            story: "What is Skytree in Japanese?",
+            meaning: "Skytree",
+            options: shuffleArray([
+              { id: 0, text: "い", isCorrect: true },
+              { id: 1, text: "え", isCorrect: false },
+              { id: 2, text: "あ", isCorrect: false },
+              { id: 3, text: "う", isCorrect: false },
+            ]),
           },
         ],
-        matching:
+        Correct_Word: [
           {
-            matchQuz: [
-              {
-                id: 1,
-                text: "えき",
-                type: "word",
-                matched: false,
-              },
-              {
-                id: 2,
-                text: "いりぐち",
-                type: "word",
-                matched: false,
-              },
-              {
-                id: 3,
-                text: "おしあげ",
-                type: "word",
-                matched: false,
-              },
-              {
-                id: 4,
-                text: "いくら",
-                type: "word",
-                matched: false,
-              },
-              {
-                id: 5,
-                text: "ちゅうおうぐち",
-                type: "word",
-                matched: false,
-              },
-              {
-                id: 6,
-                text: "スカイツリー",
-                type: "word",
-                matched: false,
-              },
-            ],
-            matchAns: [
-              {
-                id: 1,
-                text: "Train station",
-                type: "meaning",
-                matched: false,
-              },
-              {
-                id: 2,
-                text: "Entry gate",
-                type: "meaning",
-                matched: false,
-              },
-              {
-                id: 3,
-                text: "Oshiage",
-                type: "meaning",
-                matched: false,
-              },
-              {
-                id: 4,
-                text: "How much",
-                type: "meaning",
-                matched: false,
-              },
-              {
-                id: 5,
-                text: "Central exit",
-                type: "meaning",
-                matched: false,
-              },
-              {
-                id: 6,
-                text: "Skytree",
-                type: "meaning",
-                matched: false,
-              },
-            ],
+            text: "えき",
+            story: "where is the train station?",
+            meaning: "train station",
+            options: shuffleArray([
+              { id: 0, text: "eki", isCorrect: true },
+              { id: 1, text: "aki", isCorrect: false },
+              { id: 2, text: "ei", isCorrect: false },
+              { id: 3, text: "ou", isCorrect: false },
+            ]),
           },
-          
-            
-        
+          {
+            text: "いりぐち",
+            story: "Which signs should I follow?",
+            meaning: "entry gate",
+            options: shuffleArray([
+              { id: 0, text: "iriguchi", isCorrect: true },
+              { id: 1, text: "ariguchi", isCorrect: false },
+              { id: 2, text: "origuchi", isCorrect: false },
+              { id: 3, text: "uriguchi", isCorrect: false },
+            ]),
+          },
+          {
+            text: "おしあげ",
+            story: "what name station i go?",
+            meaning: "Oshiage",
+            options: shuffleArray([
+              { id: 0, text: "Oshiage", isCorrect: true },
+              { id: 1, text: "Ningyōchō", isCorrect: false },
+              { id: 2, text: "ashiade", isCorrect: false },
+              { id: 3, text: "ishiite", isCorrect: false },
+            ]),
+          },
+          {
+            text: "いくら",
+            story: "what word meaning 'how much'?",
+            meaning: "how much",
+            options: shuffleArray([
+              { id: 0, text: "ikura", isCorrect: true },
+              { id: 1, text: "arugu", isCorrect: false },
+              { id: 2, text: "akura", isCorrect: false },
+              { id: 3, text: "iruga", isCorrect: false },
+            ]),
+          },
+          {
+            text: "ちゅうおうぐち",
+            story: "Which signs should I follow to exit?",
+            meaning: "central exit",
+            options: shuffleArray([
+              { id: 0, text: "Cyuuouguchi", isCorrect: true },
+              { id: 1, text: "Chiguguchi", isCorrect: false },
+              { id: 2, text: "kitaguchi", isCorrect: false },
+              { id: 3, text: "minamiguchi", isCorrect: false },
+            ]),
+          },
+          {
+            text: "スカイツリー ",
+            story: "What is Skytree in Japanese?",
+            meaning: "Skytree",
+            options: shuffleArray([
+              { id: 0, text: "sukaitsuri", isCorrect: true },
+              { id: 1, text: "kusaisori", isCorrect: false },
+              { id: 2, text: "asobini", isCorrect: false },
+              { id: 3, text: "sokuisoru", isCorrect: false },
+            ]),
+          },
+        ],
+
+        matching: {
+          matchQuz: [
+            {
+              id: 1,
+              text: "えき",
+              type: "word",
+              matched: false,
+            },
+            {
+              id: 2,
+              text: "いりぐち",
+              type: "word",
+              matched: false,
+            },
+            {
+              id: 3,
+              text: "おしあげ",
+              type: "word",
+              matched: false,
+            },
+            {
+              id: 4,
+              text: "いくら",
+              type: "word",
+              matched: false,
+            },
+            {
+              id: 5,
+              text: "ちゅうおうぐち",
+              type: "word",
+              matched: false,
+            },
+            {
+              id: 6,
+              text: "スカイツリー",
+              type: "word",
+              matched: false,
+            },
+          ],
+          matchAns: [
+            {
+              id: 1,
+              text: "Train station",
+              type: "meaning",
+              matched: false,
+            },
+            {
+              id: 2,
+              text: "Entry gate",
+              type: "meaning",
+              matched: false,
+            },
+            {
+              id: 3,
+              text: "Oshiage",
+              type: "meaning",
+              matched: false,
+            },
+            {
+              id: 4,
+              text: "How much",
+              type: "meaning",
+              matched: false,
+            },
+            {
+              id: 5,
+              text: "Central exit",
+              type: "meaning",
+              matched: false,
+            },
+            {
+              id: 6,
+              text: "Skytree",
+              type: "meaning",
+              matched: false,
+            },
+          ],
+        },
       },
     ];
     try {
@@ -529,7 +522,8 @@ function TermUploadForm() {
         // Create or update data with update() for flexibility
         await update(termRef, {
           Quizcharacter: data.character,
-          Quizroadmap: data.roadmap,
+          QuizMissing_Word: data.Missing_Word,
+          QuizCorrect_Word: data.Correct_Word,
           Quizmatching: data.matching,
         });
 

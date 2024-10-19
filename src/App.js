@@ -17,6 +17,7 @@ function App() {
   const [isLogin, setIsLogin] = useState(false);
   const [isPlayer, setIsPlayer] = useState(false);
   const [allScore, setAllScore] = useState(0);
+  const [modiflyQuiz, setModiflyQuiz] = useState({});
   const [userdefine, setuserdefine] = useState({});
   return (
     <div>
@@ -27,7 +28,7 @@ function App() {
         <div className="App">
           {isPlayer ? (
             <div>
-              <Quiz setIsPlayer={setIsPlayer} />
+              <Quiz setIsPlayer={setIsPlayer} modiflyQuiz={modiflyQuiz} userdefine={userdefine}/>
             </div>
           ) : (
             <div>
@@ -35,7 +36,7 @@ function App() {
                 setIsLogin={setIsLogin}
                 setuserdefine={setuserdefine}
               />
-              <Home userdefine={userdefine} setIsPlayer={setIsPlayer} />
+              <Home userdefine={userdefine} setIsPlayer={setIsPlayer} setModiflyQuiz={setModiflyQuiz}/>
             </div>
           )}
         </div>
