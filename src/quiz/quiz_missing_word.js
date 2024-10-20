@@ -21,6 +21,7 @@ function Quiz_missing_word({
   setLife,
   life,
   setCurrentQuestion,
+  currentQuestion,
   combo,
   thisact,
   nextact
@@ -59,9 +60,11 @@ function Quiz_missing_word({
     setshowBar(false);
     setshowGreenBar(false);
     if (PcurrentQuestion < modiflyQuiz.length - 1) {
+      setCurrentQuestion(currentQuestion+1)
       setPCurrentQuestion(PcurrentQuestion + 1);
       setSelectedOption(null); // Reset selected option for next question
     } else {
+      setCurrentQuestion(currentQuestion+1)
       thisact(false);
       nextact(true);
     }
@@ -107,14 +110,14 @@ function Quiz_missing_word({
           )}
           {showGreenBar ? (
             <div>
-              <div>nice</div>
+              <div>Correct: the answer is {modiflyQuiz[PcurrentQuestion].answer}</div>
               <button className="green-button" onClick={handlenext}>
                 Next
               </button>
             </div>
           ) : (
             <div>
-              <div>oh no</div>
+              <div>Incorrect: the answer is {modiflyQuiz[PcurrentQuestion].answer}</div>
               <button className="red-button" onClick={handlenext}>
                 Next
               </button>

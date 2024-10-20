@@ -4,6 +4,9 @@ import Quiz_Pronunciation from "./quiz_Pronunciation";
 import Quiz_spelling from "./quiz_spelling";
 import Quiz_missing from "./quiz_missing_word";
 import Quiz_matching from "./quiz_matching";
+import Quiz_Sentence from "./quiz_sentence";
+import Story_Act from "./story_act";
+import End_Act from "./end_stage";
 import {useEffect} from "react";
 function Quiz({
   setIsPlayer,
@@ -127,19 +130,17 @@ function Quiz({
   const [Score, setScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [combo, setCombo] = useState(1);
-  const [life, setLife] = useState(5);
+  const [life, setLife] = useState(99);
 
-  const [storyAct, setStoryAct] = useState(false);
-  const [pronunciationAct, setpronunciationAct] = useState(true);
+  const [storyAct, setStoryAct] = useState(true);
+  const [storyAct_end, setStoryAct_end] = useState(false);
+  const [pronunciationAct, setpronunciationAct] = useState(false);
   const [missingWordAct, setMissingWordAct] = useState(false);
   const [matchingAct, setMatchingAct] = useState(false);
   const [spellingAct, setSpellingAct] = useState(false);
   const [SentenceAct, setSentenceAct] = useState(false);
+  const [rewardAct, setRewardAct] = useState(false);
 
-  const handleTostage = () => {
-    console.log(modiflyQuiz);
-    setIsPlayer(false);
-  };
   useEffect(() =>{
     if(life ===0){
       alert("you dead")
@@ -151,15 +152,23 @@ function Quiz({
       <div className="quiz_container">
         <div className="info_bar">
           <div>Score {Score}</div>
-          <div>progress {currentQuestion}</div>
+          <div>progress {currentQuestion}/{modiflyQuiz.Progress}</div>
           <div>life: {life}</div>
         </div>
         <div className="action_block">
-          {pronunciationAct ? (
+          {storyAct ? (
+            <Story_Act
+              modiflyQuiz={modiflyQuiz.Story_start}
+              thisact={setStoryAct}
+              nextact={setpronunciationAct}
+            />
+          ) :
+          pronunciationAct ? (
             <Quiz_Pronunciation
               modiflyQuiz={modiflyQuiz.Quizcharacter}
               setScore={setScore}
               setCurrentQuestion={setCurrentQuestion}
+              currentQuestion={currentQuestion}
               life={life}
               setLife={setLife}
               setCombo={setCombo}
@@ -172,6 +181,7 @@ function Quiz({
               modiflyQuiz={modiflyQuiz.QuizMissing_Word}
               setScore={setScore}
               setCurrentQuestion={setCurrentQuestion}
+              currentQuestion={currentQuestion}
               life={life}
               setLife={setLife}
               setCombo={setCombo}
@@ -184,28 +194,57 @@ function Quiz({
               modiflyQuiz={modiflyQuiz.QuizCorrect_Word}
               setScore={setScore}
               setCurrentQuestion={setCurrentQuestion}
+              currentQuestion={currentQuestion}
               life={life}
               setLife={setLife}
               setCombo={setCombo}
               combo={combo}
               thisact={setSpellingAct}
-              nextact={setMatchingAct}
+              nextact={setSentenceAct}
             />
           ) : SentenceAct ? (
-            <div></div>
+            <Quiz_Sentence
+            modiflyQuiz={modiflyQuiz.QuizSentence}
+            setScore={setScore}
+            setCurrentQuestion={setCurrentQuestion}
+            currentQuestion={currentQuestion}
+            life={life}
+            setLife={setLife}
+            setCombo={setCombo}
+            combo={combo}
+            thisact={setSentenceAct}
+            nextact={setMatchingAct}
+            />
           ) : matchingAct ? (
             <Quiz_matching
             modiflyQuiz={modiflyQuiz.Quizmatching}
               setScore={setScore}
               setCurrentQuestion={setCurrentQuestion}
+              currentQuestion={currentQuestion}
               life={life}
               setLife={setLife}
               setCombo={setCombo}
               combo={combo}
               thisact={setMatchingAct}
-              nextact={setMatchingAct}
+              nextact={setStoryAct_end}
             />
-          ) : (
+          ) : 
+          storyAct_end ? (
+            <Story_Act
+              modiflyQuiz={modiflyQuiz.Story_end}
+              thisact={setStoryAct_end}
+              nextact={setRewardAct}
+            />
+          ): 
+          rewardAct ? (
+            <End_Act
+              modiflyQuiz={modiflyQuiz}
+              thisact={setRewardAct}
+              nextact={setIsPlayer}
+              Score={Score}
+              userdefine={userdefine}
+            />
+          ) :(
             <div></div>
           )}
         </div>

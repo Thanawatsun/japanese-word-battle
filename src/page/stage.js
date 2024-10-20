@@ -45,6 +45,12 @@ function Stage({ setIsPlayer, userData, setModiflyQuiz }) {
         quizmissing_Word[j].options = shuffleArray(quizmissing_Word[j].options);
       }
 
+      const quizSentence = data.QuizSentence;
+
+      for (let j = 0; j < quizSentence.length; j++) {
+        quizSentence[j].options = shuffleArray(quizSentence[j].options);
+      }
+
       const quizdata = data.Quizmatching;
       quizdata.matchQuz = shuffleArray(quizdata.matchQuz);
       quizdata.matchAns = shuffleArray(quizdata.matchAns);

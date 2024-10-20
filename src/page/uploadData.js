@@ -247,6 +247,8 @@ function TermUploadForm() {
         character: [
           {
             text: "あ, ア",
+            answer:"a",
+            audio:"https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/character%2Fa.mp3?alt=media&token=045559a0-b36a-48a5-be1c-f478d6f25f8a",
             options: shuffleArray([
               { id: 0, text: "a", isCorrect: true },
               { id: 1, text: "i", isCorrect: false },
@@ -257,6 +259,8 @@ function TermUploadForm() {
           },
           {
             text: "い, イ",
+            answer:"i",
+            audio:"https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/character%2Fi.mp3?alt=media&token=61d787d8-d73c-403b-8945-d88aa26ec419",
             options: shuffleArray([
               { id: 0, text: "a", isCorrect: false },
               { id: 1, text: "i", isCorrect: true },
@@ -267,6 +271,8 @@ function TermUploadForm() {
           },
           {
             text: "う, ウ",
+            answer:"u",
+            audio:"https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/character%2Fu.mp3?alt=media&token=52e3860b-fa38-4578-9cac-cca49215665c",
             options: shuffleArray([
               { id: 0, text: "a", isCorrect: false },
               { id: 1, text: "i", isCorrect: false },
@@ -277,6 +283,8 @@ function TermUploadForm() {
           },
           {
             text: "え, エ",
+            answer:"e",
+            audio:"https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/character%2Fe.mp3?alt=media&token=c08b9310-1fb4-419d-b106-9be1de8253bf",
             options: shuffleArray([
               { id: 0, text: "a", isCorrect: false },
               { id: 1, text: "i", isCorrect: false },
@@ -287,6 +295,8 @@ function TermUploadForm() {
           },
           {
             text: "お, オ",
+            answer:"o",
+            audio:"https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/character%2Fo.mp3?alt=media&token=eef38813-bf98-4d9e-b191-7c7ea8788d1a",
             options: shuffleArray([
               { id: 0, text: "a", isCorrect: false },
               { id: 1, text: "i", isCorrect: false },
@@ -300,6 +310,7 @@ function TermUploadForm() {
         Missing_Word: [
           {
             text: "⬜き (eki)",
+            answer:"え",
             story: "where is the train station?",
             meaning: "train station",
             options: shuffleArray([
@@ -311,6 +322,7 @@ function TermUploadForm() {
           },
           {
             text: "⬜りぐち (iriguchi)",
+            answer:"い",
             story: "Which signs should I follow?",
             meaning: "entry gate",
             options: shuffleArray([
@@ -322,6 +334,7 @@ function TermUploadForm() {
           },
           {
             text: "⬜しあげまで(Oshiage)",
+            answer:"お",
             story: "what name station i go?",
             meaning: "To Oshiage",
             options: shuffleArray([
@@ -333,6 +346,7 @@ function TermUploadForm() {
           },
           {
             text: "⬜くら (ikura)",
+            answer:"い",
             story: "what word meaning 'how much'?",
             meaning: "how much",
             options: shuffleArray([
@@ -344,6 +358,7 @@ function TermUploadForm() {
           },
           {
             text: "ちゅう⬜⬜ぐち (Cyuuouguchi)",
+            answer:"おう",
             story: "Which signs should I follow to exit?",
             meaning: "central exit",
             options: shuffleArray([
@@ -355,6 +370,7 @@ function TermUploadForm() {
           },
           {
             text: "スカ⬜ツリー (sukaitsuri)",
+            answer:"い",
             story: "What is Skytree in Japanese?",
             meaning: "Skytree",
             options: shuffleArray([
@@ -368,8 +384,10 @@ function TermUploadForm() {
         Correct_Word: [
           {
             text: "えき",
+            answer:"eki",
             story: "where is the train station?",
             meaning: "train station",
+            audio:"https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/audio%2Feki.mp3?alt=media&token=4b9a86f4-be7c-4d4c-a5d1-7a3f15b914ca",
             options: shuffleArray([
               { id: 0, text: "eki", isCorrect: true },
               { id: 1, text: "aki", isCorrect: false },
@@ -379,8 +397,10 @@ function TermUploadForm() {
           },
           {
             text: "いりぐち",
+            answer:"iriguchi",
             story: "Which signs should I follow?",
             meaning: "entry gate",
+            audio:"https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/audio%2Firiguchi.mp3?alt=media&token=6f061a45-8e53-467d-9a31-89fa3f0c345f",
             options: shuffleArray([
               { id: 0, text: "iriguchi", isCorrect: true },
               { id: 1, text: "ariguchi", isCorrect: false },
@@ -390,8 +410,10 @@ function TermUploadForm() {
           },
           {
             text: "おしあげ",
+            answer:"Oshiage",
             story: "what name station i go?",
             meaning: "Oshiage",
+            audio:"https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/audio%2Foshiage.mp3?alt=media&token=cb688f7b-1c6d-4460-9bfe-065d12901453",
             options: shuffleArray([
               { id: 0, text: "Oshiage", isCorrect: true },
               { id: 1, text: "Ningyōchō", isCorrect: false },
@@ -401,8 +423,10 @@ function TermUploadForm() {
           },
           {
             text: "いくら",
+            answer:"ikura",
             story: "what word meaning 'how much'?",
             meaning: "how much",
+            audio:"https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/audio%2Fikura.mp3?alt=media&token=580bfc51-d113-45d7-ab5c-5d89dce6a854",
             options: shuffleArray([
               { id: 0, text: "ikura", isCorrect: true },
               { id: 1, text: "arugu", isCorrect: false },
@@ -412,8 +436,10 @@ function TermUploadForm() {
           },
           {
             text: "ちゅうおうぐち",
+            answer:"Cyuuouguchi",
             story: "Which signs should I follow to exit?",
             meaning: "central exit",
+            audio:"https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/audio%2Fcyuuouguchi.mp3?alt=media&token=6bb4b782-240d-487d-b8ec-e7a0e500352f",
             options: shuffleArray([
               { id: 0, text: "Cyuuouguchi", isCorrect: true },
               { id: 1, text: "Chiguguchi", isCorrect: false },
@@ -423,8 +449,10 @@ function TermUploadForm() {
           },
           {
             text: "スカイツリー ",
+            answer:"sukaitsuri",
             story: "What is Skytree in Japanese?",
             meaning: "Skytree",
+            audio:"https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/audio%2Fsukaitsuri.mp3?alt=media&token=fccd7059-c887-4c3b-a3c3-d25a2719ab24",
             options: shuffleArray([
               { id: 0, text: "sukaitsuri", isCorrect: true },
               { id: 1, text: "kusaisori", isCorrect: false },
@@ -433,7 +461,19 @@ function TermUploadForm() {
             ]),
           },
         ],
-
+        Sentence:[
+          {
+            text: "ikuradesuka",
+            story: "what word meaning 'how much'?",
+            meaning: "how much",
+            answer:"いくらですか",
+            options: shuffleArray([
+              { id: 0, text: "いくら", audio: "https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/audio%2Fikura.mp3?alt=media&token=580bfc51-d113-45d7-ab5c-5d89dce6a854" },
+              { id: 1, text: "ですか", audio: "https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/audio%2Fdesuka.mp3?alt=media&token=e767ed0f-a6d9-423d-985c-a25ba8ac19a1" },
+              { id: 2, text: "えき", audio: "https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/audio%2Feki.mp3?alt=media&token=4b9a86f4-be7c-4d4c-a5d1-7a3f15b914ca" },
+            ]),
+          },
+        ],
         matching: {
           matchQuz: [
             {
@@ -512,6 +552,13 @@ function TermUploadForm() {
             },
           ],
         },
+        story_start:"Today I want to go to Tokyo Skytree by train. Tokyo Skytree is at Oshiage Station. Which way should I go?",
+        story_end:"Yey, finally arrived at Tokyo Skytree. Let's take some pictures.",
+        image_reward:"https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2FTokyoSkytree.jpeg?alt=media&token=86ad3195-1ffa-4036-8475-226e3c7db790",
+        progress:19,
+        word_get:["えき","いりぐち","おしあげ","いくら","ちゅうおうぐち","スカイツリー"],
+        user_stage:"1",
+        learning_level:"あ-level"
       },
     ];
     try {
@@ -525,6 +572,14 @@ function TermUploadForm() {
           QuizMissing_Word: data.Missing_Word,
           QuizCorrect_Word: data.Correct_Word,
           Quizmatching: data.matching,
+          QuizSentence: data.Sentence,
+          Story_start: data.story_start,
+          Story_end: data.story_end,
+          Image_reward: data.image_reward,
+          Progress: data.progress,
+          Word_get: data.word_get,
+          User_stage:data.user_stage,
+          Learning_level:data.learning_level
         });
 
         console.log("Data updated for");

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import "../css/quiz.css";
 
@@ -20,6 +20,7 @@ function Quiz_spelling({
   setLife,
   life,
   setCurrentQuestion,
+  currentQuestion,
   combo,
   thisact,
   nextact
@@ -31,7 +32,14 @@ function Quiz_spelling({
   const handleOptionClick = (option) => {
     setSelectedOption(option); // Update selected option
   };
-
+  const handleClick = () => {
+    const audio = new Audio(modiflyQuiz[PcurrentQuestion].audio);
+    audio.play();
+  };
+  useEffect(()=>{
+    const audio = new Audio(modiflyQuiz[PcurrentQuestion].audio);
+    audio.play();
+  },[PcurrentQuestion])
   const handleConfirm = () => {
     if (selectedOption !== null) {
       const isCorrect = selectedOption.isCorrect;
@@ -57,9 +65,11 @@ function Quiz_spelling({
     setshowBar(false);
     setshowGreenBar(false);
     if (PcurrentQuestion < modiflyQuiz.length - 1) {
+      setCurrentQuestion(currentQuestion+1)
       setPCurrentQuestion(PcurrentQuestion + 1);
       setSelectedOption(null); // Reset selected option for next question
     } else {
+      setCurrentQuestion(currentQuestion+1)
       thisact(false);
       nextact(true);
     }
@@ -68,7 +78,7 @@ function Quiz_spelling({
   return (
     <div>
       {showBar && <div className="white-box"></div>}
-      <div className="question_block_voice">
+      <div className="question_block_voice" onClick={handleClick}>
         <h3 className="question-text">{modiflyQuiz[PcurrentQuestion].text}</h3>
       </div>
       <div className="">
@@ -104,14 +114,14 @@ function Quiz_spelling({
           )}
           {showGreenBar ? (
             <div>
-              <div>nice</div>
+              <div>Correct: the answer is {modiflyQuiz[PcurrentQuestion].answer}</div>
               <button className="green-button" onClick={handlenext}>
                 Next
               </button>
             </div>
           ) : (
             <div>
-              <div>oh no</div>
+              <div>Incorrect: the answer is {modiflyQuiz[PcurrentQuestion].answer}</div>
               <button className="red-button" onClick={handlenext}>
                 Next
               </button>

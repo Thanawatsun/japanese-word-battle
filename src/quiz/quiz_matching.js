@@ -8,7 +8,8 @@ const Quiz_matching = ({
   setCombo,
   setLife,
   life,
-  setCurrentQuestions,
+  setCurrentQuestion,
+  currentQuestion,
   combo,
   thisact,
   nextact,
@@ -62,6 +63,7 @@ const Quiz_matching = ({
         console.log(countselect + 1)
         console.log(matchQuzArray.length - 1)
         if (countselect === matchQuzArray.length - 1) {
+          setCurrentQuestion(currentQuestion+1)
           setshowBar(true);
           console.log("test")
         }
@@ -72,9 +74,7 @@ const Quiz_matching = ({
     }
   }, [matchQuzArray.length, countselect, selectLeft, selectRight]);
 
-useEffect(()=>{
-    console.log("test")
-},[showBar])
+
 
   useEffect(() => {
     setMatchQuzArray(modiflyQuiz.matchQuz);
@@ -134,9 +134,9 @@ useEffect(()=>{
         </div>
       </div>
       {showBar && (
-        <div className="green-con" style={{marginTop: "20vh"}}>
+        <div className="green-con" style={{marginTop: "15vh"}}>
           <div className="green-bar"></div>
-          <div>nice</div>
+          <div></div>
           <button className="green-button" onClick={handlenext}>
             Next
           </button>
