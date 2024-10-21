@@ -32,7 +32,7 @@ function Quiz_missing_word({
   const [showGreenBar, setshowGreenBar] = useState(false);
 
   const handleOptionClick = (option) => {
-    setSelectedOption(option); // Update selected option
+    setSelectedOption(option);
   };
 
   const handleConfirm = () => {
@@ -41,7 +41,7 @@ function Quiz_missing_word({
       setshowBar(true);
       if (isCorrect) {
         console.log("Correct!");
-        // Update score, combo, etc. (logic based on your requirements)
+        
 
         setScore((prevScore) => prevScore + 10 * combo);
         setCombo((prevCombo) => prevCombo + 1);
@@ -62,7 +62,7 @@ function Quiz_missing_word({
     if (PcurrentQuestion < modiflyQuiz.length - 1) {
       setCurrentQuestion(currentQuestion+1)
       setPCurrentQuestion(PcurrentQuestion + 1);
-      setSelectedOption(null); // Reset selected option for next question
+      setSelectedOption(null); 
     } else {
       setCurrentQuestion(currentQuestion+1)
       thisact(false);
@@ -73,10 +73,12 @@ function Quiz_missing_word({
   return (
     <div>
       {showBar && <div className="white-box"></div>}
+      
       <div className="question_block">
         <p className="">{modiflyQuiz[PcurrentQuestion].meaning}</p>
         <h3 className="question-text">{modiflyQuiz[PcurrentQuestion].text}</h3>
       </div>
+      <p>{modiflyQuiz[PcurrentQuestion].story}</p>
       <div className="">
         <div className="question-card">
           <ListGroup as="ul">

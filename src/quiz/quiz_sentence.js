@@ -8,28 +8,28 @@ function Quiz_Sentence({
       text: "⬜き (eki)",
       story: "where is the train station?",
       meaning: "train station",
-      options:[
+      options: [
         {
-            "id": 3,
-            "isCorrect": false,
-            "text": "お"
+          id: 3,
+          isCorrect: false,
+          text: "お",
         },
         {
-            "id": 0,
-            "isCorrect": true,
-            "text": "え"
+          id: 0,
+          isCorrect: true,
+          text: "え",
         },
         {
-            "id": 1,
-            "isCorrect": false,
-            "text": "あ"
+          id: 1,
+          isCorrect: false,
+          text: "あ",
         },
         {
-            "id": 2,
-            "isCorrect": false,
-            "text": "い"
-        }
-    ],
+          id: 2,
+          isCorrect: false,
+          text: "い",
+        },
+      ],
     },
   ],
   setScore,
@@ -46,21 +46,22 @@ function Quiz_Sentence({
   const [selectedOption, setSelectedOption] = useState(null); // Track selected option
   const [showBar, setshowBar] = useState(false);
   const [showGreenBar, setshowGreenBar] = useState(false);
-  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const [selectedItems, setSelectedItems] = useState([]);
   const [selectedText, setSelectedText] = useState("");
-  const [buttonDisabledStates, setButtonDisabledStates] = useState(new Array(modiflyQuiz[PcurrentQuestion].options.length).fill(false));
+  const [buttonDisabledStates, setButtonDisabledStates] = useState(
+    new Array(modiflyQuiz[PcurrentQuestion].options.length).fill(false)
+  );
   const [confirm_button_on, setconfirm_button_on] = useState(true);
 
-  const handleOptionClick = (option,index) => {
-    if(selectedItems.length == 1){
-        setconfirm_button_on(false)
+  const handleOptionClick = (option, index) => {
+    if (selectedItems.length == 1) {
+      setconfirm_button_on(false);
     }
-
+    // กำหนดว่าให้เลือกกี่ตัว
     if (selectedItems.length < 2) {
       const audio = new Audio(option.audio);
       audio.play();
-      // ถ้ายังเลือกไม่ถึง 3 คำ ให้เพิ่มคำ
+
       const newButtonDisabledStates = [...buttonDisabledStates];
       newButtonDisabledStates[index] = true;
       setButtonDisabledStates(newButtonDisabledStates);
@@ -69,15 +70,13 @@ function Quiz_Sentence({
       } else {
         setSelectedItems([...selectedItems, option.id]);
       }
-      
-    }
-     else {
-        setconfirm_button_on(false)
-        // แจ้งเตือนว่าเลือกได้เพียง 3 คำ
+    } else {
+      setconfirm_button_on(false);
+      // เมื่อเลือกเกินจำนวนเกินที่กำหนด
       alert("คุณเลือกคำครบ 2 คำแล้ว");
     }
   };
-  
+
   useEffect(() => {
     const newSelectedText = selectedItems
       .map((id) => {
@@ -87,20 +86,20 @@ function Quiz_Sentence({
         return selectedOption ? selectedOption.text : "";
       })
       .join(" ");
-  
-    // สร้างฟังก์ชันเพื่อเพิ่ม "_" สำหรับคำที่ยังไม่ได้เลือก
+
+    // ใส่ "_" สำหรับคำที่ยังไม่ได้เลือก
     const createFullText = (selectedText) => {
-      // สมมติว่าคุณมีจำนวนคำทั้งหมดที่เป็นค่าคงที่
-      const totalWords = 2; // ปรับค่าตามจำนวนคำทั้งหมดของคุณ
+      // กำหนดจำนวนคำสูงสุดของคำตอบ
+      const totalWords = 2;
       const missingWords = totalWords - selectedText.split(" ").length;
       return newSelectedText + "_".repeat(missingWords);
     };
-  
+
     setSelectedText(createFullText(newSelectedText));
   }, [selectedItems]);
   const handleWordClick = (word) => {
-    const modfiword = word.replaceAll("_","")
-    // หา index ของคำที่ต้องการลบใน selectedItems
+    const modfiword = word.replaceAll("_", "");
+    // หาตำแหน่งของคำที่จะลบออกว่า เป็นคำอะไร เป็นคำที่เท่าไหร่ของปุ่ม
     const index = selectedItems.findIndex((id) => {
       const selectedOption = modiflyQuiz[PcurrentQuestion].options.find(
         (opt) => opt.id === id
@@ -108,34 +107,32 @@ function Quiz_Sentence({
       return selectedOption?.text === modfiword;
     });
     const indexText = modiflyQuiz[PcurrentQuestion].options.findIndex(
-        (option) => option.text === modfiword
-      );
+      (option) => option.text === modfiword
+    );
     if (index !== -1) {
-    const newButtonDisabledStates = [...buttonDisabledStates];
-    newButtonDisabledStates[indexText] = false;
-    setButtonDisabledStates(newButtonDisabledStates);
+      const newButtonDisabledStates = [...buttonDisabledStates];
+      newButtonDisabledStates[indexText] = false;
+      setButtonDisabledStates(newButtonDisabledStates);
       setSelectedItems(selectedItems.filter((_, i) => i !== index));
     } else {
-      console.log("ไม่พบคำที่ต้องการลบ"); // เพิ่มการตรวจสอบ
+      console.log("ไม่พบคำที่ต้องการลบ");
     }
   };
   const handleConfirm = () => {
     console.log(selectedText);
-    const user_ans = selectedText.replaceAll(" ","")
+    const user_ans = selectedText.replaceAll(" ", "");
     setshowBar(true);
-    if(user_ans === modiflyQuiz[PcurrentQuestion].answer){
-      setCurrentQuestion(currentQuestion+1)
-        console.log("nice")
-        setScore((prevScore) => prevScore + 10 * combo);
-        setCombo((prevCombo) => prevCombo + 1);
-        setshowGreenBar(true);
-    }
-    else {
+    if (user_ans === modiflyQuiz[PcurrentQuestion].answer) {
+      setCurrentQuestion(currentQuestion + 1);
+      console.log("nice");
+      setScore((prevScore) => prevScore + 10 * combo);
+      setCombo((prevCombo) => prevCombo + 1);
+      setshowGreenBar(true);
+    } else {
       setLife(life - 1);
       console.log("Incorrect!");
       setCombo(1);
     }
-
   };
 
   const handlenext = () => {
@@ -143,7 +140,7 @@ function Quiz_Sentence({
     setshowGreenBar(false);
     if (PcurrentQuestion < modiflyQuiz.length - 1) {
       setPCurrentQuestion(PcurrentQuestion + 1);
-      setSelectedOption(null); // Reset selected option for next question
+      setSelectedOption(null);
     } else {
       thisact(false);
       nextact(true);
@@ -154,18 +151,24 @@ function Quiz_Sentence({
     <div>
       {showBar && <div className="white-box"></div>}
       <div className="question_block_sen">
-      <h5 className="question-text_sen">{modiflyQuiz[PcurrentQuestion].text}</h5>
-      <h1 className="text_hover">
-    {selectedText.split(' ').map((word) => (
-      <span className="sentence_ans" key={word} onClick={() => handleWordClick(word)}>
-        {word}
-      </span>
-    ))}
-  </h1>
-        
+        <h5 className="question-text_sen">
+          {modiflyQuiz[PcurrentQuestion].text}
+        </h5>
+        <h1 className="text_hover">
+          {selectedText.split(" ").map((word) => (
+            <span
+              className="sentence_ans"
+              key={word}
+              onClick={() => handleWordClick(word)}
+            >
+              {word}
+            </span>
+          ))}
+        </h1>
+
         <p className="">{modiflyQuiz[PcurrentQuestion].meaning}</p>
-        
       </div>
+      <p>{modiflyQuiz[PcurrentQuestion].story}</p>
       <div className="">
         <div className="question-card">
           <ListGroup as="ul">
@@ -175,7 +178,7 @@ function Quiz_Sentence({
                   as="li"
                   className={`btn ${
                     selectedOption?.id === option.id ? "selected" : ""
-                  }`} // Add "selected" class for visual feedback
+                  }`}
                   variant="primary"
                   onClick={() => handleOptionClick(option, index)}
                   disabled={buttonDisabledStates[index]}
@@ -198,7 +201,7 @@ function Quiz_Sentence({
         </button>
       </div>
       {showBar && (
-        <div className="green-con" style={{marginTop: "6vh"}}>
+        <div className="green-con" style={{ marginTop: "6vh" }}>
           {showGreenBar ? (
             <div className="green-bar"></div>
           ) : (
@@ -206,14 +209,18 @@ function Quiz_Sentence({
           )}
           {showGreenBar ? (
             <div>
-              <div>Correct: the answer is {modiflyQuiz[PcurrentQuestion].answer}</div>
+              <div>
+                Correct: the answer is {modiflyQuiz[PcurrentQuestion].answer}
+              </div>
               <button className="green-button" onClick={handlenext}>
                 Next
               </button>
             </div>
           ) : (
             <div>
-              <div>Incorrect: the answer is {modiflyQuiz[PcurrentQuestion].answer}</div>
+              <div>
+                Incorrect: the answer is {modiflyQuiz[PcurrentQuestion].answer}
+              </div>
               <button className="red-button" onClick={handlenext}>
                 Next
               </button>

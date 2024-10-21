@@ -21,7 +21,7 @@ const Quiz_matching = ({
   const [selectLeft, setSelectLeft] = useState(null);
   const [selectRight, setSelectRight] = useState(null);
   const [showBar, setshowBar] = useState(false);
-  const [showGreenBar, setshowGreenBar] = useState(false);
+  //const [showGreenBar, setshowGreenBar] = useState(false);
   function HandleSelected(item) {
     if (item.type === "word" && !item.matched) {
       setSelectLeft(item);

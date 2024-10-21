@@ -30,7 +30,7 @@ function Quiz_spelling({
   const [showBar, setshowBar] = useState(false);
   const [showGreenBar, setshowGreenBar] = useState(false);
   const handleOptionClick = (option) => {
-    setSelectedOption(option); // Update selected option
+    setSelectedOption(option);
   };
   const handleClick = () => {
     const audio = new Audio(modiflyQuiz[PcurrentQuestion].audio);
@@ -46,7 +46,7 @@ function Quiz_spelling({
       setshowBar(true);
       if (isCorrect) {
         console.log("Correct!");
-        // Update score, combo, etc. (logic based on your requirements)
+        
 
         setScore((prevScore) => prevScore + 10 * combo);
         setCombo((prevCombo) => prevCombo + 1);
@@ -67,7 +67,7 @@ function Quiz_spelling({
     if (PcurrentQuestion < modiflyQuiz.length - 1) {
       setCurrentQuestion(currentQuestion+1)
       setPCurrentQuestion(PcurrentQuestion + 1);
-      setSelectedOption(null); // Reset selected option for next question
+      setSelectedOption(null); 
     } else {
       setCurrentQuestion(currentQuestion+1)
       thisact(false);
@@ -77,10 +77,13 @@ function Quiz_spelling({
 
   return (
     <div>
+      
       {showBar && <div className="white-box"></div>}
       <div className="question_block_voice" onClick={handleClick}>
         <h3 className="question-text">{modiflyQuiz[PcurrentQuestion].text}</h3>
+      
       </div>
+      <span>{modiflyQuiz[PcurrentQuestion].story}</span>
       <div className="">
         <div className="question-card">
           <ListGroup as="ul">

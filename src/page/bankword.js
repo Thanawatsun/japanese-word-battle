@@ -44,7 +44,7 @@ function Bankword({wordlist}) {
           }} catch (error) {
             console.error("Error uploading data:", error);
           }
-      },[])
+      },[vocabulary])
     return(
         <div className="vocabulary-list">
         {vocabulary.map((item, index) => (

@@ -38,9 +38,10 @@ function LoginUser({ setIsLogin, setuserdefine }) {
         console.log(error);
       });
   };
+  /*
   const checkcredential = () => {
     console.log(credential);
-  };
+  };*/
   const handleLoginSuccess = () => {
     setIsLogin(true); // เรียก callback เพื่ออัปเดต state ใน parent component
   };
@@ -68,10 +69,8 @@ function LoginUser({ setIsLogin, setuserdefine }) {
           uid:user.uid,
           username:user.displayName
         })
-        const termRef = ref(db, "User_Data/" + term); // Construct reference path
+        const termRef = ref(db, "User_Data/" + term);
         const userphotoURL = user.photoURL.slice(0,user.photoURL.length)
-        // Create or update data with update() for flexibility
-        console.log(termRef)
         const databaseRef = ref(getDatabase(app), `User_Data/` + term);
         onValue(databaseRef, async (snapshot) => {
           const data = snapshot.val();
@@ -94,7 +93,7 @@ function LoginUser({ setIsLogin, setuserdefine }) {
 
     } catch (e) {
       console.error("Error updating data:", e);
-      throw e; // Re-throw for further handling
+      throw e;
     }
   }
   return (

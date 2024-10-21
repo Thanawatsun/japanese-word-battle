@@ -31,12 +31,12 @@ function Quiz_Pronunciation({
   const [showBar, setshowBar] = useState(false);
   const [showGreenBar, setshowGreenBar] = useState(false);
   const handleOptionClick = (option) => {
-    setSelectedOption(option); // Update selected option
+    setSelectedOption(option); // อัปเดตว่าเลือกตัวไหน
   };
 
   const handleClick = () => {
     const audio = new Audio(modiflyQuiz[PcurrentQuestion].audio);
-    audio.play();
+    audio.play();//เล่นเสียง
   };
   useEffect(()=>{
     const audio = new Audio(modiflyQuiz[PcurrentQuestion].audio);
@@ -48,8 +48,6 @@ function Quiz_Pronunciation({
       setshowBar(true);
       if (isCorrect) {
         console.log("Correct!");
-        // Update score, combo, etc. (logic based on your requirements)
-
         setScore((prevScore) => prevScore + 10 * combo);
         setCombo((prevCombo) => prevCombo + 1);
         setshowGreenBar(true);
@@ -92,7 +90,7 @@ function Quiz_Pronunciation({
                   as="li"
                   className={`btn ${
                     selectedOption?.id === option.id ? "selected" : ""
-                  }`} // Add "selected" class for visual feedback
+                  }`}
                   variant="primary"
                   onClick={() => handleOptionClick(option)}
                   key={option.id}

@@ -3,7 +3,7 @@ import Profile from "./profile";
 import Bankword from "./bankword";
 import ScoreBoard from "./scoreboard";
 import Stage from "./stage";
-import { app } from "../firebase"; // Import your Firebase configuration
+import { app } from "../firebase";
 import { ref, onValue, getDatabase } from "firebase/database";
 import React, { useEffect, useState } from "react";
 function Home({ userdefine,setIsPlayer,setModiflyQuiz }) {
@@ -74,10 +74,10 @@ function Home({ userdefine,setIsPlayer,setModiflyQuiz }) {
         )}
       </div>
       <div className="mainContainer">
-      <button onClick={() => changePage("Home")}> Home</button>
-      <button onClick={() => changePage("Bankword")}> Bankword</button>
-      <button onClick={() => changePage("Board")}> Board</button>
-      <button onClick={() => changePage("Proflie")}> Proflie</button>
+      <button onClick={() => changePage("Home")}>Home</button>
+      <button onClick={() => changePage("Bankword")}>Bankword</button>
+      <button onClick={() => changePage("Board")}>Scoreboard</button>
+      <button onClick={() => changePage("Proflie")}>Proflie</button>
       </div>
     </div>
   );
