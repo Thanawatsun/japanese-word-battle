@@ -33,6 +33,8 @@ function Quiz_missing_word({
 
   const handleOptionClick = (option) => {
     setSelectedOption(option);
+    const audio = new Audio(option.audio);
+    audio.play();
   };
 
   const handleConfirm = () => {

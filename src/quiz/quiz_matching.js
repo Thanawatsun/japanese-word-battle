@@ -23,8 +23,12 @@ const Quiz_matching = ({
   const [showBar, setshowBar] = useState(false);
   //const [showGreenBar, setshowGreenBar] = useState(false);
   function HandleSelected(item) {
+
+
     if (item.type === "word" && !item.matched) {
       setSelectLeft(item);
+      const audio = new Audio(item.audio);
+      audio.play();
     } else if (!item.matched) {
       setSelectRight(item);
     }
