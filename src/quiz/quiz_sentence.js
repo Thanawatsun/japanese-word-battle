@@ -124,11 +124,11 @@ function Quiz_Sentence({
     setshowBar(true);
     if (user_ans === modiflyQuiz[PcurrentQuestion].answer) {
       setCurrentQuestion(currentQuestion + 1);
-      console.log("nice");
       setScore((prevScore) => prevScore + 10 * combo);
       setCombo((prevCombo) => prevCombo + 1);
       setshowGreenBar(true);
     } else {
+      setCurrentQuestion(currentQuestion + 1);
       setLife(life - 1);
       console.log("Incorrect!");
       setCombo(1);

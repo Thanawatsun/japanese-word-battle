@@ -25,10 +25,10 @@
   }
   .question_block_voice{
     background-color: #FEBF63;
-    width: 35vw;
-    height: 14vh;
-    max-width: 145px;
-    max-height: 145px;
+    width: 40vw;
+    height: 16vh;
+    max-width: 155px;
+    max-height: 155px;
     margin: auto;
     margin-top: 10vh;
     margin-bottom: 10vh;
@@ -48,6 +48,7 @@
     align-items: center;
     height: 50px;
     width: 150px;
+    font-size: 1.2rem;
   }
   .question-card{
     max-width: 354px;
@@ -185,6 +186,7 @@ border-radius: 4px;
     flex-direction: column;
     height: 80vh;
     align-items: stretch;
+    margin-top: 2vh;
     align-content: space-between;
   }
   .story_action{

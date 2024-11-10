@@ -46,6 +46,7 @@ function Quiz_Pronunciation({
     if (selectedOption !== null) {
       const isCorrect = selectedOption.isCorrect;
       setshowBar(true);
+      setCurrentQuestion(currentQuestion + 1);
       if (isCorrect) {
         console.log("Correct!");
         setScore((prevScore) => prevScore + 10 * combo);
@@ -65,11 +66,9 @@ function Quiz_Pronunciation({
     setshowBar(false);
     setshowGreenBar(false);
     if (PcurrentQuestion < modiflyQuiz.length - 1) {
-      setCurrentQuestion(currentQuestion+1)
       setPCurrentQuestion(PcurrentQuestion + 1);
       setSelectedOption(null); // Reset selected option for next question
     } else {
-      setCurrentQuestion(currentQuestion+1)
       thisact(false);
       nextact(true);
     }
