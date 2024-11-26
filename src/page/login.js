@@ -81,7 +81,7 @@ function LoginUser({ setIsLogin, setuserdefine }) {
             useremail: user.email,
             user_profile:userphotoURL,
             user_score:0,
-            learning_level:0,
+            learning_level:"Rank 0 None-level",
             user_stage:0,
             userBankword:[""],
           });
