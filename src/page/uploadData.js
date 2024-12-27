@@ -26,6 +26,7 @@ function TermUploadForm() {
       try {
         const jsonData = JSON.parse(e.target.result);
         // จัดกลุ่มข้อมูลตาม Spelling
+        console.log(jsonData)
         const groupedData = {};
         var termBank = [];
         jsonData.forEach((row) => {
@@ -158,8 +159,8 @@ function TermUploadForm() {
         function addForms(word) {
           formsSet.add(word);
         }
-        console.log(termBank);
-        setFormData(termBank);
+        console.log(jsonData);
+        setFormData(jsonData);
         setErrorMessage(null); // Clear any previous errors
       } catch (error) {
         setErrorMessage("Error parsing JSON file. Please check the format.");
@@ -212,15 +213,14 @@ function TermUploadForm() {
 
     try {
       for (const data of allData) {
-        const term = data.spelling;
+        const term = data.Word;
         const termRef = ref(db, "term_bank/" + term); // Construct reference path
 
         // Create or update data with update() for flexibility
         await update(termRef, {
-          ID: data.ID,
-          forms: data.forms,
-          spelling: data.spelling,
-          tag: data.tags,
+          word: data.Word,
+          spelling: data.Spelling,
+          meaning: data.Meaning,
         });
 
         console.log("Data updated for");
