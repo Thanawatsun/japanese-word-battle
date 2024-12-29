@@ -39,3 +39,12 @@
     display: grid;
     justify-items: start;
   }
+  .popup {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
