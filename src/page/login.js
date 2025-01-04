@@ -32,7 +32,7 @@ function LoginUser({ setIsLogin, setuserdefine }) {
         setCredential(GoogleAuthProvider.credentialFromResult(result));
         console.log(result.user);
         uploadtorealtime(result.user);
-        uploadDataToFirestore(result.user);
+        //uploadDataToFirestore(result.user);
       })
       .catch((error) => {
         console.log(error);
