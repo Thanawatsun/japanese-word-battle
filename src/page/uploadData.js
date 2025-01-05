@@ -567,8 +567,188 @@ function TermUploadForm() {
         learning_level:"あ-level"
       },
     ];
+    var allData_test = [{
+      level: "level01_test",
+      act_1:{
+        story:{
+          story_text:{
+            story_text_1:"story text 01",
+            story_text_2:"story text 02",
+            story_text_3:"story text 03",
+            story_text_4:"story text 04",
+            story_text_5:"story text 05",
+            story_text_6:"story text 06",
+          },
+          story_image:{
+            story_image_1:"",
+            story_image_2:"",
+            story_image_3:"",
+            story_image_4:"",
+            story_image_5:"",
+            story_image_6:"",
+          },
+          story_count: 6
+        },
+        practice:{
+          pronunciation:[
+            {
+              text: "え",
+              answer:"a",
+              audio:"https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/character%2Fa.mp3?alt=media&token=045559a0-b36a-48a5-be1c-f478d6f25f8a",
+              options: shuffleArray([
+                { id: 0, text: "e", isCorrect: true },
+                { id: 1, text: "i", isCorrect: false },
+              ]),
+            },
+          ],
+          word:[
+            {
+              text: "⬜ki",
+              answer:"E",
+              meaning: "train station",
+              options: shuffleArray([
+                { id: 0, text: "E", isCorrect: true ,audio:"https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/missing_word%2Fe.mp3?alt=media&token=f0bce1a2-ae62-4ea5-90cf-5f3e97f64b86"},
+                { id: 1, text: "A", isCorrect: false,audio:"https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/missing_word%2Fa.mp3?alt=media&token=276156ed-2f51-4787-832c-37492525020d" },
+              ]),
+            },
+            {
+              text: "⬜き",
+              answer:"え",
+              meaning: "train station",
+              options: shuffleArray([
+                { id: 0, text: "え", isCorrect: true ,audio:"https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/missing_word%2Fe.mp3?alt=media&token=f0bce1a2-ae62-4ea5-90cf-5f3e97f64b86"},
+                { id: 1, text: "あ", isCorrect: false,audio:"https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/missing_word%2Fa.mp3?alt=media&token=276156ed-2f51-4787-832c-37492525020d" },
+              ]),
+            },
+          ]
+        },
+        choose_path:{
+          per_practice:{
+            story_text:{
+              story_text_1:"story text 01",
+            },
+            story_image:{
+              story_image_1:"",
+            },
+            story_count: 1
+          },
+          post_practice:{
+            game:{
+              type:"sign",
+              answer:"えき",
+              story_image_1:"",
+              options: ([
+                { id: 0, text: "えき", isCorrect: true ,audio:"",image:"",},
+                { id: 1, text: "バス", isCorrect: false,audio:"",image:"",},
+              ]),
+            },
+            correct_path:{
+              story_text:{
+                story_text_1:"story text 01",
+              },
+              story_image:{
+                story_image_1:"",
+              },
+              story_count: 1
+            }
+          }
+        },
+      },
+      act_2:{
+        story:{
+          story_text:{
+            story_text_1:"story text 01",
+            story_text_2:"story text 02",
+            story_text_3:"story text 03",
+            story_text_4:"story text 04",
+            story_text_5:"story text 05",
+            story_text_6:"story text 06",
+          },
+          story_image:{
+            story_image_1:"",
+            story_image_2:"",
+            story_image_3:"",
+            story_image_4:"",
+            story_image_5:"",
+            story_image_6:"",
+          },
+          story_count: 6
+        },
+        practice:{
+          pronunciation:[
+            {
+              text: "え",
+              answer:"a",
+              audio:"https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/character%2Fa.mp3?alt=media&token=045559a0-b36a-48a5-be1c-f478d6f25f8a",
+              options: shuffleArray([
+                { id: 0, text: "e", isCorrect: true },
+                { id: 1, text: "i", isCorrect: false },
+              ]),
+            },
+          ],
+          word:[
+            {
+              text: "⬜ki",
+              answer:"E",
+              meaning: "train station",
+              options: shuffleArray([
+                { id: 0, text: "E", isCorrect: true ,audio:"https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/missing_word%2Fe.mp3?alt=media&token=f0bce1a2-ae62-4ea5-90cf-5f3e97f64b86"},
+                { id: 1, text: "A", isCorrect: false,audio:"https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/missing_word%2Fa.mp3?alt=media&token=276156ed-2f51-4787-832c-37492525020d" },
+              ]),
+            },
+            {
+              text: "⬜き",
+              answer:"え",
+              meaning: "train station",
+              options: shuffleArray([
+                { id: 0, text: "え", isCorrect: true ,audio:"https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/missing_word%2Fe.mp3?alt=media&token=f0bce1a2-ae62-4ea5-90cf-5f3e97f64b86"},
+                { id: 1, text: "あ", isCorrect: false,audio:"https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/missing_word%2Fa.mp3?alt=media&token=276156ed-2f51-4787-832c-37492525020d" },
+              ]),
+            },
+          ]
+        },
+        choose_path:{
+          per_practice:{
+            story_text:{
+              story_text_1:"story text 01",
+            },
+            story_image:{
+              story_image_1:"",
+            },
+            story_count: 1
+          },
+          post_practice:{
+            game:{
+              type:"sign",
+              answer:"えき",
+              story_image_1:"",
+              options: ([
+                { id: 0, text: "えき", isCorrect: true ,audio:"",image:"",},
+                { id: 1, text: "バス", isCorrect: false,audio:"",image:"",},
+              ]),
+            },
+            correct_path:{
+              story_text:{
+                story_text_1:"story text 01",
+              },
+              story_image:{
+                story_image_1:"",
+              },
+              story_count: 1
+            }
+          }
+        },
+      },
+      reward:{
+        image:"",
+        stamp:"",
+        prime_stamp:""
+      },
+      act_count:2
+    }];
     try {
       for (const data of allData) {
+        /*
         const term = data.level;
         const termRef = ref(db, "Game_Level/" + term); // Construct reference path
 
@@ -588,9 +768,23 @@ function TermUploadForm() {
           Learning_level:data.learning_level
         });
 
+        console.log("Data updated for");*/
+      }
+      for (const data of allData_test) {
+        const term = data.level;
+        const termRef = ref(db, "Game_Level/" + term); // Construct reference path
+
+        // Create or update data with update() for flexibility
+        await update(termRef, {
+          level: data.level,
+          act_1: data.act_1,
+          act_2: data.act_2,
+          reward: data.reward,
+          act_count: data.act_count,
+        });
+
         console.log("Data updated for");
       }
-
       console.log("All data uploaded to Realtime Database");
     } catch (e) {
       console.error("Error updating data:", e);

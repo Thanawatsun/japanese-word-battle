@@ -4,7 +4,7 @@ import { ref, onValue, getDatabase } from "firebase/database";
 import { app } from "../firebase";
 function Stage({ setIsPlayer, userData, setModiflyQuiz }) {
   const [selectedValue, setSelectedValue] = useState("easy");
-  const stages = [{ value: "level01", label: "Stage 1" }];
+  const stages = [{ value: "level01", label: "Stage 1" },{ value: "level01_test", label: "Stage test" }];
   const options = [
     { value: "normal", label: "Normal" },
     { value: "hard", label: "Hard" },
@@ -15,6 +15,7 @@ function Stage({ setIsPlayer, userData, setModiflyQuiz }) {
     console.log("Selectedvalue:", event.target.value);
   };
   const handleTostage = (value) => {
+
     const shuffleArray = (array) => {
       return array
         .map((item) => ({ ...item, sort: Math.random() })) // Add random sort key
@@ -26,7 +27,7 @@ function Stage({ setIsPlayer, userData, setModiflyQuiz }) {
       const data = snapshot.val();
       //learning levelเอาไว้ทำตัว Quizcharacter
       //ปรับระดับความยากง่ายด้วยการเลือกข้อมูล missing_Word correct_Word matching
-
+      /*
       for (let i = 0; i < data.Quizcharacter.length; i++) {
         data.Quizcharacter[i].options = shuffleArray(
           data.Quizcharacter[i].options
@@ -54,7 +55,7 @@ function Stage({ setIsPlayer, userData, setModiflyQuiz }) {
       const quizdata = data.Quizmatching;
       quizdata.matchQuz = shuffleArray(quizdata.matchQuz);
       quizdata.matchAns = shuffleArray(quizdata.matchAns);
-
+*/
       setModiflyQuiz(data);
       console.log(data);
     });
@@ -63,20 +64,6 @@ function Stage({ setIsPlayer, userData, setModiflyQuiz }) {
   };
   return (
     <div className="stageDisplay">
-      <div className="difficulty_box">
-        <select
-          className="chooseDifficulty"
-          value={selectedValue}
-          onChange={handleChange}
-        >
-          <option value="easy">Easy</option>
-          {options.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-      </div>
       <div className="mapdisplay">
         {stages.map((stage) => (
           <div

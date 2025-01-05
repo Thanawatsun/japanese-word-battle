@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import LoginUser from "./page/login";
 import LogoutUser from "./page/logout";
 import Home from "./page/Home";
+import Stage_stsyem from "./quiz/stage_test01";
 import Quiz from "./quiz/quiz";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -22,7 +23,7 @@ function App() {
         <div className="App">
           {isPlayer ? (
             <div>
-              <Quiz setIsPlayer={setIsPlayer} modiflyQuiz={modiflyQuiz} userdefine={userdefine}/>
+              <Stage_stsyem setIsPlayer={setIsPlayer} modiflyQuiz={modiflyQuiz} userdefine={userdefine}/>
             </div>
           ) : (
             <div>
