@@ -4,7 +4,7 @@ import Story from "./story/story"
 import { useNavigate } from 'react-router-dom';
 
 function Act_stsyem(
-    modiflyQuiz
+    {modiflyQuiz}
 ) 
 {
     const { quizData } = modiflyQuiz;

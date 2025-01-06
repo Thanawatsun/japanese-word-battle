@@ -6,7 +6,7 @@ import Stage from "./stage";
 import { app } from "../firebase";
 import { ref, onValue, getDatabase } from "firebase/database";
 import React, { useEffect, useState } from "react";
-function Home({ userdefine,setIsPlayer,setModiflyQuiz }) {
+function Home({ userdefine,setIsPlayer,setModiflyQuiz,setStageplay }) {
   const [IsHome, setIsHome] = useState(true);
   const [Isbankword, setIsbankword] = useState(false);
   const [IsBoard, setIsBoard] = useState(false);
@@ -55,7 +55,7 @@ function Home({ userdefine,setIsPlayer,setModiflyQuiz }) {
       <div className="mainbox">
         {IsHome ? (
           <div>
-          <Stage setIsPlayer={setIsPlayer} userData={userData} setModiflyQuiz={setModiflyQuiz}/>
+          <Stage setIsPlayer={setIsPlayer} userData={userData} setModiflyQuiz={setModiflyQuiz} setStageplay={setStageplay}/>
           </div>
         ) : Isbankword ? (
           <div>

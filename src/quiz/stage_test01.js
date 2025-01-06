@@ -7,6 +7,7 @@ function Stage_stsyem({
   setIsPlayer,
   modiflyQuiz,
   userdefine,
+  stageplay
 }) {
 
 
@@ -19,17 +20,19 @@ function Stage_stsyem({
   const [storyAct_end, setStoryAct_end] = useState(false);
   const [rewardAct, setRewardAct] = useState(false);
 console.log(modiflyQuiz)
+console.log(stageplay)
   useEffect(() =>{
     if(life ===0){
       alert("you dead")
       window.location.reload();
     }
+    
   },[life])
   return (
     <div>
       <div className="quiz_container">
         <div className="action_block">
-        <Act_stsyem modiflyQuiz={modiflyQuiz}/>
+        <Act_stsyem modiflyQuiz={modiflyQuiz[stageplay]}/>
         </div>
       </div>
     </div>
