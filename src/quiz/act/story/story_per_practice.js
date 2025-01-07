@@ -1,13 +1,13 @@
 import { useLocation } from 'react-router-dom';
 import React, { useEffect, useState } from "react";
 import "../../../css/quiz.css";
-function Story(
-  scene,act
+function Story_per_practice(
+    scene,act
 ){
-  const [targetText, settargetText] = useState("story_text_1"); 
+    const [targetText, settargetText] = useState("story_text_1"); 
     const location = useLocation();
     const { quizData } = location.state; // รับค่า quizData จาก state
-    const story = quizData.act_1.story; // จัดการ act ด้วย
+    const story = quizData.act_1.choose_path.per_practice; // จัดการ act ด้วย
     console.log(quizData); // ตรวจสอบค่าที่ได้รับ
     console.log(quizData.act_1.story.story_text.story_text_1); // ตรวจสอบค่าที่ได้รับ
     useEffect(()=>{
@@ -22,4 +22,4 @@ return (
   );
 }
 
-export default Story;
+export default Story_per_practice;

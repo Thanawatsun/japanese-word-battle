@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "../css/quiz.css";
 import {useEffect} from "react";
-import Act_stsyem from "./act/act_stsyem";
-
+import Act_stsyem from "./act/act_system";
+import { useNavigate } from 'react-router-dom';
 function Stage_stsyem({
   setIsPlayer,
   modiflyQuiz,
@@ -21,18 +21,13 @@ function Stage_stsyem({
   const [rewardAct, setRewardAct] = useState(false);
 console.log(modiflyQuiz)
 console.log(stageplay)
-  useEffect(() =>{
-    if(life ===0){
-      alert("you dead")
-      window.location.reload();
-    }
-    
-  },[life])
+    const navigate = useNavigate();
+
   return (
     <div>
       <div className="quiz_container">
         <div className="action_block">
-        <Act_stsyem modiflyQuiz={modiflyQuiz[stageplay]}/>
+        <Act_stsyem modiflyQuiz={modiflyQuiz[stageplay]} Ispractice={false} Isstory={true}/>
         </div>
       </div>
     </div>
