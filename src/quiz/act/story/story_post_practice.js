@@ -7,7 +7,7 @@ function Story_post_practice(
     const [targetText, settargetText] = useState("story_text_1"); 
     const location = useLocation();
     const { quizData } = location.state; // รับค่า quizData จาก state
-    const story = quizData.act_1.choose_path.post_practice.correct_path; // จัดการ act ด้วย
+    const story = quizData.choose_path.post_practice.correct_path; // จัดการ act ด้วย
     console.log(quizData); // ตรวจสอบค่าที่ได้รับ
     console.log(story); // ตรวจสอบค่าที่ได้รับ
     useEffect(()=>{

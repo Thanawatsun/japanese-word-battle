@@ -20,10 +20,10 @@ function StorySystem(){
 console.log(poststory)
 
  const navigate = useNavigate();
-    const story_text = quizData.act_1.story; // จัดการ act ด้วย
+    const story_text = quizData.story; // จัดการ act ด้วย
 
     console.log(quizData); // ตรวจสอบค่าที่ได้รับ
-    console.log(quizData.act_1.story.story_text.story_text_1); // ตรวจสอบค่าที่ได้รับ
+    console.log(quizData.story.story_text.story_text_1); // ตรวจสอบค่าที่ได้รับ
     console.log(targetText)
     const handlenext = () => {
       if(poststory & number_story+1 > 1){
@@ -39,7 +39,7 @@ console.log(poststory)
         setper_pratice_act(true)
         setnumber_story(1)
       }
-      if(number_story+1 > quizData.act_1.choose_path.per_practice.story_count & per_pratice_act){
+      if(number_story+1 > quizData.choose_path.per_practice.story_count & per_pratice_act){
         setper_pratice_act(false)
         setload_act(true)
       }

@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
-import "../css/quiz.css";
+
 
 function game_ticketBooth() {
 
+    return(
+        <div>
+Ticket
+        </div>
+    )
 }
 
 export default game_ticketBooth;

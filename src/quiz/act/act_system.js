@@ -10,7 +10,7 @@ function Act_stsyem(
     Isgame,
     Isstory_post_game,
     Isreward,
-    act
+    act = "act_1"
 },
 ) 
 {
@@ -30,7 +30,7 @@ function Act_stsyem(
         }
         if(Isstory === true){
             console.log(modiflyQuiz)
-        navigate('/story', { state: { quizData: modiflyQuiz  ,poststory:false} }); // ส่งค่า quizData ผ่าน state
+        navigate('/story', { state: { quizData: modiflyQuiz[act]  ,poststory:false} }); // ส่งค่า quizData ผ่าน state
         }
         
       }, [Ispractice,Isstory]);

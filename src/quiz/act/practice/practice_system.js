@@ -4,16 +4,13 @@ import Act_stsyem from "../act_system";
 import Pronunciation from "./pronunciation";
 import Word from "./word";
 function Practice() {
-  const [number_story, setnumber_story] = useState(1);
-  const [targetText, settargetText] = useState("story_text_1");
-  const [per_pratice_act, setper_pratice_act] = useState(false);
-  const [post_pratice_act, setpost_pratice_act] = useState(false);
+
   const [load_act, setload_act] = useState(false);
-  const [story_act, setstory_act] = useState(true);
 
   const location = useLocation();
   const { quizData } = location.state; // รับค่า quizData จาก state
-
+  const practice_list = quizData.practice
+  const practice_type = "pronunciation_set" //อิงตาม data ที่ได้มา
   const navigate = useNavigate();
 
   const handlenext = () => {
@@ -28,6 +25,17 @@ function Practice() {
         <div></div>
       )}
       </div>
+      <div>
+      {practice_type === "pronunciation_set" ? (
+            <Pronunciation_set game_data={practice_list} setload_act={setload_act}/>
+          ): practice_type === "01" ? (
+            <Pronunciation_set game_data={practice_list} setload_act={setload_act}/>
+          ) : practice_type === "02" ? (
+            <Pronunciation_set game_data={practice_list} setload_act={setload_act}/>
+          ) : (
+            <div></div>
+          )}
+      </div>
       <button
         className="confirm_button"
         onClick={handlenext}
@@ -35,6 +43,31 @@ function Practice() {
       >
         Confirm
       </button>
+    </div>
+  );
+}
+
+function Pronunciation_set(
+  {game_data,setload_act}
+){
+  const [practice_1, setpractice_1] = useState(true);
+  const [practice_2, setpractice_2] = useState(false);
+  const [practice_3, setpractice_3] = useState(false);
+  console.log(game_data)
+  return (
+
+    <div>
+      {
+        practice_1 ? (
+          <Pronunciation this_stage={setpractice_1} next_stage={setpractice_2} game_data={game_data}/>
+        ): practice_2 ? (
+          <Word this_stage={setpractice_2} next_stage={setpractice_3} game_data={game_data}/>
+        ): practice_3 ? (
+          <Word this_stage={setpractice_3} next_stage={setload_act} game_data={game_data}/>
+        ): (
+          <div></div>
+        )
+      }
     </div>
   );
 }
