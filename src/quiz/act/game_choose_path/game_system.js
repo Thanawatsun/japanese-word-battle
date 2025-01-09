@@ -11,7 +11,7 @@ function Game_system() {
 
   const location = useLocation();
   const { quizData } = location.state; // รับค่า quizData จาก state
-
+  const {rawData} = location.state;
   console.log(quizData);
   const game_data = quizData.choose_path.post_practice.game
   const handlenext = () => {
@@ -21,7 +21,7 @@ function Game_system() {
     <div>
       <div>
         {load_act ? (
-          <Act_stsyem Isstory_post_game={true} modiflyQuiz={quizData} />
+          <Act_stsyem Isstory_post_game={true} modiflyQuiz={quizData} rawData={rawData}/>
         ) : (
           <div></div>
         )}

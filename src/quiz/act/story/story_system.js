@@ -8,7 +8,7 @@ function StorySystem(){
   const [number_story, setnumber_story] = useState(1); 
   const [targetText, settargetText] = useState("story_text_1"); 
   const [per_pratice_act, setper_pratice_act] = useState(false); 
-  const [reward_act, setreward_act] = useState(false); 
+  const [next_act, setreward_act] = useState(false); 
   const [load_act, setload_act] = useState(false); 
   const [story_act, setstory_act] = useState(true); 
 
@@ -17,14 +17,11 @@ function StorySystem(){
     const location = useLocation();
     const { quizData } = location.state; // รับค่า quizData จาก state
     const { poststory } = location.state; // รับค่า quizData จาก state
-console.log(poststory)
+    const {rawData} = location.state;
 
  const navigate = useNavigate();
     const story_text = quizData.story; // จัดการ act ด้วย
 
-    console.log(quizData); // ตรวจสอบค่าที่ได้รับ
-    console.log(quizData.story.story_text.story_text_1); // ตรวจสอบค่าที่ได้รับ
-    console.log(targetText)
     const handlenext = () => {
       if(poststory & number_story+1 > 1){
         setreward_act(true)
@@ -50,9 +47,9 @@ console.log(poststory)
 return (
     <div>
       {load_act ?(
-        <Act_stsyem Ispractice={true} modiflyQuiz={quizData} />
-      ):reward_act?(
-        <div>asdasddasasd</div>
+        <Act_stsyem Ispractice={true} modiflyQuiz={quizData} rawData={rawData} />
+      ):next_act?(
+        <Act_stsyem Isnext={true} modiflyQuiz={quizData} rawData={rawData} />
       ):(
         <div></div>
       )}

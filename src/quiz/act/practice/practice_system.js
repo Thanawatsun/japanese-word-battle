@@ -9,6 +9,7 @@ function Practice() {
 
   const location = useLocation();
   const { quizData } = location.state; // รับค่า quizData จาก state
+  const {rawData} = location.state;
   const practice_list = quizData.practice
   const practice_type = "pronunciation_set" //อิงตาม data ที่ได้มา
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ function Practice() {
     <div>
       <div>
       {load_act ?(
-        <Act_stsyem Isgame={true} modiflyQuiz={quizData} />
+        <Act_stsyem Isgame={true} modiflyQuiz={quizData} rawData={rawData}/>
       ):(
         <div></div>
       )}
@@ -36,13 +37,6 @@ function Practice() {
             <div></div>
           )}
       </div>
-      <button
-        className="confirm_button"
-        onClick={handlenext}
-        style={{ marginTop: "1vh" }}
-      >
-        Confirm
-      </button>
     </div>
   );
 }
@@ -59,11 +53,11 @@ function Pronunciation_set(
     <div>
       {
         practice_1 ? (
-          <Pronunciation this_stage={setpractice_1} next_stage={setpractice_2} game_data={game_data}/>
+          <Pronunciation this_stage={setpractice_1} next_stage={setpractice_2} game_data={game_data.pronunciation[0]}/>
         ): practice_2 ? (
-          <Word this_stage={setpractice_2} next_stage={setpractice_3} game_data={game_data}/>
+          <Word this_stage={setpractice_2} next_stage={setpractice_3} game_data={game_data.word[0]}/>
         ): practice_3 ? (
-          <Word this_stage={setpractice_3} next_stage={setload_act} game_data={game_data}/>
+          <Word this_stage={setpractice_3} next_stage={setload_act} game_data={game_data.word[1]}/>
         ): (
           <div></div>
         )
