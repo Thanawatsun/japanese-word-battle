@@ -7,8 +7,19 @@ import LogoutUser from "./logout";
 import { app } from "../firebase";
 import { ref, onValue, getDatabase } from "firebase/database";
 import React, { useEffect, useState } from "react";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 
-function Home({ userdefine, setIsPlayer, setModiflyQuiz, setStageplay, setIsLogin,setuserdefine }) {
+function Home({
+  userdefine,
+  setIsPlayer,
+  setModiflyQuiz,
+  setStageplay,
+  setIsLogin,
+  setuserdefine,
+}) {
   const [IsHome, setIsHome] = useState(true);
   const [Isbankword, setIsbankword] = useState(false);
   const [IsBoard, setIsBoard] = useState(false);
@@ -50,46 +61,50 @@ function Home({ userdefine, setIsPlayer, setModiflyQuiz, setStageplay, setIsLogi
     }
   }
   return (
-    <div>
-      <div className="mainbox">
-        {IsHome ? (
-          <div>
-            <Stage
-              setIsPlayer={setIsPlayer}
-              userData={userData}
-              setModiflyQuiz={setModiflyQuiz}
-              setStageplay={setStageplay}
-            />
-          </div>
-        ) : Isbankword ? (
-          <div>
-            <Bankword wordlist={userData.userBankword} />
-          </div>
-        ) : IsBoard ? (
-          <div>
-            <ScoreBoard userData={userData} />
-          </div>
-        ) : IsProflie ? (
-          <div>
-            <Profile userData={userData} />
-          </div>
-        ) : (
-          <div></div>
-        )}
-      </div>
-      <div className="mainContainer">
-        <button onClick={() => changePage("Home")}>Home</button>
-        <button onClick={() => changePage("Bankword")}>Bankword</button>
-        <button onClick={() => changePage("Board")}>Scoreboard</button>
-        <button onClick={() => changePage("Proflie")}>Proflie</button>
-        <button>
-                  <LogoutUser
-                    setIsLogin={setIsLogin}
-                    setuserdefine={setuserdefine}
-                  />
-        </button>
-
-      </div>
+    <div className="main-container-box">
+      <Container>
+        <Row>
+          <Col className="mainContainer">
+            <button onClick={() => changePage("Home")}>Home</button>
+            <button onClick={() => changePage("Bankword")}>Bankword</button>
+            <button onClick={() => changePage("Board")}>Scoreboard</button>
+            <button onClick={() => changePage("Proflie")}>Proflie</button>
+            <button>
+              <LogoutUser
+                setIsLogin={setIsLogin}
+                setuserdefine={setuserdefine}
+              />
+            </button>
+          </Col>
+          <Col className="mainbox">
+            {IsHome ? (
+              <div className="center-content">
+                <Stage
+                  setIsPlayer={setIsPlayer}
+                  userData={userData}
+                  setModiflyQuiz={setModiflyQuiz}
+                  setStageplay={setStageplay}
+                />
+              </div>
+            ) : Isbankword ? (
+              <div className="center-content">
+                <Bankword wordlist={userData.userBankword} />
+              </div>
+            ) : IsBoard ? (
+              <div className="center-content">
+                <ScoreBoard userData={userData} />
+              </div>
+            ) : IsProflie ? (
+              <div className="center-content">
+                <Profile userData={userData} />
+              </div>
+            ) : (
+              <div></div>
+            )}
+          </Col>
+          <Col></Col>
+        </Row>
+      </Container>
     </div>
   );
 }

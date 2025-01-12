@@ -50,22 +50,14 @@ function App() {
               />
             </div>
           ) : (
-            <Container>
-              <Row>
-                <Col></Col>
-                <Col>
-                  <Home
-                    userdefine={userdefine}
-                    setIsPlayer={setIsPlayer}
-                    setModiflyQuiz={setModiflyQuiz}
-                    setStageplay={setStageplay}
-                    setIsLogin={setIsLogin}
-                    setuserdefine={setuserdefine}
-                  />
-                </Col>
-                <Col></Col>
-              </Row>
-            </Container>
+            <Home
+              userdefine={userdefine}
+              setIsPlayer={setIsPlayer}
+              setModiflyQuiz={setModiflyQuiz}
+              setStageplay={setStageplay}
+              setIsLogin={setIsLogin}
+              setuserdefine={setuserdefine}
+            />
           )}
         </div>
       ) : (
