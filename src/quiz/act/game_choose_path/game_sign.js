@@ -30,7 +30,7 @@ function Game_sign(
 
     return(
         <div>
-            <div>Choose the correct way to {way}.</div>
+            <div>Choose the correct way to {game_data.wantToGo}.</div>
         {game_data.options.map((choose) => (
           <AnswerButton key={choose.id} text={choose.text} onClick={() => handleClick(choose)} />
         ))}

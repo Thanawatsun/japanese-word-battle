@@ -27,7 +27,7 @@ console.log(stageplay)
     <div>
       <div className="quiz_container">
         <div className="action_block">
-        <Act_stsyem modiflyQuiz={modiflyQuiz[stageplay]} Ispractice={false} Isstory={true} rawData={modiflyQuiz[stageplay]} act_count={1}/>
+        <Act_stsyem modiflyQuiz={modiflyQuiz[stageplay]} Ispractice={false} Isstory={true} rawData={modiflyQuiz[stageplay]} act_count={"act_1"}/>
         </div>
       </div>
     </div>

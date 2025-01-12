@@ -59,14 +59,11 @@ function App() {
                     setIsPlayer={setIsPlayer}
                     setModiflyQuiz={setModiflyQuiz}
                     setStageplay={setStageplay}
-                  />
-                </Col>
-                <Col>
-                  <LogoutUser
                     setIsLogin={setIsLogin}
                     setuserdefine={setuserdefine}
                   />
                 </Col>
+                <Col></Col>
               </Row>
             </Container>
           )}

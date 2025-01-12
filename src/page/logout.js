@@ -8,9 +8,9 @@ function LogoutUser({ setIsLogin, setuserdefine }) {
   };
   return (
     <div>
-      <Button variant="secondary" onClick={handleLogoutSuccess}>
+      <div variant="secondary" onClick={handleLogoutSuccess}>
         logout
-      </Button>
+      </div>
     </div>
   );
 }

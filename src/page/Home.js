@@ -3,11 +3,12 @@ import Profile from "./profile";
 import Bankword from "./bankword";
 import ScoreBoard from "./scoreboard";
 import Stage from "./stage";
+import LogoutUser from "./logout";
 import { app } from "../firebase";
 import { ref, onValue, getDatabase } from "firebase/database";
 import React, { useEffect, useState } from "react";
 
-function Home({ userdefine, setIsPlayer, setModiflyQuiz, setStageplay }) {
+function Home({ userdefine, setIsPlayer, setModiflyQuiz, setStageplay, setIsLogin,setuserdefine }) {
   const [IsHome, setIsHome] = useState(true);
   const [Isbankword, setIsbankword] = useState(false);
   const [IsBoard, setIsBoard] = useState(false);
@@ -81,6 +82,13 @@ function Home({ userdefine, setIsPlayer, setModiflyQuiz, setStageplay }) {
         <button onClick={() => changePage("Bankword")}>Bankword</button>
         <button onClick={() => changePage("Board")}>Scoreboard</button>
         <button onClick={() => changePage("Proflie")}>Proflie</button>
+        <button>
+                  <LogoutUser
+                    setIsLogin={setIsLogin}
+                    setuserdefine={setuserdefine}
+                  />
+        </button>
+
       </div>
     </div>
   );

@@ -9,8 +9,8 @@ function Practice() {
 
   const location = useLocation();
   const { quizData } = location.state; // รับค่า quizData จาก state
-  const {rawData} = location.state;
-  const practice_list = quizData.practice
+  const {act_count} = location.state;
+  const practice_list = quizData[act_count].practice
   const practice_type = "pronunciation_set" //อิงตาม data ที่ได้มา
   const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ function Practice() {
     <div>
       <div>
       {load_act ?(
-        <Act_stsyem Isgame={true} modiflyQuiz={quizData} rawData={rawData}/>
+        <Act_stsyem Isgame={true} modiflyQuiz={quizData} act_count={act_count}/>
       ):(
         <div></div>
       )}

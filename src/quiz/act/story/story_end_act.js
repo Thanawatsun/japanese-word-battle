@@ -19,12 +19,12 @@ function Story_end_act(){
       const location = useLocation();
       const { quizData } = location.state; // รับค่า quizData จาก state
       const { poststory } = location.state; // รับค่า quizData จาก state
-      const {rawData} = location.state;
+      const {act_count} = location.state;
   
    const navigate = useNavigate();
       const story_text = quizData.story; // จัดการ act ด้วย
   
-      console.log(rawData); // ตรวจสอบค่าที่ได้รับ
+      console.log(act_count); // ตรวจสอบค่าที่ได้รับ
       const handlenext = () => {
         if(poststory & number_story+1 > 1){
           setreward_act(true)
@@ -39,7 +39,7 @@ function Story_end_act(){
           setper_pratice_act(true)
           setnumber_story(1)
         }
-        if(number_story+1 > quizData.choose_path.per_practice.story_count & per_pratice_act){
+        if(number_story+1 > quizData[act_count].choose_path.per_practice.story_count & per_pratice_act){
           setper_pratice_act(false)
           setload_act(true)
         }
@@ -50,9 +50,9 @@ function Story_end_act(){
   return (
       <div>
         {load_act ?(
-          <Act_stsyem Ispractice={true} modiflyQuiz={quizData} rawData={rawData} />
+          <Act_stsyem Ispractice={true} modiflyQuiz={quizData} act_count={act_count} />
         ):next_act?(
-          <Act_stsyem Isnext={true} modiflyQuiz={quizData} rawData={rawData} />
+          <Act_stsyem Isnext={true} modiflyQuiz={quizData} act_count={act_count} />
         ):(
           <div></div>
         )}
