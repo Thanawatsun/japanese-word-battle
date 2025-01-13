@@ -22,8 +22,8 @@ function Act_stsyem(
         console.log(modiflyQuiz[act_count].nectAct)
         if(modiflyQuiz[act_count].nextAct === "act_end"){
             alert("end")
-            navigate('/')
-            //เดี๋ยวมาใส่ด่าน reward
+            navigate('/reward')
+            //เดี๋ยวมาใส่ด่าน rewar
         }
         else{
             if(Isnext){

@@ -23,7 +23,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:9000/testAPI")
+      .get("http://localhost:9000/getstage")
       .then((response) => {
         setData(response.data);
         setModiflyQuiz(response.data);
