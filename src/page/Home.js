@@ -64,17 +64,39 @@ function Home({
     <div className="main-container-box">
       <Container>
         <Row>
-          <Col className="mainContainer">
-            <button onClick={() => changePage("Home")}>Home</button>
-            <button onClick={() => changePage("Bankword")}>Bankword</button>
-            <button onClick={() => changePage("Board")}>Scoreboard</button>
-            <button onClick={() => changePage("Proflie")}>Proflie</button>
-            <button>
-              <LogoutUser
-                setIsLogin={setIsLogin}
-                setuserdefine={setuserdefine}
-              />
-            </button>
+          <Col>
+            <div className="mainContainer">
+              <button
+                className="change-page-button"
+                onClick={() => changePage("Home")}
+              >
+                <h2>Map</h2>
+              </button>
+              <button
+                className="change-page-button"
+                onClick={() => changePage("Bankword")}
+              >
+                <h2>Stamp</h2>
+              </button>
+              <button
+                className="change-page-button"
+                onClick={() => changePage("Board")}
+              >
+                <h2>Scoreboard</h2>
+              </button>
+              <button
+                className="change-page-button"
+                onClick={() => changePage("Proflie")}
+              >
+                <h2>Proflie</h2>
+              </button>
+              <button className="change-page-button logout-button">
+                <LogoutUser
+                  setIsLogin={setIsLogin}
+                  setuserdefine={setuserdefine}
+                />
+              </button>
+            </div>
           </Col>
           <Col className="mainbox">
             {IsHome ? (
