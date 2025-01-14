@@ -22,7 +22,7 @@ function Game_system() {
     <div>
       <div>
         {load_act ? (
-          <Act_stsyem Isstory_post_game={true} modiflyQuiz={quizData} act_count={act_count}/>
+          <Act_stsyem Isnext={true} modiflyQuiz={quizData} act_count={act_count}/>
         ) : (
           <div></div>
         )}

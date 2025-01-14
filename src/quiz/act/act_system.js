@@ -20,7 +20,7 @@ function Act_stsyem(
     const navigate = useNavigate();
     useEffect(() => {
         console.log(modiflyQuiz[act_count].nectAct)
-        if(modiflyQuiz[act_count].nextAct === "act_end"){
+        if(modiflyQuiz[act_count].nextAct === "act_end"& Isnext){
             alert("end")
             navigate('/reward')
             //เดี๋ยวมาใส่ด่าน rewar
