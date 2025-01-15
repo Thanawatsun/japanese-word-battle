@@ -7,7 +7,7 @@ import Quiz_matching from "./quiz_matching";
 import Quiz_Sentence from "./quiz_sentence";
 import Story_Act from "./story_act";
 import End_Act from "./end_stage";
-import {useEffect} from "react";
+import { useEffect } from "react";
 function Quiz({
   setIsPlayer,
   modiflyQuiz = {
@@ -41,7 +41,7 @@ function Quiz({
           },
         ],
         text: "あ, ア",
-      }
+      },
     ],
     Quizmatching: {
       matchAns: [
@@ -50,7 +50,7 @@ function Quiz({
           matched: false,
           text: "Oshiage",
           type: "meaning",
-        }
+        },
       ],
       matchQuz: [
         {
@@ -58,7 +58,7 @@ function Quiz({
           matched: false,
           text: "おしあげ",
           type: "word",
-        }
+        },
       ],
     },
     Quizroadmap: [
@@ -90,7 +90,7 @@ function Quiz({
             ],
             story: "where is the train station?",
             text: "えき",
-          }
+          },
         ],
         Missing_Word: [
           {
@@ -119,7 +119,7 @@ function Quiz({
             ],
             story: "where is the train station?",
             text: "⬜き (eki)",
-          }
+          },
         ],
         roadMapType: "train",
       },
@@ -141,18 +141,20 @@ function Quiz({
   const [SentenceAct, setSentenceAct] = useState(false);
   const [rewardAct, setRewardAct] = useState(false);
 
-  useEffect(() =>{
-    if(life ===0){
-      alert("you dead")
+  useEffect(() => {
+    if (life === 0) {
+      alert("you dead");
       window.location.reload();
     }
-  },[life])
+  }, [life]);
   return (
     <div>
       <div className="quiz_container">
         <div className="info_bar">
           <div>Score {Score}</div>
-          <div>progress {currentQuestion}/{modiflyQuiz.Progress}</div>
+          <div>
+            progress {currentQuestion}/{modiflyQuiz.Progress}
+          </div>
           <div>life: {life}</div>
         </div>
         <div className="action_block">
@@ -162,8 +164,7 @@ function Quiz({
               thisact={setStoryAct}
               nextact={setpronunciationAct}
             />
-          ) :
-          pronunciationAct ? (
+          ) : pronunciationAct ? (
             <Quiz_Pronunciation
               modiflyQuiz={modiflyQuiz.Quizcharacter}
               setScore={setScore}
@@ -204,20 +205,20 @@ function Quiz({
             />
           ) : SentenceAct ? (
             <Quiz_Sentence
-            modiflyQuiz={modiflyQuiz.QuizSentence}
-            setScore={setScore}
-            setCurrentQuestion={setCurrentQuestion}
-            currentQuestion={currentQuestion}
-            life={life}
-            setLife={setLife}
-            setCombo={setCombo}
-            combo={combo}
-            thisact={setSentenceAct}
-            nextact={setMatchingAct}
+              modiflyQuiz={modiflyQuiz.QuizSentence}
+              setScore={setScore}
+              setCurrentQuestion={setCurrentQuestion}
+              currentQuestion={currentQuestion}
+              life={life}
+              setLife={setLife}
+              setCombo={setCombo}
+              combo={combo}
+              thisact={setSentenceAct}
+              nextact={setMatchingAct}
             />
           ) : matchingAct ? (
             <Quiz_matching
-            modiflyQuiz={modiflyQuiz.Quizmatching}
+              modiflyQuiz={modiflyQuiz.Quizmatching}
               setScore={setScore}
               setCurrentQuestion={setCurrentQuestion}
               currentQuestion={currentQuestion}
@@ -228,15 +229,13 @@ function Quiz({
               thisact={setMatchingAct}
               nextact={setStoryAct_end}
             />
-          ) : 
-          storyAct_end ? (
+          ) : storyAct_end ? (
             <Story_Act
               modiflyQuiz={modiflyQuiz.Story_end}
               thisact={setStoryAct_end}
               nextact={setRewardAct}
             />
-          ): 
-          rewardAct ? (
+          ) : rewardAct ? (
             <End_Act
               modiflyQuiz={modiflyQuiz}
               thisact={setRewardAct}
@@ -244,7 +243,7 @@ function Quiz({
               Score={Score}
               userdefine={userdefine}
             />
-          ) :(
+          ) : (
             <div></div>
           )}
         </div>
