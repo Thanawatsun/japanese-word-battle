@@ -6,6 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - npm install express
 - npm i react-scripts
 - npm install --save cors
+- npm install reactjs-popup --save
 
 ## Available Scripts
 

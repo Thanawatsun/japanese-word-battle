@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import "../css/profile.css";
 import { app } from "../firebase"; // Import your Firebase configuration
 import { getDatabase, ref, update, onValue } from "firebase/database";
+
 function Proflie({ userData }) {
-    const [showPopup, setShowPopup] = useState(false);
-  const [searchValue, setSearchValue] = useState('');
-  const [searchResult, setSearchResult] = useState('');
+  const [showPopup, setShowPopup] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+  const [searchResult, setSearchResult] = useState("");
 
   const handleClose = () => {
     setShowPopup(false);
@@ -13,17 +14,18 @@ function Proflie({ userData }) {
   const handleSearch = () => {
     // ทำการกรองข้อมูลตามค่าใน searchValue
     // สมมติว่าคุณมีข้อมูลที่จะกรองอยู่แล้ว และเก็บไว้ในตัวแปร data
-    console.log(searchValue)
-    
+    console.log(searchValue);
+
     const db = getDatabase(app);
     const term = userData.uid;
     const termRef = ref(db, "User_Data/" + term);
     console.log(termRef);
     update(termRef, {
-      username:searchValue
+      username: searchValue,
     });
     setShowPopup(false);
   };
+
   return (
     <div className="profile">
       <div className="proflie_block_image">
@@ -53,22 +55,25 @@ function Proflie({ userData }) {
       </div>
       <div className="proflie_block_button">
         <button onClick={() => setShowPopup(true)}>change user name</button>
-        <div>
-      
-      {showPopup && (
-        <div className="popup">
-          <p>กรองชื่อที่ต้องการ</p>
-          <input
-            type="text"
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
-          />
-          <br /><br />
-          <button onClick={handleSearch}>ตงลง</button>
-          <button onClick={handleClose}>ปิด</button>
-        </div>
-      )}
-    </div>
+      </div>
+      <div>
+        {showPopup && (
+          <>
+            <div className="popup-box"></div>
+            <div className="popup">
+              <p>กรองชื่อที่ต้องการ</p>
+              <input
+                type="text"
+                value={searchValue}
+                onChange={(e) => setSearchValue(e.target.value)}
+              />
+              <br />
+              <br />
+              <button onClick={handleSearch}>ตงลง</button>
+              <button onClick={handleClose}>ปิด</button>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

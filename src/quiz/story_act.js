@@ -8,7 +8,6 @@ function StoryAct({ modiflyQuiz, thisact, nextact }) {
   };
   return (
     <div>
-      z
       <div className="story_container">
         <div className="story_action">Story Action</div>
         <div className="story_text">{modiflyQuiz}</div>

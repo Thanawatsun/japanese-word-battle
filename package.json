@@ -24,6 +24,7 @@
     "react-quiz-component": "^0.9.1",
     "react-router-dom": "^7.1.1",
     "react-scripts": "^5.0.1",
+    "reactjs-popup": "^2.0.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

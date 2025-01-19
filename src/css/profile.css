@@ -1,50 +1,77 @@
-.profile_image { grid-area: profile_image; }
-.username { grid-area: username; }
-.useremail { grid-area: useremail; }
-.profile{
-    display: grid;
-    row-gap: 2vh;
-    height: 70vh;
+.profile_image {
+  grid-area: profile_image;
 }
+
+.username {
+  grid-area: username;
+}
+
+.useremail {
+  grid-area: useremail;
+}
+
+.profile {
+  display: grid;
+  row-gap: 2vh;
+  height: 70vh;
+}
+
 .proflie_block_image {
-    margin-top: 1vh;
-    display: grid;
-    grid-template-areas:
-      'profile_image username'
-      'profile_image useremail';
-    padding: 10px;
-    justify-items: start;
-  }
-  .profile_image{
-    margin: auto;
-  }
-  img {
-    border-radius: 50%;
-  }
-  .proflie_block{
-    display: grid;
-    margin-left: 2vw;
-    justify-content: start;
-    justify-items: start;
-  }
-  .proflie_block_button{
-    display: flex;
-    justify-content: end;
-  }
-  .username{
-    display: grid;
-    justify-items: start;
-  }
-  .useremail{
-    display: grid;
-    justify-items: start;
-  }
-  .popup {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 20px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+  margin-top: 1vh;
+  display: grid;
+  grid-template-areas:
+    'profile_image username'
+    'profile_image useremail';
+  padding: 10px;
+  justify-items: start;
+}
+
+.profile_image {
+  margin: auto;
+}
+
+img {
+  border-radius: 50%;
+}
+
+.proflie_block {
+  display: grid;
+  margin-left: 2vw;
+  justify-content: start;
+  justify-items: start;
+}
+
+.proflie_block_button {
+  display: flex;
+  justify-content: end;
+}
+
+.username {
+  display: grid;
+  justify-items: start;
+}
+
+.useremail {
+  display: grid;
+  justify-items: start;
+}
+
+.popup {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease-in-out;
+}
+
+.popup-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+}
