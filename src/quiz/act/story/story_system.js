@@ -11,15 +11,21 @@ function StorySystem() {
   const [next_act, setreward_act] = useState(false);
   const [load_act, setload_act] = useState(false);
   const [story_act, setstory_act] = useState(true);
+  const [life_act, setlife_act] = useState(0);
 
   const location = useLocation();
   const { quizData } = location.state; // รับค่า quizData จาก state
   const { poststory } = location.state; // รับค่า quizData จาก state
   const { act_count } = location.state;
+  const { userdefine } = location.state;
+  const { max_count } = location.state;
+  const { life } = location.state;
 
   const navigate = useNavigate();
   const story_text = quizData[act_count].story; // จัดการ act ด้วย
-
+  useEffect(() => {
+    setlife_act(life);
+  }, []);
   const handlenext = () => {
     if (poststory & (number_story + 1 > 1)) {
       setreward_act(true);
@@ -51,18 +57,27 @@ function StorySystem() {
           Ispractice={true}
           modiflyQuiz={quizData}
           act_count={act_count}
+          userdefine={userdefine}
+          life={life_act}
         />
       ) : next_act ? (
         <Act_stsyem
           Isnext={true}
           modiflyQuiz={quizData}
           act_count={act_count}
+          userdefine={userdefine}
+          life={life_act}
         />
       ) : (
         <div></div>
       )}
       <div className="story_container">
         <div></div>
+        <div>time point left : {life_act}</div>
+        <div>
+          act count : {act_count[4]}/{max_count}
+        </div>
+
         {poststory ? (
           <Story_post_pratice
             scene_number={number_story}

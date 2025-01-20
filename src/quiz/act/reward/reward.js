@@ -5,13 +5,16 @@ function Reward() {
     
     const location = useLocation();
     const navigate = useNavigate();
-    const [name, setName] = useState('test');
-    const [age, setAge] = useState('23');
+    const { quizData } = location.state; // รับค่า quizData จาก state
+    const {act_count} = location.state;
+    const { userdefine } = location.state;
+    const [name, setName] = useState('test002');
+    const [age, setAge] = useState('2300');
     const handlenext = async (event) => {
         event.preventDefault();
     
         try {
-          const response = await axios.post(`http://localhost:9000/postuser/cUYUrFibdgUzzmJdCs9kYnyJTGI3`, {
+          const response = await axios.post(`http://localhost:9000/postuser/${userdefine.uid}`, {
             name,
             age
           });
