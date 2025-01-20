@@ -9,20 +9,19 @@ function CorrectWordChoice() {
   const [combo, setCombo] = useState(1);
   const [correctAns, setCorrectAns] = useState(0);
   const [showScore, setShowScore] = useState(0);
-  const [questions, setQuestions] = useState(
-    [
-      {
-        text: "えき",
-        story:"where is the train station?",
-        meaning:"train station",
-        options:[
-          { id: 0, text: "eki", isCorrect: true },
-          { id: 1, text: "aki", isCorrect: false },
-          { id: 2, text: "ei", isCorrect: false },
-          { id: 3, text: "ou", isCorrect: false },]
-      },
-    ]
-  )
+  const [questions, setQuestions] = useState([
+    {
+      text: "えき",
+      story: "where is the train station?",
+      meaning: "train station",
+      options: [
+        { id: 0, text: "eki", isCorrect: true },
+        { id: 1, text: "aki", isCorrect: false },
+        { id: 2, text: "ei", isCorrect: false },
+        { id: 3, text: "ou", isCorrect: false },
+      ],
+    },
+  ]);
 
   useEffect(() => {
     console.log(score);
@@ -61,20 +60,16 @@ function CorrectWordChoice() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        await getQuiz(setQuestions,"correct_Word");
+        await getQuiz(setQuestions, "correct_Word");
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       }
     };
     fetchData();
   }, []);
 
-
   return (
-    <div
-      className=""
-      style={{ width: "25rem" }}
-    >
+    <div className="" style={{ width: "25rem" }}>
       <h1>Choose the correct answer.</h1>
       <h2>Score : {showScore}</h2>
       <h2>Life : </h2>
@@ -97,7 +92,9 @@ function CorrectWordChoice() {
           </h2>
           <h3 className="question-text">{questions[currentQuestion].story}</h3>
           <h3 className="question-text">{questions[currentQuestion].text}</h3>
-          <h3 className="question-text">{questions[currentQuestion].meaning}</h3>
+          <h3 className="question-text">
+            {questions[currentQuestion].meaning}
+          </h3>
           <ListGroup as="ul">
             {questions[currentQuestion].options.map((option) => {
               return (

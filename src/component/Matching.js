@@ -52,7 +52,6 @@ function Matching() {
     setAllMatch(0);
     setSelectLeft(null);
     setSelectRight(null);
-
   }
 
   function HandleSelected(item) {
@@ -104,10 +103,9 @@ function Matching() {
 
   useEffect(() => {
     NewGame();
-    console.log(questions)
-  },[questions]);
-  useEffect(()=>{
-
+    console.log(questions);
+  }, [questions]);
+  useEffect(() => {
     const fetchData = async () => {
       try {
         await getQuiz(setQuestions, "matching");
@@ -116,7 +114,7 @@ function Matching() {
       }
     };
     fetchData();
-  },[])
+  }, []);
   const shuffleArray = (array) => {
     return array
       .map((item) => ({ ...item, sort: Math.random() })) // Add random sort key

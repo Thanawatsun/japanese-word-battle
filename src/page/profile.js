@@ -30,14 +30,19 @@ function Proflie({ userData }) {
     <div className="profile">
       <div className="proflie_block_image">
         <div className="profile_image">
-          <img src={userData.user_profile} alt="Paris" width="80" height="80" />
+          <img
+            src={userData.user_profile}
+            alt="Paris"
+            width="100"
+            height="100"
+          />
         </div>
         <div className="username">
-          <h3>username</h3>
+          <h3>User Name</h3>
           <p>{userData.username}</p>
         </div>
         <div className="useremail">
-          <h3>UserEmail</h3>
+          <h3>Email</h3>
           <p>{userData.useremail}</p>
         </div>
       </div>
@@ -50,11 +55,16 @@ function Proflie({ userData }) {
         <p>{userData.user_stage}</p>
       </div>
       <div className="proflie_block">
-        <h3>แต้มรวม</h3>
+        <h3>แสตมป์ทั้งหมด</h3>
         <p>{userData.user_score}</p>
       </div>
       <div className="proflie_block_button">
-        <button onClick={() => setShowPopup(true)}>change user name</button>
+        <button
+          className="change-name-button"
+          onClick={() => setShowPopup(true)}
+        >
+          <h5>CHANGE USER NAME</h5>
+        </button>
       </div>
       <div>
         {showPopup && (

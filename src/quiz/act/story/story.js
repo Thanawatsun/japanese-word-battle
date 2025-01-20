@@ -16,6 +16,7 @@ function Story(scene) {
     settargetText("story_text_" + scene.scene_number);
     settargetImg("story_image_" + scene.scene_number);
   }, [scene]);
+
   return (
     <Container>
       <Row>

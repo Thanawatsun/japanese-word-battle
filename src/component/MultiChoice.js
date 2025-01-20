@@ -58,7 +58,7 @@ function MultiChoice() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log("here")
+        console.log("here");
         await getQuiz(setQuestions, "character");
       } catch (error) {
         console.error("Error fetching data:", error);

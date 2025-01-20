@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 
-function Word(
-    {
-        this_stage,
-        next_stage,
-        game_data
-    }
-){
+function Word({ this_stage, next_stage, game_data }) {
   const [selectedOption, setSelectedOption] = useState(null);
   const [showBar, setshowBar] = useState(false);
   const [showGreenBar, setshowGreenBar] = useState(false);
@@ -16,11 +10,11 @@ function Word(
     const audio = new Audio(option.audio);
     audio.play();
   };
-  useEffect(()=>{
-    console.log(game_data)
+  useEffect(() => {
+    console.log(game_data);
     const audio = new Audio(game_data.audio);
     audio.play();
-  },[])
+  }, []);
   const handleConfirm = () => {
     if (selectedOption !== null) {
       const isCorrect = selectedOption.isCorrect;
@@ -37,69 +31,67 @@ function Word(
   };
 
   const handleClick = () => {
-      this_stage(false)
-      next_stage(true)
-      setshowGreenBar(false);
-      setshowBar(false);
-    }
-  return(
-      <div>
-          Word
-          <div className="question_block_voice">
-
-<h3 className="question-text">{game_data.text}</h3>
-</div>
-          <div className="">
-      <div className="question-card">
-        <ListGroup as="ul">
-          {game_data.options.map((option) => {
-            return (
-              <ListGroup.Item
-                as="li"
-                className={`btn ${
-                  selectedOption?.id === option.id ? "selected" : ""
-                }`}
-                variant="primary"
-                onClick={() => handleOptionClick(option)}
-                key={option.id}
-              >
-                {option.text}
-              </ListGroup.Item>
-            );
-          })}
-        </ListGroup>
+    this_stage(false);
+    next_stage(true);
+    setshowGreenBar(false);
+    setshowBar(false);
+  };
+  return (
+    <div>
+      Word
+      <div className="question_block_voice">
+        <h3 className="question-text">{game_data.text}</h3>
       </div>
-      <div className="confirm_block">
-      <button
-        className="confirm_button"
-        onClick={handleConfirm}
-        disabled={!selectedOption}
-      >
-        Confirm
-      </button>
+      <div className="">
+        <div className="question-card">
+          <ListGroup as="ul">
+            {game_data.options.map((option) => {
+              return (
+                <ListGroup.Item
+                  as="li"
+                  className={`btn ${
+                    selectedOption?.id === option.id ? "selected" : ""
+                  }`}
+                  variant="primary"
+                  onClick={() => handleOptionClick(option)}
+                  key={option.id}
+                >
+                  {option.text}
+                </ListGroup.Item>
+              );
+            })}
+          </ListGroup>
+        </div>
+        <div className="confirm_block">
+          <button
+            className="confirm_button"
+            onClick={handleConfirm}
+            disabled={!selectedOption}
+          >
+            Confirm
+          </button>
+        </div>
+      </div>
+      {showBar && (
+        <div className="green-con" style={{ marginTop: "-8vh" }}>
+          {showGreenBar ? (
+            <div>
+              <div>Correct: the answer is {game_data.answer}</div>
+              <button className="green-button" onClick={handleClick}>
+                Next
+              </button>
+            </div>
+          ) : (
+            <div>
+              <div>Incorrect: the answer is {game_data.answer}</div>
+              <button className="red-button" onClick={handleClick}>
+                Next
+              </button>
+            </div>
+          )}
+        </div>
+      )}
     </div>
-    </div>
-    {showBar && (
-      <div className="green-con" style={{marginTop: "-8vh"}}>
-        {showGreenBar ? (
-          <div>
-            <div>Correct: the answer is {game_data.answer}</div>
-            <button className="green-button" onClick={handleClick}>
-              Next
-            </button>
-          </div>
-        ) : (
-          <div>
-            <div>Incorrect: the answer is {game_data.answer}</div>
-            <button className="red-button" onClick={handleClick}>
-              Next
-            </button>
-          </div>
-        )}
-      </div>
-    )}
-      </div>
-      
-  )
+  );
 }
 export default Word;
