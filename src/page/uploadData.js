@@ -207,6 +207,22 @@ function TermUploadForm() {
       setErrorMessage("Error uploading data. Please try again.");
     }
   };
+  const handleSubmitStamp = async (event) => {
+    event.preventDefault();
+    if (!formData) {
+      setErrorMessage("Please upload a valid JSON file.");
+      return;
+    }
+
+    try {
+      await uploadStamp();
+      setErrorMessage(null); // Clear any previous errors
+      setFormData(null); // Reset form data after successful upload
+    } catch (error) {
+      console.error("Error uploading data:", error);
+      setErrorMessage("Error uploading data. Please try again.");
+    }
+  };
 
   async function uploadDataToRealtimeDatabase(allData) {
     const db = getDatabase(app); // Use getDatabase for Realtime Database
@@ -1359,6 +1375,38 @@ function TermUploadForm() {
       throw e; // Re-throw for further handling
     }
   }
+  async function uploadStamp() {
+    const db = getDatabase(app); // Use getDatabase for Realtime Database
+    var allData_Stamp = [
+      {
+        stage_1:{
+          normal:"",
+          trim:""
+        },
+        stage_2:{
+          normal:"",
+          trim:""
+        },
+      }
+    ]
+    try {
+      for (const data of allData_Stamp) {
+        const termRef = ref(db, "Stamp_Data"); // Construct reference path
+
+        // Create or update data with update() for flexibility
+        await update(termRef, {
+          stage_1: data.stage_1,
+          stage_2: data.stage_2,
+        });
+
+        console.log("Data updated for");
+      }
+      console.log("All data uploaded to Realtime Database");
+    } catch (e) {
+      console.error("Error updating data:", e);
+      throw e; // Re-throw for further handling
+    }
+  }
 
   return (
     <div>
@@ -1370,6 +1418,9 @@ function TermUploadForm() {
       </form>
       <form onSubmit={handleSubmitTest}>
         <button type="submit">Upload</button>
+      </form>
+      <form onSubmit={handleSubmitStamp}>
+        <button type="submit">UploadStamp</button>
       </form>
     </div>
   );

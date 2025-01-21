@@ -10,11 +10,15 @@ function Word({ this_stage, next_stage, game_data }) {
     const audio = new Audio(option.audio);
     audio.play();
   };
+  const handleplaySound = () => {
+    const audio = new Audio(game_data.audio);
+    audio.play();
+  };
   useEffect(() => {
     console.log(game_data);
     const audio = new Audio(game_data.audio);
     audio.play();
-  }, []);
+  }, [next_stage]);
   const handleConfirm = () => {
     if (selectedOption !== null) {
       const isCorrect = selectedOption.isCorrect;
@@ -39,7 +43,8 @@ function Word({ this_stage, next_stage, game_data }) {
   return (
     <div>
       Word
-      <div className="question_block_voice">
+      <div className="question_block_voice"
+      onClick={() => handleplaySound()}>
         <h3 className="question-text">{game_data.text}</h3>
       </div>
       <div className="">

@@ -26,7 +26,7 @@ root.render(
         <Route path="/reward" element={<Reward />} />
       </Routes>
     </BrowserRouter>
-    <TermUploadForm />
+
   </>
 );
 

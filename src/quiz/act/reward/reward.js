@@ -12,17 +12,23 @@ function Reward() {
   const { quizData } = location.state; // รับค่า quizData จาก state
   const { act_count } = location.state;
   const { userdefine } = location.state;
+  const { max_count } = location.state;
+  const { life } = location.state;
   const [name, setName] = useState("test002");
   const [age, setAge] = useState("2300");
   const handlenext = async (event) => {
     event.preventDefault();
-
+    const updateStamp_Data =quizData.level
+    var stamp_status = "normal"
+    if(life === 5){
+      stamp_status = "trim"
+    }
+    
     try {
       const response = await axios.post(
-        `http://localhost:9000/postuser/${userdefine.uid}`,
+        `http://localhost:9000/postuser/${userdefine.uid}/Stamp_Data/${updateStamp_Data}`,
         {
-          name,
-          age,
+          Stamp:stamp_status
         }
       );
       console.log(response.data);

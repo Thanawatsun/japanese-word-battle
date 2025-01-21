@@ -16,7 +16,7 @@ function Pronunciation({ this_stage, next_stage, game_data }) {
     console.log(game_data);
     const audio = new Audio(game_data.audio);
     audio.play();
-  }, []);
+  }, [next_stage]);
   const handleConfirm = () => {
     if (selectedOption !== null) {
       const isCorrect = selectedOption.isCorrect;
