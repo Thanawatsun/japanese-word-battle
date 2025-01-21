@@ -32,7 +32,7 @@ function Proflie({ userData }) {
         <div className="profile_image">
           <img
             src={userData.user_profile}
-            alt="Paris"
+            alt="Profile"
             width="100"
             height="100"
           />
@@ -71,16 +71,21 @@ function Proflie({ userData }) {
           <>
             <div className="popup-box"></div>
             <div className="popup">
-              <p>กรองชื่อที่ต้องการ</p>
-              <input
-                type="text"
-                value={searchValue}
-                onChange={(e) => setSearchValue(e.target.value)}
-              />
-              <br />
-              <br />
-              <button onClick={handleSearch}>ตงลง</button>
-              <button onClick={handleClose}>ปิด</button>
+              <div className="popup-top">
+                <input
+                  className="popup-text-input"
+                  type="text"
+                  value={searchValue}
+                  onChange={(e) => setSearchValue(e.target.value)}
+                />
+                <h4>กรองชื่อที่ต้องการ</h4>
+              </div>
+              <button className="confirm-button" onClick={handleSearch}>
+                <h5>ตกลง</h5>
+              </button>
+              <button className="cancel-button" onClick={handleClose}>
+                <h5>ยกเลิก</h5>
+              </button>
             </div>
           </>
         )}
