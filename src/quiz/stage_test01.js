@@ -2,19 +2,11 @@ import React, { useState } from "react";
 import "../css/quiz.css";
 import { useEffect } from "react";
 import Act_stsyem from "./act/act_system";
-import { useNavigate } from "react-router-dom";
+import { app } from "../firebase"; // Import your Firebase configuration
+import { getDatabase, ref,onValue } from "firebase/database";
 function Stage_stsyem({ setIsPlayer, modiflyQuiz, userdefine, stageplay }) {
-  const [Score, setScore] = useState(0);
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [combo, setCombo] = useState(1);
-  const [life, setLife] = useState(99);
-
-  const [storyAct, setStoryAct] = useState(true);
-  const [storyAct_end, setStoryAct_end] = useState(false);
-  const [rewardAct, setRewardAct] = useState(false);
-  console.log(modiflyQuiz);
-  console.log(stageplay);
-  const navigate = useNavigate();
+  var continuePlay = false
+  var continueGame = {};
 
   return (
     <div>
@@ -27,6 +19,8 @@ function Stage_stsyem({ setIsPlayer, modiflyQuiz, userdefine, stageplay }) {
             userdefine={userdefine}
             act_count={"act_1"}
             life={5}
+            continuePlay={continuePlay}
+            continueGame={continueGame}
           />
         </div>
       </div>

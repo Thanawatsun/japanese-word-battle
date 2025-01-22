@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../../css/quiz.css";
-
+import { app } from "../../firebase"; // Import your Firebase configuration
+import { getDatabase, ref, update } from "firebase/database";
 import { useNavigate } from "react-router-dom";
 
 function Act_stsyem({
@@ -14,12 +15,12 @@ function Act_stsyem({
   act_count,
   userdefine,
   life,
+  continueGame,
+  continuePlay
 }) {
-  console.log(life);
-  const { quizData } = modiflyQuiz;
+  console.log(continuePlay)
   const navigate = useNavigate();
   useEffect(() => {
-    console.log(modiflyQuiz[act_count].nectAct);
     if ((modiflyQuiz[act_count].nextAct === "act_end") & Isnext) {
       alert("end");
       navigate("/reward", {
@@ -27,8 +28,8 @@ function Act_stsyem({
           quizData: modiflyQuiz,
           act_count: act_count,
           userdefine: userdefine,
-          life:life,
-          max_count:modiflyQuiz.act_count
+          life: life,
+          max_count: modiflyQuiz.act_count,
         },
       });
       //เดี๋ยวมาใส่ด่าน rewar
@@ -38,8 +39,23 @@ function Act_stsyem({
         Isstory_post_game = false;
         Isstory = true;
       }
+      // update act to user
+      const db = getDatabase(app);
+      const term = userdefine.uid;
+      const termRef = ref(db, "User_Data/" + term);
+      update(termRef, {
+        stage_playing_name: modiflyQuiz.level,
+        stage_playing_act: act_count,
+      });
+
       if (act_count > modiflyQuiz.act_count) {
         console.log("end game");
+      }
+      if(continuePlay){
+        console.log(act_count)
+        act_count = continueGame.stage_playing_act
+        console.log(continueGame)
+        console.log(act_count)
       }
       if (Isstory_post_game === true) {
         navigate("/story_endact", {
@@ -48,8 +64,8 @@ function Act_stsyem({
             poststory: true,
             act_count: act_count,
             userdefine: userdefine,
-            life:life,
-            max_count:modiflyQuiz.act_count
+            life: life,
+            max_count: modiflyQuiz.act_count,
           },
         });
       }
@@ -59,8 +75,8 @@ function Act_stsyem({
             quizData: modiflyQuiz,
             act_count: act_count,
             userdefine: userdefine,
-            life:life,
-            max_count:modiflyQuiz.act_count
+            life: life,
+            max_count: modiflyQuiz.act_count,
           },
         });
       }
@@ -70,8 +86,8 @@ function Act_stsyem({
             quizData: modiflyQuiz,
             act_count: act_count,
             userdefine: userdefine,
-            life:life,
-            max_count:modiflyQuiz.act_count
+            life: life,
+            max_count: modiflyQuiz.act_count,
           },
         });
       }
@@ -82,8 +98,8 @@ function Act_stsyem({
             poststory: false,
             act_count: act_count,
             userdefine: userdefine,
-            life:life,
-            max_count:modiflyQuiz.act_count
+            life: life,
+            max_count: modiflyQuiz.act_count,
           },
         }); // ส่งค่า quizData ผ่าน state
       }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../css/profile.css";
 import { app } from "../firebase"; // Import your Firebase configuration
-import { getDatabase, ref, update, onValue } from "firebase/database";
+import { getDatabase, ref, update } from "firebase/database";
 
 function Proflie({ userData }) {
   const [showPopup, setShowPopup] = useState(false);

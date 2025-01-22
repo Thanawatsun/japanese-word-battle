@@ -5,7 +5,8 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "../../../css/quiz.css";
-
+import { app } from "../../../firebase"; // Import your Firebase configuration
+import { getDatabase, ref, update } from "firebase/database";
 function Reward() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -31,7 +32,17 @@ function Reward() {
           Stamp:stamp_status
         }
       );
-      console.log(response.data);
+      
+            // update act to user
+            const db = getDatabase(app);
+            const term = userdefine.uid;
+            const termRef = ref(db, "User_Data/" + term);
+            console.log(act_count);
+            update(termRef, {
+              stage_playing_name: null,
+              stage_playing_act: null,
+            });
+
       navigate("/");
     } catch (error) {
       console.error(error);
