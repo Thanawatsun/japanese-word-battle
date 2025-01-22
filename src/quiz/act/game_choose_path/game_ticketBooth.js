@@ -4,8 +4,8 @@ function AnswerButton({ text, onClick }) {
   return <button onClick={onClick}>{text}</button>;
 }
 function Game_ticketBooth({ game_data, setload_act }) {
-        const [showBar, setshowBar] = useState(false);
-        const [showGreenBar, setshowGreenBar] = useState(false);
+  const [showBar, setshowBar] = useState(false);
+  const [showGreenBar, setshowGreenBar] = useState(false);
   const handleClick = (answer) => {
     console.log("You clicked:", answer);
     setshowBar(true);
@@ -19,6 +19,10 @@ function Game_ticketBooth({ game_data, setload_act }) {
   const handleClickNext = () => {
     setload_act(true);
   };
+  const handleClickIncorrect = () => {
+    setshowBar(false);
+  };
+
   return (
     <div>
       Ticket
@@ -31,17 +35,28 @@ function Game_ticketBooth({ game_data, setload_act }) {
         />
       ))}
       {showBar && (
-        <div className="green-con" style={{ marginTop: "-8vh" }}>
+        <div className="green-con">
           {showGreenBar ? (
-            <div>
-              <div>Correct: the answer is {game_data.answer}</div>
-              <button className="green-button" onClick={handleClickNext}>
-                Next
-              </button>
+            <div className="green-box">
+              <div className="box-inner">
+                <div className="green-text">
+                  Correct: the answer is {game_data.answer}
+                </div>
+                <button className="green-button" onClick={handleClickNext}>
+                  Next
+                </button>
+              </div>
             </div>
           ) : (
-            <div>
-              <div>Incorrect</div>
+            <div className="red-box">
+              <div className="box-inner">
+                <div className="red-text">
+                  Incorrect: the answer is {game_data.answer}
+                </div>
+                <button className="red-button" onClick={handleClickIncorrect}>
+                  Next
+                </button>
+              </div>
             </div>
           )}
         </div>

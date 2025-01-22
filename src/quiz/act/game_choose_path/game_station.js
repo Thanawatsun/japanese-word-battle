@@ -5,8 +5,8 @@ function AnswerButton({ text, onClick }) {
 }
 function Game_station({ game_data, setload_act }) {
   const [way, setWay] = useState("Train Station"); //ใส่ชื่อสถานที่จะไปใน databnase ด้วย
-      const [showBar, setshowBar] = useState(false);
-      const [showGreenBar, setshowGreenBar] = useState(false);
+  const [showBar, setshowBar] = useState(false);
+  const [showGreenBar, setshowGreenBar] = useState(false);
   const handleClick = (answer) => {
     console.log("You clicked:", answer);
     setshowBar(true);
@@ -20,6 +20,10 @@ function Game_station({ game_data, setload_act }) {
   const handleClickNext = () => {
     setload_act(true);
   };
+  const handleClickIncorrect = () => {
+    setshowBar(false);
+  };
+
   return (
     <div>
       <div>
@@ -32,22 +36,33 @@ function Game_station({ game_data, setload_act }) {
             onClick={() => handleClick(choose)}
           />
         ))}
-      {showBar && (
-        <div className="green-con" style={{ marginTop: "-8vh" }}>
-          {showGreenBar ? (
-            <div>
-              <div>Correct: the answer is {game_data.answer}</div>
-              <button className="green-button" onClick={handleClickNext}>
-                Next
-              </button>
-            </div>
-          ) : (
-            <div>
-              <div>Incorrect</div>
-            </div>
-          )}
-        </div>
-      )}
+        {showBar && (
+          <div className="green-con">
+            {showGreenBar ? (
+              <div className="green-box">
+                <div className="box-inner">
+                  <div className="green-text">
+                    Correct: the answer is {game_data.answer}
+                  </div>
+                  <button className="green-button" onClick={handleClickNext}>
+                    Next
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="red-box">
+                <div className="box-inner">
+                  <div className="red-text">
+                    Incorrect: the answer is {game_data.answer}
+                  </div>
+                  <button className="red-button" onClick={handleClickIncorrect}>
+                    Next
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

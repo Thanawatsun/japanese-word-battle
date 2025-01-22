@@ -43,8 +43,7 @@ function Word({ this_stage, next_stage, game_data }) {
   return (
     <div>
       Word
-      <div className="question_block_voice"
-      onClick={() => handleplaySound()}>
+      <div className="question_block_voice" onClick={() => handleplaySound()}>
         <h3 className="question-text">{game_data.text}</h3>
       </div>
       <div className="">
@@ -78,20 +77,28 @@ function Word({ this_stage, next_stage, game_data }) {
         </div>
       </div>
       {showBar && (
-        <div className="green-con" style={{ marginTop: "-8vh" }}>
+        <div className="green-con">
           {showGreenBar ? (
-            <div>
-              <div>Correct: the answer is {game_data.answer}</div>
-              <button className="green-button" onClick={handleClick}>
-                Next
-              </button>
+            <div className="green-box">
+              <div className="box-inner">
+                <div className="green-text">
+                  Correct: the answer is {game_data.answer}
+                </div>
+                <button className="green-button" onClick={handleClick}>
+                  Next
+                </button>
+              </div>
             </div>
           ) : (
-            <div>
-              <div>Incorrect: the answer is {game_data.answer}</div>
-              <button className="red-button" onClick={handleClick}>
-                Next
-              </button>
+            <div className="red-box">
+              <div className="box-inner">
+                <div className="red-text">
+                  Incorrect: the answer is {game_data.answer}
+                </div>
+                <button className="red-button" onClick={handleClick}>
+                  Next
+                </button>
+              </div>
             </div>
           )}
         </div>

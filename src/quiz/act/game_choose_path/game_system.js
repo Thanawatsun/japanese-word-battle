@@ -23,6 +23,7 @@ function Game_system() {
   const handlenext = () => {
     setload_act(true);
   };
+
   return (
     <div>
       <div>time point left : {life_act}</div>
