@@ -1,6 +1,6 @@
 import "../css/home.css";
 import Profile from "./profile";
-import Bankword from "./bankword";
+import Stamp from "./stamp";
 import ScoreBoard from "./scoreboard";
 import Stage from "./stage";
 import LogoutUser from "./logout";
@@ -20,7 +20,7 @@ function Home({
   setuserdefine,
 }) {
   const [IsHome, setIsHome] = useState(true);
-  const [Isbankword, setIsbankword] = useState(false);
+  const [IsStamp, setIsStamp] = useState(false);
   const [IsBoard, setIsBoard] = useState(false);
   const [IsProflie, setIsProflie] = useState(false);
   const [userData, setUserData] = useState({});
@@ -39,22 +39,22 @@ function Home({
     console.log(userdefine);
     if (page === "Home") {
       setIsHome(true);
-      setIsbankword(false);
+      setIsStamp(false);
       setIsBoard(false);
       setIsProflie(false);
-    } else if (page === "Bankword") {
+    } else if (page === "Stamp") {
       setIsHome(false);
-      setIsbankword(true);
+      setIsStamp(true);
       setIsBoard(false);
       setIsProflie(false);
     } else if (page === "Board") {
       setIsHome(false);
-      setIsbankword(false);
+      setIsStamp(false);
       setIsBoard(true);
       setIsProflie(false);
     } else if (page === "Proflie") {
       setIsHome(false);
-      setIsbankword(false);
+      setIsStamp(false);
       setIsBoard(false);
       setIsProflie(true);
     }
@@ -73,7 +73,7 @@ function Home({
               </button>
               <button
                 className="change-page-button"
-                onClick={() => changePage("Bankword")}
+                onClick={() => changePage("Stamp")}
               >
                 <h2>Stamp</h2>
               </button>
@@ -107,9 +107,9 @@ function Home({
                   setStageplay={setStageplay}
                 />
               </div>
-            ) : Isbankword ? (
+            ) : IsStamp ? (
               <div className="center-content">
-                <Bankword wordlist={userData.userBankword} />
+                <Stamp stamplist={userData.Stamp_Data} />
               </div>
             ) : IsBoard ? (
               <div className="center-content">

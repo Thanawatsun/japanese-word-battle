@@ -3,27 +3,32 @@ import { app } from "../firebase"; // Import your Firebase configuration
 import { ref, onValue, getDatabase, get } from "firebase/database";
 import React, { useEffect, useState } from "react";
 
-function Bankword({ wordlist }) {
+function Stamp({ stamplist }) {
   const [showvocabulary, setShowvocabulary] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
         const wordsArray = [];
-        for (const word of wordlist) {
-          const databaseRef = ref(getDatabase(app), `term_bank/` + word);
+          const databaseRef = ref(getDatabase(app), `Stamp_Data/`);
           const snapshot = await get(databaseRef);
-          const wordData = snapshot.val();
-
-          if (wordData) {
-            wordsArray.push({
-              word: wordData.forms[0],
-              reading: wordData.spelling,
-              meaning: wordData.tag[0].meaning[0],
-            });
+          const stampData = snapshot.val();
+          console.log(stampData)
+          console.log(stamplist)
+          if (stampData) {
+            for (var key of Object.keys(stampData)) {
+              if(stamplist[key] !== undefined){
+                const image = stamplist[key].Stamp
+                //console.log(key + " -> " + stamplist[key].Stamp)
+                //console.log(key + " -> " + stampData[key][image])
+                wordsArray.push({image:stampData[key][image]})
+              }
+              else{
+                wordsArray.push({image:"https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/stamp%2Fstmap_unknow.jpeg?alt=media&token=0670b348-c922-497d-a427-c26dd169b887"})
+              }
           }
-        }
+          }
+        
 
         setShowvocabulary(wordsArray);
         setIsLoading(false);
@@ -34,7 +39,7 @@ function Bankword({ wordlist }) {
     };
 
     fetchData();
-  }, [wordlist]);
+  }, [stamplist]);
 
   return (
     <div>
@@ -45,32 +50,22 @@ function Bankword({ wordlist }) {
           {showvocabulary.map((item, index) => (
             <VocabularyCard key={index} {...item} />
           ))}
+          
         </div>
       )}
     </div>
   );
 }
-function VocabularyCard({ word, reading, meaning }) {
-  const [expanded, setExpanded] = useState(false);
+function VocabularyCard({ image }) {
 
-  const handleWordClick = () => {
-    setExpanded(!expanded);
-  };
 
   return (
-    <div className={`cards ${expanded ? "expanded" : ""}`}>
-      <div className="word" onClick={handleWordClick}>
-        Word : {word}
-        <div className={`triangle ${expanded ? "rotated" : ""}`}></div>
+    <div className={'cards'}>
+      <div className="word">
+        <img src={image} alt=""  width="75px"/>
       </div>
-      {expanded && (
-        <div className="details">
-          <div className="reading">Spelling : {reading}</div>
-          <div className="meaning">Meaning : {meaning}</div>
-        </div>
-      )}
     </div>
   );
 }
 
-export default Bankword;
+export default Stamp;
