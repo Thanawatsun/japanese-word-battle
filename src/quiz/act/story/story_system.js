@@ -72,11 +72,11 @@ function StorySystem() {
         <div></div>
       )}
       <div className="story_container">
-        <div></div>
+        {/* <div></div>
         <div>time point left : {life_act}</div>
         <div>
           act count : {act_count[4]}/{max_count}
-        </div>
+        </div> */}
 
         {poststory ? (
           <Story_post_pratice
