@@ -71,7 +71,7 @@ function StorySystem() {
       ) : (
         <div></div>
       )}
-      <div className="story_container">
+      <div className="story-main-container">
         {/* <div></div>
         <div>time point left : {life_act}</div>
         <div>
@@ -91,11 +91,7 @@ function StorySystem() {
           <div></div>
         )}
         <div className="confirm_block">
-          <button
-            className="confirm_button"
-            onClick={handlenext}
-            style={{ marginTop: "1vh" }}
-          >
+          <button className="confirm_button" onClick={handlenext}>
             Next
           </button>
         </div>

@@ -37,12 +37,14 @@ function Pronunciation({ this_stage, next_stage, game_data }) {
     next_stage(true);
   };
   return (
-    <div>
-      Pronunciation
-      <div className="question_block_voice" onClick={handleClickAudio}>
-        <h3 className="question-text">{game_data.text}</h3>
+    <div className="center-quiz-block">
+      <div className="center-quiz-pt1">Pronunciation</div>
+      <div className="center-quiz-pt2">
+        <div className="question_block_voice" onClick={handleClickAudio}>
+          <h3 className="question-text">{game_data.text}</h3>
+        </div>
       </div>
-      <div className="">
+      <div className="center-quiz-pt3">
         <div className="question-card">
           <ListGroup as="ul">
             {game_data.options.map((option) => {
@@ -62,7 +64,7 @@ function Pronunciation({ this_stage, next_stage, game_data }) {
             })}
           </ListGroup>
         </div>
-        <div className="confirm_block">
+        <div className="confirm_block quiz-confirm-block">
           <button
             className="confirm_button"
             onClick={handleConfirm}

@@ -3,6 +3,10 @@ import React, { useEffect, useState } from "react";
 import Act_stsyem from "../act_system";
 import Pronunciation from "./pronunciation";
 import Word from "./word";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
 function Practice() {
   const [load_act, setload_act] = useState(false);
   const [life_act, setlife_act] = useState(0);
@@ -23,45 +27,52 @@ function Practice() {
     setload_act(true);
   };
   return (
-    <div>
-      <div>time point left : {life_act}</div>
-      <div>
-        act count : {act_count[4]}/{max_count}
-      </div>
-      <div>
-        {load_act ? (
-          <Act_stsyem
-            Isgame={true}
-            modiflyQuiz={quizData}
-            act_count={act_count}
-            userdefine={userdefine}
-            life={life_act}
-          />
-        ) : (
-          <div></div>
-        )}
-      </div>
-      <div>
-        {practice_type === "pronunciation_set" ? (
-          <Pronunciation_set
-            game_data={practice_list}
-            setload_act={setload_act}
-          />
-        ) : practice_type === "01" ? (
-          <Pronunciation_set
-            game_data={practice_list}
-            setload_act={setload_act}
-          />
-        ) : practice_type === "02" ? (
-          <Pronunciation_set
-            game_data={practice_list}
-            setload_act={setload_act}
-          />
-        ) : (
-          <div></div>
-        )}
-      </div>
-    </div>
+    <Container>
+      <Row>
+        <Col>
+          <div>
+            <h4>Time Left</h4>
+          </div>
+          <div>
+            <h1>0{life_act}:00</h1>
+          </div>
+        </Col>
+        <Col>
+          {load_act ? (
+            <Act_stsyem
+              Isgame={true}
+              modiflyQuiz={quizData}
+              act_count={act_count}
+              userdefine={userdefine}
+              life={life_act}
+            />
+          ) : (
+            <div></div>
+          )}
+          {practice_type === "pronunciation_set" ? (
+            <Pronunciation_set
+              game_data={practice_list}
+              setload_act={setload_act}
+            />
+          ) : practice_type === "01" ? (
+            <Pronunciation_set
+              game_data={practice_list}
+              setload_act={setload_act}
+            />
+          ) : practice_type === "02" ? (
+            <Pronunciation_set
+              game_data={practice_list}
+              setload_act={setload_act}
+            />
+          ) : (
+            <div></div>
+          )}
+        </Col>
+        <Col>
+          act count : {act_count[4]}/{max_count}
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
