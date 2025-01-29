@@ -40,7 +40,7 @@
 }
 
 .question_block_voice:hover {
-  background-color: #daa455;
+  background-color: #feb140;
 }
 
 .question_block {
@@ -77,13 +77,13 @@
 }
 
 .btn:hover {
-  background-color: #ddd !important;
+  background-color: #e6e6e6 !important;
   border-color: black !important;
   color: black !important;
 }
 
 .selected {
-  background-color: #67b1b0 !important;
+  background-color: #0F2133 !important;
   color: white !important;
 }
 
@@ -108,7 +108,7 @@
 }
 
 .confirm_button:not(:disabled):hover {
-  background-color: #8cbc7c;
+  background-color: #95dc7a;
 }
 
 .confirm_block {
@@ -203,6 +203,10 @@
   color: white;
 }
 
+.green-button:hover {
+  background-color: #00a911;
+}
+
 .red-box {
   background-color: #FFABAB;
   height: fit-content;
@@ -238,6 +242,10 @@
   border-radius: 4px;
   border: none;
   color: white;
+}
+
+.red-button:hover {
+  background-color: #e60000;
 }
 
 .box-inner {
@@ -365,6 +373,8 @@
 
 .center-quiz-pt1 {
   height: 10%;
+  padding-top: 5vh;
+  padding-left: 2vw;
 }
 
 .center-quiz-pt2 {

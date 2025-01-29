@@ -54,7 +54,7 @@ function Game_ticketBooth({ game_data, setload_act }) {
                   Incorrect: the answer is {game_data.answer}
                 </div>
                 <button className="red-button" onClick={handleClickIncorrect}>
-                  Next
+                  Try Again
                 </button>
               </div>
             </div>

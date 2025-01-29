@@ -33,20 +33,29 @@ function Word({ this_stage, next_stage, game_data }) {
       console.log("Please select an option before confirming.");
     }
   };
-
   const handleClick = () => {
     this_stage(false);
     next_stage(true);
     setshowGreenBar(false);
     setshowBar(false);
+    setSelectedOption(null);
   };
+  const handleClickIncorrect = () => {
+    setshowBar(false);
+    setSelectedOption(null);
+  };
+
   return (
-    <div>
-      Word
-      <div className="question_block_voice" onClick={() => handleplaySound()}>
-        <h3 className="question-text">{game_data.text}</h3>
+    <div className="center-quiz-block">
+      <div className="center-quiz-pt1">
+        <h3>Choose the correct pronunciation.</h3>
       </div>
-      <div className="">
+      <div className="center-quiz-pt2">
+        <div className="question_block_voice" onClick={() => handleplaySound()}>
+          <h3 className="question-text">{game_data.text}</h3>
+        </div>
+      </div>
+      <div className="center-quiz-pt3">
         <div className="question-card">
           <ListGroup as="ul">
             {game_data.options.map((option) => {
@@ -66,7 +75,7 @@ function Word({ this_stage, next_stage, game_data }) {
             })}
           </ListGroup>
         </div>
-        <div className="confirm_block">
+        <div className="confirm_block quiz-confirm-block">
           <button
             className="confirm_button"
             onClick={handleConfirm}
@@ -95,8 +104,8 @@ function Word({ this_stage, next_stage, game_data }) {
                 <div className="red-text">
                   Incorrect: the answer is {game_data.answer}
                 </div>
-                <button className="red-button" onClick={handleClick}>
-                  Next
+                <button className="red-button" onClick={handleClickIncorrect}>
+                  Try Again
                 </button>
               </div>
             </div>

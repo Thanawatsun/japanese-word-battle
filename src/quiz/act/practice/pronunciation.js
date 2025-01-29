@@ -31,14 +31,23 @@ function Pronunciation({ this_stage, next_stage, game_data }) {
       console.log("Please select an option before confirming.");
     }
   };
-
   const handleClick = () => {
     this_stage(false);
     next_stage(true);
+    setshowGreenBar(false);
+    setshowBar(false);
+    setSelectedOption(null);
   };
+  const handleClickIncorrect = () => {
+    setshowBar(false);
+    setSelectedOption(null);
+  };
+
   return (
     <div className="center-quiz-block">
-      <div className="center-quiz-pt1">Pronunciation</div>
+      <div className="center-quiz-pt1">
+        <h3>Choose the correct pronunciation.</h3>
+      </div>
       <div className="center-quiz-pt2">
         <div className="question_block_voice" onClick={handleClickAudio}>
           <h3 className="question-text">{game_data.text}</h3>
@@ -93,8 +102,8 @@ function Pronunciation({ this_stage, next_stage, game_data }) {
                 <div className="red-text">
                   Incorrect: the answer is {game_data.answer}
                 </div>
-                <button className="red-button" onClick={handleClick}>
-                  Next
+                <button className="red-button" onClick={handleClickIncorrect}>
+                  Try Again
                 </button>
               </div>
             </div>
