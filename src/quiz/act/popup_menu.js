@@ -23,7 +23,10 @@ function Poppu_menu({ modiflyQuiz, act_count, userdefine, life }) {
           <div className="popup-box"></div>
           <div className="popup">
             <div className="popup-content">
-              <p className="menu-image">img</p>
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2FMenuImage.png?alt=media&token=869102bf-d9fc-437a-9f41-cf3f64471fcd"
+                alt="Menu-Image"
+              />
               <button onClick={togglePopup} className="confirm-button">
                 <h5>Continue</h5>
               </button>
