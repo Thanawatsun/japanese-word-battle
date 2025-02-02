@@ -17,6 +17,7 @@ function Story_post_practice(scene, act) {
     settargetText("story_text_" + scene.scene_number);
     settargetImg("story_image_" + scene.scene_number);
   }, [scene]);
+
   return (
     <Container>
       <Row>

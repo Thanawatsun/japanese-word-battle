@@ -1,11 +1,11 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Act_stsyem from "../act_system";
-
 import Sign from "./game_sign";
 import Station from "./game_station";
 import Ticket from "./game_ticketBooth";
 import Poppu_menu from "../popup_menu";
+
 function Game_system() {
   const [load_act, setload_act] = useState(false);
   const [life_act, setlife_act] = useState(0);
@@ -31,12 +31,12 @@ function Game_system() {
         act count : {act_count[4]}/{max_count}
       </div>
       <div>
-      <Poppu_menu
-        modiflyQuiz={quizData}
-        act_count={act_count}
-        userdefine={userdefine}
-        life={life_act}
-      />
+        <Poppu_menu
+          modiflyQuiz={quizData}
+          act_count={act_count}
+          userdefine={userdefine}
+          life={life_act}
+        />
         {load_act ? (
           <Act_stsyem
             Isnext={true}

@@ -1,37 +1,40 @@
-import React, { useState } from 'react';
-import "../../css/stage.css"
+import React, { useState } from "react";
+import "../../css/stage.css";
 import Act_stsyem from "./act_system";
-function Poppu_menu(
-{  modiflyQuiz,
-  act_count,
-  userdefine,
-  life,}
-) {
 
-    const [load_act, setload_act] = useState(false);
+function Poppu_menu({ modiflyQuiz, act_count, userdefine, life }) {
+  const [load_act, setload_act] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
 
   const togglePopup = () => {
     setShowPopup(!showPopup);
   };
   const toggleQuit = () => {
-    setload_act(true)
+    setload_act(true);
   };
 
   return (
     <div class="popupMenu">
-      <button onClick={togglePopup}>Menu</button>
-
+      <button onClick={togglePopup} className="menu-popup-button">
+        Menu
+      </button>
       {showPopup && (
-        <div className="popup">
-          <div className="popup-content">
-              <p>img</p>
-            <button onClick={togglePopup}>Continue</button>
-            <button onClick={toggleQuit}>Quit</button>
+        <>
+          <div className="popup-box"></div>
+          <div className="popup">
+            <div className="popup-content">
+              <p className="menu-image">img</p>
+              <button onClick={togglePopup} className="confirm-button">
+                <h5>Continue</h5>
+              </button>
+              <button onClick={toggleQuit} className="cancel-button">
+                <h5>Quit</h5>
+              </button>
+            </div>
           </div>
-        </div>
+        </>
       )}
-            {load_act ? (
+      {load_act ? (
         <Act_stsyem
           IsQuit={true}
           Isnext={false}

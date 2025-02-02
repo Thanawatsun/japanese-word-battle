@@ -5,6 +5,7 @@ import Story_per_pratice from "./story_per_practice";
 import Story_post_pratice from "./story_post_practice";
 import Act_stsyem from "../act_system";
 import Poppu_menu from "../popup_menu";
+
 function StorySystem() {
   const [number_story, setnumber_story] = useState(1);
   const [targetText, settargetText] = useState("story_text_1");
