@@ -16,9 +16,10 @@ function Act_stsyem({
   userdefine,
   life,
   continueGame,
-  continuePlay
+  continuePlay,
+  IsQuit
 }) {
-  console.log(continuePlay)
+//  console.log(continuePlay)
   const navigate = useNavigate();
   useEffect(() => {
     if ((modiflyQuiz[act_count].nextAct === "act_end") & Isnext) {
@@ -47,7 +48,9 @@ function Act_stsyem({
         stage_playing_name: modiflyQuiz.level,
         stage_playing_act: act_count,
       });
-
+      if(IsQuit){
+        navigate("/")
+      }
       if (act_count > modiflyQuiz.act_count) {
         console.log("end game");
       }

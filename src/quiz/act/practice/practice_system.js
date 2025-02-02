@@ -6,7 +6,7 @@ import Word from "./word";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-
+import Poppu_menu from "../popup_menu";
 function Practice() {
   const [load_act, setload_act] = useState(false);
   const [life_act, setlife_act] = useState(0);
@@ -38,6 +38,12 @@ function Practice() {
           </div>
         </Col>
         <Col>
+        <Poppu_menu
+        modiflyQuiz={quizData}
+        act_count={act_count}
+        userdefine={userdefine}
+        life={life_act}
+      />
           {load_act ? (
             <Act_stsyem
               Isgame={true}
