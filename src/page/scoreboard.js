@@ -38,50 +38,81 @@ function ScoreBoard({ userData }) {
   }, [users]);
   return (
     <div className="scoreBoard">
-      <table className="scoreBoard_table">
-        <thead>
-          <tr>
-            <th className="scoreboard-head-left">อันดับ</th>
-            <th>ภาพ</th>
-            <th>ชื่อ</th>
-            <th className="scoreboard-head-right">แสตมป์</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user, index) => (
-            <tr key={user.id}>
-              <td>{index + 1}</td>
-              <td>
-                <img
-                  src={user.user_profile}
-                  alt="Proflie"
-                  width="50"
-                  height="50"
-                />
-              </td>
-              <td>{user.username}</td>
-              <td>{user.user_score}</td>
+      <div className="score-board-box">
+        <table className="scoreBoard_table">
+          <thead className="score-board-head">
+            <tr>
+              <th>อันดับ</th>
+              <th>ภาพ</th>
+              <th>ชื่อ</th>
+              <th>แสตมป์</th>
             </tr>
-          ))}
-        </tbody>
+          </thead>
+          <tbody>
+            {users.map((user, index) => (
+              <tr className="score-board-contain" key={user.id}>
+                <td className="table-contain-1">{index + 1}</td>
+                <td className="table-contain-2">
+                  <img
+                    src={user.user_profile}
+                    alt="Proflie"
+                    width="50px"
+                    height="50px"
+                  />
+                </td>
+                <td className="table-contain-3">{user.username}</td>
+                <td className="table-contain-4">: {user.user_score} Stamp</td>
+              </tr>
+            ))}
+          </tbody>
 
-        <tbody>
-          <hr className="line" />
+          {/* <tbody className="score-board-player">
           <tr>
             <td>{userrank}</td>
             <td>
               <img
                 src={userData.user_profile}
                 alt="Proflie"
-                width="60"
-                height="60"
+                width="50"
+                height="50"
               />
             </td>
             <td>{userData.username}</td>
             <td>{userData.user_score}</td>
           </tr>
-        </tbody>
-      </table>
+        </tbody> */}
+        </table>
+      </div>
+      <hr className="line" />
+      <div className="player-score-box">
+        <table className="scoreBoard_table">
+          <thead className="score-board-head">
+            <tr>
+              <th>อันดับ</th>
+              <th>ภาพ</th>
+              <th>ชื่อ</th>
+              <th>แสตมป์</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="score-board-contain">
+              <td className="player-table-contain-1">{userrank}</td>
+              <td className="player-table-contain-2">
+                <img
+                  src={userData.user_profile}
+                  alt="Proflie"
+                  width="50"
+                  height="50"
+                />
+              </td>
+              <td className="player-table-contain-3">{userData.username}</td>
+              <td className="player-table-contain-4">
+                : {userData.user_score} Stamp
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

@@ -1,43 +1,88 @@
-.scoreBoard{
+.scoreBoard {
   height: 100%;
 }
 
-.scoreBoard_table{
+.score-board-box {
+  height: calc(100% - 92px);
+  overflow: auto;
+}
+
+/* width */
+.score-board-box::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+.score-board-box::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.score-board-box::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+.score-board-box::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.scoreBoard_table {
   margin: auto;
   width: 100%;
 }
 
-td, th, tr {
-  border: 1px solid #ddd;
-  padding: 1vh;
+.score-board-head {
+  display: none;
 }
 
-th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #04AA6D;
-  color: white;
+.table-contain-1 {
+  width: 10%;
+  padding: 10px 0px 10px 0px;
 }
 
-td {
-  max-height: 8vh;
-  vertical-align: center;
+.table-contain-2 {
+  width: 20%;
+  padding: 10px 0px 10px 0px;
 }
 
-.line{
-  border-top: 0.5vh solid black;
+.table-contain-3 {
+  width: 40%;
+  padding: 10px 0px 10px 0px;
+}
+
+.table-contain-4 {
+  width: 20%;
+  padding: 10px 0px 10px 0px;
+}
+
+.line {
+  border-top: 2px solid black;
   opacity: 1;
-  border-radius: 5px;
-  width: 400%;
+  width: 100%;
   margin: auto;
-  margin-bottom: 1vh;
 }
 
-.scoreboard-head-left {
-  border-radius: 5px 0 0 0;
+.player-score-box {
+  height: 90px;
 }
 
-.scoreboard-head-right {
-  border-radius: 0 5px 0 0;
+.player-table-contain-1 {
+  width: 10%;
+  padding: 20px 0px 20px 0px;
+}
+
+.player-table-contain-2 {
+  width: 20%;
+  padding: 20px 0px 20px 0px;
+}
+
+.player-table-contain-3 {
+  width: 40%;
+  padding: 20px 0px 20px 0px;
+}
+
+.player-table-contain-4 {
+  width: 20%;
+  padding: 20px 0px 20px 0px;
 }
