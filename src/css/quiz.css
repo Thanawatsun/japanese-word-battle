@@ -393,3 +393,74 @@
   z-index: 0;
   height: 30%;
 }
+
+.act-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.ipad-border {
+  background-color: #E9E9E9;
+  height: 80%;
+  width: 80%;
+  border-radius: 10px;
+}
+
+.ipad-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #62AAC6;
+  margin: 20px 10px 10px 10px;
+  border-radius: 10px;
+  height: calc(100% - 90px);
+}
+
+.ipad-button {
+  display: block;
+  justify-self: center;
+  background-color: #E9E9E9;
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.ipad-display {
+  display: flex;
+  justify-content: center;
+  height: 80%;
+  width: 8%;
+  background-color: white;
+  position: relative;
+}
+
+.ipad-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background-color: white;
+  width: 175%;
+  aspect-ratio: 1/1;
+  border-radius: 100%;
+  transform: translateY(-50%);
+}
+
+.ipad-inner-circle {
+  /* background-color: #68E758; */
+  height: 70%;
+  width: 70%;
+  border-radius: 100%;
+}
+
+.ipad-display-progression {
+  background-color: #68E758;
+  width: 100%;
+  margin: 25%;
+  position: relative;
+  z-index: 2;
+}

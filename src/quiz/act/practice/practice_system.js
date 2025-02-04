@@ -17,16 +17,39 @@ function Practice() {
   const { userdefine } = location.state;
   const { max_count } = location.state;
   const { life } = location.state;
-
   const practice_list = quizData[act_count].practice;
   const practice_type = "pronunciation_set"; //อิงตาม data ที่ได้มา
   const navigate = useNavigate();
+  const location_point = [];
+
   useEffect(() => {
     setlife_act(life);
   }, []);
   const handlenext = () => {
     setload_act(true);
   };
+  for (let i = 0; i < max_count + 1; i++) {
+    location_point.push(
+      <div
+        key={i}
+        className="ipad-circle"
+        style={{ top: `${(i * 100) / max_count}%` }}
+      >
+        {i < act_count[4] ? (
+          <div
+            className="ipad-inner-circle"
+            style={{ backgroundColor: "#68E758" }}
+          ></div>
+        ) : (
+          <div
+            className="ipad-inner-circle"
+            style={{ backgroundColor: "#9D9D9D" }}
+          ></div>
+        )}
+      </div>
+    );
+  }
+
   return (
     <Container>
       <Row>
@@ -76,7 +99,25 @@ function Practice() {
           )}
         </Col>
         <Col>
-          act count : {act_count[4]}/{max_count}
+          <div className="act-box">
+            <div className="ipad-border">
+              <div className="ipad-screen">
+                {/* <h1>
+                  act count : {act_count[4]}/{max_count}
+                </h1> */}
+                <div className="ipad-display">
+                  {location_point}
+                  <div
+                    className="ipad-display-progression"
+                    style={{
+                      height: `${((act_count[4] - 1) * 100) / max_count}%`,
+                    }}
+                  ></div>
+                </div>
+              </div>
+              <div className="ipad-button"></div>
+            </div>
+          </div>
         </Col>
       </Row>
     </Container>

@@ -34,9 +34,14 @@
     font-weight: bold;
 }
 
+.menu-popup-button:hover {
+    background-color: #e8e062;
+}
+
 .menu-image {
-    /* height: 30%;
-    width: 100px; */
+    width: 100%;
+    border-radius: 0;
+    margin-bottom: 20px;
 }
 
 /* .popup-menu-box {

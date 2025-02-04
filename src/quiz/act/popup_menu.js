@@ -14,7 +14,7 @@ function Poppu_menu({ modiflyQuiz, act_count, userdefine, life }) {
   };
 
   return (
-    <div class="popupMenu">
+    <div className="popupMenu">
       <button onClick={togglePopup} className="menu-popup-button">
         Menu
       </button>
@@ -26,6 +26,7 @@ function Poppu_menu({ modiflyQuiz, act_count, userdefine, life }) {
               <img
                 src="https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2FMenuImage.png?alt=media&token=869102bf-d9fc-437a-9f41-cf3f64471fcd"
                 alt="Menu-Image"
+                className="menu-image"
               />
               <button onClick={togglePopup} className="confirm-button">
                 <h5>Continue</h5>

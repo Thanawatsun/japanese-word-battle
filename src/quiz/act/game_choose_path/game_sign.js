@@ -15,7 +15,7 @@ function Game_sign({ game_data, setload_act }) {
       //ทำเมื่อตอบถูกให้มี popup ขอความเขียวขึ้นมาเพื่อกดไปหน้าถัดไป
       setshowGreenBar(true);
     } else {
-      alert("incorrect");
+      console.log("Incorrect!");
     }
   };
   const handleClickNext = () => {
