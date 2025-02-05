@@ -406,6 +406,7 @@
   height: 80%;
   width: 80%;
   border-radius: 10px;
+  z-index: 1;
 }
 
 .ipad-screen {
@@ -451,7 +452,6 @@
 }
 
 .ipad-inner-circle {
-  /* background-color: #68E758; */
   height: 70%;
   width: 70%;
   border-radius: 100%;
@@ -463,4 +463,33 @@
   margin: 25%;
   position: relative;
   z-index: 2;
+}
+
+.choice-background-image-box {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.choice-background-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+  border-radius: 0%;
+}
+
+.choice-box {
+  position: relative;
+  z-index: 2;
+}
+
+.sign-button {
+  width: 100%;
+  aspect-ratio: 596/130;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
 }

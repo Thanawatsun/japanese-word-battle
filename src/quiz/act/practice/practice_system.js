@@ -102,9 +102,6 @@ function Practice() {
           <div className="act-box">
             <div className="ipad-border">
               <div className="ipad-screen">
-                {/* <h1>
-                  act count : {act_count[4]}/{max_count}
-                </h1> */}
                 <div className="ipad-display">
                   {location_point}
                   <div
