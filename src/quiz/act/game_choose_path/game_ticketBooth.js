@@ -25,7 +25,13 @@ function Game_ticketBooth({ game_data, setload_act }) {
 
   return (
     <div>
-      Ticket
+      <div className="choice-background-image-box">
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2Fgame_assets%2Fgame_path_2.png?alt=media&token=8417b8c0-0a14-460f-8c64-82a5b43fea83"
+          alt="Sign-Background-Image"
+          className="choice-background-image"
+        />
+      </div>
       <div>Choose the correct way to {game_data.wantToGo}.</div>
       {game_data.options.map((choose) => (
         <AnswerButton
