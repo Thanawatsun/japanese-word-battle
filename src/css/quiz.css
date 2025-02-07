@@ -472,24 +472,51 @@
   top: 0;
   left: 0;
   z-index: 0;
+  overflow: hidden;
 }
 
 .choice-background-image {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  height: 100%;
+  width: 100%;
   border-radius: 0%;
 }
 
 .choice-box {
   position: relative;
   z-index: 2;
+  height: 100vh;
+}
+
+.sign-question {
+  padding: 5%;
+}
+
+.sign-question-text {
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+}
+
+.sign-box {
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2Fgame_assets%2Fsign_center.png?alt=media&token=4c7a5a9d-0f9d-4332-9173-9ce063056bea");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  aspect-ratio: 594/870;
+  position: absolute;
+  bottom: 0;
+  z-index: 2;
 }
 
 .sign-button {
+  position: relative;
   width: 100%;
   aspect-ratio: 596/130;
   border: none;
   background-color: rgba(0, 0, 0, 0);
+  margin-bottom: 26px;
+  font-size: xx-large;
+  z-index: 3;
 }
