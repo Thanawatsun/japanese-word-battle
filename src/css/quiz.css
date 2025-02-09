@@ -477,10 +477,20 @@
 
 .choice-background-image {
   display: block;
+  border-radius: 0%;
+}
+
+.sign-bg-image {
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  border-radius: 0%;
+}
+
+.ticket-bg-image {
+  position: relative;
+  height: 175%;
+  top: -40%;
+  left: -20%;
 }
 
 .choice-box {
@@ -519,4 +529,43 @@
   margin-bottom: 26px;
   font-size: xx-large;
   z-index: 3;
+}
+
+.ticket-question {
+  padding: 5%;
+}
+
+.ticket-question-text {
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+}
+
+.ticket-box {
+  position: absolute;
+  top: 45%;
+  width: 100%;
+}
+
+.ticket-button {
+  position: relative;
+  width: 45%;
+  aspect-ratio: 270/80;
+  border: none;
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2Fgame_assets%2Fbutton%2Fbutton_normal.png?alt=media&token=8b307811-640d-4d68-abe8-2e7a5bbf938e");
+  background-size: 100%;
+  background-position: "center";
+  margin-right: 5%;
+  margin-bottom: 10%;
+  font-size: xx-large;
+  z-index: 3;
+  color: white;
+}
+
+.ticket-button:hover {
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2Fgame_assets%2Fbutton%2Fbutton_hover.png?alt=media&token=0b4864d5-760c-40da-a9df-61fe9008031c");
+}
+
+.ticket-button:active {
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2Fgame_assets%2Fbutton%2Fbutton_click.png?alt=media&token=2955bf85-a3fd-4f1a-a658-f794b11678fe");
 }

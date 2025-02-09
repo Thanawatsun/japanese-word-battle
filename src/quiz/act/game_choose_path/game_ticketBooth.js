@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 
 function AnswerButton({ text, onClick }) {
-  return <button onClick={onClick}>{text}</button>;
+  return (
+    <button onClick={onClick} className="ticket-button">
+      {text}
+    </button>
+  );
 }
 function Game_ticketBooth({ game_data, setload_act }) {
   const [showBar, setshowBar] = useState(false);
@@ -28,18 +32,26 @@ function Game_ticketBooth({ game_data, setload_act }) {
       <div className="choice-background-image-box">
         <img
           src="https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2Fgame_assets%2Fgame_path_2.png?alt=media&token=8417b8c0-0a14-460f-8c64-82a5b43fea83"
-          alt="Sign-Background-Image"
-          className="choice-background-image"
+          alt="Ticket-Background-Image"
+          className="choice-background-image ticket-bg-image"
         />
       </div>
-      <div>Choose the correct way to {game_data.wantToGo}.</div>
-      {game_data.options.map((choose) => (
-        <AnswerButton
-          key={choose.id}
-          text={choose.text}
-          onClick={() => handleClick(choose)}
-        />
-      ))}
+      <div className="choice-box">
+        <div className="ticket-question">
+          <h3 className="ticket-question-text">
+            Choose the correct way to {game_data.wantToGo}.
+          </h3>
+        </div>
+        <div className="ticket-box">
+          {game_data.options.map((choose) => (
+            <AnswerButton
+              key={choose.id}
+              text={choose.text}
+              onClick={() => handleClick(choose)}
+            />
+          ))}
+        </div>
+      </div>
       {showBar && (
         <div className="green-con">
           {showGreenBar ? (

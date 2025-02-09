@@ -64,7 +64,7 @@ function Game_sign({ game_data, setload_act }) {
         <img
           src="https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2Fgame_assets%2Fgame_path_1.png?alt=media&token=a8bf25ff-c004-4bd0-ad01-d92b0d37f595"
           alt="Sign-Background-Image"
-          className="choice-background-image"
+          className="choice-background-image sign-bg-image"
         />
       </div>
       <div className="choice-box">
