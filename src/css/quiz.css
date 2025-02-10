@@ -493,6 +493,12 @@
   left: -20%;
 }
 
+.station-bg-image {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
 .choice-box {
   position: relative;
   z-index: 2;
@@ -568,4 +574,59 @@
 
 .ticket-button:active {
   background-image: url("https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2Fgame_assets%2Fbutton%2Fbutton_click.png?alt=media&token=2955bf85-a3fd-4f1a-a658-f794b11678fe");
+}
+
+.station-question {
+  padding: 5%;
+}
+
+.station-question-text {
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+}
+
+.station-box {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  z-index: 2;
+  display: inline-flex;
+}
+
+.station-node-image {
+  border-radius: 0;
+  height: 80vh;
+}
+
+.station-button-group {
+  width: 100%;
+}
+
+.station-button {
+  width: 100%;
+  aspect-ratio: 383/92;
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2Fgame_assets%2Fstation%2Fstation_normal.png?alt=media&token=6f91ec53-f983-4fef-9191-8f13890dda42");
+  background-size: 100%;
+  background-position: "center";
+  position: relative;
+  left: -15px;
+  top: 0;
+  border: none;
+  font-size: xx-large;
+  background-color: rgba(0, 0, 0, 0);
+  margin-top: 7%;
+  margin-bottom: 14%;
+}
+
+.station-button:hover {
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2Fgame_assets%2Fstation%2Fstation_hover.png?alt=media&token=d7437e7a-3c99-4114-98a0-d1d5047570e2");
+}
+
+@media only screen and (max-width: 1700px) {
+  .station-button {
+    left: -10px;
+    margin-top: 3%;
+    margin-bottom: 4%;
+  }
 }

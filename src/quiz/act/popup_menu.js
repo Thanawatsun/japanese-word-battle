@@ -24,7 +24,7 @@ function Poppu_menu({ modiflyQuiz, act_count, userdefine, life }) {
           <div className="popup">
             <div className="popup-content">
               <img
-                src="https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2FMenuImage.png?alt=media&token=869102bf-d9fc-437a-9f41-cf3f64471fcd"
+                src="https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2Fgame_assets%2Fpopup_pause.png?alt=media&token=9f31b9b5-1117-4b60-b337-2cb9c5dcc421"
                 alt="Menu-Image"
                 className="menu-image"
               />
