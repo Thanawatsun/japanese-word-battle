@@ -89,7 +89,7 @@ function Pronunciation({ this_stage, next_stage, game_data }) {
             <div className="green-box">
               <div className="box-inner">
                 <div className="green-text">
-                  Correct: the answer is {game_data.answer}
+                  Correct: The answer is {game_data.answer}.
                 </div>
                 <button className="green-button" onClick={handleClick}>
                   Next
@@ -100,7 +100,7 @@ function Pronunciation({ this_stage, next_stage, game_data }) {
             <div className="red-box">
               <div className="box-inner">
                 <div className="red-text">
-                  Incorrect: the answer is {game_data.answer}
+                  Incorrect: Please choose the answer again.
                 </div>
                 <button className="red-button" onClick={handleClickIncorrect}>
                   Try Again

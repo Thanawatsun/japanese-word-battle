@@ -90,7 +90,7 @@ function Game_sign({ game_data, setload_act }) {
             <div className="green-box">
               <div className="box-inner">
                 <div className="green-text">
-                  Correct: the answer is {game_data.answer}
+                  Correct: You chose the right path.
                 </div>
                 <button className="green-button" onClick={handleClickNext}>
                   Next
@@ -101,7 +101,7 @@ function Game_sign({ game_data, setload_act }) {
             <div className="red-box">
               <div className="box-inner">
                 <div className="red-text">
-                  Incorrect: the answer is {game_data.answer}
+                  Incorrect: Please choose the path again.
                 </div>
                 <button className="red-button" onClick={handleClickIncorrect}>
                   Try Again

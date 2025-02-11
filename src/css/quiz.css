@@ -394,6 +394,31 @@
   height: 30%;
 }
 
+.time-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clock-frame {
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2Fgame_assets%2Fclock.png?alt=media&token=1742a9eb-810c-4137-a7e2-071feb35e9b0");
+  background-size: cover;
+  background-position: center;
+  width: 50%;
+  aspect-ratio: 321/519;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.clock-text {
+  color: white;
+  text-align: center;
+}
+
 .act-box {
   display: flex;
   justify-content: center;

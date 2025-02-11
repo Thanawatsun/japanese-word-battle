@@ -54,11 +54,13 @@ function Practice() {
     <Container>
       <Row>
         <Col>
-          <div>
-            <h4>Time Left</h4>
-          </div>
-          <div>
-            <h1>0{life_act}:00</h1>
+          <div className="time-box">
+            <div className="clock-frame">
+              <div className="clock-text">
+                <h4>Time Left</h4>
+                <h1>0{life_act}:00</h1>
+              </div>
+            </div>
           </div>
         </Col>
         <Col>

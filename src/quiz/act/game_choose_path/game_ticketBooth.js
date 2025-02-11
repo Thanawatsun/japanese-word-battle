@@ -58,7 +58,7 @@ function Game_ticketBooth({ game_data, setload_act }) {
             <div className="green-box">
               <div className="box-inner">
                 <div className="green-text">
-                  Correct: the answer is {game_data.answer}
+                  Correct: You chose the right button.
                 </div>
                 <button className="green-button" onClick={handleClickNext}>
                   Next
@@ -69,7 +69,7 @@ function Game_ticketBooth({ game_data, setload_act }) {
             <div className="red-box">
               <div className="box-inner">
                 <div className="red-text">
-                  Incorrect: the answer is {game_data.answer}
+                  Incorrect: Please choose the button again.
                 </div>
                 <button className="red-button" onClick={handleClickIncorrect}>
                   Try Again
