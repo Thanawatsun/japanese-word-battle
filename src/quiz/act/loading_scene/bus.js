@@ -1,9 +1,4 @@
 function Bus({}) {
-
-    return(
-        <div>
-            Traveling...
-        </div>
-    )
+  return <div>Traveling...</div>;
 }
 export default Bus;

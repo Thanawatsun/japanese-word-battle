@@ -4,8 +4,10 @@ import Act_stsyem from "./act_system";
 import Walking from "./loading_scene/walking";
 import Bus from "./loading_scene/bus";
 import Train from "./loading_scene/train";
+import "../../css/loading.css";
+
 function Loading({}) {
-  const [seconds, setSeconds] = useState(2);
+  const [seconds, setSeconds] = useState(1000000);
   const [load_act, setload_act] = useState(false);
   const location = useLocation();
   const { quizData } = location.state; // รับค่า quizData จาก state
@@ -13,9 +15,9 @@ function Loading({}) {
   const { userdefine } = location.state;
   const { life } = location.state;
   const loading_type = "walking";
+
   useEffect(() => {
     let timer;
-
     if (seconds > 0) {
       timer = setInterval(() => {
         setSeconds(seconds - 1);
@@ -23,7 +25,6 @@ function Loading({}) {
     } else {
       setload_act(true);
     }
-
     return () => clearInterval(timer); // ยกเลิก interval เมื่อ component ถูก unmount หรือ seconds เปลี่ยน
   }, [seconds]);
 
@@ -51,14 +52,13 @@ function Loading({}) {
           <div></div>
         )}
       </div>
-
       <div>
         {loading_type === "walking" ? (
-          <Walking/>
+          <Walking />
         ) : loading_type === "bus" ? (
-          <Bus/>
+          <Bus />
         ) : loading_type === "train" ? (
-          <Train/>
+          <Train />
         ) : (
           <div></div>
         )}
