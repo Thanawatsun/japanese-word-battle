@@ -7,7 +7,7 @@ function AnswerButton({ text, onClick }) {
     </button>
   );
 }
-function Game_ticketBooth({ game_data, setload_act }) {
+function Game_ticketBooth({ game_data, setload_act,life_act,setlife_act }) {
   const [showBar, setshowBar] = useState(false);
   const [showGreenBar, setshowGreenBar] = useState(false);
   const handleClick = (answer) => {
@@ -17,7 +17,10 @@ function Game_ticketBooth({ game_data, setload_act }) {
       //ทำเมื่อตอบถูกให้มี popup ขอความเขียวขึ้นมาเพื่อกดไปหน้าถัดไป
       setshowGreenBar(true);
     } else {
-      console.log("Incorrect!");
+      setlife_act(life_act-1)
+      if (life_act-1 <= 0){
+        setshowBar(false);
+      }
     }
   };
   const handleClickNext = () => {

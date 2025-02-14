@@ -36,7 +36,7 @@ function AnswerButton({ text, onClick, index }) {
   );
 }
 
-function Game_sign({ game_data, setload_act }) {
+function Game_sign({ game_data, setload_act,life_act,setlife_act }) {
   const [way, setWay] = useState("Train Station"); //ใส่ชื่อสถานที่จะไปใน databnase ด้วย
   const [showBar, setshowBar] = useState(false);
   const [showGreenBar, setshowGreenBar] = useState(false);
@@ -48,7 +48,10 @@ function Game_sign({ game_data, setload_act }) {
       //ทำเมื่อตอบถูกให้มี popup ขอความเขียวขึ้นมาเพื่อกดไปหน้าถัดไป
       setshowGreenBar(true);
     } else {
-      console.log("Incorrect!");
+      setlife_act(life_act-1)
+      if (life_act-1 <= 0){
+        setshowBar(false);
+      }
     }
   };
   const handleClickNext = () => {

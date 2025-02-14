@@ -8,10 +8,11 @@ import Poppu_menu from "../popup_menu";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-
+import Popup_gameover from "../popup_gameover";
 function Game_system() {
   const [load_act, setload_act] = useState(false);
-  const [life_act, setlife_act] = useState(0);
+  const [gameover_act, setgameover_act] = useState(false);
+  const [life_act, setlife_act] = useState(5);
   const location = useLocation();
   const { quizData } = location.state; // รับค่า quizData จาก state
   const { act_count } = location.state;
@@ -23,7 +24,12 @@ function Game_system() {
   useEffect(() => {
     setlife_act(life);
   }, []);
-  console.log(quizData);
+    useEffect(() => {
+      if(life_act <= 0){
+        console.log("popup start")
+        setgameover_act(true)
+      };
+    }, [life_act]);
   const game_data = quizData[act_count].choose_path.post_practice.game;
   const handlenext = () => {
     setload_act(true);
@@ -73,12 +79,19 @@ function Game_system() {
             />
             {load_act ? (
               <Act_stsyem
-                Isnext={true}
+              Isloading={true}
                 modiflyQuiz={quizData}
                 act_count={act_count}
                 userdefine={userdefine}
                 life={life_act}
               />
+            ) : gameover_act  ? (
+              <Popup_gameover
+              modiflyQuiz={quizData}
+              act_count={act_count}
+              userdefine={userdefine}
+              life={life_act}
+            />
             ) : (
               <div></div>
             )}
@@ -86,11 +99,11 @@ function Game_system() {
           <div>
             <div>
               {game_data.type === "sign" ? (
-                <Sign game_data={game_data} setload_act={setload_act} />
+                <Sign game_data={game_data} setload_act={setload_act} life_act={life_act} setlife_act={setlife_act} />
               ) : game_data.type === "station" ? (
-                <Station game_data={game_data} setload_act={setload_act} />
+                <Station game_data={game_data} setload_act={setload_act} life_act={life_act} setlife_act={setlife_act}/>
               ) : game_data.type === "ticket" ? (
-                <Ticket game_data={game_data} setload_act={setload_act} />
+                <Ticket game_data={game_data} setload_act={setload_act} life_act={life_act} setlife_act={setlife_act}/>
               ) : (
                 <div></div>
               )}

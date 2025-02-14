@@ -18,6 +18,7 @@ function Act_stsyem({
   continueGame,
   continuePlay,
   IsQuit,
+  Isloading,
 }) {
   //  console.log(continuePlay)
   const navigate = useNavigate();
@@ -47,6 +48,17 @@ function Act_stsyem({
         stage_playing_name: modiflyQuiz.level,
         stage_playing_act: act_count,
       });
+      if (Isloading) {
+        navigate("/loading", {
+          state: {
+            quizData: modiflyQuiz,
+            act_count: act_count,
+            userdefine: userdefine,
+            life: life,
+            max_count: modiflyQuiz.act_count,
+          },
+        });
+      }
       if (IsQuit) {
         navigate("/");
       }

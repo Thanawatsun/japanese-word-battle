@@ -7,10 +7,12 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Poppu_menu from "../popup_menu";
+import Popup_gameover from "../popup_gameover";
 
 function Practice() {
   const [load_act, setload_act] = useState(false);
-  const [life_act, setlife_act] = useState(0);
+  const [gameover_act, setgameover_act] = useState(false);
+  const [life_act, setlife_act] = useState(5);
   const location = useLocation();
   const { quizData } = location.state; // รับค่า quizData จาก state
   const { act_count } = location.state;
@@ -25,6 +27,12 @@ function Practice() {
   useEffect(() => {
     setlife_act(life);
   }, []);
+  useEffect(() => {
+    if(life_act <= 0){
+      console.log("popup start")
+      setgameover_act(true)
+    };
+  }, [life_act]);
   const handlenext = () => {
     setload_act(true);
   };
@@ -78,6 +86,13 @@ function Practice() {
               userdefine={userdefine}
               life={life_act}
             />
+          ) : gameover_act  ? (
+            <Popup_gameover
+            modiflyQuiz={quizData}
+            act_count={act_count}
+            userdefine={userdefine}
+            life={life_act}
+          />
           ) : (
             <div></div>
           )}
@@ -85,6 +100,8 @@ function Practice() {
             <Pronunciation_set
               game_data={practice_list}
               setload_act={setload_act}
+              life_act={life_act}
+              setlife_act={setlife_act}
             />
           ) : practice_type === "01" ? (
             <Pronunciation_set
@@ -123,7 +140,7 @@ function Practice() {
   );
 }
 
-function Pronunciation_set({ game_data, setload_act }) {
+function Pronunciation_set({ game_data, setload_act,setlife_act,life_act }) {
   const [practice_1, setpractice_1] = useState(true);
   const [practice_2, setpractice_2] = useState(false);
   const [practice_3, setpractice_3] = useState(false);
@@ -135,18 +152,24 @@ function Pronunciation_set({ game_data, setload_act }) {
           this_stage={setpractice_1}
           next_stage={setpractice_2}
           game_data={game_data.pronunciation[0]}
+          life_act={life_act}
+          setlife_act={setlife_act}
         />
       ) : practice_2 ? (
         <Word
           this_stage={setpractice_2}
           next_stage={setpractice_3}
           game_data={game_data.word[0]}
+          life_act={life_act}
+          setlife_act={setlife_act}
         />
       ) : practice_3 ? (
         <Word
           this_stage={setpractice_3}
           next_stage={setload_act}
           game_data={game_data.word[1]}
+          life_act={life_act}
+          setlife_act={setlife_act}
         />
       ) : (
         <div></div>

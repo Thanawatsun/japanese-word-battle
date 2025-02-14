@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 
-function Word({ this_stage, next_stage, game_data }) {
+function Word({ this_stage, next_stage, game_data,life_act,setlife_act }) {
   const [selectedOption, setSelectedOption] = useState(null);
   const [showBar, setshowBar] = useState(false);
   const [showGreenBar, setshowGreenBar] = useState(false);
@@ -27,7 +27,10 @@ function Word({ this_stage, next_stage, game_data }) {
         console.log("Correct!");
         setshowGreenBar(true);
       } else {
-        console.log("Incorrect!");
+        setlife_act(life_act-1)
+        if (life_act-1 <= 0){
+          setshowBar(false);
+        }
       }
     } else {
       console.log("Please select an option before confirming.");
