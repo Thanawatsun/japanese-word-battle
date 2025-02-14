@@ -11,6 +11,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { count } from "firebase/firestore";
+import ButtonPlaySound from "../component/PlaySound";
 
 function Home({
   userdefine,
@@ -25,9 +26,9 @@ function Home({
   const [IsBoard, setIsBoard] = useState(false);
   const [IsProflie, setIsProflie] = useState(false);
   const [userData, setUserData] = useState({});
-  const buttonSound = new Audio(
-    "https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/audio%2FSound%20Effect%2F686542__troube__bop-sound-effect-button.mp3?alt=media&token=1f2a7bd6-817b-44c9-844b-68f1d2e39da3"
-  );
+  // const buttonSound = new Audio(
+  //   "https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/audio%2FSound%20Effect%2F686542__troube__bop-sound-effect-button.mp3?alt=media&token=1f2a7bd6-817b-44c9-844b-68f1d2e39da3"
+  // );
 
   useEffect(() => {
     try {
@@ -43,25 +44,29 @@ function Home({
   function changePage(page) {
     console.log(userdefine);
     if (page === "Home") {
-      buttonSound.play();
+      // buttonSound.play();
+      ButtonPlaySound();
       setIsHome(true);
       setIsStamp(false);
       setIsBoard(false);
       setIsProflie(false);
     } else if (page === "Stamp") {
-      buttonSound.play();
+      // buttonSound.play();
+      ButtonPlaySound();
       setIsHome(false);
       setIsStamp(true);
       setIsBoard(false);
       setIsProflie(false);
     } else if (page === "Board") {
-      buttonSound.play();
+      // buttonSound.play();
+      ButtonPlaySound();
       setIsHome(false);
       setIsStamp(false);
       setIsBoard(true);
       setIsProflie(false);
     } else if (page === "Proflie") {
-      buttonSound.play();
+      // buttonSound.play();
+      ButtonPlaySound();
       setIsHome(false);
       setIsStamp(false);
       setIsBoard(false);
