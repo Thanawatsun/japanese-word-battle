@@ -4,6 +4,7 @@ import { auth, provider, app } from "../firebase";
 //import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 import { getDatabase, ref, update, onValue } from "firebase/database";
+import PlaySound from "../component/PlaySound";
 import "../css/login.css";
 // import Button from "react-bootstrap/Button";
 
@@ -29,6 +30,7 @@ function LoginUser({ setIsLogin, setuserdefine }) {
     }
   });
   const signInWithGoogle = () => {
+    PlaySound("button");
     signInWithPopup(auth, provider)
       .then((result) => {
         setCredential(GoogleAuthProvider.credentialFromResult(result));

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../css/profile.css";
 import { app } from "../firebase"; // Import your Firebase configuration
 import { getDatabase, ref, update } from "firebase/database";
+import PlaySound from "../component/PlaySound";
 
 function Proflie({ userData }) {
   const [showPopup, setShowPopup] = useState(false);
@@ -9,9 +10,12 @@ function Proflie({ userData }) {
   const [searchResult, setSearchResult] = useState("");
 
   const handleClose = () => {
+    PlaySound("button");
     setShowPopup(false);
   };
   const handleSearch = () => {
+    PlaySound("button");
+
     // ทำการกรองข้อมูลตามค่าใน searchValue
     // สมมติว่าคุณมีข้อมูลที่จะกรองอยู่แล้ว และเก็บไว้ในตัวแปร data
     console.log(searchValue);
@@ -61,7 +65,10 @@ function Proflie({ userData }) {
       <div className="proflie_block_button">
         <button
           className="change-name-button"
-          onClick={() => setShowPopup(true)}
+          onClick={() => {
+            PlaySound("button");
+            setShowPopup(true);
+          }}
         >
           <h5>CHANGE USER NAME</h5>
         </button>

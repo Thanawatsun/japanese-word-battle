@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
+import PlaySound from "../../../component/PlaySound";
 
-function Pronunciation({ this_stage, next_stage, game_data,life_act,setlife_act}) {
+function Pronunciation({
+  this_stage,
+  next_stage,
+  game_data,
+  life_act,
+  setlife_act,
+}) {
   const [selectedOption, setSelectedOption] = useState(null);
   const [showBar, setshowBar] = useState(false);
   const [showGreenBar, setshowGreenBar] = useState(false);
   const handleOptionClick = (option) => {
+    PlaySound("button");
     setSelectedOption(option); // อัปเดตว่าเลือกตัวไหน
   };
   const handleClickAudio = () => {
@@ -18,15 +26,18 @@ function Pronunciation({ this_stage, next_stage, game_data,life_act,setlife_act}
     audio.play();
   }, [next_stage]);
   const handleConfirm = () => {
+    PlaySound("button");
     if (selectedOption !== null) {
       const isCorrect = selectedOption.isCorrect;
       setshowBar(true);
       if (isCorrect) {
         console.log("Correct!");
+        PlaySound("correct");
         setshowGreenBar(true);
       } else {
-        setlife_act(life_act-1)
-        if (life_act-1 <= 0){
+        PlaySound("incorrect");
+        setlife_act(life_act - 1);
+        if (life_act - 1 <= 0) {
           setshowBar(false);
         }
       }
@@ -35,6 +46,7 @@ function Pronunciation({ this_stage, next_stage, game_data,life_act,setlife_act}
     }
   };
   const handleClick = () => {
+    PlaySound("button");
     this_stage(false);
     next_stage(true);
     setshowGreenBar(false);
@@ -42,6 +54,7 @@ function Pronunciation({ this_stage, next_stage, game_data,life_act,setlife_act}
     setSelectedOption(null);
   };
   const handleClickIncorrect = () => {
+    PlaySound("button");
     setshowBar(false);
     setSelectedOption(null);
   };

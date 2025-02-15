@@ -11,7 +11,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { count } from "firebase/firestore";
-import ButtonPlaySound from "../component/PlaySound";
+import PlaySound from "../component/PlaySound";
 
 function Home({
   userdefine,
@@ -45,28 +45,28 @@ function Home({
     console.log(userdefine);
     if (page === "Home") {
       // buttonSound.play();
-      ButtonPlaySound();
+      PlaySound("button");
       setIsHome(true);
       setIsStamp(false);
       setIsBoard(false);
       setIsProflie(false);
     } else if (page === "Stamp") {
       // buttonSound.play();
-      ButtonPlaySound();
+      PlaySound("button");
       setIsHome(false);
       setIsStamp(true);
       setIsBoard(false);
       setIsProflie(false);
     } else if (page === "Board") {
       // buttonSound.play();
-      ButtonPlaySound();
+      PlaySound("button");
       setIsHome(false);
       setIsStamp(false);
       setIsBoard(true);
       setIsProflie(false);
     } else if (page === "Proflie") {
       // buttonSound.play();
-      ButtonPlaySound();
+      PlaySound("button");
       setIsHome(false);
       setIsStamp(false);
       setIsBoard(false);

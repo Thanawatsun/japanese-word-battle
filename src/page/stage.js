@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "../css/stage.css";
 import { ref, onValue, getDatabase } from "firebase/database";
 import { app } from "../firebase";
+import PlaySound from "../component/PlaySound";
+
 function Stage({ setIsPlayer, userData, setModiflyQuiz, setStageplay }) {
   const [selectedValue, setSelectedValue] = useState("easy");
   const stages = [
@@ -25,6 +27,7 @@ function Stage({ setIsPlayer, userData, setModiflyQuiz, setStageplay }) {
         .map(({ sort, ...item }) => item); // Remove the sort key
     };
     console.log(value);
+    PlaySound("enter");
     setStageplay(value);
     setIsPlayer(true);
   };

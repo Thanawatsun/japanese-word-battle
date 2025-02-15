@@ -1,6 +1,43 @@
-.walking-bg {
+.loading-text {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+}
+
+.char-walking {
+    border-radius: 0;
+    position: absolute;
+    left: 30%;
+    height: 30%;
+    bottom: 32%;
+}
+
+#walking-bg {
     color: white;
     height: 100vh;
     width: 100vw;
-    background-color: red;
+    background-image: url("https://cdn.discordapp.com/attachments/1253339864074555483/1338873543861080208/BG_test.png?ex=67b147e7&is=67aff667&hm=bfd0cd5de41ecb6974d4b00fd2edc3cafbec8a216330c50f779af405d0392cda&");
+    background-size: auto 150%;
+    transition: 3s;
+    /* background-position: 100px 0; */
+    /* transition-delay: 3s; */
+    transition-timing-function: linear;
+}
+
+#bus-bg {
+    color: white;
+    height: 100vh;
+    width: 100vw;
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/animation%2Fbus.gif?alt=media&token=d7db235b-8b80-43d7-b9d2-7aaa409fef7e");
+    background-size: 100% auto;
+    background-position: left bottom;
+}
+
+#train-bg {
+    color: white;
+    height: 100vh;
+    width: 100vw;
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/animation%2Ftrain.gif?alt=media&token=7d3ecba9-d459-46f5-b1ea-825f44e0893f");
+    background-size: 100% auto;
+    background-position: left bottom;
 }

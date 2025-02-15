@@ -1,7 +1,9 @@
 import { auth } from "../firebase";
+import PlaySound from "../component/PlaySound";
 
 function LogoutUser({ setIsLogin, setuserdefine }) {
   const handleLogoutSuccess = () => {
+    PlaySound("button");
     auth.signOut();
     setuserdefine({});
     setIsLogin(false);

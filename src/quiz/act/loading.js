@@ -7,14 +7,14 @@ import Train from "./loading_scene/train";
 import "../../css/loading.css";
 
 function Loading({}) {
-  const [seconds, setSeconds] = useState(1000000);
+  const [seconds, setSeconds] = useState(3);
   const [load_act, setload_act] = useState(false);
   const location = useLocation();
   const { quizData } = location.state; // รับค่า quizData จาก state
   const { act_count } = location.state;
   const { userdefine } = location.state;
   const { life } = location.state;
-  const loading_type = "walking";
+  const loading_type = "train";
 
   useEffect(() => {
     let timer;
@@ -38,7 +38,7 @@ function Loading({}) {
 
   return (
     <div>
-      <h2>Countdown: {formatTime(seconds)}</h2>
+      {/* <h2>Countdown: {formatTime(seconds)}</h2> */}
       <div>
         {load_act ? (
           <Act_stsyem

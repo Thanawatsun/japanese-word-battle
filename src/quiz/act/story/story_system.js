@@ -5,6 +5,7 @@ import Story_per_pratice from "./story_per_practice";
 import Story_post_pratice from "./story_post_practice";
 import Act_stsyem from "../act_system";
 import Poppu_menu from "../popup_menu";
+import PlaySound from "../../../component/PlaySound";
 
 function StorySystem() {
   const [number_story, setnumber_story] = useState(1);
@@ -29,6 +30,7 @@ function StorySystem() {
     setlife_act(life);
   }, []);
   const handlenext = () => {
+    PlaySound("button");
     if (poststory & (number_story + 1 > 1)) {
       setreward_act(true);
     }

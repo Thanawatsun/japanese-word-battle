@@ -1,4 +1,8 @@
 function Train({}) {
-  return <div>Traveling...</div>;
+  return (
+    <div id="train-bg">
+      <h1 className="loading-text">Traveling...</h1>
+    </div>
+  );
 }
 export default Train;

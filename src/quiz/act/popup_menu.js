@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import "../../css/stage.css";
 import Act_stsyem from "./act_system";
+import PlaySound from "../../component/PlaySound";
 
 function Poppu_menu({ modiflyQuiz, act_count, userdefine, life }) {
   const [load_act, setload_act] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
 
   const togglePopup = () => {
+    PlaySound("button");
     setShowPopup(!showPopup);
   };
   const toggleQuit = () => {
+    PlaySound("button");
     setload_act(true);
   };
 
