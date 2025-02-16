@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import Act_stsyem from "../act_system";
+import Act_system from "../act_system";
 import Pronunciation from "./pronunciation";
 import Word from "./word";
 import Container from "react-bootstrap/Container";
@@ -28,10 +28,10 @@ function Practice() {
     setlife_act(life);
   }, []);
   useEffect(() => {
-    if(life_act <= 0){
-      console.log("popup start")
-      setgameover_act(true)
-    };
+    if (life_act <= 0) {
+      console.log("popup start");
+      setgameover_act(true);
+    }
   }, [life_act]);
   const handlenext = () => {
     setload_act(true);
@@ -79,20 +79,20 @@ function Practice() {
             life={life_act}
           />
           {load_act ? (
-            <Act_stsyem
+            <Act_system
               Isgame={true}
               modiflyQuiz={quizData}
               act_count={act_count}
               userdefine={userdefine}
               life={life_act}
             />
-          ) : gameover_act  ? (
+          ) : gameover_act ? (
             <Popup_gameover
-            modiflyQuiz={quizData}
-            act_count={act_count}
-            userdefine={userdefine}
-            life={life_act}
-          />
+              modiflyQuiz={quizData}
+              act_count={act_count}
+              userdefine={userdefine}
+              life={life_act}
+            />
           ) : (
             <div></div>
           )}
@@ -140,7 +140,7 @@ function Practice() {
   );
 }
 
-function Pronunciation_set({ game_data, setload_act,setlife_act,life_act }) {
+function Pronunciation_set({ game_data, setload_act, setlife_act, life_act }) {
   const [practice_1, setpractice_1] = useState(true);
   const [practice_2, setpractice_2] = useState(false);
   const [practice_3, setpractice_3] = useState(false);

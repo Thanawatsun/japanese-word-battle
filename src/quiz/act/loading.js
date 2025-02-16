@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import Act_stsyem from "./act_system";
+import Act_system from "./act_system";
 import Walking from "./loading_scene/walking";
 import Bus from "./loading_scene/bus";
 import Train from "./loading_scene/train";
@@ -41,7 +41,7 @@ function Loading({}) {
       {/* <h2>Countdown: {formatTime(seconds)}</h2> */}
       <div>
         {load_act ? (
-          <Act_stsyem
+          <Act_system
             Isnext={true}
             modiflyQuiz={quizData}
             act_count={act_count}

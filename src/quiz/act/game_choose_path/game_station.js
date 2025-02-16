@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import PlaySound from "../../../component/PlaySound";
 
 function AnswerButton({ text, onClick }) {
   return (
@@ -7,27 +8,33 @@ function AnswerButton({ text, onClick }) {
     </button>
   );
 }
-function Game_station({ game_data, setload_act,life_act,setlife_act }) {
+
+function Game_station({ game_data, setload_act, life_act, setlife_act }) {
   const [way, setWay] = useState("Train Station"); //ใส่ชื่อสถานที่จะไปใน databnase ด้วย
   const [showBar, setshowBar] = useState(false);
   const [showGreenBar, setshowGreenBar] = useState(false);
   const handleClick = (answer) => {
     console.log("You clicked:", answer);
+    PlaySound("button");
     setshowBar(true);
     if (answer.isCorrect) {
       //ทำเมื่อตอบถูกให้มี popup ขอความเขียวขึ้นมาเพื่อกดไปหน้าถัดไป
+      PlaySound("correct");
       setshowGreenBar(true);
     } else {
-      setlife_act(life_act-1)
-      if (life_act-1 <= 0){
+      PlaySound("incorrect");
+      setlife_act(life_act - 1);
+      if (life_act - 1 <= 0) {
         setshowBar(false);
       }
     }
   };
   const handleClickNext = () => {
+    PlaySound("button");
     setload_act(true);
   };
   const handleClickIncorrect = () => {
+    PlaySound("button");
     setshowBar(false);
   };
 

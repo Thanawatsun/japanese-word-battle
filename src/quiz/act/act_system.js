@@ -4,7 +4,7 @@ import { app } from "../../firebase"; // Import your Firebase configuration
 import { getDatabase, ref, update } from "firebase/database";
 import { useNavigate } from "react-router-dom";
 
-function Act_stsyem({
+function Act_system({
   modiflyQuiz,
   Ispractice,
   Isstory,
@@ -121,4 +121,4 @@ function Act_stsyem({
   }, [Ispractice, Isstory]);
   return <div></div>;
 }
-export default Act_stsyem;
+export default Act_system;

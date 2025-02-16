@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import "../../css/stage.css";
-import Act_stsyem from "./act_system";
+import Act_system from "./act_system";
+import PlaySound from "../../component/PlaySound";
 
 function Poppu_Gameover({ modiflyQuiz, act_count, userdefine, life }) {
   const [load_act, setload_act] = useState(false);
   const [restart_act, setrestart_act] = useState(false);
   const [showPopup, setShowPopup] = useState(true);
   const togglePopup = () => {
+    PlaySound("button");
     setShowPopup(!showPopup);
-    setrestart_act(true)
+    setrestart_act(true);
   };
   const toggleQuit = () => {
+    PlaySound("button");
     setload_act(true);
   };
 
@@ -37,7 +40,7 @@ function Poppu_Gameover({ modiflyQuiz, act_count, userdefine, life }) {
         </>
       )}
       {load_act ? (
-        <Act_stsyem
+        <Act_system
           IsQuit={true}
           Isnext={false}
           modiflyQuiz={modiflyQuiz}
@@ -45,9 +48,9 @@ function Poppu_Gameover({ modiflyQuiz, act_count, userdefine, life }) {
           userdefine={userdefine}
           life={life}
         />
-      ): restart_act ? (
-        <Act_stsyem
-        Isstory={true}
+      ) : restart_act ? (
+        <Act_system
+          Isstory={true}
           modiflyQuiz={modiflyQuiz}
           act_count={"act_1"}
           Ispractice={false}

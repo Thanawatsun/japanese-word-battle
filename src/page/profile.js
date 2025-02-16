@@ -39,6 +39,7 @@ function Proflie({ userData }) {
             alt="Profile"
             width="100"
             height="100"
+            className="user-image"
           />
         </div>
         <div className="username">

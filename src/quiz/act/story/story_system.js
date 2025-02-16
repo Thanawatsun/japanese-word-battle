@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Story from "./story";
 import Story_per_pratice from "./story_per_practice";
 import Story_post_pratice from "./story_post_practice";
-import Act_stsyem from "../act_system";
+import Act_system from "../act_system";
 import Poppu_menu from "../popup_menu";
 import PlaySound from "../../../component/PlaySound";
 
@@ -63,7 +63,7 @@ function StorySystem() {
         life={life_act}
       />
       {load_act ? (
-        <Act_stsyem
+        <Act_system
           Ispractice={true}
           modiflyQuiz={quizData}
           act_count={act_count}
@@ -71,7 +71,7 @@ function StorySystem() {
           life={life_act}
         />
       ) : next_act ? (
-        <Act_stsyem
+        <Act_system
           Isnext={true}
           modiflyQuiz={quizData}
           act_count={act_count}

@@ -29,8 +29,9 @@
   margin: auto;
 }
 
-img {
+.user-image {
   border-radius: 50%;
+  aspect-ratio: 1/1;
 }
 
 .proflie_block {

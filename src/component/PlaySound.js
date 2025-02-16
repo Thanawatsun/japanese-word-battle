@@ -15,6 +15,7 @@ function ButtonPlaySound(inputType) {
   if (inputType === "button") {
     buttonSound.play();
   } else if (inputType === "enter") {
+    enterStage.volume = 0.5;
     enterStage.play();
   } else if (inputType === "correct") {
     correctAnswer.volume = 0.5;

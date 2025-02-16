@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Story from "./story";
 import Story_per_pratice from "./story_per_practice";
 import Story_post_pratice from "./story_post_practice";
-import Act_stsyem from "../act_system";
+import Act_system from "../act_system";
 
 function Story_end_act() {
   const [number_story, setnumber_story] = useState(1);
@@ -49,13 +49,13 @@ function Story_end_act() {
   return (
     <div>
       {load_act ? (
-        <Act_stsyem
+        <Act_system
           Ispractice={true}
           modiflyQuiz={quizData}
           act_count={act_count}
         />
       ) : next_act ? (
-        <Act_stsyem
+        <Act_system
           Isnext={true}
           modiflyQuiz={quizData}
           act_count={act_count}

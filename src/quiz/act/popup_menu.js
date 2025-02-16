@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../../css/stage.css";
-import Act_stsyem from "./act_system";
+import Act_system from "./act_system";
 import PlaySound from "../../component/PlaySound";
 
 function Poppu_menu({ modiflyQuiz, act_count, userdefine, life }) {
@@ -42,7 +42,7 @@ function Poppu_menu({ modiflyQuiz, act_count, userdefine, life }) {
         </>
       )}
       {load_act ? (
-        <Act_stsyem
+        <Act_system
           IsQuit={true}
           Isnext={false}
           modiflyQuiz={modiflyQuiz}

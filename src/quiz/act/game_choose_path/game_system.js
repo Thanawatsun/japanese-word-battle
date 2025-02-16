@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import Act_stsyem from "../act_system";
+import Act_system from "../act_system";
 import Sign from "./game_sign";
 import Station from "./game_station";
 import Ticket from "./game_ticketBooth";
@@ -9,6 +9,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Popup_gameover from "../popup_gameover";
+
 function Game_system() {
   const [load_act, setload_act] = useState(false);
   const [gameover_act, setgameover_act] = useState(false);
@@ -24,12 +25,12 @@ function Game_system() {
   useEffect(() => {
     setlife_act(life);
   }, []);
-    useEffect(() => {
-      if(life_act <= 0){
-        console.log("popup start")
-        setgameover_act(true)
-      };
-    }, [life_act]);
+  useEffect(() => {
+    if (life_act <= 0) {
+      console.log("popup start");
+      setgameover_act(true);
+    }
+  }, [life_act]);
   const game_data = quizData[act_count].choose_path.post_practice.game;
   const handlenext = () => {
     setload_act(true);
@@ -78,20 +79,20 @@ function Game_system() {
               life={life_act}
             />
             {load_act ? (
-              <Act_stsyem
-              Isloading={true}
+              <Act_system
+                Isloading={true}
                 modiflyQuiz={quizData}
                 act_count={act_count}
                 userdefine={userdefine}
                 life={life_act}
               />
-            ) : gameover_act  ? (
+            ) : gameover_act ? (
               <Popup_gameover
-              modiflyQuiz={quizData}
-              act_count={act_count}
-              userdefine={userdefine}
-              life={life_act}
-            />
+                modiflyQuiz={quizData}
+                act_count={act_count}
+                userdefine={userdefine}
+                life={life_act}
+              />
             ) : (
               <div></div>
             )}
@@ -99,11 +100,26 @@ function Game_system() {
           <div>
             <div>
               {game_data.type === "sign" ? (
-                <Sign game_data={game_data} setload_act={setload_act} life_act={life_act} setlife_act={setlife_act} />
+                <Sign
+                  game_data={game_data}
+                  setload_act={setload_act}
+                  life_act={life_act}
+                  setlife_act={setlife_act}
+                />
               ) : game_data.type === "station" ? (
-                <Station game_data={game_data} setload_act={setload_act} life_act={life_act} setlife_act={setlife_act}/>
+                <Station
+                  game_data={game_data}
+                  setload_act={setload_act}
+                  life_act={life_act}
+                  setlife_act={setlife_act}
+                />
               ) : game_data.type === "ticket" ? (
-                <Ticket game_data={game_data} setload_act={setload_act} life_act={life_act} setlife_act={setlife_act}/>
+                <Ticket
+                  game_data={game_data}
+                  setload_act={setload_act}
+                  life_act={life_act}
+                  setlife_act={setlife_act}
+                />
               ) : (
                 <div></div>
               )}

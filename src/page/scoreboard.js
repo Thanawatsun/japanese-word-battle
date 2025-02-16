@@ -58,6 +58,7 @@ function ScoreBoard({ userData }) {
                     alt="Proflie"
                     width="50px"
                     height="50px"
+                    className="user-image"
                   />
                 </td>
                 <td className="table-contain-3">{user.username}</td>
@@ -103,6 +104,7 @@ function ScoreBoard({ userData }) {
                   alt="Proflie"
                   width="50"
                   height="50"
+                  className="user-image"
                 />
               </td>
               <td className="player-table-contain-3">{userData.username}</td>
