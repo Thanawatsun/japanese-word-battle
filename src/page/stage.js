@@ -1,14 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../css/stage.css";
-import { ref, onValue, getDatabase } from "firebase/database";
-import { app } from "../firebase";
 import PlaySound from "../component/PlaySound";
 
-function Stage({ setIsPlayer, userData, setModiflyQuiz, setStageplay }) {
+function Stage({ setIsPlayer, userData, modiflyQuiz, setStageplay }) {
   const [selectedValue, setSelectedValue] = useState("easy");
-  const stages = [
+  var stages = [
     { value: "level01", label: "Stage 1" },
-    { value: "level01_test", label: "Stage test" },
+    { value: "level01_test", label: modiflyQuiz.level01_test.level },
   ];
   const options = [
     { value: "normal", label: "Normal" },

@@ -1,16 +1,14 @@
 //import logo from './logo.svg';
 import "./App.css";
 import LoginUser from "./page/login";
-import LogoutUser from "./page/logout";
 import Home from "./page/Home";
 import Stage_stsyem from "./quiz/stage_test01";
-import Quiz from "./quiz/quiz";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import GetStagedata from "./api/getStage"
+import GetStampdata from "./api/getStamp"
+import GetScoreBoarddata from "./api/getScoreBoard"
+import GetProfiledata from "./api/getProfile"
 
 function App() {
   const isLoading = false;
@@ -19,20 +17,20 @@ function App() {
   const [modiflyQuiz, setModiflyQuiz] = useState({});
   const [userdefine, setuserdefine] = useState({});
   const [stageplay, setStageplay] = useState();
-  const [data, setData] = useState(null);
-
+  const [scoreboardData, setScoreboardData] = useState();
+  const [profileData, setProfileData] = useState();
+  const [stampData, setStampData] = useState();
   useEffect(() => {
-    axios
-      .get("http://localhost:9000/getstage")
-      .then((response) => {
-        setData(response.data);
-        setModiflyQuiz(response.data);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+    if(userdefine != {}){
+      console.log("in")
+    GetStagedata(setModiflyQuiz)
+    GetStampdata(setStampData)
+    GetScoreBoarddata(setScoreboardData)
+    GetProfiledata(setProfileData,userdefine.uid)
+    }
+    
+    console.log(userdefine)
+  }, [userdefine]);
 
   return (
     <div>
@@ -57,6 +55,10 @@ function App() {
               setStageplay={setStageplay}
               setIsLogin={setIsLogin}
               setuserdefine={setuserdefine}
+              scoreboardData={scoreboardData}
+              profileData={profileData}
+              stampData={stampData}
+              modiflyQuiz={modiflyQuiz}
             />
           )}
         </div>

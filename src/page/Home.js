@@ -20,6 +20,10 @@ function Home({
   setStageplay,
   setIsLogin,
   setuserdefine,
+  scoreboardData,
+  profileData,
+  stampData,
+  modiflyQuiz,
 }) {
   const [IsHome, setIsHome] = useState(true);
   const [IsStamp, setIsStamp] = useState(false);
@@ -119,15 +123,16 @@ function Home({
                   userData={userData}
                   setModiflyQuiz={setModiflyQuiz}
                   setStageplay={setStageplay}
+                  modiflyQuiz={modiflyQuiz}
                 />
               </div>
             ) : IsStamp ? (
               <div className="center-content">
-                <Stamp stamplist={userData.Stamp_Data} />
+                <Stamp stamplist={userData.Stamp_Data} stampData={stampData}/>
               </div>
             ) : IsBoard ? (
               <div className="center-content">
-                <ScoreBoard userData={userData} />
+                <ScoreBoard userData={userData} scoreboardData={scoreboardData}/>
               </div>
             ) : IsProflie ? (
               <div className="center-content">

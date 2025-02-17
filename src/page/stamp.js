@@ -3,18 +3,13 @@ import { app } from "../firebase"; // Import your Firebase configuration
 import { ref, onValue, getDatabase, get } from "firebase/database";
 import React, { useEffect, useState } from "react";
 
-function Stamp({ stamplist }) {
+function Stamp({ stamplist,stampData }) {
   const [showvocabulary, setShowvocabulary] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const wordsArray = [];
-          const databaseRef = ref(getDatabase(app), `Stamp_Data/`);
-          const snapshot = await get(databaseRef);
-          const stampData = snapshot.val();
-          console.log(stampData)
-          console.log(stamplist)
           if (stampData) {
             for (var key of Object.keys(stampData)) {
               if(stamplist[key] !== undefined){
