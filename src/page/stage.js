@@ -3,20 +3,17 @@ import "../css/stage.css";
 import PlaySound from "../component/PlaySound";
 
 function Stage({ setIsPlayer, userData, modiflyQuiz, setStageplay }) {
-  const [selectedValue, setSelectedValue] = useState("easy");
-  var stages = [
-    { value: "level01", label: "Stage 1" },
-    { value: "level01_test", label: "Stage_1test" },
-  ];
+  const stages = Object.keys(modiflyQuiz).map(key => ({
+    value: modiflyQuiz[key].stage_index,
+    label: modiflyQuiz[key].stage_level
+}));
+
+console.log(stages);
   const options = [
     { value: "normal", label: "Normal" },
     { value: "hard", label: "Hard" },
   ];
 
-  const handleChange = (event) => {
-    setSelectedValue(event.target);
-    console.log("Selectedvalue:", event.target.value);
-  };
   const handleTostage = (value) => {
     const shuffleArray = (array) => {
       return array

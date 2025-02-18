@@ -14,7 +14,7 @@ function Loading({}) {
   const { act_count } = location.state;
   const { userdefine } = location.state;
   const { life } = location.state;
-  const loading_type = "train";
+  const { loading_type } = location.state;
 
   useEffect(() => {
     let timer;

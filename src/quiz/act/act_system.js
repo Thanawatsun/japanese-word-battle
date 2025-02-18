@@ -19,6 +19,7 @@ function Act_system({
   continuePlay,
   IsQuit,
   Isloading,
+  loading_type,
 }) {
   //  console.log(continuePlay)
   const navigate = useNavigate();
@@ -56,6 +57,7 @@ function Act_system({
             userdefine: userdefine,
             life: life,
             max_count: modiflyQuiz.act_count,
+            loading_type:loading_type
           },
         });
       }

@@ -85,6 +85,7 @@ function Game_system() {
                 act_count={act_count}
                 userdefine={userdefine}
                 life={life_act}
+                loading_type={quizData[act_count].choose_path.post_practice.correct_path.animation}
               />
             ) : gameover_act ? (
               <Popup_gameover

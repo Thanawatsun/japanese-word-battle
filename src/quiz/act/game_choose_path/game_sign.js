@@ -1,19 +1,9 @@
 import React, { useEffect, useState } from "react";
 import PlaySound from "../../../component/PlaySound";
 
-function AnswerButton({ text, onClick, index }) {
-  const signBGImages = [
-    "https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2Fgame_assets%2Fsign%2Fsign_train_right.png?alt=media&token=3924572b-0c84-481d-a21d-9c1ef8f5e822",
-    "https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2Fgame_assets%2Fsign%2Fsign_train_left.png?alt=media&token=2d49349f-520d-46c8-b692-cb4cae9b02f0",
-    "https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2Fgame_assets%2Fsign%2Fsign_bus_right.png?alt=media&token=f31382a8-5410-4d28-aebb-c9dcff7f23ff",
-    "https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2Fgame_assets%2Fsign%2Fsign_bus_left.png?alt=media&token=2a99ba40-f6fe-47c2-9bad-d1a9a2a79bd2",
-  ];
-  const signHoverBGImages = [
-    "https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2Fgame_assets%2Fsign%2Fsign_hover_train_right.png?alt=media&token=22f789d0-1896-4cad-b93c-cf155cf4e454",
-    "https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2Fgame_assets%2Fsign%2Fsign_hover_train_left.png?alt=media&token=6e83fe85-a95d-40b1-8d75-e5c55cb8050d",
-    "https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2Fgame_assets%2Fsign%2Fsign_hover_bus_right.png?alt=media&token=37f1ccbd-8683-4346-b2da-199207e906cf",
-    "https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2Fgame_assets%2Fsign%2Fsign_hover_bus_left.png?alt=media&token=3ba90075-16d8-4aff-a79a-1588e623acbb",
-  ];
+function AnswerButton({ text, onClick, index,buttonImageList,buttonImageHoverList }) {
+  const signBGImages = buttonImageList;
+  const signHoverBGImages = buttonImageHoverList;
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -41,6 +31,15 @@ function Game_sign({ game_data, setload_act, life_act, setlife_act }) {
   const [way, setWay] = useState("Train Station"); //ใส่ชื่อสถานที่จะไปใน databnase ด้วย
   const [showBar, setshowBar] = useState(false);
   const [showGreenBar, setshowGreenBar] = useState(false);
+  
+  const imageButtons = [];
+for (let i = 0; i < game_data.options.length; i++) {
+  imageButtons.push(game_data.options[i].image_button);
+}
+const imageButtons_hover = [];
+for (let i = 0; i < game_data.options.length; i++) {
+  imageButtons_hover.push(game_data.options[i].image_button_hover);
+}
 
   const handleClick = (answer) => {
     console.log("You clicked:", answer);
@@ -88,6 +87,8 @@ function Game_sign({ game_data, setload_act, life_act, setlife_act }) {
               key={choose.id}
               text={choose.text}
               onClick={() => handleClick(choose)}
+              buttonImageList={imageButtons}
+              buttonImageHoverList={imageButtons_hover}
               index={index}
             />
           ))}

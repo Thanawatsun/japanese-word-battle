@@ -19,7 +19,7 @@ function Stamp({ stamplist,stampData }) {
                 wordsArray.push({image:stampData[key][image]})
               }
               else{
-                wordsArray.push({image:"https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/stamp%2Fstmap_unknow.jpeg?alt=media&token=0670b348-c922-497d-a427-c26dd169b887"})
+                wordsArray.push({image:"https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/stamp%2Fstamp_unknow.png?alt=media&token=109f1044-9f05-456a-b4bc-612839fbf919"})
               }
           }
           }
