@@ -87,7 +87,7 @@ function Home({
                 className="change-page-button"
                 onClick={() => changePage("Home")}
               >
-                <h2>Map</h2>
+                <h2>Trip</h2>
               </button>
               <button
                 className="change-page-button"
@@ -128,11 +128,14 @@ function Home({
               </div>
             ) : IsStamp ? (
               <div className="center-content">
-                <Stamp stamplist={userData.Stamp_Data} stampData={stampData}/>
+                <Stamp stamplist={userData.Stamp_Data} stampData={stampData} />
               </div>
             ) : IsBoard ? (
               <div className="center-content">
-                <ScoreBoard userData={userData} scoreboardData={scoreboardData}/>
+                <ScoreBoard
+                  userData={userData}
+                  scoreboardData={scoreboardData}
+                />
               </div>
             ) : IsProflie ? (
               <div className="center-content">
