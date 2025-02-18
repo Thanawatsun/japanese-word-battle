@@ -4,7 +4,9 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "../../../css/quiz.css";
-import SetReward from "../../../api/setReward"
+import SetReward from "../../../api/setReward";
+import PlaySound from "../../../component/PlaySound";
+
 function Reward() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -16,20 +18,24 @@ function Reward() {
   const [name, setName] = useState("test002");
   const [age, setAge] = useState("2300");
   const handlenext = async (event) => {
+    PlaySound("button");
     event.preventDefault();
-    const updateStamp_Data =quizData.level
-    var stamp_status = "normal"
-    if(life === 5){
-      stamp_status = "trim"
+    const updateStamp_Data = quizData.level;
+    var stamp_status = "normal";
+    if (life === 5) {
+      stamp_status = "trim";
     }
-    
     try {
-      SetReward(userdefine.uid,updateStamp_Data,stamp_status)
+      SetReward(userdefine.uid, updateStamp_Data, stamp_status);
       navigate("/");
     } catch (error) {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    PlaySound("stagewin");
+  }, []);
 
   return (
     <Container>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../css/stage.css";
 import Act_system from "./act_system";
 import PlaySound from "../../component/PlaySound";
@@ -16,6 +16,10 @@ function Poppu_Gameover({ modiflyQuiz, act_count, userdefine, life }) {
     PlaySound("button");
     setload_act(true);
   };
+
+  useEffect(() => {
+    PlaySound("stagefail");
+  }, []);
 
   return (
     <div className="popupMenu">
