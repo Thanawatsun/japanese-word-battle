@@ -6,7 +6,7 @@ function Stage({ setIsPlayer, userData, modiflyQuiz, setStageplay }) {
   const [selectedValue, setSelectedValue] = useState("easy");
   var stages = [
     { value: "level01", label: "Stage 1" },
-    { value: "level01_test", label: modiflyQuiz.level01_test.level },
+    { value: "level01_test", label: "Stage_1test" },
   ];
   const options = [
     { value: "normal", label: "Normal" },
