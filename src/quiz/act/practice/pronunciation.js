@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import PlaySound from "../../../component/PlaySound";
-
+import randomArray from "../randomquiz";
 function Pronunciation({
   this_stage,
   next_stage,
@@ -12,6 +12,13 @@ function Pronunciation({
   const [selectedOption, setSelectedOption] = useState(null);
   const [showBar, setshowBar] = useState(false);
   const [showGreenBar, setshowGreenBar] = useState(false);
+  const [shuffleGame_data, setshuffleGame_data] = useState([
+    {
+        "id": 1,
+        "isCorrect": false,
+        "text": "i"
+    },
+]);
   const handleOptionClick = (option) => {
     PlaySound("button");
     setSelectedOption(option); // อัปเดตว่าเลือกตัวไหน
@@ -24,7 +31,8 @@ function Pronunciation({
     console.log(game_data);
     const audio = new Audio(game_data.audio);
     audio.play();
-  }, [next_stage]);
+    randomArray(game_data.options,setshuffleGame_data)
+  }, [next_stage,game_data]);
   const handleConfirm = () => {
     PlaySound("button");
     if (selectedOption !== null) {
@@ -72,7 +80,7 @@ function Pronunciation({
       <div className="center-quiz-pt3">
         <div className="question-card">
           <ListGroup as="ul">
-            {game_data.options.map((option) => {
+            {shuffleGame_data.map((option) => {
               return (
                 <ListGroup.Item
                   as="li"

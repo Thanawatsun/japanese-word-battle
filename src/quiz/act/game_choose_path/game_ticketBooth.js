@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PlaySound from "../../../component/PlaySound";
-
+import randomArray from "../randomquiz";
 function AnswerButton({ text, onClick }) {
   return (
     <button onClick={onClick} className="ticket-button">
@@ -12,6 +12,16 @@ function AnswerButton({ text, onClick }) {
 function Game_ticketBooth({ game_data, setload_act, life_act, setlife_act }) {
   const [showBar, setshowBar] = useState(false);
   const [showGreenBar, setshowGreenBar] = useState(false);
+  const [shuffleGame_data, setshuffleGame_data] = useState([
+    {
+        "id": 1,
+        "isCorrect": false,
+        "text": "i"
+    },
+]);
+useEffect(() => {
+  randomArray(game_data.options,setshuffleGame_data)
+}, [game_data]);
   const handleClick = (answer) => {
     console.log("You clicked:", answer);
     PlaySound("button");
@@ -53,7 +63,7 @@ function Game_ticketBooth({ game_data, setload_act, life_act, setlife_act }) {
           </h3>
         </div>
         <div className="ticket-box">
-          {game_data.options.map((choose) => (
+          {shuffleGame_data.map((choose) => (
             <AnswerButton
               key={choose.id}
               text={choose.text}

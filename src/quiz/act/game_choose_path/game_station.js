@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PlaySound from "../../../component/PlaySound";
-
+import randomArray from "../randomquiz";
 function AnswerButton({ text, onClick }) {
   return (
     <button onClick={onClick} className="station-button">
@@ -10,9 +10,18 @@ function AnswerButton({ text, onClick }) {
 }
 
 function Game_station({ game_data, setload_act, life_act, setlife_act }) {
-  const [way, setWay] = useState("Train Station"); //ใส่ชื่อสถานที่จะไปใน databnase ด้วย
   const [showBar, setshowBar] = useState(false);
   const [showGreenBar, setshowGreenBar] = useState(false);
+  const [shuffleGame_data, setshuffleGame_data] = useState([
+    {
+        "id": 1,
+        "isCorrect": false,
+        "text": "i"
+    },
+]);
+useEffect(() => {
+  randomArray(game_data.options,setshuffleGame_data)
+}, [game_data]);
   const handleClick = (answer) => {
     console.log("You clicked:", answer);
     PlaySound("button");
@@ -60,7 +69,7 @@ function Game_station({ game_data, setload_act, life_act, setlife_act }) {
             className="station-node-image"
           />
           <div className="station-button-group">
-            {game_data.options.map((choose) => (
+            {shuffleGame_data.map((choose) => (
               <AnswerButton
                 key={choose.id}
                 text={choose.text}

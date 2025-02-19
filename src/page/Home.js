@@ -10,7 +10,6 @@ import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { count } from "firebase/firestore";
 import PlaySound from "../component/PlaySound";
 
 function Home({
@@ -44,7 +43,7 @@ function Home({
     } catch (error) {
       console.error("Error uploading data:", error);
     }
-  }, []);
+  }, [userdefine.uid]);
   function changePage(page) {
     console.log(userdefine);
     if (page === "Home") {

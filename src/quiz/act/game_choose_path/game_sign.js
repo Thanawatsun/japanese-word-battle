@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PlaySound from "../../../component/PlaySound";
-
+import randomArray from "../randomquiz";
 function AnswerButton({ text, onClick, index,buttonImageList,buttonImageHoverList }) {
   const signBGImages = buttonImageList;
   const signHoverBGImages = buttonImageHoverList;
@@ -28,17 +28,25 @@ function AnswerButton({ text, onClick, index,buttonImageList,buttonImageHoverLis
 }
 
 function Game_sign({ game_data, setload_act, life_act, setlife_act }) {
-  const [way, setWay] = useState("Train Station"); //ใส่ชื่อสถานที่จะไปใน databnase ด้วย
   const [showBar, setshowBar] = useState(false);
   const [showGreenBar, setshowGreenBar] = useState(false);
-  
+    const [shuffleGame_data, setshuffleGame_data] = useState([
+      {
+          "id": 1,
+          "isCorrect": false,
+          "text": "i"
+      },
+  ]);
+  useEffect(() => {
+    randomArray(game_data.options,setshuffleGame_data)
+  }, [game_data]);
   const imageButtons = [];
-for (let i = 0; i < game_data.options.length; i++) {
-  imageButtons.push(game_data.options[i].image_button);
+for (let i = 0; i < shuffleGame_data.length; i++) {
+  imageButtons.push(shuffleGame_data[i].image_button);
 }
 const imageButtons_hover = [];
-for (let i = 0; i < game_data.options.length; i++) {
-  imageButtons_hover.push(game_data.options[i].image_button_hover);
+for (let i = 0; i < shuffleGame_data.length; i++) {
+  imageButtons_hover.push(shuffleGame_data[i].image_button_hover);
 }
 
   const handleClick = (answer) => {
@@ -82,7 +90,7 @@ for (let i = 0; i < game_data.options.length; i++) {
           </h3>
         </div>
         <div className="sign-box">
-          {game_data.options.map((choose, index) => (
+          {shuffleGame_data.map((choose, index) => (
             <AnswerButton
               key={choose.id}
               text={choose.text}
