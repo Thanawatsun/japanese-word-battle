@@ -8,6 +8,10 @@
     color: white;
     background-color: gray;
     text-align: left;
+    font-size: x-large;
+    font-weight: bold;
+    -webkit-text-stroke: 0.75px black;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     padding-left: 10px;
     padding-top: 5px;
     width: 100%;

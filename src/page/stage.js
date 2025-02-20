@@ -3,17 +3,18 @@ import "../css/stage.css";
 import PlaySound from "../component/PlaySound";
 
 function Stage({ setIsPlayer, userData, modiflyQuiz, setStageplay }) {
-  const stages = Object.keys(modiflyQuiz).map(key => ({
+  const stages = Object.keys(modiflyQuiz).map((key) => ({
     value: modiflyQuiz[key].stage_index,
-    label: modiflyQuiz[key].stage_level
-}));
+    label: modiflyQuiz[key].stage_level,
+  }));
 
-console.log(stages);
+  console.log(stages);
+  const stageImage =
+    "https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2FTokyoSkytreeView.webp?alt=media&token=709453fc-f9e0-4268-a587-900257bfc386";
   const options = [
     { value: "normal", label: "Normal" },
     { value: "hard", label: "Hard" },
   ];
-
   const handleTostage = (value) => {
     const shuffleArray = (array) => {
       return array
@@ -26,6 +27,7 @@ console.log(stages);
     setStageplay(value);
     setIsPlayer(true);
   };
+
   return (
     <div className="stage-display">
       {stages.map((stage) => (
@@ -34,6 +36,11 @@ console.log(stages);
           className="stage"
           value={stage.value}
           onClick={() => handleTostage(stage.value)}
+          style={{
+            backgroundImage: `url(${stageImage})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
         >
           {stage.label}
         </div>

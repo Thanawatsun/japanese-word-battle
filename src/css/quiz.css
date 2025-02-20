@@ -118,6 +118,10 @@
   z-index: 1;
 }
 
+.reward-confirm-button {
+  position: relative;
+}
+
 .white-box {
   right: -50px;
   width: 150%;

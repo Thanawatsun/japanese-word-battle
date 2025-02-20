@@ -40,13 +40,18 @@ function Reward() {
   return (
     <Container>
       <Row>
-        <Col></Col>
+        <Col>
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2FTokyoSkytree.webp?alt=media&token=4d97e3db-c596-4067-b862-fbfe65f51b91"
+            alt=""
+            className="story-image"
+          />
+        </Col>
         <Col>
           <div className="reward-box">
             <div>
-              <div>Reward</div>
               <button
-                className="confirm_button"
+                className="confirm_button reward-confirm-button"
                 onClick={handlenext}
                 style={{ marginTop: "1vh" }}
               >
