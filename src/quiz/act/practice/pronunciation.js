@@ -28,9 +28,11 @@ function Pronunciation({
     audio.play(); //เล่นเสียง
   };
   useEffect(() => {
-    console.log(game_data);
     const audio = new Audio(game_data.audio);
+    console.log(next_stage)
     audio.play();
+    
+
     randomArray(game_data.options,setshuffleGame_data)
   }, [next_stage,game_data]);
   const handleConfirm = () => {

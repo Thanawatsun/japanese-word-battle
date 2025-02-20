@@ -3,7 +3,7 @@ import "../../css/quiz.css";
 import { app } from "../../firebase"; // Import your Firebase configuration
 import { getDatabase, ref, update } from "firebase/database";
 import { useNavigate } from "react-router-dom";
-
+import SetSaveGame from "../../api/setSaveGame"
 function Act_system({
   modiflyQuiz,
   Ispractice,
@@ -42,13 +42,7 @@ function Act_system({
         Isstory = true;
       }
       // update act to user
-      const db = getDatabase(app);
-      const term = userdefine.uid;
-      const termRef = ref(db, "User_Data/" + term);
-      update(termRef, {
-        stage_playing_name: modiflyQuiz.level,
-        stage_playing_act: act_count,
-      });
+      SetSaveGame(userdefine.uid,life,act_count,modiflyQuiz.stage_index)
       if (Isloading) {
         navigate("/loading", {
           state: {

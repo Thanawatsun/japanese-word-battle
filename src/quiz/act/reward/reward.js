@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "../../../css/quiz.css";
 import SetReward from "../../../api/setReward";
+import SetSaveGame from "../../../api/setSaveGame";
 import PlaySound from "../../../component/PlaySound";
 
 function Reward() {
@@ -27,6 +28,7 @@ function Reward() {
     }
     try {
       SetReward(userdefine.uid, updateStamp_Data, stamp_status);
+      SetSaveGame(userdefine.uid,null,null,null)
       navigate("/");
     } catch (error) {
       console.error(error);

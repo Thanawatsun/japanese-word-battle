@@ -2,14 +2,14 @@
 import "./App.css";
 import LoginUser from "./page/login";
 import Home from "./page/Home";
-import Stage_stsyem from "./quiz/stage_test01";
+import StageSystem from "./quiz/stage_system";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState, useEffect } from "react";
 import GetStagedata from "./api/getStage"
 import GetStampdata from "./api/getStamp"
 import GetScoreBoarddata from "./api/getScoreBoard"
 import GetProfiledata from "./api/getProfile"
-
+import GetGameSave from "./api/getGameSave"
 function App() {
   const isLoading = false;
   const [isLogin, setIsLogin] = useState(false);
@@ -20,16 +20,20 @@ function App() {
   const [scoreboardData, setScoreboardData] = useState();
   const [profileData, setProfileData] = useState();
   const [stampData, setStampData] = useState();
+  const [isContinue, setIsContinue] = useState();
+
+  const isObjectEmpty = (objectName) => {
+    return Object.keys(objectName).length !== 0
+  }
+
   useEffect(() => {
-    if(userdefine != {}){
-      console.log("in")
+    if(isObjectEmpty(userdefine)){
     GetStagedata(setModiflyQuiz)
     GetStampdata(setStampData)
     GetScoreBoarddata(setScoreboardData)
     GetProfiledata(setProfileData,userdefine.uid)
+    GetGameSave(setIsContinue,userdefine.uid)
     }
-    
-    console.log(userdefine)
   }, [userdefine]);
 
   return (
@@ -40,7 +44,8 @@ function App() {
         <div className="App">
           {isPlayer ? (
             <div>
-              <Stage_stsyem
+              <StageSystem
+                isContinue={isContinue}
                 setIsPlayer={setIsPlayer}
                 modiflyQuiz={modiflyQuiz}
                 userdefine={userdefine}
