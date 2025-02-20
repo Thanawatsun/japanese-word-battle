@@ -88,6 +88,9 @@ function LoginUser({ setIsLogin, setuserdefine }) {
             learning_level: "Rank 0 None-level",
             user_stage: 0,
             userBankword: [""],
+            stage_playing_life: null,
+            stage_playing_act: null,
+            stage_playing_name: null,
           });
         }
       });
