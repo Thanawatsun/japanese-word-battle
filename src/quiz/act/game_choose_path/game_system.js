@@ -9,7 +9,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Popup_gameover from "../popup_gameover";
-
+import getlife from "../../../api/getLife"
 function Game_system() {
   const [load_act, setload_act] = useState(false);
   const [gameover_act, setgameover_act] = useState(false);
@@ -23,7 +23,7 @@ function Game_system() {
   const location_point = [];
 
   useEffect(() => {
-    setlife_act(life);
+    getlife(setlife_act,userdefine.uid)
   }, []);
   useEffect(() => {
     if (life_act <= 0) {
@@ -106,6 +106,7 @@ function Game_system() {
                   setload_act={setload_act}
                   life_act={life_act}
                   setlife_act={setlife_act}
+                  userdefine={userdefine}
                 />
               ) : game_data.type === "station" ? (
                 <Station
@@ -113,6 +114,7 @@ function Game_system() {
                   setload_act={setload_act}
                   life_act={life_act}
                   setlife_act={setlife_act}
+                  userdefine={userdefine}
                 />
               ) : game_data.type === "ticket" ? (
                 <Ticket
@@ -120,6 +122,7 @@ function Game_system() {
                   setload_act={setload_act}
                   life_act={life_act}
                   setlife_act={setlife_act}
+                  userdefine={userdefine}
                 />
               ) : (
                 <div></div>

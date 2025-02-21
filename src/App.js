@@ -20,7 +20,6 @@ function App() {
   const [scoreboardData, setScoreboardData] = useState();
   const [profileData, setProfileData] = useState();
   const [stampData, setStampData] = useState();
-  const [isContinue, setIsContinue] = useState();
 
   const isObjectEmpty = (objectName) => {
     return Object.keys(objectName).length !== 0
@@ -32,7 +31,7 @@ function App() {
     GetStampdata(setStampData)
     GetScoreBoarddata(setScoreboardData)
     GetProfiledata(setProfileData,userdefine.uid)
-    GetGameSave(setIsContinue,userdefine.uid)
+
     }
   }, [userdefine]);
 
@@ -45,7 +44,6 @@ function App() {
           {isPlayer ? (
             <div>
               <StageSystem
-                isContinue={isContinue}
                 setIsPlayer={setIsPlayer}
                 modiflyQuiz={modiflyQuiz}
                 userdefine={userdefine}

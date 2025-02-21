@@ -1,6 +1,6 @@
 import { app } from "../firebase"; // Import your Firebase configuration
 import { getDatabase, ref, update, onValue } from "firebase/database";
-function SetReward(userId, LifePoint) {
+function SetReward(LifePoint,userId) {
   const db = getDatabase(app);
   const termRef = ref(
     db,

@@ -8,6 +8,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Poppu_menu from "../popup_menu";
 import Popup_gameover from "../popup_gameover";
+import getlife from "../../../api/getLife"
 
 function Practice() {
   const [load_act, setload_act] = useState(false);
@@ -25,7 +26,7 @@ function Practice() {
   const location_point = [];
 
   useEffect(() => {
-    setlife_act(life);
+    getlife(setlife_act,userdefine.uid)
   }, []);
   useEffect(() => {
     if (life_act <= 0) {
@@ -102,6 +103,7 @@ function Practice() {
               setload_act={setload_act}
               life_act={life_act}
               setlife_act={setlife_act}
+              userdefine={userdefine}
             />
           ) : practice_type === "01" ? (
             <Pronunciation_set
@@ -140,7 +142,7 @@ function Practice() {
   );
 }
 
-function Pronunciation_set({ game_data, setload_act, setlife_act, life_act }) {
+function Pronunciation_set({ game_data, setload_act, setlife_act, life_act,userdefine }) {
   const [practice_1, setpractice_1] = useState(true);
   const [practice_2, setpractice_2] = useState(false);
   const [practice_3, setpractice_3] = useState(false);
@@ -154,6 +156,7 @@ function Pronunciation_set({ game_data, setload_act, setlife_act, life_act }) {
           game_data={game_data.pronunciation[0]}
           life_act={life_act}
           setlife_act={setlife_act}
+          userdefine={userdefine}
         />
       ) : practice_2 ? (
         <Word
@@ -162,6 +165,7 @@ function Pronunciation_set({ game_data, setload_act, setlife_act, life_act }) {
           game_data={game_data.word[0]}
           life_act={life_act}
           setlife_act={setlife_act}
+          userdefine={userdefine}
         />
       ) : practice_3 ? (
         <Word
@@ -170,6 +174,7 @@ function Pronunciation_set({ game_data, setload_act, setlife_act, life_act }) {
           game_data={game_data.word[1]}
           life_act={life_act}
           setlife_act={setlife_act}
+          userdefine={userdefine}
         />
       ) : (
         <div></div>

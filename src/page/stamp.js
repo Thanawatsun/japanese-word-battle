@@ -12,7 +12,8 @@ function Stamp({ stamplist,stampData }) {
         const wordsArray = [];
           if (stampData) {
             for (var key of Object.keys(stampData)) {
-              if(stamplist[key] !== undefined){
+              console.log(stamplist)
+              if(stamplist !== undefined){
                 const image = stamplist[key].Stamp
                 //console.log(key + " -> " + stamplist[key].Stamp)
                 //console.log(key + " -> " + stampData[key][image])

@@ -40,6 +40,7 @@ function Proflie({ userData }) {
             width="100"
             height="100"
             className="user-image"
+            referrerPolicy="no-referrer"
           />
         </div>
         <div className="username">
@@ -51,10 +52,11 @@ function Proflie({ userData }) {
           <p>{userData.useremail}</p>
         </div>
       </div>
-      <div className="proflie_block">
+      
+      {/*<div className="proflie_block">
         <h3>Level การเรียนรู้</h3>
         <p>{userData.learning_level}</p>
-      </div>
+      </div>*/}
       <div className="proflie_block">
         <h3>ด่านที่ผ่าน</h3>
         <p>{userData.user_stage}</p>

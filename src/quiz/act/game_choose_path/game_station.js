@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PlaySound from "../../../component/PlaySound";
 import randomArray from "../randomquiz";
+import setlife from "../../../api/setLife"
 function AnswerButton({ text, onClick }) {
   return (
     <button onClick={onClick} className="station-button">
@@ -9,7 +10,7 @@ function AnswerButton({ text, onClick }) {
   );
 }
 
-function Game_station({ game_data, setload_act, life_act, setlife_act }) {
+function Game_station({ game_data, setload_act, life_act, setlife_act,userdefine }) {
   const [showBar, setshowBar] = useState(false);
   const [showGreenBar, setshowGreenBar] = useState(false);
   const [shuffleGame_data, setshuffleGame_data] = useState([
@@ -32,6 +33,7 @@ useEffect(() => {
       setshowGreenBar(true);
     } else {
       PlaySound("incorrect");
+      setlife(life_act - 1,userdefine.uid)
       setlife_act(life_act - 1);
       if (life_act - 1 <= 0) {
         setshowBar(false);
