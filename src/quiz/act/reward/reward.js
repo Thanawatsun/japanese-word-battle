@@ -7,7 +7,8 @@ import "../../../css/quiz.css";
 import SetReward from "../../../api/setReward";
 import SetSaveGame from "../../../api/setSaveGame";
 import PlaySound from "../../../component/PlaySound";
-
+import Poppu_Stamp from "../popup_stamp";
+import {count} from "firebase/firestore";
 function Reward() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -18,14 +19,16 @@ function Reward() {
   const { life } = location.state;
   const [name, setName] = useState("test002");
   const [age, setAge] = useState("2300");
+  var stamp_status = "normal";
+  var stamp_image = quizData.reward.stamp
+  if (life === 5) {
+    stamp_status = "trim";
+    stamp_image = quizData.reward.trim_stamp
+  }
   const handlenext = async (event) => {
     PlaySound("button");
     event.preventDefault();
     const updateStamp_Data = quizData.level;
-    var stamp_status = "normal";
-    if (life === 5) {
-      stamp_status = "trim";
-    }
     try {
       SetReward(userdefine.uid, updateStamp_Data, stamp_status);
       SetSaveGame(userdefine.uid,null,null,null)
@@ -43,6 +46,9 @@ function Reward() {
     <Container>
       <Row>
         <Col>
+        <Poppu_Stamp
+        stamp_image={stamp_image}
+        />
           <img
             src="https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2FTokyoSkytree.webp?alt=media&token=4d97e3db-c596-4067-b862-fbfe65f51b91"
             alt=""
