@@ -14,9 +14,6 @@ function ButtonPlaySound(inputType) {
   const stageFail = new Audio(
     "https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/audio%2FSound%20Effect%2FFail%20Stage.wav?alt=media&token=a428c089-b8d3-4442-a66d-3d8aeee211b2"
   );
-  const stageWin = new Audio(
-    "https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/audio%2FSound%20Effect%2FWin%20Stage.mp3?alt=media&token=08c38ad1-24da-4461-9d88-292290394bf2"
-  );
 
   if (inputType === "button") {
     buttonSound.play();
@@ -32,9 +29,6 @@ function ButtonPlaySound(inputType) {
   } else if (inputType === "stagefail") {
     stageFail.volume = 0.5;
     stageFail.play();
-  } else if (inputType === "stagewin") {
-    stageWin.volume = 0.5;
-    stageWin.play();
   }
 }
 export default ButtonPlaySound;

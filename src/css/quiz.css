@@ -1,3 +1,7 @@
+.text-center {
+  text-align: center;
+}
+
 .quiz_container {
   margin: auto;
   position: relative;
@@ -120,6 +124,10 @@
 
 .reward-confirm-button {
   position: relative;
+}
+
+.reward-popup-confirm-button {
+  margin-bottom: 0;
 }
 
 .white-box {
