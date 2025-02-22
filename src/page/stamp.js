@@ -13,7 +13,9 @@ function Stamp({ stamplist,stampData }) {
           if (stampData) {
             for (var key of Object.keys(stampData)) {
               console.log(stamplist)
-              if(stamplist !== undefined){
+              if(stamplist !== undefined && stamplist[key]!== undefined){
+                console.log(stamplist[key])
+                console.log(key)
                 const image = stamplist[key].Stamp
                 //console.log(key + " -> " + stamplist[key].Stamp)
                 //console.log(key + " -> " + stampData[key][image])
