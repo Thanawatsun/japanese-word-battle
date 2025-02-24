@@ -4,8 +4,8 @@ import PlaySound from "../component/PlaySound";
 function Stage({ setIsPlayer, userData, modiflyQuiz, setStageplay }) {
   const stages = Object.keys(modiflyQuiz).map((key) => ({
     value: modiflyQuiz[key].stage_index,
-    label: modiflyQuiz[key].stage_level,
-    image: modiflyQuiz[key].stage_image
+    label: modiflyQuiz[key].stage_name,
+    image: modiflyQuiz[key].stage_image,
   }));
 
   const handleTostage = (value) => {

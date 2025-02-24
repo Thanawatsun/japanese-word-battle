@@ -39,12 +39,12 @@ function Proflie({ userData }) {
           />
         </div>
         <div className="username">
-          <h3 className="profile-head-text">User Name</h3>
-          <p className="profile-par-text">{userData.username}</p>
+          <h3 className="profile-side-head-text">User Name</h3>
+          <p className="profile-side-par-text">{userData.username}</p>
         </div>
         <div className="useremail">
-          <h3 className="profile-head-text">Email</h3>
-          <p className="profile-par-text">{userData.useremail}</p>
+          <h3 className="profile-side-head-text">Email</h3>
+          <p className="profile-side-par-text">{userData.useremail}</p>
         </div>
       </div>
 
