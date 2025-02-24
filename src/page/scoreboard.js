@@ -27,6 +27,21 @@ function ScoreBoard({ userData }) {
       setUsers(top10Users);
     });
   }, []);
+  const calculatorStamp = (option) =>{
+    var stampPoint = 0
+    if(option !== undefined){
+      for (var key of Object.keys(option)) {
+        if(option[key].Stamp === "normal"){
+          stampPoint = stampPoint+1
+        }
+        else if(option[key].Stamp === "trim"){
+          stampPoint = stampPoint+2
+        }
+
+    }
+    }
+    return stampPoint
+  }
   useEffect(() => {
     if (sortusers != null) {
       for (const userId in sortusers) {
@@ -63,7 +78,7 @@ function ScoreBoard({ userData }) {
                   />
                 </td>
                 <td className="table-contain-3">{user.username}</td>
-                <td className="table-contain-4">: {user.user_score} Stamp</td>
+                <td className="table-contain-4"> {calculatorStamp(user.Stamp_Data)} Stamp</td>
               </tr>
             ))}
           </tbody>
@@ -111,7 +126,7 @@ function ScoreBoard({ userData }) {
               </td>
               <td className="player-table-contain-3">{userData.username}</td>
               <td className="player-table-contain-4">
-                : {userData.user_score} Stamp
+                : {calculatorStamp(userData.Stamp_Data)} Stamp
               </td>
             </tr>
           </tbody>

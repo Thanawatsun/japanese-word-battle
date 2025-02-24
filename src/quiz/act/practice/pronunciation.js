@@ -23,7 +23,9 @@ function Pronunciation({
   ]);
   const handleOptionClick = (option) => {
     PlaySound("button");
-    setSelectedOption(option); // อัปเดตว่าเลือกตัวไหน
+    setSelectedOption(option);
+    const audio = new Audio(option.audio);
+    audio.play();
   };
   const handleClickAudio = () => {
     const audio = new Audio(game_data.audio);
