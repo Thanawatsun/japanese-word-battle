@@ -6,56 +6,47 @@ import { useNavigate } from "react-router-dom";
 
 function Act_system({
   modiflyQuiz,
-
   Ispractice,
-
   Isstory,
-
   Isgame,
-
   Isnext,
-
   act_count,
-
+  act_reward,
   userdefine,
-
   life,
-
-  continueGame,
-
-  continuePlay,
-
   IsQuit,
-
   Isloading,
-
   loading_type,
 }) {
-  //  console.log(continuePlay)
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if ((modiflyQuiz[act_count].nextAct === "act_end") & Isnext) {
+  console.log(modiflyQuiz[act_reward])
+  useEffect(()=>{
+    if ((modiflyQuiz[act_reward].nextAct === "act_end") & Isnext) {
       navigate("/reward", {
         state: {
           quizData: modiflyQuiz,
 
-          act_count: act_count,
+          act_count: act_reward,
 
           userdefine: userdefine,
 
           life: life,
 
-          max_count: modiflyQuiz.act_count,
+          max_count: modiflyQuiz.act_reward,
         },
-      }); //เดี๋ยวมาใส่ด่าน rewar
-    } else {
-      if (Isnext) {
-        act_count = modiflyQuiz[act_count].nextAct;
+      });
+    }
+  },[Isnext,life,act_reward, modiflyQuiz,navigate,userdefine])
+  if (Isnext && modiflyQuiz[act_count].nextAct !== undefined) {
+    act_count = modiflyQuiz[act_count].nextAct;
 
-        Isstory = true;
-      }
+    Isstory = (true);
+  }
+  useEffect(() => {
+    if ((modiflyQuiz[act_count].nextAct === "act_end") & Isnext) {
+
+    } else {
 
       if (Isloading) {
         navigate("/loading", {
@@ -78,21 +69,6 @@ function Act_system({
       if (IsQuit) {
         navigate("/");
       }
-
-      if (act_count > modiflyQuiz.act_count) {
-        console.log("end game");
-      }
-
-      if (continuePlay) {
-        console.log(act_count);
-
-        act_count = continueGame.stage_playing_act;
-
-        console.log(continueGame);
-
-        console.log(act_count);
-      }
-
       if (Isgame === true) {
         navigate("/game", {
           state: {
@@ -143,7 +119,17 @@ function Act_system({
         }); // ส่งค่า quizData ผ่าน state
       }
     }
-  }, [Ispractice, Isstory]);
+  }, [  modiflyQuiz,
+    Ispractice,
+    Isstory,
+    Isgame,
+    Isnext,
+    act_count,
+    userdefine,
+    life,
+    IsQuit,
+    Isloading,
+    loading_type,navigate]);
 
   return <div></div>;
 }

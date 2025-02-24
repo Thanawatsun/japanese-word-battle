@@ -73,6 +73,7 @@ function Game_system() {
             <PoppuMenu
               modiflyQuiz={quizData}
               act_count={act_count}
+              act_reward={act_count}
               userdefine={userdefine}
               life={life_act}
             />
@@ -81,6 +82,7 @@ function Game_system() {
                 Isloading={true}
                 modiflyQuiz={quizData}
                 act_count={act_count}
+                act_reward={act_count}
                 userdefine={userdefine}
                 life={life_act}
                 loading_type={quizData[act_count].choose_path.post_practice.correct_path.animation}
@@ -89,6 +91,7 @@ function Game_system() {
               <PopupGameover
                 modiflyQuiz={quizData}
                 act_count={act_count}
+                act_reward={act_count}
                 userdefine={userdefine}
                 life={life_act}
               />

@@ -81,6 +81,7 @@ function Practice() {
               Isgame={true}
               modiflyQuiz={quizData}
               act_count={act_count}
+              act_reward={act_count}
               userdefine={userdefine}
               life={life_act}
             />
@@ -88,6 +89,7 @@ function Practice() {
             <PopupGameover
               modiflyQuiz={quizData}
               act_count={act_count}
+              act_reward={act_count}
               userdefine={userdefine}
               life={life_act}
             />

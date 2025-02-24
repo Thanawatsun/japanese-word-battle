@@ -42,10 +42,8 @@ function Reward() {
   };
   useEffect(()=>{
     GetReward(setshowPopup,userdefine.uid)
-    if(showPopup.Stamp_Data !== undefined && showPopup.Stamp_Data[quizData.level]!== undefined){
-      console.log(showPopup.Stamp_Data)
-    }
-  },[userdefine,showPopup,quizData])
+  },[userdefine,quizData])
+  console.log(showPopup)
   /*
   if(showPopup.Stamp_Data !== undefined && showPopup.Stamp_Data[quizData.level]!== undefined){
     console.log(showPopup.Stamp_Data)

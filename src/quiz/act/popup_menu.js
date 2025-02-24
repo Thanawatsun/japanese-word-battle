@@ -47,6 +47,7 @@ function Poppu_menu({ modiflyQuiz, act_count, userdefine, life }) {
           Isnext={false}
           modiflyQuiz={modiflyQuiz}
           act_count={act_count}
+          act_reward={act_count}
           userdefine={userdefine}
           life={life}
         />

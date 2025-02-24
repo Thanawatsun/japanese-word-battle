@@ -56,6 +56,7 @@ function StorySystem() {
       <PoppuMenu
         modiflyQuiz={quizData}
         act_count={act_count}
+        act_rewar={act_count}
         userdefine={userdefine}
         life={life_act}
       />
@@ -64,6 +65,7 @@ function StorySystem() {
           Ispractice={true}
           modiflyQuiz={quizData}
           act_count={act_count}
+          act_reward={act_count}
           userdefine={userdefine}
           life={life_act}
         />
@@ -72,6 +74,7 @@ function StorySystem() {
           Isnext={true}
           modiflyQuiz={quizData}
           act_count={act_count}
+          act_rewar={act_count}
           userdefine={userdefine}
           life={life_act}
         />

@@ -45,6 +45,7 @@ function Loading() {
             Isnext={true}
             modiflyQuiz={quizData}
             act_count={act_count}
+            act_reward={act_count}
             userdefine={userdefine}
             life={life}
           />
