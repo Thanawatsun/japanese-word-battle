@@ -38,7 +38,6 @@ function Pronunciation({
       const isCorrect = selectedOption.isCorrect;
       setshowBar(true);
       if (isCorrect) {
-        console.log("Correct!");
         PlaySound("correct");
         setshowGreenBar(true);
       } else {

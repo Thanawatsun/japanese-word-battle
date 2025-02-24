@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import React, {useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -11,7 +11,8 @@ import PlaySound from "../../../component/PlaySound";
 import PoppuStamp from "../popup_stamp";
 
 function Reward() {
-  const [showPopup, setshowPopup] = useState(false);
+  const [dataStamp, setDataStamp] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const audioRef = useRef(null);
@@ -40,10 +41,31 @@ function Reward() {
       console.error(error);
     }
   };
-  useEffect(()=>{
-    GetReward(setshowPopup,userdefine.uid)
-  },[userdefine,quizData])
-  console.log(showPopup)
+  useEffect(() => {
+    GetReward(setDataStamp, userdefine.uid);
+  }, [userdefine, quizData]);
+  useEffect(() => {
+    if (dataStamp !== false && dataStamp.Stamp_Data) {
+      if (stamp_status === dataStamp.Stamp_Data[quizData.level].Stamp) {
+        setShowPopup(false);
+      } else if (
+        stamp_status === "trim" &&
+        dataStamp.Stamp_Data[quizData.level].Stamp === "normal"
+      ) {
+        setShowPopup(true);
+      }else if (
+        stamp_status === "normal" &&
+        dataStamp.Stamp_Data[quizData.level].Stamp === "trim"
+      ){
+        setShowPopup(false);
+      }
+       else {
+        setShowPopup(true);
+      }
+    }else{
+      setShowPopup(true)
+    }
+  }, [dataStamp,quizData,stamp_status]);
   /*
   if(showPopup.Stamp_Data !== undefined && showPopup.Stamp_Data[quizData.level]!== undefined){
     console.log(showPopup.Stamp_Data)
@@ -53,7 +75,12 @@ function Reward() {
     <Container>
       <Row>
         <Col>
+        {showPopup ? (
           <PoppuStamp stamp_image={stamp_image} />
+      ) : (
+        <div></div>
+      )}
+
           <img
             src="https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2FTokyoSkytree.webp?alt=media&token=4d97e3db-c596-4067-b862-fbfe65f51b91"
             alt=""

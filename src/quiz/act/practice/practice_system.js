@@ -30,7 +30,6 @@ function Practice() {
   }, [userdefine]);
   useEffect(() => {
     if (life_act <= 0) {
-      console.log("popup start");
       setgameover_act(true);
     }
   }, [life_act]);
@@ -145,7 +144,6 @@ function PronunciationSet({ game_data, setload_act, setlife_act, life_act,userde
   const [practice_1, setpractice_1] = useState(true);
   const [practice_2, setpractice_2] = useState(false);
   const [practice_3, setpractice_3] = useState(false);
-  console.log(game_data);
   return (
     <div>
       {practice_1 ? (

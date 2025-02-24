@@ -17,7 +17,6 @@ function LoginUser({ setIsLogin, setuserdefine }) {
     }
   }, [credential]);
   auth.onAuthStateChanged((user) => {
-    console.log(user);
     if (user != null) {
       handleLoginSuccess();
       setuserdefine({

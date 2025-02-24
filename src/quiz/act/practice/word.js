@@ -33,7 +33,6 @@ function Word({ this_stage, next_stage, game_data, life_act, setlife_act,userdef
       const isCorrect = selectedOption.isCorrect;
       setshowBar(true);
       if (isCorrect) {
-        console.log("Correct!");
         PlaySound("correct");
         setshowGreenBar(true);
       } else {

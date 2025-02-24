@@ -24,7 +24,6 @@ useEffect(() => {
   randomArray(game_data.options,setshuffleGame_data)
 }, [game_data]);
   const handleClick = (answer) => {
-    console.log("You clicked:", answer);
     PlaySound("button");
     setshowBar(true);
     if (answer.isCorrect) {

@@ -1,5 +1,4 @@
 function randomArray(array,setarray) {
-    console.log(array)
     const shuffleArray = (array) => {
         return array
           .map((item) => ({ ...item, sort: Math.random() })) // Add random sort key

@@ -20,8 +20,12 @@ function Act_system({
 }) {
 
   const navigate = useNavigate();
-  console.log(modiflyQuiz[act_reward])
-  useEffect(()=>{
+  if (Isnext) {
+    act_count = modiflyQuiz[act_count].nextAct;
+
+    Isstory = (true);
+  }
+  useEffect(() => {
     if ((modiflyQuiz[act_reward].nextAct === "act_end") & Isnext) {
       navigate("/reward", {
         state: {
@@ -36,16 +40,6 @@ function Act_system({
           max_count: modiflyQuiz.act_reward,
         },
       });
-    }
-  },[Isnext,life,act_reward, modiflyQuiz,navigate,userdefine])
-  if (Isnext && modiflyQuiz[act_count].nextAct !== undefined) {
-    act_count = modiflyQuiz[act_count].nextAct;
-
-    Isstory = (true);
-  }
-  useEffect(() => {
-    if ((modiflyQuiz[act_count].nextAct === "act_end") & Isnext) {
-
     } else {
 
       if (Isloading) {
@@ -129,7 +123,7 @@ function Act_system({
     life,
     IsQuit,
     Isloading,
-    loading_type,navigate]);
+    loading_type,navigate,act_reward]);
 
   return <div></div>;
 }

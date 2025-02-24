@@ -51,7 +51,6 @@ for (let i = 0; i < shuffleGame_data.length; i++) {
 }
 
   const handleClick = (answer) => {
-    console.log("You clicked:", answer);
     PlaySound("button");
     setshowBar(true);
     if (answer.isCorrect) {
