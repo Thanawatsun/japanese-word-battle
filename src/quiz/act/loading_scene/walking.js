@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-function Walking({}) {
+function Walking() {
   useEffect(() => {
     const walkingDiv = document.getElementById("walking-bg");
     setTimeout(() => {

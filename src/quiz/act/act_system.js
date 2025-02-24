@@ -1,114 +1,149 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect } from "react";
+
 import "../../css/quiz.css";
+
 import { useNavigate } from "react-router-dom";
 
 function Act_system({
   modiflyQuiz,
+
   Ispractice,
-  Isstory: initialIsstory, // rename prop เพื่อความชัดเจน
+
+  Isstory,
+
   Isgame,
+
   Isnext,
-  act_count: initialActCount, // rename prop เพื่อความชัดเจน
+
+  act_count,
+
   userdefine,
+
   life,
+
   continueGame,
+
   continuePlay,
+
   IsQuit,
+
   Isloading,
+
   loading_type,
 }) {
+  //  console.log(continuePlay)
+
   const navigate = useNavigate();
-  const [actCount, setActCount] = useState(initialActCount);
-  const [Isstory, setIsStory] = useState(initialIsstory);
 
   useEffect(() => {
-    if (Isnext && modiflyQuiz[actCount]?.nextAct === "act_end") {
+    if ((modiflyQuiz[act_count].nextAct === "act_end") & Isnext) {
       navigate("/reward", {
         state: {
           quizData: modiflyQuiz,
-          act_count: actCount,
+
+          act_count: act_count,
+
           userdefine: userdefine,
+
           life: life,
+
           max_count: modiflyQuiz.act_count,
         },
-      });
+      }); //เดี๋ยวมาใส่ด่าน rewar
     } else {
       if (Isnext) {
-        setActCount(modiflyQuiz[actCount]?.nextAct);
-        setIsStory(true);
+        act_count = modiflyQuiz[act_count].nextAct;
+
+        Isstory = true;
       }
+
       if (Isloading) {
         navigate("/loading", {
           state: {
             quizData: modiflyQuiz,
-            act_count: actCount,
+
+            act_count: act_count,
+
             userdefine: userdefine,
+
             life: life,
+
             max_count: modiflyQuiz.act_count,
+
             loading_type: loading_type,
           },
         });
       }
+
       if (IsQuit) {
         navigate("/");
       }
-      if (actCount > modiflyQuiz.act_count) {
+
+      if (act_count > modiflyQuiz.act_count) {
         console.log("end game");
       }
+
       if (continuePlay) {
-        setActCount(continueGame.stage_playing_act);
+        console.log(act_count);
+
+        act_count = continueGame.stage_playing_act;
+
+        console.log(continueGame);
+
+        console.log(act_count);
       }
-      if (Isgame) {
+
+      if (Isgame === true) {
         navigate("/game", {
           state: {
             quizData: modiflyQuiz,
-            act_count: actCount,
+
+            act_count: act_count,
+
             userdefine: userdefine,
+
             life: life,
+
             max_count: modiflyQuiz.act_count,
           },
         });
       }
-      if (Ispractice) {
+
+      if (Ispractice === true) {
         navigate("/practice", {
           state: {
             quizData: modiflyQuiz,
-            act_count: actCount,
+
+            act_count: act_count,
+
             userdefine: userdefine,
+
             life: life,
+
             max_count: modiflyQuiz.act_count,
           },
         });
       }
-      if (Isstory) {
+
+      if (Isstory === true) {
         navigate("/story", {
           state: {
             quizData: modiflyQuiz,
+
             poststory: false,
-            act_count: actCount,
+
+            act_count: act_count,
+
             userdefine: userdefine,
+
             life: life,
+
             max_count: modiflyQuiz.act_count,
           },
-        });
+        }); // ส่งค่า quizData ผ่าน state
       }
     }
-  }, [
-    Ispractice,
-    Isstory,
-    Isgame,
-    Isnext,
-    actCount,
-    userdefine,
-    life,
-    continueGame,
-    continuePlay,
-    IsQuit,
-    Isloading,
-    loading_type,
-    modiflyQuiz,
-    navigate
-  ]);
+  }, [Ispractice, Isstory]);
 
   return <div></div>;
 }

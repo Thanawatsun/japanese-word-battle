@@ -1,4 +1,4 @@
-function Train({}) {
+function Train() {
   return (
     <div id="train-bg">
       <h1 className="loading-text">Traveling...</h1>

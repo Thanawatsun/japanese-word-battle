@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import React, {useState, useRef } from "react";
+import React, {useState, useRef, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -20,7 +20,7 @@ function Reward() {
   const { userdefine } = location.state;
   //const { max_count } = location.state;
   const { life } = location.state;
-  GetReward(setshowPopup,userdefine.uid)
+  //GetReward(setshowPopup,userdefine.uid)
   var stamp_status = "normal";
   var stamp_image = quizData.reward.stamp;
 
@@ -40,9 +40,16 @@ function Reward() {
       console.error(error);
     }
   };
+  useEffect(()=>{
+    GetReward(setshowPopup,userdefine.uid)
+    if(showPopup.Stamp_Data !== undefined && showPopup.Stamp_Data[quizData.level]!== undefined){
+      console.log(showPopup.Stamp_Data)
+    }
+  },[userdefine,showPopup,quizData])
+  /*
   if(showPopup.Stamp_Data !== undefined && showPopup.Stamp_Data[quizData.level]!== undefined){
     console.log(showPopup.Stamp_Data)
-  }
+  }*/
 
   return (
     <Container>

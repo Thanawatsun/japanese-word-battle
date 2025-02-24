@@ -35,7 +35,7 @@ function ScoreBoard({ userData }) {
         }
       }
     }
-  }, [users]);
+  }, [users,sortusers]);
   return (
     <div className="scoreBoard">
       <div className="score-board-box">

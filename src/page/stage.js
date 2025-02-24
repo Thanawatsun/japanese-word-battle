@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import "../css/stage.css";
 import PlaySound from "../component/PlaySound";
 

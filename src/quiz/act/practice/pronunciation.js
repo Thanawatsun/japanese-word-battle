@@ -75,6 +75,7 @@ function Pronunciation({
           src="https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/audio%2FSound%20Effect%2F250-milliseconds-of-silence.mp3?alt=media&token=0e9184ac-c977-46e3-b009-36349f905090"
           allow="autoplay"
           id="audio"
+          title="silence"
           style={{ display: "none" }}
         ></iframe>
         <audio id="player" autoPlay>
