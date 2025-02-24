@@ -1,7 +1,7 @@
 .vocabulary-list {
   display: flex;
-  flex-direction: row;
   flex-flow: wrap;
+  flex-direction: row;
   /* สไตล์อื่นๆ สำหรับการเลื่อน */
 }
 

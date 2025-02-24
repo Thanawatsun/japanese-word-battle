@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
 import PlaySound from "../../../component/PlaySound";
 import randomArray from "../randomquiz";
-import setlife from "../../../api/setLife"
-function AnswerButton({ text, onClick, index,buttonImageList,buttonImageHoverList }) {
+import setlife from "../../../api/setLife";
+function AnswerButton({
+  text,
+  onClick,
+  index,
+  buttonImageList,
+  buttonImageHoverList,
+}) {
   const signBGImages = buttonImageList;
   const signHoverBGImages = buttonImageHoverList;
   const [isHovered, setIsHovered] = useState(false);
@@ -28,27 +34,33 @@ function AnswerButton({ text, onClick, index,buttonImageList,buttonImageHoverLis
   );
 }
 
-function Game_sign({ game_data, setload_act, life_act, setlife_act,userdefine }) {
+function Game_sign({
+  game_data,
+  setload_act,
+  life_act,
+  setlife_act,
+  userdefine,
+}) {
   const [showBar, setshowBar] = useState(false);
   const [showGreenBar, setshowGreenBar] = useState(false);
-    const [shuffleGame_data, setshuffleGame_data] = useState([
-      {
-          "id": 1,
-          "isCorrect": false,
-          "text": "i"
-      },
+  const [shuffleGame_data, setshuffleGame_data] = useState([
+    {
+      id: 1,
+      isCorrect: false,
+      text: "i",
+    },
   ]);
   useEffect(() => {
-    randomArray(game_data.options,setshuffleGame_data)
+    randomArray(game_data.options, setshuffleGame_data);
   }, [game_data]);
   const imageButtons = [];
-for (let i = 0; i < shuffleGame_data.length; i++) {
-  imageButtons.push(shuffleGame_data[i].image_button);
-}
-const imageButtons_hover = [];
-for (let i = 0; i < shuffleGame_data.length; i++) {
-  imageButtons_hover.push(shuffleGame_data[i].image_button_hover);
-}
+  for (let i = 0; i < shuffleGame_data.length; i++) {
+    imageButtons.push(shuffleGame_data[i].image_button);
+  }
+  const imageButtons_hover = [];
+  for (let i = 0; i < shuffleGame_data.length; i++) {
+    imageButtons_hover.push(shuffleGame_data[i].image_button_hover);
+  }
 
   const handleClick = (answer) => {
     PlaySound("button");
@@ -59,7 +71,7 @@ for (let i = 0; i < shuffleGame_data.length; i++) {
       setshowGreenBar(true);
     } else {
       PlaySound("incorrect");
-      setlife(life_act - 1,userdefine.uid)
+      setlife(life_act - 1, userdefine.uid);
       setlife_act(life_act - 1);
       if (life_act - 1 <= 0) {
         setshowBar(false);

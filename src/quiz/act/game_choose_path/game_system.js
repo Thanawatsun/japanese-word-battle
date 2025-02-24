@@ -1,4 +1,4 @@
-import { useLocation} from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import ActSystem from "../act_system";
 import Sign from "./game_sign";
@@ -9,7 +9,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import PopupGameover from "../popup_gameover";
-import getlife from "../../../api/getLife"
+import getlife from "../../../api/getLife";
 function Game_system() {
   const [load_act, setload_act] = useState(false);
   const [gameover_act, setgameover_act] = useState(false);
@@ -23,7 +23,7 @@ function Game_system() {
   const location_point = [];
 
   useEffect(() => {
-    getlife(setlife_act,userdefine.uid)
+    getlife(setlife_act, userdefine.uid);
   }, [userdefine]);
   useEffect(() => {
     if (life_act <= 0) {
@@ -85,7 +85,10 @@ function Game_system() {
                 act_reward={act_count}
                 userdefine={userdefine}
                 life={life_act}
-                loading_type={quizData[act_count].choose_path.post_practice.correct_path.animation}
+                loading_type={
+                  quizData[act_count].choose_path.post_practice.correct_path
+                    .animation
+                }
               />
             ) : gameover_act ? (
               <PopupGameover

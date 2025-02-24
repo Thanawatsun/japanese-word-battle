@@ -1,13 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.profile-thai {
+  font-family: "Kanit", serif;
+  font-weight: 400;
+  font-style: normal;
+  
+}
+
+.profile-head-text {
+  font-size: 3.5vh;
+}
+
+.profile-par-text {
+  font-size: 2.5vh;
+}
+
 .profile_image {
   grid-area: profile_image;
+  margin: auto;
 }
 
 .username {
   grid-area: username;
+  display: grid;
+  justify-items: start;
 }
 
 .useremail {
   grid-area: useremail;
+  display: grid;
+  justify-items: start;
 }
 
 .profile {
@@ -23,10 +45,6 @@
     'profile_image username'
     'profile_image useremail';
   justify-items: start;
-}
-
-.profile_image {
-  margin: auto;
 }
 
 .user-image {
@@ -45,16 +63,6 @@
   position: absolute;
   bottom: 3%;
   right: 3%;
-}
-
-.username {
-  display: grid;
-  justify-items: start;
-}
-
-.useremail {
-  display: grid;
-  justify-items: start;
 }
 
 .popup {

@@ -19,8 +19,6 @@
     background-image: url("https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2Fgame_assets%2FBG_animation.png?alt=media&token=0ffe2448-35af-4ddb-8c79-8c51cb0691bb");
     background-size: auto 130%;
     transition: 3s;
-    /* background-position: 100px 0; */
-    /* transition-delay: 3s; */
     transition-timing-function: linear;
 }
 

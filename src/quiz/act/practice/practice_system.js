@@ -1,4 +1,4 @@
-import { useLocation} from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import ActSystem from "../act_system";
 import Pronunciation from "./pronunciation";
@@ -8,7 +8,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import PoppuMenu from "../popup_menu";
 import PopupGameover from "../popup_gameover";
-import getlife from "../../../api/getLife"
+import getlife from "../../../api/getLife";
 
 function Practice() {
   const [load_act, setload_act] = useState(false);
@@ -26,7 +26,7 @@ function Practice() {
   const location_point = [];
 
   useEffect(() => {
-    getlife(setlife_act,userdefine.uid)
+    getlife(setlife_act, userdefine.uid);
   }, [userdefine]);
   useEffect(() => {
     if (life_act <= 0) {
@@ -140,7 +140,13 @@ function Practice() {
   );
 }
 
-function PronunciationSet({ game_data, setload_act, setlife_act, life_act,userdefine }) {
+function PronunciationSet({
+  game_data,
+  setload_act,
+  setlife_act,
+  life_act,
+  userdefine,
+}) {
   const [practice_1, setpractice_1] = useState(true);
   const [practice_2, setpractice_2] = useState(false);
   const [practice_3, setpractice_3] = useState(false);

@@ -39,26 +39,26 @@ function Proflie({ userData }) {
           />
         </div>
         <div className="username">
-          <h3>User Name</h3>
-          <p>{userData.username}</p>
+          <h3 className="profile-head-text">User Name</h3>
+          <p className="profile-par-text">{userData.username}</p>
         </div>
         <div className="useremail">
-          <h3>Email</h3>
-          <p>{userData.useremail}</p>
+          <h3 className="profile-head-text">Email</h3>
+          <p className="profile-par-text">{userData.useremail}</p>
         </div>
       </div>
-      
+
       {/*<div className="proflie_block">
         <h3>Level การเรียนรู้</h3>
         <p>{userData.learning_level}</p>
       </div>*/}
       <div className="proflie_block">
-        <h3>ด่านที่ผ่าน</h3>
-        <p>{userData.user_stage}</p>
+        <h3 className="profile-thai profile-head-text">ด่านที่ผ่าน</h3>
+        <p className="profile-par-text">{userData.user_stage}</p>
       </div>
       <div className="proflie_block">
-        <h3>แสตมป์ทั้งหมด</h3>
-        <p>{userData.user_score}</p>
+        <h3 className="profile-thai profile-head-text">แสตมป์ทั้งหมด</h3>
+        <p className="profile-par-text">{userData.user_score}</p>
       </div>
       <div className="proflie_block_button">
         <button
@@ -83,13 +83,13 @@ function Proflie({ userData }) {
                   value={searchValue}
                   onChange={(e) => setSearchValue(e.target.value)}
                 />
-                <h4>กรองชื่อที่ต้องการ</h4>
+                <h4 className="profile-thai">กรองชื่อที่ต้องการ</h4>
               </div>
               <button className="confirm-button" onClick={handleSearch}>
-                <h5>ตกลง</h5>
+                <h5 className="profile-thai">ตกลง</h5>
               </button>
               <button className="cancel-button" onClick={handleClose}>
-                <h5>ยกเลิก</h5>
+                <h5 className="profile-thai">ยกเลิก</h5>
               </button>
             </div>
           </>
