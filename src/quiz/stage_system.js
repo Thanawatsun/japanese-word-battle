@@ -1,6 +1,6 @@
 import "../css/quiz.css";
 import ActSystem from "./act/act_system";
-function StageSystem({ setIsPlayer, modiflyQuiz, userdefine, stageplay }) {
+function StageSystem({modiflyQuiz, userdefine, stageplay }) {
   var continuePlay = false;
   var continueGame = {};
   return (

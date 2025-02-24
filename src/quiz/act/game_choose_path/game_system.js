@@ -1,14 +1,14 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation} from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import Act_system from "../act_system";
+import ActSystem from "../act_system";
 import Sign from "./game_sign";
 import Station from "./game_station";
 import Ticket from "./game_ticketBooth";
-import Poppu_menu from "../popup_menu";
+import PoppuMenu from "../popup_menu";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Popup_gameover from "../popup_gameover";
+import PopupGameover from "../popup_gameover";
 import getlife from "../../../api/getLife"
 function Game_system() {
   const [load_act, setload_act] = useState(false);
@@ -19,12 +19,12 @@ function Game_system() {
   const { act_count } = location.state;
   const { userdefine } = location.state;
   const { max_count } = location.state;
-  const { life } = location.state;
+  //const { life } = location.state;
   const location_point = [];
 
   useEffect(() => {
     getlife(setlife_act,userdefine.uid)
-  }, []);
+  }, [userdefine]);
   useEffect(() => {
     if (life_act <= 0) {
       console.log("popup start");
@@ -32,9 +32,7 @@ function Game_system() {
     }
   }, [life_act]);
   const game_data = quizData[act_count].choose_path.post_practice.game;
-  const handlenext = () => {
-    setload_act(true);
-  };
+
   for (let i = 0; i < max_count + 1; i++) {
     location_point.push(
       <div
@@ -72,14 +70,14 @@ function Game_system() {
         </Col>
         <Col>
           <div>
-            <Poppu_menu
+            <PoppuMenu
               modiflyQuiz={quizData}
               act_count={act_count}
               userdefine={userdefine}
               life={life_act}
             />
             {load_act ? (
-              <Act_system
+              <ActSystem
                 Isloading={true}
                 modiflyQuiz={quizData}
                 act_count={act_count}
@@ -88,7 +86,7 @@ function Game_system() {
                 loading_type={quizData[act_count].choose_path.post_practice.correct_path.animation}
               />
             ) : gameover_act ? (
-              <Popup_gameover
+              <PopupGameover
                 modiflyQuiz={quizData}
                 act_count={act_count}
                 userdefine={userdefine}

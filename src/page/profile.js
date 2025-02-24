@@ -7,7 +7,6 @@ import PlaySound from "../component/PlaySound";
 function Proflie({ userData }) {
   const [showPopup, setShowPopup] = useState(false);
   const [searchValue, setSearchValue] = useState("");
-  const [searchResult, setSearchResult] = useState("");
 
   const handleClose = () => {
     PlaySound("button");
@@ -15,10 +14,6 @@ function Proflie({ userData }) {
   };
   const handleSearch = () => {
     PlaySound("button");
-
-    // ทำการกรองข้อมูลตามค่าใน searchValue
-    // สมมติว่าคุณมีข้อมูลที่จะกรองอยู่แล้ว และเก็บไว้ในตัวแปร data
-    console.log(searchValue);
 
     const db = getDatabase(app);
     const term = userData.uid;

@@ -9,7 +9,6 @@ import GetStagedata from "./api/getStage"
 import GetStampdata from "./api/getStamp"
 import GetScoreBoarddata from "./api/getScoreBoard"
 import GetProfiledata from "./api/getProfile"
-import GetGameSave from "./api/getGameSave"
 function App() {
   const isLoading = false;
   const [isLogin, setIsLogin] = useState(false);

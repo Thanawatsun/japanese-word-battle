@@ -7,7 +7,6 @@ import Game from "./quiz/act/game_choose_path/game_system"
 import Endact from "./quiz/act/story/story_end_act"
 import Reward from "./quiz/act/reward/reward"
 import Loading from "./quiz/act/loading.js"
-import TermUploadForm from "./page/uploadData";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 //import reportWebVitals from "./reportWebVitals";
 

@@ -1,8 +1,8 @@
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { auth, provider, app } from "../firebase";
-//import { initializeApp } from 'firebase/app';
-import { getFirestore, doc, setDoc } from "firebase/firestore";
+
+//import { getFirestore, doc, setDoc } from "firebase/firestore";
 import { getDatabase, ref, update, onValue } from "firebase/database";
 import PlaySound from "../component/PlaySound";
 import "../css/login.css";
@@ -52,6 +52,7 @@ function LoginUser({ setIsLogin, setuserdefine }) {
   const handleLogoutSuccess = () => {
     setIsLogin(false);
   };
+  /*
   async function uploadDataToFirestore(user) {
     console.log(user.uid);
     const db = getFirestore(app);
@@ -64,7 +65,7 @@ function LoginUser({ setIsLogin, setuserdefine }) {
       email: user.email,
       username: user.displayName,
     });
-  }
+  }*/
   async function uploadtorealtime(user) {
     const db = getDatabase(app);
     try {

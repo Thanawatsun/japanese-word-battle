@@ -1,25 +1,26 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import React, { useEffect, useState, useRef } from "react";
+import React, {useState, useRef } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "../../../css/quiz.css";
 import SetReward from "../../../api/setReward";
+import GetReward from "../../../api/getProfile";
 import SetSaveGame from "../../../api/setSaveGame";
 import PlaySound from "../../../component/PlaySound";
-import Poppu_Stamp from "../popup_stamp";
-import { count } from "firebase/firestore";
+import PoppuStamp from "../popup_stamp";
+
 function Reward() {
+  const [showPopup, setshowPopup] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const audioRef = useRef(null);
   const { quizData } = location.state; // รับค่า quizData จาก state
-  const { act_count } = location.state;
+  //const { act_count } = location.state;
   const { userdefine } = location.state;
-  const { max_count } = location.state;
+  //const { max_count } = location.state;
   const { life } = location.state;
-  const [name, setName] = useState("test002");
-  const [age, setAge] = useState("2300");
+  GetReward(setshowPopup,userdefine.uid)
   var stamp_status = "normal";
   var stamp_image = quizData.reward.stamp;
 
@@ -39,21 +40,15 @@ function Reward() {
       console.error(error);
     }
   };
-
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.volume = 0.5;
-      audioRef.current.play().catch((error) => {
-        console.error("Autoplay prevented:", error);
-      });
-    }
-  }, []);
+  if(showPopup.Stamp_Data !== undefined && showPopup.Stamp_Data[quizData.level]!== undefined){
+    console.log(showPopup.Stamp_Data)
+  }
 
   return (
     <Container>
       <Row>
         <Col>
-          <Poppu_Stamp stamp_image={stamp_image} />
+          <PoppuStamp stamp_image={stamp_image} />
           <img
             src="https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2FTokyoSkytree.webp?alt=media&token=4d97e3db-c596-4067-b862-fbfe65f51b91"
             alt=""
@@ -63,6 +58,7 @@ function Reward() {
             src="https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/audio%2FSound%20Effect%2F250-milliseconds-of-silence.mp3?alt=media&token=0e9184ac-c977-46e3-b009-36349f905090"
             allow="autoplay"
             id="audio"
+            title="silence"
             style={{ display: "none" }}
           ></iframe>
           <audio id="player" autoPlay ref={audioRef}>

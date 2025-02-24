@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../../css/stage.css";
-import Act_system from "./act_system";
+import ActSystem from "./act_system";
 import PlaySound from "../../component/PlaySound";
 
 function Poppu_Gameover({ modiflyQuiz, act_count, userdefine, life }) {
@@ -44,7 +44,7 @@ function Poppu_Gameover({ modiflyQuiz, act_count, userdefine, life }) {
         </>
       )}
       {load_act ? (
-        <Act_system
+        <ActSystem
           IsQuit={true}
           Isnext={false}
           modiflyQuiz={modiflyQuiz}
@@ -53,7 +53,7 @@ function Poppu_Gameover({ modiflyQuiz, act_count, userdefine, life }) {
           life={life}
         />
       ) : restart_act ? (
-        <Act_system
+        <ActSystem
           Isstory={true}
           modiflyQuiz={modiflyQuiz}
           act_count={"act_1"}

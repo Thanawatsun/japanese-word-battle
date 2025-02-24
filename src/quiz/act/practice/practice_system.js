@@ -1,13 +1,13 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation} from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import Act_system from "../act_system";
+import ActSystem from "../act_system";
 import Pronunciation from "./pronunciation";
 import Word from "./word";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Poppu_menu from "../popup_menu";
-import Popup_gameover from "../popup_gameover";
+import PoppuMenu from "../popup_menu";
+import PopupGameover from "../popup_gameover";
 import getlife from "../../../api/getLife"
 
 function Practice() {
@@ -19,24 +19,21 @@ function Practice() {
   const { act_count } = location.state;
   const { userdefine } = location.state;
   const { max_count } = location.state;
-  const { life } = location.state;
+  //const { life } = location.state;
   const practice_list = quizData[act_count].practice;
   const practice_type = "pronunciation_set"; //อิงตาม data ที่ได้มา
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   const location_point = [];
 
   useEffect(() => {
     getlife(setlife_act,userdefine.uid)
-  }, []);
+  }, [userdefine]);
   useEffect(() => {
     if (life_act <= 0) {
       console.log("popup start");
       setgameover_act(true);
     }
   }, [life_act]);
-  const handlenext = () => {
-    setload_act(true);
-  };
   for (let i = 0; i < max_count + 1; i++) {
     location_point.push(
       <div
@@ -73,14 +70,14 @@ function Practice() {
           </div>
         </Col>
         <Col>
-          <Poppu_menu
+          <PoppuMenu
             modiflyQuiz={quizData}
             act_count={act_count}
             userdefine={userdefine}
             life={life_act}
           />
           {load_act ? (
-            <Act_system
+            <ActSystem
               Isgame={true}
               modiflyQuiz={quizData}
               act_count={act_count}
@@ -88,7 +85,7 @@ function Practice() {
               life={life_act}
             />
           ) : gameover_act ? (
-            <Popup_gameover
+            <PopupGameover
               modiflyQuiz={quizData}
               act_count={act_count}
               userdefine={userdefine}
@@ -98,7 +95,7 @@ function Practice() {
             <div></div>
           )}
           {practice_type === "pronunciation_set" ? (
-            <Pronunciation_set
+            <PronunciationSet
               game_data={practice_list}
               setload_act={setload_act}
               life_act={life_act}
@@ -106,12 +103,12 @@ function Practice() {
               userdefine={userdefine}
             />
           ) : practice_type === "01" ? (
-            <Pronunciation_set
+            <PronunciationSet
               game_data={practice_list}
               setload_act={setload_act}
             />
           ) : practice_type === "02" ? (
-            <Pronunciation_set
+            <PronunciationSet
               game_data={practice_list}
               setload_act={setload_act}
             />
@@ -142,7 +139,7 @@ function Practice() {
   );
 }
 
-function Pronunciation_set({ game_data, setload_act, setlife_act, life_act,userdefine }) {
+function PronunciationSet({ game_data, setload_act, setlife_act, life_act,userdefine }) {
   const [practice_1, setpractice_1] = useState(true);
   const [practice_2, setpractice_2] = useState(false);
   const [practice_3, setpractice_3] = useState(false);

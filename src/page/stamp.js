@@ -1,6 +1,4 @@
 import "../css/bankword.css";
-import { app } from "../firebase"; // Import your Firebase configuration
-import { ref, onValue, getDatabase, get } from "firebase/database";
 import React, { useEffect, useState } from "react";
 
 function Stamp({ stamplist,stampData }) {
@@ -37,7 +35,7 @@ function Stamp({ stamplist,stampData }) {
     };
 
     fetchData();
-  }, [stamplist]);
+  }, [stamplist,stampData]);
 
   return (
     <div>
