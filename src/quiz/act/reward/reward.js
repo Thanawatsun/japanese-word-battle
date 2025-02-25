@@ -45,7 +45,7 @@ function Reward() {
     GetReward(setDataStamp, userdefine.uid);
   }, [userdefine, quizData]);
   useEffect(() => {
-    if (dataStamp !== false && dataStamp.Stamp_Data) {
+    if (dataStamp !== false && dataStamp.Stamp_Data && dataStamp.Stamp_Data[quizData.level] !== undefined) {
       if (stamp_status === dataStamp.Stamp_Data[quizData.level].Stamp) {
         setShowPopup(false);
       } else if (

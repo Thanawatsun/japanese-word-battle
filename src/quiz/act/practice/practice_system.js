@@ -21,7 +21,7 @@ function Practice() {
   const { max_count } = location.state;
   //const { life } = location.state;
   const practice_list = quizData[act_count].practice;
-  const practice_type = "pronunciation_set"; //อิงตาม data ที่ได้มา
+  const practice_type = quizData[act_count].practice.practice_type; //อิงตาม data ที่ได้มา
   //const navigate = useNavigate();
   const location_point = [];
 
@@ -103,12 +103,12 @@ function Practice() {
               setlife_act={setlife_act}
               userdefine={userdefine}
             />
-          ) : practice_type === "01" ? (
+          ) : practice_type === "wording_set" ? (
             <PronunciationSet
               game_data={practice_list}
               setload_act={setload_act}
             />
-          ) : practice_type === "02" ? (
+          ) : practice_type === "spelling_set" ? (
             <PronunciationSet
               game_data={practice_list}
               setload_act={setload_act}
