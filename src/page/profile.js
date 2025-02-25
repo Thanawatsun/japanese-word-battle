@@ -8,6 +8,30 @@ function Proflie({ userData }) {
   const [showPopup, setShowPopup] = useState(false);
   const [searchValue, setSearchValue] = useState("");
 
+  const calculatorStamp = (option) =>{
+    var stampPoint = 0
+    if(option !== undefined){
+      for (var key of Object.keys(option)) {
+        if(option[key].Stamp === "normal"){
+          stampPoint = stampPoint+1
+        }
+        else if(option[key].Stamp === "trim"){
+          stampPoint = stampPoint+2
+        }
+
+    }
+    }
+    return stampPoint
+  }
+
+  const calculatorStage = (option) =>{
+    var Stagepass = 0
+    if(option !== undefined){
+      Stagepass = Object.keys(option).length;
+    }
+    return Stagepass
+  }
+
   const handleClose = () => {
     PlaySound("button");
     setShowPopup(false);
@@ -54,11 +78,11 @@ function Proflie({ userData }) {
       </div>*/}
       <div className="proflie_block">
         <h3 className="profile-thai profile-head-text">ด่านที่ผ่าน</h3>
-        <p className="profile-par-text">{userData.user_stage}</p>
+        <p className="profile-par-text">{calculatorStage(userData.Stamp_Data)}</p>
       </div>
       <div className="proflie_block">
         <h3 className="profile-thai profile-head-text">แสตมป์ทั้งหมด</h3>
-        <p className="profile-par-text">{userData.user_score}</p>
+        <p className="profile-par-text">{calculatorStamp(userData.Stamp_Data)}</p>
       </div>
       <div className="proflie_block_button">
         <button
