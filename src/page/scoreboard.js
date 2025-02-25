@@ -19,7 +19,7 @@ function ScoreBoard({ userData }) {
         });
       }
       const sortedUsers = usersArray.sort(
-        (a, b) => b.user_score - a.user_score
+        (a, b) => calculatorStamp(b.Stamp_Data) - calculatorStamp(a.Stamp_Data)
       );
 
       const top10Users = sortedUsers.slice(0, 10);
