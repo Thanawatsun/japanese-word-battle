@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "../../../css/quiz.css";
-
+import TextFadeIn from './TextFadeIn';
 function Story(scene) {
   const [targetText, settargetText] = useState("story_text_1");
   const [targetImg, settargetImg] = useState("story_image_1");
@@ -31,6 +31,7 @@ function Story(scene) {
               />
             </div>
             <div className="story_text">{story.story_text[targetText]}</div>
+            <TextFadeIn text={story.story_text[targetText]} speed={50} />
           </div>
         </Col>
         <Col></Col>
