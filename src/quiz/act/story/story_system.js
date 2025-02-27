@@ -14,6 +14,7 @@ function StorySystem() {
   const [load_act, setload_act] = useState(false);
   const [story_act, setstory_act] = useState(true);
   const [life_act, setlife_act] = useState(0);
+  const [nextAct, setNextAct] = useState(false);
 
   const location = useLocation();
   const { quizData } = location.state; // รับค่า quizData จาก state
@@ -26,30 +27,41 @@ function StorySystem() {
   useEffect(() => {
     setlife_act(life);
   }, [life]);
-  const handlenext = () => {
-    PlaySound("button");
-    if (poststory & (number_story + 1 > 1)) {
-      setreward_act(true);
+
+  useEffect(() => {
+    if(nextAct){
+      PlaySound("button");
+      if (poststory & (number_story + 1 > 1)) {
+        setreward_act(true);
+      }
+      if (number_story + 1 <= story_text.story_count) {
+        setnumber_story(number_story + 1);
+        /*settargetText("story_text_" + (number_story + 1));
+        console.log(number_story);*/
+      }
+      if (number_story + 1 > story_text.story_count) {
+        setstory_act(false);
+        setper_pratice_act(true);
+        setnumber_story(1);
+      }
+      if (
+        (number_story + 1 >
+          quizData[act_count].choose_path.per_practice.story_count) &
+        per_pratice_act
+      ) {
+        setper_pratice_act(false);
+        setload_act(true);
+      }
+      setNextAct(false)
     }
-    if (number_story + 1 <= story_text.story_count) {
-      setnumber_story(number_story + 1);
-      /*settargetText("story_text_" + (number_story + 1));
-      console.log(number_story);*/
-    }
-    if (number_story + 1 > story_text.story_count) {
-      setstory_act(false);
-      setper_pratice_act(true);
-      setnumber_story(1);
-    }
-    if (
-      (number_story + 1 >
-        quizData[act_count].choose_path.per_practice.story_count) &
-      per_pratice_act
-    ) {
-      setper_pratice_act(false);
-      setload_act(true);
-    }
-  };
+  }, [nextAct,
+    act_count,
+    number_story,
+    per_pratice_act,
+    poststory,
+    quizData,
+    story_text,
+  ]);
 
   return (
     <div>
@@ -91,17 +103,12 @@ function StorySystem() {
         {poststory ? (
           <div></div>
         ) : story_act ? (
-          <Story scene_number={number_story} />
+          <Story scene_number={number_story} setNextAct={setNextAct} />
         ) : per_pratice_act ? (
-          <StoryPerPratice scene_number={number_story} />
+          <StoryPerPratice scene_number={number_story} setNextAct={setNextAct}  />
         ) : (
           <div></div>
         )}
-        <div className="confirm_block">
-          <button className="confirm_button" onClick={handlenext}>
-            Next
-          </button>
-        </div>
       </div>
     </div>
   );

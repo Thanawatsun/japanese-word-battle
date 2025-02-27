@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "../../../css/quiz.css";
 import TextFadeIn from './TextFadeIn';
-function Story_per_practice(scene, act) {
+function Story_per_practice({scene_number, setNextAct}) {
   const [targetText, settargetText] = useState("story_text_1");
   const [targetImg, settargetImg] = useState("story_image_1");
   const location = useLocation();
@@ -14,9 +14,11 @@ function Story_per_practice(scene, act) {
   const story = quizData[act_count].choose_path.per_practice; // จัดการ act ด้วย
 
   useEffect(() => {
-    settargetText("story_text_" + scene.scene_number);
-    settargetImg("story_image_" + scene.scene_number);
-  }, [scene]);
+    if(scene_number !== undefined){
+    settargetText("story_text_" + scene_number);
+    settargetImg("story_image_" + scene_number);
+    }
+  }, [scene_number]);
 
   return (
     <Container>
@@ -31,8 +33,7 @@ function Story_per_practice(scene, act) {
                 className="story-image"
               />
             </div>
-            <div className="story_text">{story.story_text[targetText]}</div>
-            <TextFadeIn text={story.story_text[targetText]} speed={200} />
+            <TextFadeIn text={story.story_text[targetText]} speed={50} setNextAct={setNextAct}/>
           </div>
         </Col>
         <Col></Col>

@@ -14,9 +14,10 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url("https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2FMain%20Menu%20Background.jpg?alt=media&token=bd28a35f-97a2-4c3b-89b2-291259fe92c3");
     background-size: 100% auto;
-}
+    transition: background-image 1s ease-in-out; /* เพิ่ม transition */
+    transition-delay: 2s;
+  }
 
 body {
     background: #7FDBDA;

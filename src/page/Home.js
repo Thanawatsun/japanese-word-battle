@@ -28,8 +28,31 @@ function Home({
   const [IsBoard, setIsBoard] = useState(false);
   const [IsProflie, setIsProflie] = useState(false);
   const [userData, setUserData] = useState({});
+  const imageUrls = [
+    'https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2FMain%20Menu%20Background.jpg?alt=media&token=bd28a35f-97a2-4c3b-89b2-291259fe92c3',
+    'https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2FJapanCity.jpg?alt=media&token=58f00afc-2cd9-47a2-86d7-cf9a1529f076',
+    'https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2FTicketMachine.webp?alt=media&token=27b150b1-5874-4e70-84eb-a4eadc18e7d8',
+    // เพิ่ม URL รูปภาพอื่นๆ ตามต้องการ
+  ];
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentImageUrl, setCurrentImageUrl] = useState(imageUrls[0]);
+  const [nextImageUrl, setNextImageUrl] = useState(imageUrls[1] || imageUrls[0]);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
+  const changeImage = () => {
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imageUrls.length);
+      setCurrentImageUrl(nextImageUrl);
+      setNextImageUrl(imageUrls[(currentImageIndex + 2) % imageUrls.length]);
+      setIsTransitioning(false);
+    }, 10000);
+  };
 
+  useEffect(() => {
+    const interval = setInterval(changeImage, 5000);
+    return () => clearInterval(interval);
+  }, [currentImageIndex, imageUrls,changeImage]);
   useEffect(() => {
     try {
       const databaseRef = ref(getDatabase(app), `User_Data/` + userdefine.uid);
@@ -74,7 +97,11 @@ function Home({
     }
   }
   return (
-    <div className="main-container-box">
+    <div
+    className={`main-container-box ${isTransitioning ? 'transitioning' : ''}`}
+    style={{
+      backgroundImage: `url(${currentImageUrl})`,
+    }}>
       <Container>
         <Row>
           <Col>

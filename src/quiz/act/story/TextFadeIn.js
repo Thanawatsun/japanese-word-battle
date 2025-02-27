@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-const TextFadeIn = ({ text, speed }) => {
+const TextFadeIn = ({ text, speed, setNextAct }) => {
   const [displayedText, setDisplayedText] = useState('');
   const [index, setIndex] = useState(0);
   const [isAccelerated, setIsAccelerated] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
-
   useEffect(() => {
     if (index < text.length && !isAccelerated) {
       const timeout = setTimeout(() => {
@@ -25,6 +24,7 @@ const TextFadeIn = ({ text, speed }) => {
 
   const accelerate = () => {
     if (isComplete) {
+      setNextAct(true)
       console.log('กดแล้ว');
       setIsAccelerated(false);
       setDisplayedText('');
@@ -38,6 +38,11 @@ const TextFadeIn = ({ text, speed }) => {
   return (
     <div className="story_text" onClick={accelerate} style={{ cursor: 'pointer', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }}>
       <p style={{ opacity: 0, animation: 'fadeIn 1s ease-in-out forwards' }}>{displayedText}</p>
+      {isComplete?(
+        <p style={{animation: 'fadeIn 0s ease-in-out forwards' }}>➪</p>
+      ):(
+        <div></div>
+      )}
     </div>
   );
 };
