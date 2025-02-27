@@ -69,7 +69,7 @@ function ScoreBoard({ userData }) {
                   <img
                     src={user.user_profile}
                     alt="Proflie"
-                    height="80vw"
+                    height="110px"
                     className="user-image"
                     referrerPolicy="no-referrer"
                   />
@@ -118,7 +118,7 @@ function ScoreBoard({ userData }) {
                 <img
                   src={userData.user_profile}
                   alt="Proflie"
-                  height="80vw"
+                  height="110px"
                   className="user-image"
                   referrerPolicy="no-referrer"
                 />

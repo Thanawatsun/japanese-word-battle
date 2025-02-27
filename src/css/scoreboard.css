@@ -3,7 +3,7 @@
 }
 
 .score-board-box {
-  height: calc(100% - 7vw);
+  height: calc(100% - 153px);
   overflow: auto;
 }
 

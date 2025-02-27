@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const TextFadeIn = ({ text, speed, setNextAct }) => {
-  const [displayedText, setDisplayedText] = useState('');
+  const [displayedText, setDisplayedText] = useState("");
   const [index, setIndex] = useState(0);
   const [isAccelerated, setIsAccelerated] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
@@ -24,10 +24,10 @@ const TextFadeIn = ({ text, speed, setNextAct }) => {
 
   const accelerate = () => {
     if (isComplete) {
-      setNextAct(true)
-      console.log('กดแล้ว');
+      setNextAct(true);
+      console.log("กดแล้ว");
       setIsAccelerated(false);
-      setDisplayedText('');
+      setDisplayedText("");
       setIndex(0);
       setIsComplete(false);
     } else {
@@ -36,11 +36,25 @@ const TextFadeIn = ({ text, speed, setNextAct }) => {
   };
 
   return (
-    <div className="story_text" onClick={accelerate} style={{ cursor: 'pointer', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }}>
-      <p style={{ opacity: 0, animation: 'fadeIn 1s ease-in-out forwards' }}>{displayedText}</p>
-      {isComplete?(
-        <p style={{animation: 'fadeIn 0s ease-in-out forwards' }}>➪</p>
-      ):(
+    <div
+      className="story_text"
+      onClick={accelerate}
+      style={{
+        cursor: "pointer",
+        padding: "10px",
+        border: "1px solid #ccc",
+        borderRadius: "5px",
+      }}
+    >
+      <p
+        className="text-animation"
+        style={{ opacity: 0, animation: "fadeIn 1s ease-in-out forwards" }}
+      >
+        {displayedText}
+      </p>
+      {isComplete ? (
+        <p style={{ animation: "fadeIn 0s ease-in-out forwards" }}>➪</p>
+      ) : (
         <div></div>
       )}
     </div>

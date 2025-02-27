@@ -48,7 +48,7 @@ function Home({
       setCurrentImageUrl(nextImageUrl);
       setNextImageUrl(imageUrls[(currentImageIndex + 2) % imageUrls.length]);
       setIsTransitioning(false);
-    }, 1);
+    }, 10000);
   };
 
   useEffect(() => {
