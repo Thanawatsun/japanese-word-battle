@@ -7,51 +7,47 @@
 }
 
 .profile-head-text {
-  font-size: 4vh;
+  font-size: 4vw;
 }
 
 .profile-par-text {
-  font-size: 3vh;
+  font-size: 3vw;
 }
 
 .profile-side-head-text {
-  font-size: 3.5vh;
+  font-size: 3.5vw;
 }
 
 .profile-side-par-text {
-  font-size: 2.5vh;
+  font-size: 2.5vw;
 }
 
 .profile_image {
-  grid-area: profile_image;
   margin: auto;
+  padding: 50px;
+  height: 30%;
+}
+
+.profile-data {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .username {
-  grid-area: username;
   display: grid;
   justify-items: start;
+  margin-left: 2vw;
 }
 
 .useremail {
-  grid-area: useremail;
   display: grid;
   justify-items: start;
+  margin-left: 2vw;
 }
 
 .profile {
-  display: grid;
   height: 100%;
   position: relative;
-}
-
-.proflie_block_image {
-  margin-top: 1vh;
-  display: grid;
-  grid-template-areas:
-    'profile_image username'
-    'profile_image useremail';
-  justify-items: start;
 }
 
 .user-image {
@@ -62,6 +58,7 @@
 .proflie_block {
   display: grid;
   margin-left: 2vw;
+  margin-top: 5vw;
   justify-content: start;
   justify-items: start;
 }
@@ -99,6 +96,13 @@
   border-radius: 5px;
   border: none;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.change-name-button-text {
+  font-family: "Kanit", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2vw;
 }
 
 .change-name-button:hover {

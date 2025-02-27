@@ -10,7 +10,7 @@ function LogoutUser({ setIsLogin, setuserdefine }) {
   };
   return (
     <div onClick={handleLogoutSuccess}>
-      <h2>Logout</h2>
+      <h2 className="change-page-button-text">Logout</h2>
     </div>
   );
 }

@@ -3,7 +3,7 @@
 }
 
 .score-board-box {
-  height: calc(100% - 92px);
+  height: calc(100% - 7vw);
   overflow: auto;
 }
 
@@ -37,52 +37,58 @@
 }
 
 .table-contain-1 {
-  width: 10%;
+  width: 5%;
   padding: 10px 0px 10px 0px;
+  font-size: 2vw;
 }
 
 .table-contain-2 {
-  width: 20%;
+  width: 15%;
   padding: 10px 0px 10px 0px;
 }
 
 .table-contain-3 {
-  width: 40%;
+  width: 60%;
   padding: 10px 0px 10px 0px;
+  font-size: 2vw;
 }
 
 .table-contain-4 {
   width: 20%;
   padding: 10px 0px 10px 0px;
+  font-size: 2vw;
 }
 
 .line {
-  border-top: 2px solid black;
+  border-top: 3px solid black;
   opacity: 1;
   width: 100%;
   margin: auto;
 }
 
 .player-score-box {
-  height: 90px;
+  height: 2vw;
 }
 
 .player-table-contain-1 {
-  width: 10%;
+  width: 5%;
   padding: 20px 0px 20px 0px;
+  font-size: 2vw;
 }
 
 .player-table-contain-2 {
-  width: 20%;
+  width: 15%;
   padding: 20px 0px 20px 0px;
 }
 
 .player-table-contain-3 {
-  width: 40%;
+  width: 60%;
   padding: 20px 0px 20px 0px;
+  font-size: 2vw;
 }
 
 .player-table-contain-4 {
   width: 20%;
   padding: 20px 0px 20px 0px;
+  font-size: 2vw;
 }

@@ -8,29 +8,27 @@ function Proflie({ userData }) {
   const [showPopup, setShowPopup] = useState(false);
   const [searchValue, setSearchValue] = useState("");
 
-  const calculatorStamp = (option) =>{
-    var stampPoint = 0
-    if(option !== undefined){
+  const calculatorStamp = (option) => {
+    var stampPoint = 0;
+    if (option !== undefined) {
       for (var key of Object.keys(option)) {
-        if(option[key].Stamp === "normal"){
-          stampPoint = stampPoint+1
+        if (option[key].Stamp === "normal") {
+          stampPoint = stampPoint + 1;
+        } else if (option[key].Stamp === "trim") {
+          stampPoint = stampPoint + 2;
         }
-        else if(option[key].Stamp === "trim"){
-          stampPoint = stampPoint+2
-        }
-
+      }
     }
-    }
-    return stampPoint
-  }
+    return stampPoint;
+  };
 
-  const calculatorStage = (option) =>{
-    var Stagepass = 0
-    if(option !== undefined){
+  const calculatorStage = (option) => {
+    var Stagepass = 0;
+    if (option !== undefined) {
       Stagepass = Object.keys(option).length;
     }
-    return Stagepass
-  }
+    return Stagepass;
+  };
 
   const handleClose = () => {
     PlaySound("button");
@@ -51,17 +49,16 @@ function Proflie({ userData }) {
 
   return (
     <div className="profile">
-      <div className="proflie_block_image">
-        <div className="profile_image">
-          <img
-            src={userData.user_profile}
-            alt="Profile"
-            width="100"
-            height="100"
-            className="user-image"
-            referrerPolicy="no-referrer"
-          />
-        </div>
+      <div className="profile_image">
+        <img
+          src={userData.user_profile}
+          alt="Profile"
+          height="100%"
+          className="user-image"
+          referrerPolicy="no-referrer"
+        />
+      </div>
+      <div className="profile-data">
         <div className="username">
           <h3 className="profile-side-head-text">User Name</h3>
           <p className="profile-side-par-text">{userData.username}</p>
@@ -70,19 +67,18 @@ function Proflie({ userData }) {
           <h3 className="profile-side-head-text">Email</h3>
           <p className="profile-side-par-text">{userData.useremail}</p>
         </div>
-      </div>
-
-      {/*<div className="proflie_block">
-        <h3>Level การเรียนรู้</h3>
-        <p>{userData.learning_level}</p>
-      </div>*/}
-      <div className="proflie_block">
-        <h3 className="profile-thai profile-head-text">ด่านที่ผ่าน</h3>
-        <p className="profile-par-text">{calculatorStage(userData.Stamp_Data)}</p>
-      </div>
-      <div className="proflie_block">
-        <h3 className="profile-thai profile-head-text">แสตมป์ทั้งหมด</h3>
-        <p className="profile-par-text">{calculatorStamp(userData.Stamp_Data)}</p>
+        <div className="proflie_block">
+          <h3 className="profile-thai profile-head-text">ด่านที่ผ่าน</h3>
+          <p className="profile-par-text">
+            {calculatorStage(userData.Stamp_Data)}
+          </p>
+        </div>
+        <div className="proflie_block">
+          <h3 className="profile-thai profile-head-text">แสตมป์ทั้งหมด</h3>
+          <p className="profile-par-text">
+            {calculatorStamp(userData.Stamp_Data)}
+          </p>
+        </div>
       </div>
       <div className="proflie_block_button">
         <button
@@ -92,7 +88,7 @@ function Proflie({ userData }) {
             setShowPopup(true);
           }}
         >
-          <h5>CHANGE USER NAME</h5>
+          <h5 className="change-name-button-text">CHANGE USER NAME</h5>
         </button>
       </div>
       <div>

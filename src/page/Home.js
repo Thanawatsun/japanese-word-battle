@@ -110,25 +110,25 @@ function Home({
           className="change-page-button"
           onClick={() => changePage("Home")}
         >
-          <h2>Trip</h2>
+          <h2 className="change-page-button-text">Trip</h2>
         </button>
         <button
           className="change-page-button"
           onClick={() => changePage("Stamp")}
         >
-          <h2>Stamp</h2>
+          <h2 className="change-page-button-text">Stamp</h2>
         </button>
         <button
           className="change-page-button"
           onClick={() => changePage("Board")}
         >
-          <h2>Scoreboard</h2>
+          <h2 className="change-page-button-text">Scoreboard</h2>
         </button>
         <button
           className="change-page-button"
           onClick={() => changePage("Proflie")}
         >
-          <h2>Proflie</h2>
+          <h2 className="change-page-button-text">Proflie</h2>
         </button>
         <button className="change-page-button logout-button">
           <LogoutUser setIsLogin={setIsLogin} setuserdefine={setuserdefine} />

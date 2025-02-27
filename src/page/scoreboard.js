@@ -27,21 +27,19 @@ function ScoreBoard({ userData }) {
       setUsers(top10Users);
     });
   }, []);
-  const calculatorStamp = (option) =>{
-    var stampPoint = 0
-    if(option !== undefined){
+  const calculatorStamp = (option) => {
+    var stampPoint = 0;
+    if (option !== undefined) {
       for (var key of Object.keys(option)) {
-        if(option[key].Stamp === "normal"){
-          stampPoint = stampPoint+1
+        if (option[key].Stamp === "normal") {
+          stampPoint = stampPoint + 1;
+        } else if (option[key].Stamp === "trim") {
+          stampPoint = stampPoint + 2;
         }
-        else if(option[key].Stamp === "trim"){
-          stampPoint = stampPoint+2
-        }
-
+      }
     }
-    }
-    return stampPoint
-  }
+    return stampPoint;
+  };
   useEffect(() => {
     if (sortusers != null) {
       for (const userId in sortusers) {
@@ -50,7 +48,7 @@ function ScoreBoard({ userData }) {
         }
       }
     }
-  }, [users,sortusers,userData]);
+  }, [users, sortusers, userData]);
   return (
     <div className="scoreBoard">
       <div className="score-board-box">
@@ -71,14 +69,16 @@ function ScoreBoard({ userData }) {
                   <img
                     src={user.user_profile}
                     alt="Proflie"
-                    width="50px"
-                    height="50px"
+                    height="80vw"
                     className="user-image"
                     referrerPolicy="no-referrer"
                   />
                 </td>
                 <td className="table-contain-3">{user.username}</td>
-                <td className="table-contain-4"> {calculatorStamp(user.Stamp_Data)} Stamp</td>
+                <td className="table-contain-4">
+                  {" "}
+                  : {calculatorStamp(user.Stamp_Data)} Stamp
+                </td>
               </tr>
             ))}
           </tbody>
@@ -118,8 +118,7 @@ function ScoreBoard({ userData }) {
                 <img
                   src={userData.user_profile}
                   alt="Proflie"
-                  width="50"
-                  height="50"
+                  height="80vw"
                   className="user-image"
                   referrerPolicy="no-referrer"
                 />
