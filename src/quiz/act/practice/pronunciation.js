@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import PlaySound from "../../../component/PlaySound";
 import randomArray from "../randomquiz";
-import setlife from "../../../api/setLife"
+import setlife from "../../../api/setLife";
 function Pronunciation({
   this_stage,
   next_stage,
@@ -10,6 +10,7 @@ function Pronunciation({
   life_act,
   setlife_act,
   userdefine,
+  storyImage,
 }) {
   const [selectedOption, setSelectedOption] = useState(null);
   const [showBar, setshowBar] = useState(false);
@@ -44,7 +45,7 @@ function Pronunciation({
         setshowGreenBar(true);
       } else {
         PlaySound("incorrect");
-        setlife(life_act - 1,userdefine.uid)
+        setlife(life_act - 1, userdefine.uid);
         setlife_act(life_act - 1);
         if (life_act - 1 <= 0) {
           setshowBar(false);

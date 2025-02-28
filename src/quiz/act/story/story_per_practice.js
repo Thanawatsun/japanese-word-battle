@@ -12,7 +12,6 @@ function Story_per_practice({ scene_number, setNextAct }) {
   const { quizData } = location.state; // รับค่า quizData จาก state
   const { act_count } = location.state;
   const story = quizData[act_count].choose_path.per_practice; // จัดการ act ด้วย
-
   useEffect(() => {
     if (scene_number !== undefined) {
       settargetText("story_text_" + scene_number);
@@ -23,11 +22,13 @@ function Story_per_practice({ scene_number, setNextAct }) {
   return (
     <div className="story_container">
       <div className="story_action">
-        <img
-          src={story.story_image[targetImg]}
-          alt=""
-          className="story-image"
-        />
+        <div className="choice-background-image-box">
+          <img
+            src={story.story_image[targetImg]}
+            alt="Sign-Background-Image"
+            className="choice-background-image sign-bg-image"
+          />
+        </div>
       </div>
       <TextFadeIn
         text={story.story_text[targetText]}

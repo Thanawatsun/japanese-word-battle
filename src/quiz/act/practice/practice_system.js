@@ -24,7 +24,7 @@ function Practice() {
   const practice_type = quizData[act_count].practice.practice_type; //อิงตาม data ที่ได้มา
   //const navigate = useNavigate();
   const location_point = [];
-
+  const storyImage = practice_list.story_image
   useEffect(() => {
     getlife(setlife_act, userdefine.uid);
   }, [userdefine]);
@@ -102,6 +102,7 @@ function Practice() {
               life_act={life_act}
               setlife_act={setlife_act}
               userdefine={userdefine}
+              storyImage={storyImage}
             />
           ) : practice_type === "wording_set" ? (
             <PronunciationSet
@@ -146,6 +147,7 @@ function PronunciationSet({
   setlife_act,
   life_act,
   userdefine,
+  storyImage,
 }) {
   const [practice_1, setpractice_1] = useState(true);
   const [practice_2, setpractice_2] = useState(false);
@@ -160,6 +162,7 @@ function PronunciationSet({
           life_act={life_act}
           setlife_act={setlife_act}
           userdefine={userdefine}
+          storyImage={storyImage}
         />
       ) : practice_2 ? (
         <Word
@@ -169,6 +172,7 @@ function PronunciationSet({
           life_act={life_act}
           setlife_act={setlife_act}
           userdefine={userdefine}
+          storyImage={storyImage}
         />
       ) : practice_3 ? (
         <Word
@@ -178,6 +182,7 @@ function PronunciationSet({
           life_act={life_act}
           setlife_act={setlife_act}
           userdefine={userdefine}
+          storyImage={storyImage}
         />
       ) : (
         <div></div>

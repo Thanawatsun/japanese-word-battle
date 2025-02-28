@@ -2,17 +2,25 @@ import React, { useEffect, useState } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import PlaySound from "../../../component/PlaySound";
 import randomArray from "../randomquiz";
-import setlife from "../../../api/setLife"
-function Word({ this_stage, next_stage, game_data, life_act, setlife_act,userdefine, }) {
+import setlife from "../../../api/setLife";
+function Word({
+  this_stage,
+  next_stage,
+  game_data,
+  life_act,
+  setlife_act,
+  userdefine,
+  storyImage,
+}) {
   const [selectedOption, setSelectedOption] = useState(null);
   const [showBar, setshowBar] = useState(false);
   const [showGreenBar, setshowGreenBar] = useState(false);
-    const [shuffleGame_data, setshuffleGame_data] = useState([
-      {
-          "id": 1,
-          "isCorrect": false,
-          "text": "i"
-      },
+  const [shuffleGame_data, setshuffleGame_data] = useState([
+    {
+      id: 1,
+      isCorrect: false,
+      text: "i",
+    },
   ]);
   const handleOptionClick = (option) => {
     PlaySound("button");
@@ -25,7 +33,7 @@ function Word({ this_stage, next_stage, game_data, life_act, setlife_act,userdef
     audio.play();
   };
   useEffect(() => {
-    randomArray(game_data.options,setshuffleGame_data)
+    randomArray(game_data.options, setshuffleGame_data);
   }, [game_data]);
   const handleConfirm = () => {
     PlaySound("button");
@@ -37,7 +45,7 @@ function Word({ this_stage, next_stage, game_data, life_act, setlife_act,userdef
         setshowGreenBar(true);
       } else {
         PlaySound("incorrect");
-        setlife(life_act - 1,userdefine.uid)
+        setlife(life_act - 1, userdefine.uid);
         setlife_act(life_act - 1);
         if (life_act - 1 <= 0) {
           setshowBar(false);
