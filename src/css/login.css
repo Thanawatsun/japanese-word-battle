@@ -1,6 +1,6 @@
 .login-button-box {
     display: flex;
-    height: 50vh;
+    height: 60vh;
     margin: auto;
     justify-content: space-around;
     align-items: center;
@@ -9,11 +9,12 @@
 .login-button {
     background-color: #FEBF63;
     padding: 10px;
-    width: 15vw;
+    width: 20vw;
     border: none;
     border-radius: 5px;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     transition: background-color 0.1s;
+    font-size: 1.5vw;
 }
 
 .login-button:hover {
@@ -29,7 +30,7 @@
 
 .main-box {
     position: relative;
-    width: 400px;
+    width: 30vw;
     height: 80vh;
     margin: auto;
     background-color: #ADE498;

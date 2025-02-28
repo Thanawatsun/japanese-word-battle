@@ -41,9 +41,6 @@ const TextFadeIn = ({ text, speed, setNextAct }) => {
       onClick={accelerate}
       style={{
         cursor: "pointer",
-        padding: "10px",
-        border: "1px solid #ccc",
-        borderRadius: "5px",
       }}
     >
       <p
@@ -53,7 +50,12 @@ const TextFadeIn = ({ text, speed, setNextAct }) => {
         {displayedText}
       </p>
       {isComplete ? (
-        <p style={{ animation: "fadeIn 0s ease-in-out forwards" }}>➪</p>
+        <p
+          className="story-arrow"
+          style={{ animation: "fadeIn 0s ease-in-out forwards" }}
+        >
+          ➪
+        </p>
       ) : (
         <div></div>
       )}

@@ -32,10 +32,10 @@ function Poppu_menu({ modiflyQuiz, act_count, userdefine, life }) {
                 className="menu-image"
               />
               <button onClick={togglePopup} className="confirm-button">
-                <h5>Continue</h5>
+                <h5 className="profile-popup-sub-text">Continue</h5>
               </button>
               <button onClick={toggleQuit} className="cancel-button">
-                <h5>Quit</h5>
+                <h5 className="profile-popup-sub-text">Quit</h5>
               </button>
             </div>
           </div>

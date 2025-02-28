@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import "../../css/stage.css";
 import ActSystem from "./act_system";
 import PlaySound from "../../component/PlaySound";
-import SetLife from "../../api/setLife"
+import SetLife from "../../api/setLife";
 function Poppu_Gameover({ modiflyQuiz, act_count, userdefine, life }) {
   const [load_act, setload_act] = useState(false);
   const [restart_act, setrestart_act] = useState(false);
   const [showPopup, setShowPopup] = useState(true);
   const togglePopup = () => {
     PlaySound("button");
-    SetLife(5,userdefine.uid)
+    SetLife(5, userdefine.uid);
     setShowPopup(!showPopup);
     setrestart_act(true);
   };
@@ -35,10 +35,10 @@ function Poppu_Gameover({ modiflyQuiz, act_count, userdefine, life }) {
                 className="menu-image"
               />
               <button onClick={togglePopup} className="confirm-button">
-                <h5>Restart</h5>
+                <h5 className="profile-popup-sub-text">Restart</h5>
               </button>
               <button onClick={toggleQuit} className="cancel-button">
-                <h5>Quit</h5>
+                <h5 className="profile-popup-sub-text">Quit</h5>
               </button>
             </div>
           </div>

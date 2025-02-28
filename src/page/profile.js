@@ -68,13 +68,13 @@ function Proflie({ userData }) {
           <p className="profile-side-par-text">{userData.useremail}</p>
         </div>
         <div className="proflie_block">
-          <h3 className="profile-thai profile-head-text">ด่านที่ผ่าน</h3>
+          <h3 className="profile-head-text">ด่านที่ผ่าน</h3>
           <p className="profile-par-text">
             {calculatorStage(userData.Stamp_Data)}
           </p>
         </div>
         <div className="proflie_block">
-          <h3 className="profile-thai profile-head-text">แสตมป์ทั้งหมด</h3>
+          <h3 className="profile-head-text">แสตมป์ทั้งหมด</h3>
           <p className="profile-par-text">
             {calculatorStamp(userData.Stamp_Data)}
           </p>
@@ -103,13 +103,13 @@ function Proflie({ userData }) {
                   value={searchValue}
                   onChange={(e) => setSearchValue(e.target.value)}
                 />
-                <h4 className="profile-thai">กรองชื่อที่ต้องการ</h4>
+                <h4 className="profile-popup-head-text">กรองชื่อที่ต้องการ</h4>
               </div>
               <button className="confirm-button" onClick={handleSearch}>
-                <h5 className="profile-thai">ตกลง</h5>
+                <h5 className="profile-popup-sub-text">ตกลง</h5>
               </button>
               <button className="cancel-button" onClick={handleClose}>
-                <h5 className="profile-thai">ยกเลิก</h5>
+                <h5 className="profile-popup-sub-text">ยกเลิก</h5>
               </button>
             </div>
           </>
