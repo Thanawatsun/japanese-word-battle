@@ -45,7 +45,11 @@ function Reward() {
     GetReward(setDataStamp, userdefine.uid);
   }, [userdefine, quizData]);
   useEffect(() => {
-    if (dataStamp !== false && dataStamp.Stamp_Data && dataStamp.Stamp_Data[quizData.level] !== undefined) {
+    if (
+      dataStamp !== false &&
+      dataStamp.Stamp_Data &&
+      dataStamp.Stamp_Data[quizData.level] !== undefined
+    ) {
       if (stamp_status === dataStamp.Stamp_Data[quizData.level].Stamp) {
         setShowPopup(false);
       } else if (
@@ -53,19 +57,18 @@ function Reward() {
         dataStamp.Stamp_Data[quizData.level].Stamp === "normal"
       ) {
         setShowPopup(true);
-      }else if (
+      } else if (
         stamp_status === "normal" &&
         dataStamp.Stamp_Data[quizData.level].Stamp === "trim"
-      ){
+      ) {
         setShowPopup(false);
-      }
-       else {
+      } else {
         setShowPopup(true);
       }
-    }else{
-      setShowPopup(true)
+    } else {
+      setShowPopup(true);
     }
-  }, [dataStamp,quizData,stamp_status]);
+  }, [dataStamp, quizData, stamp_status]);
   /*
   if(showPopup.Stamp_Data !== undefined && showPopup.Stamp_Data[quizData.level]!== undefined){
     console.log(showPopup.Stamp_Data)
@@ -75,17 +78,30 @@ function Reward() {
     <Container>
       <Row>
         <Col>
-        {showPopup ? (
-          <PoppuStamp stamp_image={stamp_image} />
-      ) : (
-        <div></div>
-      )}
-
+          {showPopup ? <PoppuStamp stamp_image={stamp_image} /> : <div></div>}
           <img
             src="https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2FTokyoSkytree.webp?alt=media&token=4d97e3db-c596-4067-b862-fbfe65f51b91"
             alt=""
             className="story-image"
           />
+          <p className="gallery">
+            <img
+              className="gallery-image"
+              src="https://loremflickr.com/320/200"
+            />
+            <img
+              className="gallery-image"
+              src="https://loremflickr.com/321/200"
+            />
+            <img
+              className="gallery-image"
+              src="https://loremflickr.com/319/200"
+            />
+            <img
+              className="gallery-image"
+              src="https://loremflickr.com/323/200"
+            />
+          </p>
           <iframe
             src="https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/audio%2FSound%20Effect%2F250-milliseconds-of-silence.mp3?alt=media&token=0e9184ac-c977-46e3-b009-36349f905090"
             allow="autoplay"
@@ -110,7 +126,7 @@ function Reward() {
                 onClick={handlenext}
                 style={{ marginTop: "1vh" }}
               >
-                Next
+                End trip
               </button>
             </div>
           </div>
