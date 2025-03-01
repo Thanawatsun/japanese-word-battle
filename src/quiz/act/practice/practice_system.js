@@ -59,7 +59,7 @@ function Practice() {
     <div>
       <div className="choice-background-image-box">
         <img
-          src="https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2Fgame_assets%2Fgame_path_1_full.png?alt=media&token=b286570f-892f-46bc-a878-9df3ef6c2191"
+          src={storyImage}
           alt="Sign-Background-Image"
           className="choice-background-image sign-bg-image"
         />
