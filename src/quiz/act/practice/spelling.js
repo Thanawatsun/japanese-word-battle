@@ -2,17 +2,24 @@ import React, { useEffect, useState } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import PlaySound from "../../../component/PlaySound";
 import randomArray from "../randomquiz";
-import setlife from "../../../api/setLife"
-function Spelling({ this_stage, next_stage, game_data, life_act, setlife_act,userdefine, }) {
+import setlife from "../../../api/setLife";
+function Spelling({
+  this_stage,
+  next_stage,
+  game_data,
+  life_act,
+  setlife_act,
+  userdefine,
+}) {
   const [selectedOption, setSelectedOption] = useState(null);
   const [showBar, setshowBar] = useState(false);
   const [showGreenBar, setshowGreenBar] = useState(false);
-    const [shuffleGame_data, setshuffleGame_data] = useState([
-      {
-          "id": 1,
-          "isCorrect": false,
-          "text": "i"
-      },
+  const [shuffleGame_data, setshuffleGame_data] = useState([
+    {
+      id: 1,
+      isCorrect: false,
+      text: "i",
+    },
   ]);
   const handleOptionClick = (option) => {
     PlaySound("button");
@@ -25,7 +32,7 @@ function Spelling({ this_stage, next_stage, game_data, life_act, setlife_act,use
     audio.play();
   };
   useEffect(() => {
-    randomArray(game_data.options,setshuffleGame_data)
+    randomArray(game_data.options, setshuffleGame_data);
   }, [game_data]);
   const handleConfirm = () => {
     PlaySound("button");
@@ -37,7 +44,7 @@ function Spelling({ this_stage, next_stage, game_data, life_act, setlife_act,use
         setshowGreenBar(true);
       } else {
         PlaySound("incorrect");
-        setlife(life_act - 1,userdefine.uid)
+        setlife(life_act - 1, userdefine.uid);
         setlife_act(life_act - 1);
         if (life_act - 1 <= 0) {
           setshowBar(false);
@@ -64,7 +71,7 @@ function Spelling({ this_stage, next_stage, game_data, life_act, setlife_act,use
   return (
     <div className="center-quiz-block">
       <div className="center-quiz-pt1">
-        <h3>Choose the correct pronunciation.</h3>
+        <h3 className="quiz-head-text">Choose the correct pronunciation.</h3>
         <iframe
           src="https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/audio%2FSound%20Effect%2F250-milliseconds-of-silence.mp3?alt=media&token=0e9184ac-c977-46e3-b009-36349f905090"
           allow="autoplay"
@@ -76,39 +83,44 @@ function Spelling({ this_stage, next_stage, game_data, life_act, setlife_act,use
           <source src={game_data.audio} type="audio/mp3" />
         </audio>
       </div>
-      <div className="center-quiz-pt2">
-        <div className="question_block_voice" onClick={() => handleplaySound()}>
-          <h3 className="question-text">{game_data.text}</h3>
-        </div>
-      </div>
-      <div className="center-quiz-pt3">
-        <div className="question-card">
-          <ListGroup as="ul">
-            {shuffleGame_data.map((option) => {
-              return (
-                <ListGroup.Item
-                  as="li"
-                  className={`btn ${
-                    selectedOption?.id === option.id ? "selected" : ""
-                  }`}
-                  variant="primary"
-                  onClick={() => handleOptionClick(option)}
-                  key={option.id}
-                >
-                  {option.text}
-                </ListGroup.Item>
-              );
-            })}
-          </ListGroup>
-        </div>
-        <div className="confirm_block quiz-confirm-block">
-          <button
-            className="confirm_button"
-            onClick={handleConfirm}
-            disabled={!selectedOption}
+      <div className="question-contain">
+        <div className="center-quiz-pt2">
+          <div
+            className="question_block_voice"
+            onClick={() => handleplaySound()}
           >
-            Confirm
-          </button>
+            <h3 className="question-text">{game_data.text}</h3>
+          </div>
+        </div>
+        <div className="center-quiz-pt3">
+          <div className="question-card">
+            <ListGroup as="ul">
+              {shuffleGame_data.map((option) => {
+                return (
+                  <ListGroup.Item
+                    as="li"
+                    className={`btn ${
+                      selectedOption?.id === option.id ? "selected" : ""
+                    }`}
+                    variant="primary"
+                    onClick={() => handleOptionClick(option)}
+                    key={option.id}
+                  >
+                    {option.text}
+                  </ListGroup.Item>
+                );
+              })}
+            </ListGroup>
+          </div>
+          <div className="confirm_block quiz-confirm-block">
+            <button
+              className="confirm_button"
+              onClick={handleConfirm}
+              disabled={!selectedOption}
+            >
+              Confirm
+            </button>
+          </div>
         </div>
       </div>
       {showBar && (

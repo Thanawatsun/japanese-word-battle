@@ -35,8 +35,8 @@
 
 .question_block_voice {
   background-color: #FEBF63;
-  width: 125px;
-  height: 125px;
+  width: 80%;
+  height: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -64,13 +64,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50px;
-  width: 150px;
-  font-size: 1.2rem;
+  height: 100%;
+  width: 100%;
+  font-size: 5vw;
 }
 
 .question-card {
-  max-width: 350px;
+  width: 80%;
   margin: auto;
   height: 70%;
 }
@@ -81,6 +81,9 @@
   border: 1px solid #000000;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
+  font-size: 2vw;
+  font-family: "Kanit", serif;
+  font-weight: 400;
 }
 
 .btn:hover {
@@ -99,12 +102,9 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 16px 24px;
-  gap: 4px;
-  margin-top: 3vh;
 
-  width: 200px;
-  height: 48px;
+  height: 40%;
+  width: 50%;
 
   background: #ADE498;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
@@ -112,6 +112,10 @@
   border: none;
   z-index: 1;
   transition: 0.1s ease;
+
+  font-size: 2vw;
+  font-family: "Kanit", serif;
+  font-weight: 400;
 }
 
 .confirm_button:not(:disabled):hover {
@@ -127,6 +131,7 @@
 
 .reward-confirm-button {
   position: relative;
+  width: 30vw;
 }
 
 .reward-popup-confirm-button {
@@ -197,6 +202,9 @@
 .green-text {
   margin-top: 5px;
   color: #008A0E;
+  font-size: 1.3vw;
+  font-family: "Kanit", serif;
+  font-weight: 400;
 }
 
 .green-button {
@@ -216,6 +224,10 @@
   border-radius: 4px;
   border: none;
   color: white;
+
+  font-size: 1.5vw;
+  font-family: "Kanit", serif;
+  font-weight: 400;
 }
 
 .green-button:hover {
@@ -238,6 +250,9 @@
 .red-text {
   margin-top: 5px;
   color: #FF0000;
+  font-size: 1.3vw;
+  font-family: "Kanit", serif;
+  font-weight: 400;
 }
 
 .red-button {
@@ -257,6 +272,10 @@
   border-radius: 4px;
   border: none;
   color: white;
+
+  font-size: 1.5vw;
+  font-family: "Kanit", serif;
+  font-weight: 400;
 }
 
 .red-button:hover {
@@ -264,7 +283,7 @@
 }
 
 .box-inner {
-  width: 20%;
+  width: 25%;
 }
 
 .containers {
@@ -387,25 +406,48 @@
 }
 
 .center-quiz-block {
-  height: 100vh;
+  height: 85vh;
+  width: 80vw;
   overflow: hidden;
+  position: absolute;
+  bottom: 3%;
+  right: 0%;
+  z-index: 1;
+  background-color: #7FDBDA;
+  border-style: solid none solid solid;
+  border-width: 25px;
+  border-color: #E9E9E9;
+  border-radius: 10px 0 0 10px;
 }
 
 .center-quiz-pt1 {
   height: 10%;
-  padding-top: 5vh;
+  width: 100%;
+  padding-top: 2vh;
   padding-left: 2vw;
 }
 
+.quiz-head-text {
+  font-size: 2vw;
+}
+
+.question-contain {
+  display: flex;
+  width: 100%;
+  height: 90%;
+}
+
 .center-quiz-pt2 {
-  height: 40%;
+  height: 100%;
+  width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .center-quiz-pt3 {
-  height: 50%;
+  height: 100%;
+  width: 50%;
 }
 
 .quiz-confirm-block {
@@ -415,11 +457,16 @@
 }
 
 .time-box {
-  width: 100%;
-  height: 100%;
+  width: 25%;
+  height: 25%;
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 }
 
 .clock-frame {
@@ -439,17 +486,30 @@
   text-align: center;
 }
 
+.clock-text-head {
+  font-size: 1.3vw;
+}
+
+.clock-text-time {
+  font-size: 2.5vw;
+}
+
 .act-box {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  width: 10vw;
+  transform: rotate(270deg) translate(220%);
+  position: absolute;
+  top: 0%;
+  left: 45%;
+  z-index: 1;
 }
 
 .ipad-border {
-  background-color: #E9E9E9;
-  height: 80%;
-  width: 80%;
+  height: 100%;
+  width: 100%;
   border-radius: 10px;
   z-index: 1;
 }
@@ -458,28 +518,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #62AAC6;
-  margin: 20px 10px 10px 10px;
-  border-radius: 10px;
-  height: calc(100% - 90px);
-}
-
-.ipad-button {
-  display: block;
-  justify-self: center;
-  background-color: #E9E9E9;
-  height: 50px;
-  width: 50px;
-  border-radius: 100%;
-  border-style: solid;
-  border-width: 1px;
+  height: 100%;
 }
 
 .ipad-display {
   display: flex;
   justify-content: center;
   height: 80%;
-  width: 8%;
+  width: 20%;
   background-color: white;
   position: relative;
 }
@@ -551,7 +597,7 @@
 }
 
 .sign-question {
-  padding: 5%;
+  padding-top: 10vh;
 }
 
 .sign-question-text {
@@ -583,7 +629,7 @@
 }
 
 .ticket-question {
-  padding: 5%;
+  padding-top: 10vh;
 }
 
 .ticket-question-text {
@@ -622,7 +668,7 @@
 }
 
 .station-question {
-  padding: 5%;
+  padding-top: 10vh;
 }
 
 .station-question-text {

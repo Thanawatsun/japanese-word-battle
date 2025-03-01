@@ -1,4 +1,4 @@
-import { useLocation} from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Story from "./story";
 import StoryPerPratice from "./story_per_practice";
@@ -24,12 +24,14 @@ function StorySystem() {
   //const { max_count } = location.state;
   const { life } = location.state;
   const story_text = quizData[act_count].story; // จัดการ act ด้วย
+  const { max_count } = location.state;
+  const location_point = [];
   useEffect(() => {
     setlife_act(life);
   }, [life]);
 
   useEffect(() => {
-    if(nextAct){
+    if (nextAct) {
       PlaySound("button");
       if (poststory & (number_story + 1 > 1)) {
         setreward_act(true);
@@ -52,9 +54,10 @@ function StorySystem() {
         setper_pratice_act(false);
         setload_act(true);
       }
-      setNextAct(false)
+      setNextAct(false);
     }
-  }, [nextAct,
+  }, [
+    nextAct,
     act_count,
     number_story,
     per_pratice_act,
@@ -62,9 +65,53 @@ function StorySystem() {
     quizData,
     story_text,
   ]);
+  for (let i = 0; i < max_count + 1; i++) {
+    location_point.push(
+      <div
+        key={i}
+        className="ipad-circle"
+        style={{ top: `${(i * 100) / max_count}%` }}
+      >
+        {i < act_count[4] ? (
+          <div
+            className="ipad-inner-circle"
+            style={{ backgroundColor: "#68E758" }}
+          ></div>
+        ) : (
+          <div
+            className="ipad-inner-circle"
+            style={{ backgroundColor: "#9D9D9D" }}
+          ></div>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div>
+      <div className="time-box">
+        <div className="clock-frame">
+          <div className="clock-text">
+            <h4 className="clock-text-head">Time Left</h4>
+            <h1 className="clock-text-time">0{life_act}:00</h1>
+          </div>
+        </div>
+      </div>
+      <div className="act-box">
+        <div className="ipad-border">
+          <div className="ipad-screen">
+            <div className="ipad-display">
+              {location_point}
+              <div
+                className="ipad-display-progression"
+                style={{
+                  height: `${((act_count[4] - 1) * 100) / max_count}%`,
+                }}
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
       <PoppuMenu
         modiflyQuiz={quizData}
         act_count={act_count}
@@ -105,7 +152,10 @@ function StorySystem() {
         ) : story_act ? (
           <Story scene_number={number_story} setNextAct={setNextAct} />
         ) : per_pratice_act ? (
-          <StoryPerPratice scene_number={number_story} setNextAct={setNextAct}  />
+          <StoryPerPratice
+            scene_number={number_story}
+            setNextAct={setNextAct}
+          />
         ) : (
           <div></div>
         )}

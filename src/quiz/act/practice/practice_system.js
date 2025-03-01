@@ -24,7 +24,7 @@ function Practice() {
   const practice_type = quizData[act_count].practice.practice_type; //อิงตาม data ที่ได้มา
   //const navigate = useNavigate();
   const location_point = [];
-  const storyImage = practice_list.story_image
+  const storyImage = practice_list.story_image;
   useEffect(() => {
     getlife(setlife_act, userdefine.uid);
   }, [userdefine]);
@@ -56,88 +56,81 @@ function Practice() {
   }
 
   return (
-    <Container>
-      <Row>
-        <Col>
-          <div className="time-box">
-            <div className="clock-frame">
-              <div className="clock-text">
-                <h4>Time Left</h4>
-                <h1>0{life_act}:00</h1>
-              </div>
+    <div>
+      <div className="choice-background-image-box">
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2Fgame_assets%2Fgame_path_1_full.png?alt=media&token=b286570f-892f-46bc-a878-9df3ef6c2191"
+          alt="Sign-Background-Image"
+          className="choice-background-image sign-bg-image"
+        />
+      </div>
+      <div className="time-box">
+        <div className="clock-frame">
+          <div className="clock-text">
+            <h4 className="clock-text-head">Time Left</h4>
+            <h1 className="clock-text-time">0{life_act}:00</h1>
+          </div>
+        </div>
+      </div>
+      <PoppuMenu
+        modiflyQuiz={quizData}
+        act_count={act_count}
+        userdefine={userdefine}
+        life={life_act}
+      />
+      {load_act ? (
+        <ActSystem
+          Isgame={true}
+          modiflyQuiz={quizData}
+          act_count={act_count}
+          act_reward={act_count}
+          userdefine={userdefine}
+          life={life_act}
+        />
+      ) : gameover_act ? (
+        <PopupGameover
+          modiflyQuiz={quizData}
+          act_count={act_count}
+          act_reward={act_count}
+          userdefine={userdefine}
+          life={life_act}
+        />
+      ) : (
+        <div></div>
+      )}
+      {practice_type === "pronunciation_set" ? (
+        <PronunciationSet
+          game_data={practice_list}
+          setload_act={setload_act}
+          life_act={life_act}
+          setlife_act={setlife_act}
+          userdefine={userdefine}
+          storyImage={storyImage}
+        />
+      ) : practice_type === "wording_set" ? (
+        <PronunciationSet game_data={practice_list} setload_act={setload_act} />
+      ) : practice_type === "spelling_set" ? (
+        <PronunciationSet game_data={practice_list} setload_act={setload_act} />
+      ) : (
+        <div></div>
+      )}
+
+      <div className="act-box">
+        <div className="ipad-border">
+          <div className="ipad-screen">
+            <div className="ipad-display">
+              {location_point}
+              <div
+                className="ipad-display-progression"
+                style={{
+                  height: `${((act_count[4] - 1) * 100) / max_count}%`,
+                }}
+              ></div>
             </div>
           </div>
-        </Col>
-        <Col>
-          <PoppuMenu
-            modiflyQuiz={quizData}
-            act_count={act_count}
-            userdefine={userdefine}
-            life={life_act}
-          />
-          {load_act ? (
-            <ActSystem
-              Isgame={true}
-              modiflyQuiz={quizData}
-              act_count={act_count}
-              act_reward={act_count}
-              userdefine={userdefine}
-              life={life_act}
-            />
-          ) : gameover_act ? (
-            <PopupGameover
-              modiflyQuiz={quizData}
-              act_count={act_count}
-              act_reward={act_count}
-              userdefine={userdefine}
-              life={life_act}
-            />
-          ) : (
-            <div></div>
-          )}
-          {practice_type === "pronunciation_set" ? (
-            <PronunciationSet
-              game_data={practice_list}
-              setload_act={setload_act}
-              life_act={life_act}
-              setlife_act={setlife_act}
-              userdefine={userdefine}
-              storyImage={storyImage}
-            />
-          ) : practice_type === "wording_set" ? (
-            <PronunciationSet
-              game_data={practice_list}
-              setload_act={setload_act}
-            />
-          ) : practice_type === "spelling_set" ? (
-            <PronunciationSet
-              game_data={practice_list}
-              setload_act={setload_act}
-            />
-          ) : (
-            <div></div>
-          )}
-        </Col>
-        <Col>
-          <div className="act-box">
-            <div className="ipad-border">
-              <div className="ipad-screen">
-                <div className="ipad-display">
-                  {location_point}
-                  <div
-                    className="ipad-display-progression"
-                    style={{
-                      height: `${((act_count[4] - 1) * 100) / max_count}%`,
-                    }}
-                  ></div>
-                </div>
-              </div>
-              <div className="ipad-button"></div>
-            </div>
-          </div>
-        </Col>
-      </Row>
-    </Container>
+        </div>
+      </div>
+    </div>
   );
 }
 
