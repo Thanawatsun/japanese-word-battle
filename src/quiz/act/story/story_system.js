@@ -15,7 +15,7 @@ function StorySystem() {
   const [story_act, setstory_act] = useState(true);
   const [life_act, setlife_act] = useState(0);
   const [nextAct, setNextAct] = useState(false);
-
+  const [targetImg, settargetImg] = useState("story_image_1");
   const location = useLocation();
   const { quizData } = location.state; // รับค่า quizData จาก state
   const { poststory } = location.state; // รับค่า quizData จาก state
@@ -25,11 +25,17 @@ function StorySystem() {
   const { life } = location.state;
   const story_text = quizData[act_count].story; // จัดการ act ด้วย
   const { max_count } = location.state;
+  const storyImage = story_text.story_image;
   const location_point = [];
   useEffect(() => {
     setlife_act(life);
   }, [life]);
-
+  useEffect(() => {
+    console.log(number_story);
+    if (number_story !== undefined) {
+      settargetImg("story_image_" + number_story);
+    }
+  }, [number_story]);
   useEffect(() => {
     if (nextAct) {
       PlaySound("button");
@@ -89,6 +95,13 @@ function StorySystem() {
 
   return (
     <div>
+            <div className="choice-background-image-box">
+        <img
+          src={storyImage[targetImg]}
+          alt="Sign-Background-Image"
+          className="choice-background-image sign-bg-image blur-image"
+        />
+      </div>
       <div className="time-box">
         <div className="clock-frame">
           <div className="clock-text">

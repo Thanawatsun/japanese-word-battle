@@ -786,3 +786,7 @@
   offset-distance: 90%;
   margin-left: 40vh;
 }
+.blur-image{
+  filter: blur(30px);
+  -webkit-filter: blur(30px);
+}
