@@ -88,18 +88,22 @@ function Reward() {
             <img
               className="gallery-image"
               src="https://loremflickr.com/320/200"
+              alt="galleryimage"
             />
             <img
               className="gallery-image"
               src="https://loremflickr.com/321/200"
+              alt="galleryimage"
             />
             <img
               className="gallery-image"
               src="https://loremflickr.com/319/200"
+              alt="galleryimage"
             />
             <img
               className="gallery-image"
               src="https://loremflickr.com/323/200"
+              alt="galleryimage"
             />
           </p>
           <iframe

@@ -6,10 +6,7 @@ import Stage from "./stage";
 import LogoutUser from "./logout";
 import { app } from "../firebase";
 import { ref, onValue, getDatabase } from "firebase/database";
-import React, { useEffect, useState } from "react";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import React, { useEffect, useState,useMemo } from "react";
 import PlaySound from "../component/PlaySound";
 
 function Home({
@@ -28,12 +25,12 @@ function Home({
   const [IsBoard, setIsBoard] = useState(false);
   const [IsProflie, setIsProflie] = useState(false);
   const [userData, setUserData] = useState({});
-  const imageUrls = [
+  const imageUrls = useMemo(() => [
     "https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2FMain%20Menu%20Background.jpg?alt=media&token=bd28a35f-97a2-4c3b-89b2-291259fe92c3",
     "https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2FJapanCity.jpg?alt=media&token=58f00afc-2cd9-47a2-86d7-cf9a1529f076",
     "https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2FTicketMachine.webp?alt=media&token=27b150b1-5874-4e70-84eb-a4eadc18e7d8",
     // เพิ่ม URL รูปภาพอื่นๆ ตามต้องการ
-  ];
+  ], []);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentImageUrl, setCurrentImageUrl] = useState(imageUrls[0]);
   const [nextImageUrl, setNextImageUrl] = useState(
@@ -41,20 +38,19 @@ function Home({
   );
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  const changeImage = () => {
-    setIsTransitioning(true);
-    setTimeout(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imageUrls.length);
-      setCurrentImageUrl(nextImageUrl);
-      setNextImageUrl(imageUrls[(currentImageIndex + 2) % imageUrls.length]);
-      setIsTransitioning(false);
-    }, 10000);
-  };
-
   useEffect(() => {
+    const changeImage = () => {
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imageUrls.length);
+        setCurrentImageUrl(nextImageUrl);
+        setNextImageUrl(imageUrls[(currentImageIndex + 2) % imageUrls.length]);
+        setIsTransitioning(false);
+      }, 10000);
+    };
     const interval = setInterval(changeImage, 5000);
     return () => clearInterval(interval);
-  }, [currentImageIndex, imageUrls, changeImage]);
+  }, [currentImageIndex, imageUrls,nextImageUrl]);
   useEffect(() => {
     try {
       const databaseRef = ref(getDatabase(app), `User_Data/` + userdefine.uid);
