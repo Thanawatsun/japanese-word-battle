@@ -76,29 +76,29 @@ function Reward() {
         <Col>
           {showPopup ? <PoppuStamp stamp_image={stamp_image} /> : <div></div>}
           <img
-            src="https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2FTokyoSkytree.webp?alt=media&token=4d97e3db-c596-4067-b862-fbfe65f51b91"
-            alt=""
+            src="https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2Fgame_assets%2Fbook%20background.jpg?alt=media&token=9731054e-6892-4980-8379-4ec86ee88b1d"
+            alt="Book Background"
             className="story-image"
           />
           <p className="gallery">
             <img
               className="gallery-image"
-              src="https://loremflickr.com/320/200"
+              src="https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2FStage%201%2FTokyoSkytree_1.webp?alt=media&token=52c63b62-ee99-40ea-b04c-ba18f66f5c52"
               alt="galleryimage"
             />
             <img
               className="gallery-image"
-              src="https://loremflickr.com/321/200"
+              src="https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2FStage%201%2FTokyoSkytree_2.png?alt=media&token=ab58ceb6-39be-4b5b-9459-9841771cdabc"
               alt="galleryimage"
             />
             <img
               className="gallery-image"
-              src="https://loremflickr.com/319/200"
+              src="https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2FStage%201%2FTokyoSkytree_3.webp?alt=media&token=5941e546-90ef-4b35-b864-07e26868b7be"
               alt="galleryimage"
             />
             <img
               className="gallery-image"
-              src="https://loremflickr.com/323/200"
+              src="https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2FStage%201%2FTokyoSkytree_4.webp?alt=media&token=7ba5af6f-7a27-4d0a-aaae-4e7dc28231b2"
               alt="galleryimage"
             />
           </p>
