@@ -34,7 +34,7 @@ function ScoreBoard({ userData }) {
         if (option[key].Stamp === "normal") {
           stampPoint = stampPoint + 1;
         } else if (option[key].Stamp === "trim") {
-          stampPoint = stampPoint + 2;
+          stampPoint = stampPoint + 1;
         }
       }
     }

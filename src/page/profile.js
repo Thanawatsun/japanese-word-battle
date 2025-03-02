@@ -15,20 +15,13 @@ function Proflie({ userData }) {
         if (option[key].Stamp === "normal") {
           stampPoint = stampPoint + 1;
         } else if (option[key].Stamp === "trim") {
-          stampPoint = stampPoint + 2;
+          stampPoint = stampPoint + 1;
         }
       }
     }
     return stampPoint;
   };
 
-  const calculatorStage = (option) => {
-    var Stagepass = 0;
-    if (option !== undefined) {
-      Stagepass = Object.keys(option).length;
-    }
-    return Stagepass;
-  };
 
   const handleClose = () => {
     PlaySound("button");
@@ -66,12 +59,6 @@ function Proflie({ userData }) {
         <div className="useremail">
           <h3 className="profile-side-head-text">Email</h3>
           <p className="profile-side-par-text">{userData.useremail}</p>
-        </div>
-        <div className="proflie_block">
-          <h3 className="profile-head-text">ด่านที่ผ่าน</h3>
-          <p className="profile-par-text">
-            {calculatorStage(userData.Stamp_Data)}
-          </p>
         </div>
         <div className="proflie_block">
           <h3 className="profile-head-text">แสตมป์ทั้งหมด</h3>

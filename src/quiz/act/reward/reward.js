@@ -20,15 +20,11 @@ function Reward() {
   //const { act_count } = location.state;
   const { userdefine } = location.state;
   //const { max_count } = location.state;
-  const { life } = location.state;
+  //const { life } = location.state;
   //GetReward(setshowPopup,userdefine.uid)
-  var stamp_status = "normal";
-  var stamp_image = quizData.reward.stamp;
+  var stamp_status = "trim";
+  var stamp_image = quizData.reward.trim_stamp;
 
-  if (life === 5) {
-    stamp_status = "trim";
-    stamp_image = quizData.reward.trim_stamp;
-  }
   const handlenext = async (event) => {
     PlaySound("button");
     event.preventDefault();
