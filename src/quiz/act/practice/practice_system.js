@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import ActSystem from "../act_system";
 import Pronunciation from "./pronunciation";
+import Spelling from "./spelling";
 import Word from "./word";
 import PoppuMenu from "../popup_menu";
 import PopupGameover from "../popup_gameover";
@@ -105,9 +106,23 @@ function Practice() {
           storyImage={storyImage}
         />
       ) : practice_type === "wording_set" ? (
-        <PronunciationSet game_data={practice_list} setload_act={setload_act} />
+        <Wording
+        game_data={practice_list}
+        setload_act={setload_act}
+        life_act={life_act}
+        setlife_act={setlife_act}
+        userdefine={userdefine}
+        storyImage={storyImage}
+        />
       ) : practice_type === "spelling_set" ? (
-        <PronunciationSet game_data={practice_list} setload_act={setload_act} />
+        <SpellingSet
+        game_data={practice_list}
+        setload_act={setload_act}
+        life_act={life_act}
+        setlife_act={setlife_act}
+        userdefine={userdefine}
+        storyImage={storyImage}
+      />
       ) : (
         <div></div>
       )}
@@ -180,5 +195,102 @@ function PronunciationSet({
     </div>
   );
 }
-
+function SpellingSet({
+  game_data,
+  setload_act,
+  setlife_act,
+  life_act,
+  userdefine,
+  storyImage,
+}) {
+  const [practice_1, setpractice_1] = useState(true);
+  const [practice_2, setpractice_2] = useState(false);
+  const [practice_3, setpractice_3] = useState(false);
+  return (
+    <div>
+      {practice_1 ? (
+        <Pronunciation
+          this_stage={setpractice_1}
+          next_stage={setpractice_2}
+          game_data={game_data.pronunciation[0]}
+          life_act={life_act}
+          setlife_act={setlife_act}
+          userdefine={userdefine}
+          storyImage={storyImage}
+        />
+      ) : practice_2 ? (
+        <Spelling
+          this_stage={setpractice_2}
+          next_stage={setpractice_3}
+          game_data={game_data.spelling[0]}
+          life_act={life_act}
+          setlife_act={setlife_act}
+          userdefine={userdefine}
+          storyImage={storyImage}
+        />
+      ) : practice_3 ? (
+        <Spelling
+          this_stage={setpractice_3}
+          next_stage={setload_act}
+          game_data={game_data.spelling[1]}
+          life_act={life_act}
+          setlife_act={setlife_act}
+          userdefine={userdefine}
+          storyImage={storyImage}
+        />
+      ) : (
+        <div></div>
+      )}
+    </div>
+  );
+}
+function Wording({
+  game_data,
+  setload_act,
+  setlife_act,
+  life_act,
+  userdefine,
+  storyImage,
+}) {
+  const [practice_1, setpractice_1] = useState(true);
+  const [practice_2, setpractice_2] = useState(false);
+  const [practice_3, setpractice_3] = useState(false);
+  return (
+    <div>
+      {practice_1 ? (
+        <Word
+          this_stage={setpractice_1}
+          next_stage={setpractice_2}
+          game_data={game_data.word[0]}
+          life_act={life_act}
+          setlife_act={setlife_act}
+          userdefine={userdefine}
+          storyImage={storyImage}
+        />
+      ) : practice_2 ? (
+        <Word
+          this_stage={setpractice_2}
+          next_stage={setpractice_3}
+          game_data={game_data.word[1]}
+          life_act={life_act}
+          setlife_act={setlife_act}
+          userdefine={userdefine}
+          storyImage={storyImage}
+        />
+      ) : practice_3 ? (
+        <Spelling
+          this_stage={setpractice_3}
+          next_stage={setload_act}
+          game_data={game_data.spelling[1]}
+          life_act={life_act}
+          setlife_act={setlife_act}
+          userdefine={userdefine}
+          storyImage={storyImage}
+        />
+      ) : (
+        <div></div>
+      )}
+    </div>
+  );
+}
 export default Practice;

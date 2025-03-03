@@ -71,7 +71,7 @@ function Spelling({
   return (
     <div className="center-quiz-block">
       <div className="center-quiz-pt1">
-        <h3 className="quiz-head-text">Choose the correct pronunciation.</h3>
+        <h3 className="quiz-head-text">Choose the correct Word.</h3>
         <iframe
           src="https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/audio%2FSound%20Effect%2F250-milliseconds-of-silence.mp3?alt=media&token=0e9184ac-c977-46e3-b009-36349f905090"
           allow="autoplay"
@@ -89,7 +89,7 @@ function Spelling({
             className="question_block_voice"
             onClick={() => handleplaySound()}
           >
-            <h3 className="question-text">{game_data.text}</h3>
+            <h3 className="question-text">🔊</h3>
           </div>
         </div>
         <div className="center-quiz-pt3">

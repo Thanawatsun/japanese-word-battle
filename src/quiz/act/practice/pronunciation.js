@@ -10,7 +10,6 @@ function Pronunciation({
   life_act,
   setlife_act,
   userdefine,
-  storyImage,
 }) {
   const [selectedOption, setSelectedOption] = useState(null);
   const [showBar, setshowBar] = useState(false);
