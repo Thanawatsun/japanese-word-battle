@@ -73,3 +73,9 @@
     border-radius: 5px;
     margin-bottom: 20px;
 }
+
+.stage-locked {
+    filter: grayscale(100%); /* ทำให้เป็นสีเทา */
+    pointer-events: none; /* ปิดการใช้งาน pointer events */
+    opacity: 0.7; /* ลดความโปร่งแสงเล็กน้อย */
+  }

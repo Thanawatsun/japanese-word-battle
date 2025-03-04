@@ -10,7 +10,6 @@ function Story({ scene_number, setNextAct }) {
   const { act_count } = location.state;
   const story = quizData[act_count].story; // จัดการ act ด้วย
   useEffect(() => {
-    console.log(scene_number);
     if (scene_number !== undefined) {
       settargetText("story_text_" + scene_number);
       settargetImg("story_image_" + scene_number);

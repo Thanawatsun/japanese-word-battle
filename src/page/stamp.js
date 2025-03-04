@@ -10,7 +10,6 @@ function Stamp({ stamplist, stampData }) {
         const wordsArray = [];
         if (stampData) {
           for (var key of Object.keys(stampData)) {
-            console.log(stamplist);
             if (stamplist !== undefined && stamplist[key] !== undefined) {
               console.log(stamplist[key]);
               console.log(key);

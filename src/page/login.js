@@ -33,7 +33,6 @@ function LoginUser({ setIsLogin, setuserdefine }) {
     signInWithPopup(auth, provider)
       .then((result) => {
         setCredential(GoogleAuthProvider.credentialFromResult(result));
-        console.log(result.user);
         uploadtorealtime(result.user);
         //uploadDataToFirestore(result.user);
       })
@@ -84,13 +83,10 @@ function LoginUser({ setIsLogin, setuserdefine }) {
             uid: user.uid,
             useremail: user.email,
             user_profile: userphotoURL,
-            user_score: 0,
-            learning_level: "Rank 0 None-level",
-            user_stage: 0,
-            userBankword: [""],
             stage_playing_life: null,
             stage_playing_act: null,
             stage_playing_name: null,
+            Stamp_Data:null
           });
         }
       });

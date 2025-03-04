@@ -63,7 +63,6 @@ function Home({
     }
   }, [userdefine.uid]);
   function changePage(page) {
-    console.log(userdefine);
     if (page === "Home") {
       // buttonSound.play();
       PlaySound("button");

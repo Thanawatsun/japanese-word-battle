@@ -31,7 +31,6 @@ function StorySystem() {
     setlife_act(life);
   }, [life]);
   useEffect(() => {
-    console.log(number_story);
     if (number_story !== undefined) {
       settargetImg("story_image_" + number_story);
     }

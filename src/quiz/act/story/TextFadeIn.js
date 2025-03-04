@@ -25,7 +25,6 @@ const TextFadeIn = ({ text, speed, setNextAct }) => {
   const accelerate = () => {
     if (isComplete) {
       setNextAct(true);
-      console.log("กดแล้ว");
       setIsAccelerated(false);
       setDisplayedText("");
       setIndex(0);
