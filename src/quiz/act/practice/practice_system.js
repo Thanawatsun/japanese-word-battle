@@ -281,7 +281,7 @@ function Wording({
         <Spelling
           this_stage={setpractice_3}
           next_stage={setload_act}
-          game_data={game_data.spelling[1]}
+          game_data={game_data.spelling[0]}
           life_act={life_act}
           setlife_act={setlife_act}
           userdefine={userdefine}
