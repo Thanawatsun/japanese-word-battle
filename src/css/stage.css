@@ -7,6 +7,26 @@
     overflow: auto;
 }
 
+/* width */
+.stage-display::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+.stage-display::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+.stage-display::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+.stage-display::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 .stage {
     color: white;
     background-color: gray;
