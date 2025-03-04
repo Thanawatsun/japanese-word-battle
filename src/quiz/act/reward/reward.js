@@ -74,6 +74,13 @@ function Reward() {
     <Container>
       <Row>
         <Col>
+        <div className="choice-background-image-box">
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2Fgame_assets%2Fbook%20background.jpg?alt=media&token=9731054e-6892-4980-8379-4ec86ee88b1d"
+          alt="Sign-Background-Image"
+          className="choice-background-image sign-bg-image blur-image"
+        />
+      </div>
           {showPopup ? <PoppuStamp stamp_image={stamp_image} /> : <div></div>}
           <img
             src="https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2Fgame_assets%2Fbook%20background.jpg?alt=media&token=9731054e-6892-4980-8379-4ec86ee88b1d"
@@ -83,22 +90,22 @@ function Reward() {
           <p className="gallery">
             <img
               className="gallery-image"
-              src="https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2FStage%201%2FTokyoSkytree_1.webp?alt=media&token=52c63b62-ee99-40ea-b04c-ba18f66f5c52"
+              src={quizData.reward.image_gallery_1}
               alt="galleryimage"
             />
             <img
               className="gallery-image"
-              src="https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2FStage%201%2FTokyoSkytree_2.png?alt=media&token=ab58ceb6-39be-4b5b-9459-9841771cdabc"
+              src={quizData.reward.image_gallery_2}
               alt="galleryimage"
             />
             <img
               className="gallery-image"
-              src="https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2FStage%201%2FTokyoSkytree_3.webp?alt=media&token=5941e546-90ef-4b35-b864-07e26868b7be"
+              src={quizData.reward.image_gallery_3}
               alt="galleryimage"
             />
             <img
               className="gallery-image"
-              src="https://firebasestorage.googleapis.com/v0/b/japanese-word-battle.appspot.com/o/img%2FStage%201%2FTokyoSkytree_4.webp?alt=media&token=7ba5af6f-7a27-4d0a-aaae-4e7dc28231b2"
+              src={quizData.reward.image_gallery_4}
               alt="galleryimage"
             />
           </p>
