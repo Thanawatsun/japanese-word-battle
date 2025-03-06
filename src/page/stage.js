@@ -24,7 +24,7 @@ function Stage({ setIsPlayer, userData, modiflyQuiz, setStageplay }) {
         setShowStage(1)
       }
       else{
-        setShowStage(Object.keys(userData.Stamp_Data).length)
+        setShowStage(Object.keys(userData.Stamp_Data).length+1)
       }
     }
   },[userData])
