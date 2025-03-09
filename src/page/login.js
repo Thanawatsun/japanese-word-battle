@@ -83,10 +83,10 @@ function LoginUser({ setIsLogin, setuserdefine }) {
             uid: user.uid,
             useremail: user.email,
             user_profile: userphotoURL,
-            stage_playing_life: null,
-            stage_playing_act: null,
-            stage_playing_name: null,
-            Stamp_Data:null
+            stage_playing_life: "",
+            stage_playing_act: "",
+            stage_playing_name: "",
+            Stamp_Data:""
           });
         }
       });
